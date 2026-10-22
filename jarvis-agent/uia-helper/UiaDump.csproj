@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Маленький помощник на C#, который отдаёт агенту дерево элементов окна
+    (Windows UI Automation) в виде JSON.
+
+    Зачем отдельная программа, а не код внутри Java-агента:
+    UI Automation - это COM-интерфейс Windows. Из Java к нему можно достучаться
+    только через ручные COM-обёртки на JNA (много кода и рисков), а из .NET он
+    доступен одной строкой (System.Windows.Automation). Поэтому снимок дерева
+    делает эта программа, а Java её просто запускает и читает JSON.
+
+    Как пересобрать (нужен .NET SDK) - команда есть в соседнем файле README.md,
+    в XML-комментарии её не записать: тут запрещены двойные дефисы.
+    Результат сборки кладётся в ../src/main/resources/uia/, откуда агент
+    распакует его при первом запуске.
+
+    Требование к машине: установленный .NET Desktop Runtime 9 (UseWPF тянет
+    сборки UIAutomationClient/UIAutomationTypes именно оттуда).
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- даёт ссылки на UIAutomationClient/UIAutomationTypes -->
+    <UseWPF>true</UseWPF>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <AssemblyName>UiaDump</AssemblyName>
+    <RootNamespace>UiaDump</RootNamespace>
+  </PropertyGroup>
+
+</Project>

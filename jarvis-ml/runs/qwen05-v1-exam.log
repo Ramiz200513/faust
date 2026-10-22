@@ -1,0 +1,263 @@
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[  1/250] OK  1.00 сделай потише                                           -> {"type":"set_volume","level":30} 
+[  2/250] OK  1.00 сделай погромче                                         -> {"type":"set_volume","level":80} 
+[  3/250] OK  1.00 убавь громкость                                         -> {"type":"set_volume","level":30} 
+[  4/250] OK  1.00 прибавь громкость                                       -> {"type":"set_volume","level":80} 
+[  5/250] OK  0.99 выключи звук совсем                                     -> {"type":"set_volume","level":0} 
+[  6/250] OK  1.00 поставь громкость на 30                                 -> {"type":"set_volume","level":30} 
+[  7/250] OK  1.00 сделай звук на максимум                                 -> {"type":"set_volume","level":100} 
+[  8/250] OK  0.95 сделай звук минимальным                                 -> {"type":"set_volume","level":5} 
+[  9/250] OK  1.00 громкость 70 процентов                                  -> {"type":"set_volume","level":70} 
+[ 10/250] OK  1.00 потише пожалуйста, не слышно фильм                      -> {"type":"set_volume","level":30} 
+[ 11/250] OK  1.00 сделай звук погромче, ничего не слышно                  -> {"type":"set_volume","level":80} 
+[ 12/250] OK  1.00 убери звук вообще                                       -> {"type":"set_volume","level":0} 
+[ 13/250] OK  0.98 накрути громкость до предела                            -> {"type":"set_volume","level":100} 
+[ 14/250] OK  1.00 открой ютуб                                             -> {"type":"open_url","url":"https://youtube.com"} 
+[ 15/250] OK  1.00 зайди на википедию                                      -> {"type":"open_url","url":"https://ru.wikipedia.org"} 
+[ 16/250] OK  1.00 открой гугл                                             -> {"type":"open_url","url":"https://google.com"} 
+[ 17/250] OK  1.00 зайди на почту gmail                                    -> {"type":"open_url","url":"https://mail.google.com"} 
+[ 18/250] OK  1.00 открой вконтакте                                        -> {"type":"open_url","url":"https://vk.com"} 
+[ 19/250] OK  1.00 зайди на хабр                                           -> {"type":"open_url","url":"https://habr.com"} 
+[ 20/250] OK  1.00 открой github.com                                       -> {"type":"open_url","url":"https://github.com"} 
+[ 21/250] OK  1.00 зайди на сайт enu.kz                                    -> {"type":"open_url","url":"https://enu.kz"} 
+[ 22/250] OK  1.00 открой яндекс                                           -> {"type":"open_url","url":"https://yandex.ru"} 
+[ 23/250] OK  1.00 зайди на авито                                          -> {"type":"open_url","url":"https://avito.ru"} 
+[ 24/250] OK  1.00 открой линкедин                                         -> {"type":"open_url","url":"https://linkedin.com"} 
+[ 25/250] OK  1.00 зайди на стековерфлоу                                   -> {"type":"open_url","url":"https://stackoverflow.com"} 
+[ 26/250] OK  1.00 открой новости mail.ru                                  -> {"type":"open_url","url":"https://news.mail.ru"} 
+[ 27/250] OK  1.00 зайди на реддит                                         -> {"type":"open_url","url":"https://reddit.com"} 
+[ 28/250] OK  1.00 открой телеграм веб                                     -> {"type":"open_url","url":"https://web.telegram.org"} 
+[ 29/250] OK  0.97 зайди на сайт погоды gismeteo                           -> {"type":"open_url","url":"https://gismeteo.kz"} 
+[ 30/250] OK  1.00 запусти блокнот                                         -> {"type":"open_app","appName":"notepad"} 
+[ 31/250] OK  1.00 открой калькулятор                                      -> {"type":"open_app","appName":"calc"} 
+[ 32/250] OK  1.00 запусти проводник                                       -> {"type":"open_app","appName":"explorer"} 
+[ 33/250] OK  1.00 открой paint                                            -> {"type":"open_app","appName":"paint"} 
+[ 34/250] OK  1.00 запусти хром                                            -> {"type":"open_app","appName":"chrome"} 
+[ 35/250] OK  1.00 открой эдж                                              -> {"type":"open_app","appName":"edge"} 
+[ 36/250] OK  1.00 запусти диспетчер задач                                 -> {"type":"open_app","appName":"taskmgr"} 
+[ 37/250] OK  0.99 открой папку загрузки                                   -> {"type":"open_app","appName":"загрузки"} 
+[ 38/250] OK  1.00 открой документы                                        -> {"type":"open_app","appName":"документы"} 
+[ 39/250] OK  0.99 открой рабочий стол                                     -> {"type":"open_app","appName":"рабочий стол"} 
+[ 40/250] OK  1.00 открой изображения                                      -> {"type":"open_app","appName":"изображения"} 
+[ 41/250] OK  1.00 запусти notepad                                         -> {"type":"open_app","appName":"notepad"} 
+[ 42/250] OK  1.00 открой calc                                             -> {"type":"open_app","appName":"calc"} 
+[ 43/250] OK  1.00 запусти explorer                                        -> {"type":"open_app","appName":"explorer"} 
+[ 44/250] OK  1.00 открой мою папку с фотками                              -> {"type":"open_app","appName":"изображения"} 
+[ 45/250] OK  1.00 включи блокнотик, хочу кое-что записать                 -> {"type":"open_app","appName":"notepad"} 
+[ 46/250] OK  1.00 сделай скриншот                                         -> {"type":"screenshot"} 
+[ 47/250] OK  1.00 покажи что на экране                                    -> {"type":"screenshot"} 
+[ 48/250] OK  1.00 сфотографируй экран                                     -> {"type":"screenshot"} 
+[ 49/250] OK  1.00 пришли скрин                                            -> {"type":"screenshot"} 
+[ 50/250] OK  1.00 хочу посмотреть что у тебя на экране                    -> {"type":"screenshot"} 
+[ 51/250] OK  1.00 сними скриншот пожалуйста                               -> {"type":"screenshot"} 
+[ 52/250] ОШ  0.98 покажи рабочий стол картинкой                           -> {"type":"open_app","appName":"изображения"} тип open_app, ждали screenshot
+[ 53/250] OK  1.00 скинь скрин экрана                                      -> {"type":"screenshot"} 
+[ 54/250] OK  0.89 засними что сейчас происходит на компьютере             -> {"type":"screenshot"} 
+[ 55/250] OK  1.00 заблокируй компьютер                                    -> {"type":"lock_screen"} 
+[ 56/250] OK  1.00 заблокируй экран                                        -> {"type":"lock_screen"} 
+[ 57/250] OK  0.95 закрой доступ к компьютеру                              -> {"type":"lock_screen"} 
+[ 58/250] OK  1.00 включи блокировку                                       -> {"type":"lock_screen"} 
+[ 59/250] OK  1.00 заблокируй пк, я ухожу                                  -> {"type":"lock_screen"} 
+[ 60/250] OK  1.00 поставь на блокировку                                   -> {"type":"lock_screen"} 
+[ 61/250] OK  1.00 запри компьютер                                         -> {"type":"lock_screen"} 
+[ 62/250] OK  1.00 заблокируй ноутбук                                      -> {"type":"lock_screen"} 
+[ 63/250] OK  1.00 покажи запущенные процессы                              -> {"type":"list_processes"} 
+[ 64/250] OK  1.00 какие программы сейчас работают                         -> {"type":"list_processes"} 
+[ 65/250] OK  1.00 список процессов                                        -> {"type":"list_processes"} 
+[ 66/250] OK  1.00 что сейчас запущено на компьютере                       -> {"type":"list_processes"} 
+[ 67/250] OK  0.96 покажи список программ                                  -> {"type":"list_processes"} 
+[ 68/250] OK  1.00 какие приложения открыты                                -> {"type":"list_processes"} 
+[ 69/250] OK  1.00 дай список запущенных программ                          -> {"type":"list_processes"} 
+[ 70/250] OK  1.00 покажи, что грузит систему                              -> {"type":"list_processes"} 
+[ 71/250] OK  1.00 закрой хром                                             -> {"type":"kill_process","processName":"chrome.exe"} 
+[ 72/250] OK  1.00 убей процесс chrome.exe                                 -> {"type":"kill_process","processName":"chrome.exe"} 
+[ 73/250] OK  1.00 останови телеграм                                       -> {"type":"kill_process","processName":"telegram.exe"} 
+[ 74/250] OK  1.00 закрой блокнот                                          -> {"type":"kill_process","processName":"notepad.exe"} 
+[ 75/250] OK  0.99 выключи спотифай                                        -> {"type":"kill_process","processName":"spotify.exe"} 
+[ 76/250] OK  1.00 заверши процесс notepad.exe                             -> {"type":"kill_process","processName":"notepad.exe"} 
+[ 77/250] OK  1.00 закрой браузер эдж                                      -> {"type":"kill_process","processName":"msedge.exe"} 
+[ 78/250] OK  1.00 убей zoom                                               -> {"type":"kill_process","processName":"zoom.exe"} 
+[ 79/250] OK  1.00 останови discord                                        -> {"type":"kill_process","processName":"discord.exe"} 
+[ 80/250] OK  1.00 закрой ворд                                             -> {"type":"kill_process","processName":"winword.exe"} 
+[ 81/250] OK  1.00 выключи скайп                                           -> {"type":"kill_process","processName":"skype.exe"} 
+[ 82/250] OK  1.00 найди на ютубе видео про котиков и открой первое        -> {"type":"agent_task","scope":"browser"} 
+[ 83/250] OK  1.00 зайди на википедию и найди статью про эйнштейна         -> {"type":"agent_task","scope":"browser"} 
+[ 84/250] OK  1.00 найди в гугле рецепт пиццы и открой первый результат    -> {"type":"agent_task","scope":"browser"} 
+[ 85/250] OK  1.00 поставь лайк на видео которое сейчас открыто            -> {"type":"agent_task","scope":"browser"} 
+[ 86/250] OK  1.00 найди дешёвые авиабилеты в алматы                       -> {"type":"agent_task","scope":"browser"} 
+[ 87/250] OK  1.00 зайди на авито и найди объявления о продаже велосипеда  -> {"type":"agent_task","scope":"browser"} 
+[ 88/250] OK  1.00 найди новости про искусственный интеллект и открой одну -> {"type":"agent_task","scope":"browser"} 
+[ 89/250] OK  1.00 зайди на ютуб и найди урок по питону для начинающих     -> {"type":"agent_task","scope":"browser"} 
+[ 90/250] OK  1.00 найди на википедии список президентов казахстана        -> {"type":"agent_task","scope":"browser"} 
+[ 91/250] OK  1.00 забронируй столик в ресторане через сайт                -> {"type":"agent_task","scope":"browser"} 
+[ 92/250] OK  1.00 найди на маркетплейсе телефон дешевле 100 тысяч тенге   -> {"type":"agent_task","scope":"browser"} 
+[ 93/250] OK  1.00 зайди в гугл карты и найди ближайшую кофейню            -> {"type":"agent_task","scope":"browser"} 
+[ 94/250] OK  1.00 найди перевод слова serendipity и покажи его            -> {"type":"agent_task","scope":"browser"} 
+[ 95/250] OK  1.00 открой ютуб, найди трейлер нового фильма марвел и включ -> {"type":"agent_task","scope":"browser"} 
+[ 96/250] OK  1.00 зайди на linkedin и найди вакансии java разработчика    -> {"type":"agent_task","scope":"browser"} 
+[ 97/250] OK  1.00 найди билеты на поезд из алматы в астану на завтра      -> {"type":"agent_task","scope":"browser"} 
+[ 98/250] OK  1.00 какая сегодня погода                                    -> {"type":"unknown"} 
+[ 99/250] OK  1.00 расскажи анекдот                                        -> {"type":"unknown"} 
+[100/250] OK  1.00 сколько будет дважды два                                -> {"type":"unknown"} 
+[101/250] OK  1.00 как дела                                                -> {"type":"unknown"} 
+[102/250] OK  0.72 включи музыку                                           -> {"type":"unknown"} 
+[103/250] OK  1.00 сделай мне кофе                                         -> {"type":"unknown"} 
+[104/250] OK  1.00 который час                                             -> {"type":"unknown"} 
+[105/250] OK  1.00 спой песню                                              -> {"type":"unknown"} 
+[106/250] OK  1.00 what is the weather today                               -> {"type":"unknown"} 
+[107/250] OK  0.99 бла бла бла ничего не понятно                           -> {"type":"unknown"} 
+[108/250] OK  1.00 переведи текст на английский                            -> {"type":"unknown"} 
+[109/250] OK  1.00 напиши сочинение про осень                              -> {"type":"unknown"} 
+[110/250] OK  0.62 хочу поговорить                                         -> {"type":"unknown"} 
+[111/250] OK  1.00 сколько стоит биткоин                                   -> {"type":"unknown"} 
+[112/250] OK  1.00 расскажи про себя                                       -> {"type":"unknown"} 
+[113/250] OK  1.00 умеешь ли ты готовить                                   -> {"type":"unknown"} 
+[114/250] OK  1.00 привет, как настроение                                  -> {"type":"unknown"} 
+[115/250] OK  1.00 закажи пиццу                                            -> {"type":"unknown"} 
+[116/250] OK  1.00 громкость на пятьдесят                                  -> {"type":"set_volume","level":50} 
+[117/250] OK  1.00 поставь звук на 15 процентов                            -> {"type":"set_volume","level":15} 
+[118/250] OK  1.00 сделай звук наполовину                                  -> {"type":"set_volume","level":50} 
+[119/250] OK  0.94 чуть-чуть потише                                        -> {"type":"set_volume","level":40} 
+[120/250] OK  1.00 сделай по тише                                          -> {"type":"set_volume","level":30} 
+[121/250] OK  1.00 звук на ноль                                            -> {"type":"set_volume","level":0} 
+[122/250] OK  1.00 верни звук на 40                                        -> {"type":"set_volume","level":40} 
+[123/250] OK  1.00 громкость двадцать пять                                 -> {"type":"set_volume","level":25} 
+[124/250] OK  0.99 мьют                                                    -> {"type":"set_volume","level":0} 
+[125/250] OK  1.00 volume 20                                               -> {"type":"set_volume","level":20} 
+[126/250] OK  1.00 turn the volume up                                      -> {"type":"set_volume","level":80} 
+[127/250] OK  0.94 сделай как можно тише, но не выключай совсем            -> {"type":"set_volume","level":5} 
+[128/250] OK  1.00 открой кинопоиск                                        -> {"type":"open_url","url":"https://kinopoisk.ru"} 
+[129/250] OK  1.00 зайди на озон                                           -> {"type":"open_url","url":"https://ozon.ru"} 
+[130/250] OK  1.00 открой каспи                                            -> {"type":"open_url","url":"https://kaspi.kz"} 
+[131/250] OK  1.00 зайди на hh                                             -> {"type":"open_url","url":"https://hh.ru"} 
+[132/250] OK  0.99 открой чатгпт                                           -> {"type":"open_url","url":"https://chatgpt.com"} 
+[133/250] OK  0.99 открой ютуб мьюзик                                      -> {"type":"open_url","url":"https://music.youtube.com"} 
+[134/250] OK  1.00 открой гугл карты                                       -> {"type":"open_url","url":"https://www.google.com/maps"} 
+[135/250] OK  1.00 зайди на госуслуги                                      -> {"type":"open_url","url":"https://gosuslugi.ru"} 
+[136/250] OK  1.00 открой egov                                             -> {"type":"open_url","url":"https://egov.kz"} 
+[137/250] OK  1.00 открой сайт stackoverflow.com                           -> {"type":"open_url","url":"https://stackoverflow.com"} 
+[138/250] OK  1.00 зайди на ютуб пожалуйста                                -> {"type":"open_url","url":"https://youtube.com"} 
+[139/250] OK  1.00 открой вк                                               -> {"type":"open_url","url":"https://vk.com"} 
+[140/250] OK  1.00 зайди в инсту                                           -> {"type":"open_url","url":"https://instagram.com"} 
+[141/250] OK  1.00 открой твиттер                                          -> {"type":"open_url","url":"https://x.com"} 
+[142/250] OK  1.00 open youtube                                            -> {"type":"open_url","url":"https://youtube.com"} 
+[143/250] OK  1.00 открой гугл переводчик                                  -> {"type":"open_url","url":"https://translate.google.com"} 
+[144/250] OK  1.00 зайди на 2гис                                           -> {"type":"open_url","url":"https://2gis.kz"} 
+[145/250] OK  1.00 открой яндекс почту                                     -> {"type":"open_url","url":"https://mail.yandex.ru"} 
+[146/250] OK  1.00 запусти телегу                                          -> {"type":"open_app","appName":"telegram"} 
+[147/250] OK  1.00 открой ватсап                                           -> {"type":"open_app","appName":"whatsapp"} 
+[148/250] OK  1.00 открой ворд                                             -> {"type":"open_app","appName":"word"} 
+[149/250] OK  1.00 запусти эксель                                          -> {"type":"open_app","appName":"excel"} 
+[150/250] OK  1.00 открой вскод                                            -> {"type":"open_app","appName":"visual studio code"} 
+[151/250] OK  1.00 запусти стим                                            -> {"type":"open_app","appName":"steam"} 
+[152/250] OK  1.00 открой настройки                                        -> {"type":"open_app","appName":"параметры"} 
+[153/250] OK  1.00 открой папку документы                                  -> {"type":"open_app","appName":"документы"} 
+[154/250] OK  0.99 открой загрузки                                         -> {"type":"open_app","appName":"загрузки"} 
+[155/250] OK  1.00 запусти диспетчер задач пожалуйста                      -> {"type":"open_app","appName":"taskmgr"} 
+[156/250] OK  1.00 открой калькулятор пожалуйста                           -> {"type":"open_app","appName":"calc"} 
+[157/250] OK  1.00 запусти пэинт                                           -> {"type":"open_app","appName":"paint"} 
+[158/250] OK  1.00 открой блокнот                                          -> {"type":"open_app","appName":"notepad"} 
+[159/250] OK  1.00 запусти дискорд                                         -> {"type":"open_app","appName":"discord"} 
+[160/250] OK  1.00 открой зум                                              -> {"type":"open_app","appName":"zoom"} 
+[161/250] OK  1.00 start notepad                                           -> {"type":"open_app","appName":"notepad"} 
+[162/250] OK  0.99 открой обс                                              -> {"type":"open_app","appName":"obs studio"} 
+[163/250] OK  1.00 включи телеграм                                         -> {"type":"open_app","appName":"telegram"} 
+[164/250] OK  1.00 закрой телегу                                           -> {"type":"kill_process","processName":"telegram.exe"} 
+[165/250] OK  1.00 вырубай хром                                            -> {"type":"kill_process","processName":"chrome.exe"} 
+[166/250] OK  1.00 закрой все окна хрома                                   -> {"type":"kill_process","processName":"chrome.exe"} 
+[167/250] OK  1.00 убей процесс java                                       -> {"type":"kill_process","processName":"java.exe"} 
+[168/250] OK  1.00 закрой вскод                                            -> {"type":"kill_process","processName":"code.exe"} 
+[169/250] OK  1.00 заверши дискорд                                         -> {"type":"kill_process","processName":"discord.exe"} 
+[170/250] OK  1.00 закрой эксель                                           -> {"type":"kill_process","processName":"excel.exe"} 
+[171/250] OK  1.00 закрой ватсап                                           -> {"type":"kill_process","processName":"whatsapp.exe"} 
+[172/250] OK  0.99 останови стим                                           -> {"type":"kill_process","processName":"steam.exe"} 
+[173/250] OK  1.00 kill chrome                                             -> {"type":"kill_process","processName":"chrome.exe"} 
+[174/250] OK  0.99 закрой зум                                              -> {"type":"kill_process","processName":"zoom.exe"} 
+[175/250] OK  1.00 закрой спотифай                                         -> {"type":"kill_process","processName":"spotify.exe"} 
+[176/250] OK  1.00 сдлай скриншот                                          -> {"type":"screenshot"} 
+[177/250] OK  1.00 скриншот                                                -> {"type":"screenshot"} 
+[178/250] OK  1.00 покажи экран компа                                      -> {"type":"screenshot"} 
+[179/250] OK  1.00 take a screenshot                                       -> {"type":"screenshot"} 
+[180/250] OK  1.00 щёлкни экран                                            -> {"type":"screenshot"} 
+[181/250] OK  1.00 заблокируй комп                                         -> {"type":"lock_screen"} 
+[182/250] OK  1.00 блокировка экрана                                       -> {"type":"lock_screen"} 
+[183/250] OK  0.99 lock the computer                                       -> {"type":"lock_screen"} 
+[184/250] OK  1.00 заблокируй пожалуйста ноут                              -> {"type":"lock_screen"} 
+[185/250] OK  1.00 я отошёл, заблокируй                                    -> {"type":"lock_screen"} 
+[186/250] OK  1.00 чо там запущено                                         -> {"type":"list_processes"} 
+[187/250] OK  1.00 какие процессы висят                                    -> {"type":"list_processes"} 
+[188/250] OK  0.99 list processes                                          -> {"type":"list_processes"} 
+[189/250] OK  0.96 что жрёт память                                         -> {"type":"list_processes"} 
+[190/250] OK  1.00 покажи все программы, которые сейчас открыты            -> {"type":"list_processes"} 
+[191/250] OK  1.00 найди в гугле погоду в астане и открой первый сайт      -> {"type":"agent_task","scope":"browser"} 
+[192/250] OK  1.00 посмотри на кинопоиске рейтинг фильма дюна              -> {"type":"agent_task","scope":"browser"} 
+[193/250] OK  1.00 найди на ютубе лекцию по машинному обучению и включи    -> {"type":"agent_task","scope":"browser"} 
+[194/250] OK  1.00 открой википедию и найди статью про казахстан           -> {"type":"agent_task","scope":"browser"} 
+[195/250] OK  1.00 найди на hh вакансии python в алматы                    -> {"type":"agent_task","scope":"browser"} 
+[196/250] OK  1.00 подпишись на этот канал                                 -> {"type":"agent_task","scope":"browser"} 
+[197/250] OK  1.00 найди курс доллара на сайте нацбанка                    -> {"type":"agent_task","scope":"browser"} 
+[198/250] OK  1.00 найди рецепт борща и открой первый сайт                 -> {"type":"agent_task","scope":"browser"} 
+[199/250] OK  1.00 поищи в интернете, как установить докер                 -> {"type":"agent_task","scope":"browser"} 
+[200/250] ТИП 0.96 найди на гитхабе репозиторий spring boot и открой его   -> {"type":"agent_task","scope":"screen"} scope=screen, ждали browser
+[201/250] OK  1.00 посмотри, что пишут в новостях про погоду на завтра     -> {"type":"agent_task","scope":"browser"} 
+[202/250] OK  1.00 зайди на озон и добавь в корзину наушники               -> {"type":"agent_task","scope":"browser"} 
+[203/250] OK  1.00 скачай файл с example.com и перешли его в телеграм Пете -> {"type":"agent_task","scope":"screen"} 
+[204/250] OK  1.00 найди в загрузках последний pdf и отправь его маме в во -> {"type":"agent_task","scope":"screen"} 
+[205/250] OK  1.00 открой блокнот и напиши список покупок                  -> {"type":"agent_task","scope":"screen"} 
+[206/250] OK  1.00 создай в документах папку практика и перенеси туда все  -> {"type":"agent_task","scope":"screen"} 
+[207/250] OK  1.00 распакуй архив из загрузок в папку документы            -> {"type":"agent_task","scope":"screen"} 
+[208/250] OK  1.00 напиши в телеграме Пете, что я опоздаю                  -> {"type":"agent_task","scope":"screen"} 
+[209/250] OK  1.00 найди курс евро, запиши его в блокнот и сохрани на рабо -> {"type":"agent_task","scope":"screen"} 
+[210/250] OK  1.00 открой ворд и напечатай заявление на отпуск             -> {"type":"agent_task","scope":"screen"} 
+[211/250] OK  1.00 переименуй файл отчёт в загрузках в отчёт финал         -> {"type":"agent_task","scope":"screen"} 
+[212/250] OK  1.00 сделай скриншот и отправь его в телеграм в избранное    -> {"type":"agent_task","scope":"screen"} 
+[213/250] OK  1.00 открой калькулятор и посчитай 15 процентов от 2000      -> {"type":"agent_task","scope":"screen"} 
+[214/250] OK  1.00 в проводнике открой загрузки и отсортируй файлы по дате -> {"type":"agent_task","scope":"screen"} 
+[215/250] OK  1.00 зайди в телеграм и прочитай последнее сообщение от Пети -> {"type":"agent_task","scope":"screen"} 
+[216/250] OK  1.00 скопируй файл диплом.docx с рабочего стола на флешку    -> {"type":"agent_task","scope":"screen"} 
+[217/250] OK  1.00 открой эксель и создай таблицу расходов                 -> {"type":"agent_task","scope":"screen"} 
+[218/250] OK  1.00 запиши в блокнот номер 87001234567 и сохрани            -> {"type":"agent_task","scope":"screen"} 
+[219/250] OK  1.00 скачай презентацию с сайта колледжа и скинь её в группу -> {"type":"agent_task","scope":"screen"} 
+[220/250] OK  1.00 перешли последнюю фотку из загрузок Лере и Маше в телег -> {"type":"agent_task","scope":"screen"} 
+[221/250] OK  1.00 собери все скриншоты с рабочего стола в одну папку      -> {"type":"agent_task","scope":"screen"} 
+[222/250] OK  1.00 открой телеграм, найди чат с мамой и отправь ей привет  -> {"type":"agent_task","scope":"screen"} 
+[223/250] ОШ  1.00 навык утро                                              -> {"type":"unknown"} тип unknown, ждали agent_task
+[224/250] ОШ  0.98 выполни навык доброе утро                               -> {"type":"unknown"} тип unknown, ждали agent_task
+[225/250] ОШ  0.49 запусти навык отчёт                                     -> {"type":"open_app","appName":"report"} тип open_app, ждали agent_task
+[226/250] OK  0.93 запусти скрипт сервер диплома                           -> {"type":"agent_task","scope":"screen"} 
+[227/250] OK  1.00 выполни скрипт сборка проекта                           -> {"type":"agent_task","scope":"screen"} 
+[228/250] OK  1.00 подними сервер в докере                                 -> {"type":"agent_task","scope":"screen"} 
+[229/250] OK  0.99 подготовь компьютер к работе                            -> {"type":"agent_task","scope":"screen"} 
+[230/250] ОШ  0.83 доброе утро, пора работать                              -> {"type":"unknown"} тип unknown, ждали agent_task
+[231/250] OK  1.00 запусти мой рабочий набор программ                      -> {"type":"agent_task","scope":"screen"} 
+[232/250] OK  1.00 разверни проект диплома                                 -> {"type":"agent_task","scope":"screen"} 
+[233/250] OK  1.00 выключи компьютер                                       -> {"type":"unknown"} 
+[234/250] OK  1.00 перезагрузи пк                                          -> {"type":"unknown"} 
+[235/250] OK  1.00 отформатируй диск c                                     -> {"type":"unknown"} 
+[236/250] OK  0.95 удали все файлы с рабочего стола                        -> {"type":"unknown"} 
+[237/250] OK  1.00 введи мой пароль от банка                               -> {"type":"unknown"} 
+[238/250] OK  1.00 переведи маме пять тысяч                                -> {"type":"unknown"} 
+[239/250] OK  1.00 купи мне билет на самолёт                               -> {"type":"unknown"} 
+[240/250] OK  1.00 что ты умеешь                                           -> {"type":"unknown"} 
+[241/250] OK  1.00 спасибо                                                 -> {"type":"unknown"} 
+[242/250] OK  1.00 ты тут?                                                 -> {"type":"unknown"} 
+[243/250] OK  1.00 фауст                                                   -> {"type":"unknown"} 
+[244/250] OK  1.00 ладно, отмена                                           -> {"type":"unknown"} 
+[245/250] OK  1.00 напомни мне завтра позвонить маме                       -> {"type":"unknown"} 
+[246/250] OK  1.00 поставь будильник на 7 утра                             -> {"type":"unknown"} 
+[247/250] OK  1.00 hello how are you                                       -> {"type":"unknown"} 
+[248/250] OK  1.00 ыаыв ыва                                                -> {"type":"unknown"} 
+[249/250] OK  1.00 сколько будет 15 умножить на 7                          -> {"type":"unknown"} 
+[250/250] OK  1.00 какая температура процессора                            -> {"type":"unknown"} 
+
+точность команды: 97.6% (244 из 250), медиана задержки 587 мс
+порог | оставляем себе | из них верно | уходит в Gemini | ошибок остаётся
+ 0.00 |  250 (100.0%) |  97.6% |    0 (  0.0%) | 6
+ 0.30 |  250 (100.0%) |  97.6% |    0 (  0.0%) | 6
+ 0.50 |  249 ( 99.6%) |  98.0% |    1 (  0.4%) | 5
+ 0.70 |  248 ( 99.2%) |  98.0% |    2 (  0.8%) | 5
+ 0.80 |  247 ( 98.8%) |  98.0% |    3 (  1.2%) | 5
+ 0.90 |  245 ( 98.0%) |  98.4% |    5 (  2.0%) | 4
+ 0.95 |  242 ( 96.8%) |  98.3% |    8 (  3.2%) | 4
+ 0.98 |  234 ( 93.6%) |  99.1% |   16 (  6.4%) | 2
+отчёт: C:\diplom\jarvis-relay\eval\results\local-qwen05-v1-test-20261006-1119.md

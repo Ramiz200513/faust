@@ -1,0 +1,13 @@
+собрано 15003; совпало с экзаменом и выброшено: 402; противоречивых фраз: 1
+train: 12854, val: 856, dev (отложенные фразы учителя): 313
+  agent_browser    2079   contrast: 121, teacher: 360, template: 1598
+  agent_screen     2887   contrast: 122, teacher: 450, template: 2315
+  kill_process     1552   contrast: 7, teacher: 299, template: 1246
+  list_processes    211   teacher: 45, template: 166
+  lock_screen       174   teacher: 29, template: 145
+  open_app         1862   contrast: 12, teacher: 420, template: 1430
+  open_url         2834   contrast: 19, teacher: 389, template: 2426
+  screenshot        215   teacher: 34, template: 181
+  set_volume       1026   contrast: 1, teacher: 124, template: 901
+  unknown          1190   chat: 106, contrast: 2, dangerous: 251, gibberish: 138, impossible: 83, question: 125, teacher: 360, unsupported: 125
+противоречия (первые 10): ['громкость на максимум']

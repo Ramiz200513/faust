@@ -1,0 +1,121 @@
+{"phrase": "Можешь прсто открыть vlc!", "target": "{\"type\":\"open_app\",\"appName\":\"vlc\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "зауть комп", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "пожалуйста, открывай hh.ru, без поиска", "target": "{\"type\":\"open_url\",\"url\":\"https://hh.ru\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "открой мне одноклассники", "target": "{\"type\":\"open_url\",\"url\":\"https://ok.ru\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "открой сайт дуолинго", "target": "{\"type\":\"open_url\",\"url\":\"https://duolingo.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "вруби степик в браузере", "target": "{\"type\":\"open_url\",\"url\":\"https://stepik.org\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "сбавь немного громкость", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "фауст, включи ванноут на компьютере", "target": "{\"type\":\"open_app\",\"appName\":\"onenote\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "Сделай скриншот дисплея и пришли сюда!", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "teacher"}
+{"phrase": "браузер открой и сразу на закон кз", "target": "{\"type\":\"open_url\",\"url\":\"https://zakon.kz\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Открой папку где лежат картинки", "target": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "ассистент запусти мне тимс", "target": "{\"type\":\"open_app\",\"appName\":\"teams\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "что за проги сейчас пашут?", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "teacher"}
+{"phrase": "сделай запуск пайчарма", "target": "{\"type\":\"open_app\",\"appName\":\"pycharm\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "Запусти майнкрафт", "target": "{\"type\":\"open_app\",\"appName\":\"minecraft\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "тише сделай", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "обс запуск", "target": "{\"type\":\"open_app\",\"appName\":\"obs studio\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "повысь громкость до предела", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "фауст запусти докер", "target": "{\"type\":\"open_app\",\"appName\":\"docker desktop\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "Залочь рабочий стол", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "teacher"}
+{"phrase": "Открывай каггл!", "target": "{\"type\":\"open_url\",\"url\":\"https://kaggle.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "увеличь уровень громкости", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "Можешь сделать скриншот того что сейчас на мониторе и прислать!", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "teacher"}
+{"phrase": "включи программу нотпад плюс плюс", "target": "{\"type\":\"open_app\",\"appName\":\"notepad++\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "Ассистент, открой главную днс", "target": "{\"type\":\"open_url\",\"url\":\"https://dns-shop.ru\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Открой яндекс почту без поиска!", "target": "{\"type\":\"open_url\",\"url\":\"https://mail.yandex.ru\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "вруби эдж", "target": "{\"type\":\"open_app\",\"appName\":\"edge\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "гугл карты открой", "target": "{\"type\":\"open_url\",\"url\":\"https://www.google.com/maps\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "открой программу вайбер", "target": "{\"type\":\"open_app\",\"appName\":\"viber\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "вруби вайбер на пк", "target": "{\"type\":\"open_app\",\"appName\":\"viber\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "браузер открой и сразу на hh заходи", "target": "{\"type\":\"open_url\",\"url\":\"https://hh.ru\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Открой камеру", "target": "{\"type\":\"open_app\",\"appName\":\"камера\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "сделай полную тишину", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "заскринь экран и скинь пж", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "teacher"}
+{"phrase": "загаси пайчарм", "target": "{\"type\":\"kill_process\",\"processName\":\"pycharm64.exe\"}", "cat": "kill_process", "src": "teacher"}
+{"phrase": "просто запусти vlc", "target": "{\"type\":\"open_app\",\"appName\":\"vlc\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "немного потише", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "задйи на сайт каггла", "target": "{\"type\":\"open_url\",\"url\":\"https://kaggle.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "перейди на иви", "target": "{\"type\":\"open_url\",\"url\":\"https://ivi.ru\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "фауст, выведи на экран папку документы", "target": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "подгрузи мне сайт дипла", "target": "{\"type\":\"open_url\",\"url\":\"https://deepl.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Мне нужен калькулятор откроешь", "target": "{\"type\":\"open_app\",\"appName\":\"calc\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "Можешь просто открыть сайт майкрософт?", "target": "{\"type\":\"open_url\",\"url\":\"https://microsoft.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "браузер открой и сразу зайди на реддит", "target": "{\"type\":\"open_url\",\"url\":\"https://reddit.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Какие приложения сейчас открыты?.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "teacher"}
+{"phrase": "Звук на 100%", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "hh открой", "target": "{\"type\":\"open_url\",\"url\":\"https://hh.ru\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Убей процесс пайчарма", "target": "{\"type\":\"kill_process\",\"processName\":\"pycharm64.exe\"}", "cat": "kill_process", "src": "teacher"}
+{"phrase": "хром запусти", "target": "{\"type\":\"open_app\",\"appName\":\"chrome\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "отобрази список запущенных приложений", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "teacher"}
+{"phrase": "сделай так чтобы ничего не было слышно", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "запустить майнкрафт", "target": "{\"type\":\"open_app\",\"appName\":\"minecraft\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "Можешь просто открыть хром", "target": "{\"type\":\"open_app\",\"appName\":\"chrome\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "перейди в директорию документы", "target": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "включи приложение тимс", "target": "{\"type\":\"open_app\",\"appName\":\"teams\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "слишком громко, сделай чуть тише", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "Пожалуйста, сделай звук на максмиум", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "запусти ватсап", "target": "{\"type\":\"open_app\",\"appName\":\"whatsapp\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "можешь быстро заскринить экран и прислать", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "teacher"}
+{"phrase": "открой каспи в браузере", "target": "{\"type\":\"open_url\",\"url\":\"https://kaspi.kz\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Запусти дуолинго в браузере, пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://duolingo.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Пришли мне скриншот рабочего стола", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "teacher"}
+{"phrase": "зайди на бинг", "target": "{\"type\":\"open_url\",\"url\":\"https://bing.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Запусти программу настройки.", "target": "{\"type\":\"open_app\",\"appName\":\"параметры\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "загрузи саундклауд", "target": "{\"type\":\"open_url\",\"url\":\"https://soundcloud.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "открой браузер на саундклауде", "target": "{\"type\":\"open_url\",\"url\":\"https://soundcloud.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "притиши", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "Запусти браузер и открой бинг", "target": "{\"type\":\"open_url\",\"url\":\"https://bing.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "замуть всё", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "Будь добр открой пинтерест", "target": "{\"type\":\"open_url\",\"url\":\"https://pinterest.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "запусти, пожалуйста, сайт ватсап веб", "target": "{\"type\":\"open_url\",\"url\":\"https://web.whatsapp.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "открой в браузере сайт яндекс маркет", "target": "{\"type\":\"open_url\",\"url\":\"https://market.yandex.ru\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Слушай, открой мне просто нетфликс", "target": "{\"type\":\"open_url\",\"url\":\"https://netflix.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "открывай эпик геймс", "target": "{\"type\":\"open_app\",\"appName\":\"epic games\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "врубай vlc", "target": "{\"type\":\"open_app\",\"appName\":\"vlc\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "погромче, пожалуйста", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "просто открой днс", "target": "{\"type\":\"open_url\",\"url\":\"https://dns-shop.ru\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Перейди на сайт майкрософт!", "target": "{\"type\":\"open_url\",\"url\":\"https://microsoft.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "ламоду открой", "target": "{\"type\":\"open_url\",\"url\":\"https://lamoda.kz\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "перейди на твиттер", "target": "{\"type\":\"open_url\",\"url\":\"https://x.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "убавь колонки", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "Ассистент, заблокируй экран!", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "teacher"}
+{"phrase": "Вруби юнити", "target": "{\"type\":\"open_app\",\"appName\":\"unity\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "калькулятор запусти", "target": "{\"type\":\"open_app\",\"appName\":\"calc\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "запусти энидеск", "target": "{\"type\":\"open_app\",\"appName\":\"anydesk\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "Ютуб открой", "target": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Зайди в документы", "target": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "Подними громкость до максимума", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "покажи, что у меня сейчас открыто", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "teacher"}
+{"phrase": "заблокируй рабочую станцию", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "teacher"}
+{"phrase": "Заскринь экран и пришли", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "teacher"}
+{"phrase": "фауст, Прибавь звук, пожалуйста", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "выруби аудио полностью", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "старт скайп", "target": "{\"type\":\"open_app\",\"appName\":\"skype\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "вруби громкость на 100", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "открой пожалуйста винрар", "target": "{\"type\":\"open_app\",\"appName\":\"winrar\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "вруби телеграмчик", "target": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "сделай громче уже некуда", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "Запусти пожалуйста скайп", "target": "{\"type\":\"open_app\",\"appName\":\"skype\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "камеру запусти", "target": "{\"type\":\"open_app\",\"appName\":\"камера\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "поставь на беззвучный режим", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "Будь добр, запусти идею", "target": "{\"type\":\"open_app\",\"appName\":\"intellij idea\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "вайбер запусти", "target": "{\"type\":\"open_app\",\"appName\":\"viber\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "Будь другом, открой программу энидеск", "target": "{\"type\":\"open_app\",\"appName\":\"anydesk\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "Мне нужен только пинтерест открой его", "target": "{\"type\":\"open_url\",\"url\":\"https://pinterest.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "загрузи страницу hh", "target": "{\"type\":\"open_url\",\"url\":\"https://hh.ru\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Вруби твич", "target": "{\"type\":\"open_url\",\"url\":\"https://twitch.tv\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Покажи запущенные программы", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "teacher"}
+{"phrase": "приглуши звук", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "teacher"}
+{"phrase": "эй, включи браузер", "target": "{\"type\":\"open_app\",\"appName\":\"браузер\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "просто открой степик", "target": "{\"type\":\"open_url\",\"url\":\"https://stepik.org\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "зайди в папку дкументы", "target": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "Мне нужно открыть ванноут", "target": "{\"type\":\"open_app\",\"appName\":\"onenote\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "можешь открыть ватсап веб?", "target": "{\"type\":\"open_url\",\"url\":\"https://web.whatsapp.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "Открой список активных процессов", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "teacher"}
+{"phrase": "Запусти мне пайчарм", "target": "{\"type\":\"open_app\",\"appName\":\"pycharm\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "Заблокируй экран прямо сейчас.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "teacher"}
+{"phrase": "Стартуй браузер эдж", "target": "{\"type\":\"open_app\",\"appName\":\"edge\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "запусти пожалуйста эдж", "target": "{\"type\":\"open_app\",\"appName\":\"edge\"}", "cat": "open_app", "src": "teacher"}
+{"phrase": "ассистент, открой веб-сайт гугл мит", "target": "{\"type\":\"open_url\",\"url\":\"https://meet.google.com\"}", "cat": "open_url", "src": "teacher"}
+{"phrase": "запусти эпик геймс", "target": "{\"type\":\"open_app\",\"appName\":\"epic games\"}", "cat": "open_app", "src": "teacher"}

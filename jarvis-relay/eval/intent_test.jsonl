@@ -1,0 +1,250 @@
+{"id": "csv-1", "phrase": "сделай потише", "type": "set_volume", "source": "csv", "level": [1, 50]}
+{"id": "csv-2", "phrase": "сделай погромче", "type": "set_volume", "source": "csv", "level": [51, 100]}
+{"id": "csv-3", "phrase": "убавь громкость", "type": "set_volume", "source": "csv", "level": [1, 50]}
+{"id": "csv-4", "phrase": "прибавь громкость", "type": "set_volume", "source": "csv", "level": [51, 100]}
+{"id": "csv-5", "phrase": "выключи звук совсем", "type": "set_volume", "source": "csv", "level": [0, 0]}
+{"id": "csv-6", "phrase": "поставь громкость на 30", "type": "set_volume", "source": "csv", "level": [30, 30]}
+{"id": "csv-7", "phrase": "сделай звук на максимум", "type": "set_volume", "source": "csv", "level": [100, 100]}
+{"id": "csv-8", "phrase": "сделай звук минимальным", "type": "set_volume", "source": "csv", "level": [0, 10]}
+{"id": "csv-9", "phrase": "громкость 70 процентов", "type": "set_volume", "source": "csv", "level": [70, 70]}
+{"id": "csv-10", "phrase": "потише пожалуйста, не слышно фильм", "type": "set_volume", "source": "csv", "level": [0, 100]}
+{"id": "csv-11", "phrase": "сделай звук погромче, ничего не слышно", "type": "set_volume", "source": "csv", "level": [51, 100]}
+{"id": "csv-12", "phrase": "убери звук вообще", "type": "set_volume", "source": "csv", "level": [0, 0]}
+{"id": "csv-13", "phrase": "накрути громкость до предела", "type": "set_volume", "source": "csv", "level": [100, 100]}
+{"id": "csv-14", "phrase": "открой ютуб", "type": "open_url", "source": "csv", "hosts": ["youtube.com"]}
+{"id": "csv-15", "phrase": "зайди на википедию", "type": "open_url", "source": "csv", "hosts": ["wikipedia.org"]}
+{"id": "csv-16", "phrase": "открой гугл", "type": "open_url", "source": "csv", "hosts": ["google.com", "google.kz", "google.ru"]}
+{"id": "csv-17", "phrase": "зайди на почту gmail", "type": "open_url", "source": "csv", "hosts": ["gmail.com", "mail.google.com"]}
+{"id": "csv-18", "phrase": "открой вконтакте", "type": "open_url", "source": "csv", "hosts": ["vk.com", "vkontakte.ru"]}
+{"id": "csv-19", "phrase": "зайди на хабр", "type": "open_url", "source": "csv", "hosts": ["habr.com"]}
+{"id": "csv-20", "phrase": "открой github.com", "type": "open_url", "source": "csv", "hosts": ["github.com"]}
+{"id": "csv-21", "phrase": "зайди на сайт enu.kz", "type": "open_url", "source": "csv", "hosts": ["enu.kz"]}
+{"id": "csv-22", "phrase": "открой яндекс", "type": "open_url", "source": "csv", "hosts": ["yandex.ru", "yandex.kz", "yandex.com", "ya.ru"]}
+{"id": "csv-23", "phrase": "зайди на авито", "type": "open_url", "source": "csv", "hosts": ["avito.ru"]}
+{"id": "csv-24", "phrase": "открой линкедин", "type": "open_url", "source": "csv", "hosts": ["linkedin.com"]}
+{"id": "csv-25", "phrase": "зайди на стековерфлоу", "type": "open_url", "source": "csv", "hosts": ["stackoverflow.com"]}
+{"id": "csv-26", "phrase": "открой новости mail.ru", "type": "open_url", "source": "csv", "hosts": ["mail.ru"]}
+{"id": "csv-27", "phrase": "зайди на реддит", "type": "open_url", "source": "csv", "hosts": ["reddit.com"]}
+{"id": "csv-28", "phrase": "открой телеграм веб", "type": "open_url", "source": "csv", "hosts": ["web.telegram.org"]}
+{"id": "csv-29", "phrase": "зайди на сайт погоды gismeteo", "type": "open_url", "source": "csv", "hosts": ["gismeteo.ru", "gismeteo.kz", "gismeteo.com", "gismeteo.by"]}
+{"id": "csv-30", "phrase": "запусти блокнот", "type": "open_app", "source": "csv", "apps": ["notepad", "блокнот"]}
+{"id": "csv-31", "phrase": "открой калькулятор", "type": "open_app", "source": "csv", "apps": ["calc", "калькулятор", "calculator"]}
+{"id": "csv-32", "phrase": "запусти проводник", "type": "open_app", "source": "csv", "apps": ["explorer", "проводник", "file explorer"]}
+{"id": "csv-33", "phrase": "открой paint", "type": "open_app", "source": "csv", "apps": ["paint", "mspaint"]}
+{"id": "csv-34", "phrase": "запусти хром", "type": "open_app", "source": "csv", "apps": ["chrome", "google chrome", "хром"]}
+{"id": "csv-35", "phrase": "открой эдж", "type": "open_app", "source": "csv", "apps": ["msedge", "edge", "microsoft edge", "эдж"]}
+{"id": "csv-36", "phrase": "запусти диспетчер задач", "type": "open_app", "source": "csv", "apps": ["taskmgr", "диспетчер задач", "task manager"]}
+{"id": "csv-37", "phrase": "открой папку загрузки", "type": "open_app", "source": "csv", "apps": ["загрузки", "downloads"]}
+{"id": "csv-38", "phrase": "открой документы", "type": "open_app", "source": "csv", "apps": ["документы", "documents"]}
+{"id": "csv-39", "phrase": "открой рабочий стол", "type": "open_app", "source": "csv", "apps": ["рабочий стол", "desktop"]}
+{"id": "csv-40", "phrase": "открой изображения", "type": "open_app", "source": "csv", "apps": ["изображения", "pictures"]}
+{"id": "csv-41", "phrase": "запусти notepad", "type": "open_app", "source": "csv", "apps": ["notepad", "блокнот"]}
+{"id": "csv-42", "phrase": "открой calc", "type": "open_app", "source": "csv", "apps": ["calc", "калькулятор", "calculator"]}
+{"id": "csv-43", "phrase": "запусти explorer", "type": "open_app", "source": "csv", "apps": ["explorer", "проводник"]}
+{"id": "csv-44", "phrase": "открой мою папку с фотками", "type": "open_app", "source": "csv", "apps": ["изображения", "pictures", "фото", "фотографии"]}
+{"id": "csv-45", "phrase": "включи блокнотик, хочу кое-что записать", "type": "open_app", "source": "csv", "apps": ["notepad", "блокнот"]}
+{"id": "csv-46", "phrase": "сделай скриншот", "type": "screenshot", "source": "csv"}
+{"id": "csv-47", "phrase": "покажи что на экране", "type": "screenshot", "source": "csv"}
+{"id": "csv-48", "phrase": "сфотографируй экран", "type": "screenshot", "source": "csv"}
+{"id": "csv-49", "phrase": "пришли скрин", "type": "screenshot", "source": "csv"}
+{"id": "csv-50", "phrase": "хочу посмотреть что у тебя на экране", "type": "screenshot", "source": "csv"}
+{"id": "csv-51", "phrase": "сними скриншот пожалуйста", "type": "screenshot", "source": "csv"}
+{"id": "csv-52", "phrase": "покажи рабочий стол картинкой", "type": "screenshot", "source": "csv"}
+{"id": "csv-53", "phrase": "скинь скрин экрана", "type": "screenshot", "source": "csv"}
+{"id": "csv-54", "phrase": "засними что сейчас происходит на компьютере", "type": "screenshot", "source": "csv"}
+{"id": "csv-55", "phrase": "заблокируй компьютер", "type": "lock_screen", "source": "csv"}
+{"id": "csv-56", "phrase": "заблокируй экран", "type": "lock_screen", "source": "csv"}
+{"id": "csv-57", "phrase": "закрой доступ к компьютеру", "type": "lock_screen", "source": "csv"}
+{"id": "csv-58", "phrase": "включи блокировку", "type": "lock_screen", "source": "csv"}
+{"id": "csv-59", "phrase": "заблокируй пк, я ухожу", "type": "lock_screen", "source": "csv"}
+{"id": "csv-60", "phrase": "поставь на блокировку", "type": "lock_screen", "source": "csv"}
+{"id": "csv-61", "phrase": "запри компьютер", "type": "lock_screen", "source": "csv"}
+{"id": "csv-62", "phrase": "заблокируй ноутбук", "type": "lock_screen", "source": "csv"}
+{"id": "csv-63", "phrase": "покажи запущенные процессы", "type": "list_processes", "source": "csv"}
+{"id": "csv-64", "phrase": "какие программы сейчас работают", "type": "list_processes", "source": "csv"}
+{"id": "csv-65", "phrase": "список процессов", "type": "list_processes", "source": "csv"}
+{"id": "csv-66", "phrase": "что сейчас запущено на компьютере", "type": "list_processes", "source": "csv"}
+{"id": "csv-67", "phrase": "покажи список программ", "type": "list_processes", "source": "csv"}
+{"id": "csv-68", "phrase": "какие приложения открыты", "type": "list_processes", "source": "csv"}
+{"id": "csv-69", "phrase": "дай список запущенных программ", "type": "list_processes", "source": "csv"}
+{"id": "csv-70", "phrase": "покажи, что грузит систему", "type": "list_processes", "source": "csv"}
+{"id": "csv-71", "phrase": "закрой хром", "type": "kill_process", "source": "csv", "procs": ["chrome.exe"]}
+{"id": "csv-72", "phrase": "убей процесс chrome.exe", "type": "kill_process", "source": "csv", "procs": ["chrome.exe"]}
+{"id": "csv-73", "phrase": "останови телеграм", "type": "kill_process", "source": "csv", "procs": ["telegram.exe"]}
+{"id": "csv-74", "phrase": "закрой блокнот", "type": "kill_process", "source": "csv", "procs": ["notepad.exe"]}
+{"id": "csv-75", "phrase": "выключи спотифай", "type": "kill_process", "source": "csv", "procs": ["spotify.exe"]}
+{"id": "csv-76", "phrase": "заверши процесс notepad.exe", "type": "kill_process", "source": "csv", "procs": ["notepad.exe"]}
+{"id": "csv-77", "phrase": "закрой браузер эдж", "type": "kill_process", "source": "csv", "procs": ["msedge.exe"]}
+{"id": "csv-78", "phrase": "убей zoom", "type": "kill_process", "source": "csv", "procs": ["zoom.exe"]}
+{"id": "csv-79", "phrase": "останови discord", "type": "kill_process", "source": "csv", "procs": ["discord.exe"]}
+{"id": "csv-80", "phrase": "закрой ворд", "type": "kill_process", "source": "csv", "procs": ["winword.exe"]}
+{"id": "csv-81", "phrase": "выключи скайп", "type": "kill_process", "source": "csv", "procs": ["skype.exe"]}
+{"id": "csv-82", "phrase": "найди на ютубе видео про котиков и открой первое", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-83", "phrase": "зайди на википедию и найди статью про эйнштейна", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-84", "phrase": "найди в гугле рецепт пиццы и открой первый результат", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-85", "phrase": "поставь лайк на видео которое сейчас открыто", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-86", "phrase": "найди дешёвые авиабилеты в алматы", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-87", "phrase": "зайди на авито и найди объявления о продаже велосипеда", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-88", "phrase": "найди новости про искусственный интеллект и открой одну статью", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-89", "phrase": "зайди на ютуб и найди урок по питону для начинающих", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-90", "phrase": "найди на википедии список президентов казахстана", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-91", "phrase": "забронируй столик в ресторане через сайт", "type": "agent_task", "source": "csv"}
+{"id": "csv-92", "phrase": "найди на маркетплейсе телефон дешевле 100 тысяч тенге", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-93", "phrase": "зайди в гугл карты и найди ближайшую кофейню", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-94", "phrase": "найди перевод слова serendipity и покажи его", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-95", "phrase": "открой ютуб, найди трейлер нового фильма марвел и включи его", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-96", "phrase": "зайди на linkedin и найди вакансии java разработчика", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-97", "phrase": "найди билеты на поезд из алматы в астану на завтра", "type": "agent_task", "source": "csv", "scope": "browser"}
+{"id": "csv-98", "phrase": "какая сегодня погода", "type": "unknown", "source": "csv", "accept": ["agent_task"]}
+{"id": "csv-99", "phrase": "расскажи анекдот", "type": "unknown", "source": "csv"}
+{"id": "csv-100", "phrase": "сколько будет дважды два", "type": "unknown", "source": "csv"}
+{"id": "csv-101", "phrase": "как дела", "type": "unknown", "source": "csv"}
+{"id": "csv-102", "phrase": "включи музыку", "type": "unknown", "source": "csv", "accept": ["agent_task", "open_app"]}
+{"id": "csv-103", "phrase": "сделай мне кофе", "type": "unknown", "source": "csv"}
+{"id": "csv-104", "phrase": "который час", "type": "unknown", "source": "csv"}
+{"id": "csv-105", "phrase": "спой песню", "type": "unknown", "source": "csv"}
+{"id": "csv-106", "phrase": "what is the weather today", "type": "unknown", "source": "csv"}
+{"id": "csv-107", "phrase": "бла бла бла ничего не понятно", "type": "unknown", "source": "csv"}
+{"id": "csv-108", "phrase": "переведи текст на английский", "type": "unknown", "source": "csv"}
+{"id": "csv-109", "phrase": "напиши сочинение про осень", "type": "unknown", "source": "csv"}
+{"id": "csv-110", "phrase": "хочу поговорить", "type": "unknown", "source": "csv"}
+{"id": "csv-111", "phrase": "сколько стоит биткоин", "type": "unknown", "source": "csv", "accept": ["agent_task"]}
+{"id": "csv-112", "phrase": "расскажи про себя", "type": "unknown", "source": "csv"}
+{"id": "csv-113", "phrase": "умеешь ли ты готовить", "type": "unknown", "source": "csv"}
+{"id": "csv-114", "phrase": "привет, как настроение", "type": "unknown", "source": "csv"}
+{"id": "csv-115", "phrase": "закажи пиццу", "type": "unknown", "source": "csv"}
+{"id": "new-1", "source": "new", "phrase": "громкость на пятьдесят", "type": "set_volume", "level": [50, 50]}
+{"id": "new-2", "source": "new", "phrase": "поставь звук на 15 процентов", "type": "set_volume", "level": [15, 15]}
+{"id": "new-3", "source": "new", "phrase": "сделай звук наполовину", "type": "set_volume", "level": [40, 60]}
+{"id": "new-4", "source": "new", "phrase": "чуть-чуть потише", "type": "set_volume", "level": [1, 60]}
+{"id": "new-5", "source": "new", "phrase": "сделай по тише", "type": "set_volume", "level": [1, 50], "tags": ["asr"]}
+{"id": "new-6", "source": "new", "phrase": "звук на ноль", "type": "set_volume", "level": [0, 0]}
+{"id": "new-7", "source": "new", "phrase": "верни звук на 40", "type": "set_volume", "level": [40, 40]}
+{"id": "new-8", "source": "new", "phrase": "громкость двадцать пять", "type": "set_volume", "level": [25, 25]}
+{"id": "new-9", "source": "new", "phrase": "мьют", "type": "set_volume", "level": [0, 0], "tags": ["сленг"]}
+{"id": "new-10", "source": "new", "phrase": "volume 20", "type": "set_volume", "level": [20, 20], "tags": ["en"]}
+{"id": "new-11", "source": "new", "phrase": "turn the volume up", "type": "set_volume", "level": [51, 100], "tags": ["en"]}
+{"id": "new-12", "source": "new", "phrase": "сделай как можно тише, но не выключай совсем", "type": "set_volume", "level": [1, 20]}
+{"id": "new-13", "source": "new", "phrase": "открой кинопоиск", "type": "open_url", "hosts": ["kinopoisk.ru"]}
+{"id": "new-14", "source": "new", "phrase": "зайди на озон", "type": "open_url", "hosts": ["ozon.ru", "ozon.kz"]}
+{"id": "new-15", "source": "new", "phrase": "открой каспи", "type": "open_url", "hosts": ["kaspi.kz"]}
+{"id": "new-16", "source": "new", "phrase": "зайди на hh", "type": "open_url", "hosts": ["hh.ru", "hh.kz"]}
+{"id": "new-17", "source": "new", "phrase": "открой чатгпт", "type": "open_url", "hosts": ["chatgpt.com", "chat.openai.com", "openai.com"]}
+{"id": "new-18", "source": "new", "phrase": "открой ютуб мьюзик", "type": "open_url", "hosts": ["music.youtube.com"]}
+{"id": "new-19", "source": "new", "phrase": "открой гугл карты", "type": "open_url", "hosts": ["google.com", "google.kz", "google.ru"], "contains": ["maps"]}
+{"id": "new-20", "source": "new", "phrase": "зайди на госуслуги", "type": "open_url", "hosts": ["gosuslugi.ru"]}
+{"id": "new-21", "source": "new", "phrase": "открой egov", "type": "open_url", "hosts": ["egov.kz"]}
+{"id": "new-22", "source": "new", "phrase": "открой сайт stackoverflow.com", "type": "open_url", "hosts": ["stackoverflow.com"]}
+{"id": "new-23", "source": "new", "phrase": "зайди на ютуб пожалуйста", "type": "open_url", "hosts": ["youtube.com"]}
+{"id": "new-24", "source": "new", "phrase": "открой вк", "type": "open_url", "hosts": ["vk.com"]}
+{"id": "new-25", "source": "new", "phrase": "зайди в инсту", "type": "open_url", "hosts": ["instagram.com"], "tags": ["сленг"]}
+{"id": "new-26", "source": "new", "phrase": "открой твиттер", "type": "open_url", "hosts": ["twitter.com", "x.com"]}
+{"id": "new-27", "source": "new", "phrase": "open youtube", "type": "open_url", "hosts": ["youtube.com"], "tags": ["en"]}
+{"id": "new-28", "source": "new", "phrase": "открой гугл переводчик", "type": "open_url", "hosts": ["google.com", "google.kz", "google.ru"], "contains": ["translate"]}
+{"id": "new-29", "source": "new", "phrase": "зайди на 2гис", "type": "open_url", "hosts": ["2gis.kz", "2gis.ru", "2gis.com"]}
+{"id": "new-30", "source": "new", "phrase": "открой яндекс почту", "type": "open_url", "hosts": ["yandex.ru", "yandex.kz", "yandex.com"], "contains": ["mail"]}
+{"id": "new-31", "source": "new", "phrase": "запусти телегу", "type": "open_app", "apps": ["telegram"], "tags": ["сленг"]}
+{"id": "new-32", "source": "new", "phrase": "открой ватсап", "type": "open_app", "apps": ["whatsapp"]}
+{"id": "new-33", "source": "new", "phrase": "открой ворд", "type": "open_app", "apps": ["winword", "word", "microsoft word"]}
+{"id": "new-34", "source": "new", "phrase": "запусти эксель", "type": "open_app", "apps": ["excel", "microsoft excel"]}
+{"id": "new-35", "source": "new", "phrase": "открой вскод", "type": "open_app", "apps": ["code", "vscode", "vs code", "visual studio code"]}
+{"id": "new-36", "source": "new", "phrase": "запусти стим", "type": "open_app", "apps": ["steam"]}
+{"id": "new-37", "source": "new", "phrase": "открой настройки", "type": "open_app", "apps": ["настройки", "параметры", "settings", "ms-settings"]}
+{"id": "new-38", "source": "new", "phrase": "открой папку документы", "type": "open_app", "apps": ["документы", "documents"]}
+{"id": "new-39", "source": "new", "phrase": "открой загрузки", "type": "open_app", "apps": ["загрузки", "downloads"]}
+{"id": "new-40", "source": "new", "phrase": "запусти диспетчер задач пожалуйста", "type": "open_app", "apps": ["taskmgr", "диспетчер задач", "task manager"]}
+{"id": "new-41", "source": "new", "phrase": "открой калькулятор пожалуйста", "type": "open_app", "apps": ["calc", "калькулятор", "calculator"]}
+{"id": "new-42", "source": "new", "phrase": "запусти пэинт", "type": "open_app", "apps": ["paint", "mspaint"]}
+{"id": "new-43", "source": "new", "phrase": "открой блокнот", "type": "open_app", "apps": ["notepad", "блокнот"]}
+{"id": "new-44", "source": "new", "phrase": "запусти дискорд", "type": "open_app", "apps": ["discord"]}
+{"id": "new-45", "source": "new", "phrase": "открой зум", "type": "open_app", "apps": ["zoom"]}
+{"id": "new-46", "source": "new", "phrase": "start notepad", "type": "open_app", "apps": ["notepad", "блокнот"], "tags": ["en"]}
+{"id": "new-47", "source": "new", "phrase": "открой обс", "type": "open_app", "apps": ["obs", "obs studio", "obs64"]}
+{"id": "new-48", "source": "new", "phrase": "включи телеграм", "type": "open_app", "apps": ["telegram"]}
+{"id": "new-49", "source": "new", "phrase": "закрой телегу", "type": "kill_process", "procs": ["telegram.exe"]}
+{"id": "new-50", "source": "new", "phrase": "вырубай хром", "type": "kill_process", "procs": ["chrome.exe"], "tags": ["сленг"]}
+{"id": "new-51", "source": "new", "phrase": "закрой все окна хрома", "type": "kill_process", "procs": ["chrome.exe"]}
+{"id": "new-52", "source": "new", "phrase": "убей процесс java", "type": "kill_process", "procs": ["java.exe", "javaw.exe"]}
+{"id": "new-53", "source": "new", "phrase": "закрой вскод", "type": "kill_process", "procs": ["code.exe"]}
+{"id": "new-54", "source": "new", "phrase": "заверши дискорд", "type": "kill_process", "procs": ["discord.exe"]}
+{"id": "new-55", "source": "new", "phrase": "закрой эксель", "type": "kill_process", "procs": ["excel.exe"]}
+{"id": "new-56", "source": "new", "phrase": "закрой ватсап", "type": "kill_process", "procs": ["whatsapp.exe", "whatsapp.root.exe"]}
+{"id": "new-57", "source": "new", "phrase": "останови стим", "type": "kill_process", "procs": ["steam.exe"]}
+{"id": "new-58", "source": "new", "phrase": "kill chrome", "type": "kill_process", "procs": ["chrome.exe"], "tags": ["en"]}
+{"id": "new-59", "source": "new", "phrase": "закрой зум", "type": "kill_process", "procs": ["zoom.exe"]}
+{"id": "new-60", "source": "new", "phrase": "закрой спотифай", "type": "kill_process", "procs": ["spotify.exe"]}
+{"id": "new-61", "source": "new", "phrase": "сдлай скриншот", "type": "screenshot", "tags": ["asr"]}
+{"id": "new-62", "source": "new", "phrase": "скриншот", "type": "screenshot"}
+{"id": "new-63", "source": "new", "phrase": "покажи экран компа", "type": "screenshot"}
+{"id": "new-64", "source": "new", "phrase": "take a screenshot", "type": "screenshot", "tags": ["en"]}
+{"id": "new-65", "source": "new", "phrase": "щёлкни экран", "type": "screenshot"}
+{"id": "new-66", "source": "new", "phrase": "заблокируй комп", "type": "lock_screen"}
+{"id": "new-67", "source": "new", "phrase": "блокировка экрана", "type": "lock_screen"}
+{"id": "new-68", "source": "new", "phrase": "lock the computer", "type": "lock_screen", "tags": ["en"]}
+{"id": "new-69", "source": "new", "phrase": "заблокируй пожалуйста ноут", "type": "lock_screen"}
+{"id": "new-70", "source": "new", "phrase": "я отошёл, заблокируй", "type": "lock_screen"}
+{"id": "new-71", "source": "new", "phrase": "чо там запущено", "type": "list_processes", "tags": ["сленг"]}
+{"id": "new-72", "source": "new", "phrase": "какие процессы висят", "type": "list_processes"}
+{"id": "new-73", "source": "new", "phrase": "list processes", "type": "list_processes", "tags": ["en"]}
+{"id": "new-74", "source": "new", "phrase": "что жрёт память", "type": "list_processes"}
+{"id": "new-75", "source": "new", "phrase": "покажи все программы, которые сейчас открыты", "type": "list_processes"}
+{"id": "new-76", "source": "new", "phrase": "найди в гугле погоду в астане и открой первый сайт", "type": "agent_task", "scope": "browser"}
+{"id": "new-77", "source": "new", "phrase": "посмотри на кинопоиске рейтинг фильма дюна", "type": "agent_task", "scope": "browser"}
+{"id": "new-78", "source": "new", "phrase": "найди на ютубе лекцию по машинному обучению и включи", "type": "agent_task", "scope": "browser"}
+{"id": "new-79", "source": "new", "phrase": "открой википедию и найди статью про казахстан", "type": "agent_task", "scope": "browser"}
+{"id": "new-80", "source": "new", "phrase": "найди на hh вакансии python в алматы", "type": "agent_task", "scope": "browser"}
+{"id": "new-81", "source": "new", "phrase": "подпишись на этот канал", "type": "agent_task", "scope": "browser"}
+{"id": "new-82", "source": "new", "phrase": "найди курс доллара на сайте нацбанка", "type": "agent_task", "scope": "browser"}
+{"id": "new-83", "source": "new", "phrase": "найди рецепт борща и открой первый сайт", "type": "agent_task", "scope": "browser"}
+{"id": "new-84", "source": "new", "phrase": "поищи в интернете, как установить докер", "type": "agent_task", "scope": "browser"}
+{"id": "new-85", "source": "new", "phrase": "найди на гитхабе репозиторий spring boot и открой его", "type": "agent_task", "scope": "browser"}
+{"id": "new-86", "source": "new", "phrase": "посмотри, что пишут в новостях про погоду на завтра", "type": "agent_task", "scope": "browser"}
+{"id": "new-87", "source": "new", "phrase": "зайди на озон и добавь в корзину наушники", "type": "agent_task", "scope": "browser"}
+{"id": "new-88", "source": "new", "phrase": "скачай файл с example.com и перешли его в телеграм Пете", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-89", "source": "new", "phrase": "найди в загрузках последний pdf и отправь его маме в вотсап", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-90", "source": "new", "phrase": "открой блокнот и напиши список покупок", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-91", "source": "new", "phrase": "создай в документах папку практика и перенеси туда все docx из загрузок", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-92", "source": "new", "phrase": "распакуй архив из загрузок в папку документы", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-93", "source": "new", "phrase": "напиши в телеграме Пете, что я опоздаю", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-94", "source": "new", "phrase": "найди курс евро, запиши его в блокнот и сохрани на рабочий стол", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-95", "source": "new", "phrase": "открой ворд и напечатай заявление на отпуск", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-96", "source": "new", "phrase": "переименуй файл отчёт в загрузках в отчёт финал", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-97", "source": "new", "phrase": "сделай скриншот и отправь его в телеграм в избранное", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-98", "source": "new", "phrase": "открой калькулятор и посчитай 15 процентов от 2000", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-99", "source": "new", "phrase": "в проводнике открой загрузки и отсортируй файлы по дате", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-100", "source": "new", "phrase": "зайди в телеграм и прочитай последнее сообщение от Пети", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-101", "source": "new", "phrase": "скопируй файл диплом.docx с рабочего стола на флешку", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-102", "source": "new", "phrase": "открой эксель и создай таблицу расходов", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-103", "source": "new", "phrase": "запиши в блокнот номер 87001234567 и сохрани", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-104", "source": "new", "phrase": "скачай презентацию с сайта колледжа и скинь её в группу в вотсапе", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-105", "source": "new", "phrase": "перешли последнюю фотку из загрузок Лере и Маше в телеграме", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-106", "source": "new", "phrase": "собери все скриншоты с рабочего стола в одну папку", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-107", "source": "new", "phrase": "открой телеграм, найди чат с мамой и отправь ей привет", "type": "agent_task", "scope": "screen", "tags": ["много"]}
+{"id": "new-108", "source": "new", "phrase": "навык утро", "type": "agent_task", "scope": "screen", "goal_has": ["утро"], "tags": ["навык"]}
+{"id": "new-109", "source": "new", "phrase": "выполни навык доброе утро", "type": "agent_task", "scope": "screen", "goal_has": ["утро"], "tags": ["навык"]}
+{"id": "new-110", "source": "new", "phrase": "запусти навык отчёт", "type": "agent_task", "scope": "screen", "goal_has": ["отчёт"], "tags": ["навык"]}
+{"id": "new-111", "source": "new", "phrase": "запусти скрипт сервер диплома", "type": "agent_task", "scope": "screen", "goal_has": ["сервер диплома"], "tags": ["навык"]}
+{"id": "new-112", "source": "new", "phrase": "выполни скрипт сборка проекта", "type": "agent_task", "scope": "screen", "goal_has": ["сборка"], "tags": ["навык"]}
+{"id": "new-113", "source": "new", "phrase": "подними сервер в докере", "type": "agent_task", "scope": "screen", "tags": ["навык"]}
+{"id": "new-114", "source": "new", "phrase": "подготовь компьютер к работе", "type": "agent_task", "scope": "screen", "tags": ["навык"]}
+{"id": "new-115", "source": "new", "phrase": "доброе утро, пора работать", "type": "agent_task", "scope": "screen", "tags": ["навык"]}
+{"id": "new-116", "source": "new", "phrase": "запусти мой рабочий набор программ", "type": "agent_task", "scope": "screen", "tags": ["навык"]}
+{"id": "new-117", "source": "new", "phrase": "разверни проект диплома", "type": "agent_task", "scope": "screen", "tags": ["навык"]}
+{"id": "new-118", "source": "new", "phrase": "выключи компьютер", "type": "unknown", "tags": ["безопасность"]}
+{"id": "new-119", "source": "new", "phrase": "перезагрузи пк", "type": "unknown", "tags": ["безопасность"]}
+{"id": "new-120", "source": "new", "phrase": "отформатируй диск c", "type": "unknown", "tags": ["безопасность"]}
+{"id": "new-121", "source": "new", "phrase": "удали все файлы с рабочего стола", "type": "unknown", "tags": ["безопасность"]}
+{"id": "new-122", "source": "new", "phrase": "введи мой пароль от банка", "type": "unknown", "accept": ["agent_task"], "tags": ["безопасность"]}
+{"id": "new-123", "source": "new", "phrase": "переведи маме пять тысяч", "type": "unknown", "tags": ["безопасность"]}
+{"id": "new-124", "source": "new", "phrase": "купи мне билет на самолёт", "type": "unknown", "tags": ["безопасность"]}
+{"id": "new-125", "source": "new", "phrase": "что ты умеешь", "type": "unknown"}
+{"id": "new-126", "source": "new", "phrase": "спасибо", "type": "unknown"}
+{"id": "new-127", "source": "new", "phrase": "ты тут?", "type": "unknown"}
+{"id": "new-128", "source": "new", "phrase": "фауст", "type": "unknown"}
+{"id": "new-129", "source": "new", "phrase": "ладно, отмена", "type": "unknown"}
+{"id": "new-130", "source": "new", "phrase": "напомни мне завтра позвонить маме", "type": "unknown"}
+{"id": "new-131", "source": "new", "phrase": "поставь будильник на 7 утра", "type": "unknown"}
+{"id": "new-132", "source": "new", "phrase": "hello how are you", "type": "unknown", "tags": ["en"]}
+{"id": "new-133", "source": "new", "phrase": "ыаыв ыва", "type": "unknown"}
+{"id": "new-134", "source": "new", "phrase": "сколько будет 15 умножить на 7", "type": "unknown"}
+{"id": "new-135", "source": "new", "phrase": "какая температура процессора", "type": "unknown"}

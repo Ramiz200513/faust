@@ -1,0 +1,1199 @@
+{"phrase": "Громче сделай", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Закрой браузер", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Скриншот экрана", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "Отключи звук", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Покажи процессы", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Закрой Телеграм", "target": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Список запущенных программ", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Открой Википедию", "target": "{\"type\":\"open_url\",\"url\":\"https://ru.wikipedia.org\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Сделай скрин", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "Найди и скачай ГОСТ", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай лекции по матану", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Заполни форму на сайте", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай шпаргалку по физике", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Загрузи курсовую на диск", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Заполни заявку на повышенную", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай презентацию по истории", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Отправь лабораторку старосте", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди статью про ИИ", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай методичку по терверу", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Отправь справку в деканат", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Загрузи код в репозиторий", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Заполни анкету на практику", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди и скинь учебник", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Выключи комп полностью", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь будильник на восемь", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Ты меня слышишь?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Напомни про пару завтра", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Купи энергетик", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Сделай кофе", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Закажи доширак", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Переведи сотку другу", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, ты тупишь", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Закажи такси до универа", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Заплати за интернет", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст сделай громче на максимум а то ничего не слышно", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "distill"}
+{"phrase": "заблокируй комп я отойду ненадолго", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "открой папку с загрузками", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "закрои браузер телеграм и зум", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "покажи какие процессы сейчас загружают систему", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "открой сайт википедии", "target": "{\"type\":\"open_url\",\"url\":\"https://ru.wikipedia.org\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "фауст сбавь звук наполовину", "target": "{\"type\":\"set_volume\",\"level\":50}", "cat": "set_volume", "src": "distill"}
+{"phrase": "закрои все вкладки в хроме", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "открой калькулятор срочно", "target": "{\"type\":\"open_app\",\"appName\":\"calc\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "сделай скрин текущего окна", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "покажи запущенные программы", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "заблокируй рабочий стол", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "выключи звук полностью", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "открой сайт нашего университета", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "фауст открой ворд", "target": "{\"type\":\"open_app\",\"appName\":\"word\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "найди резюме на рабочем столе заполни там новую дату и отправь преподавателю на почту", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой браузер найди статью про матричные уравнения скачай pdf и открой его", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "зайди в личный кабинет вуза скачай расписание на следующую неделю и скинь в папку учеба", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст найди шаблон презентации в интернете скачай и открой в пауэр поинте", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой переводчик переведи этот текст из файла аннотация и сохрани ответ в новый документ", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди на ютубе лекцию по термодинамике и включи на скорости один и пять", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "зайди на сайт библиотеки найди книгу по правоведению и скачай главу два", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "открой эксель заполни первыми цифрами из файла данные и построй диаграмму", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "скачай с сайта курсера материалы по третьему модулю и закинь в папку конспекты", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди в браузере гост по оформлению диплома и скачай файл образца", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "зайди на форму отправки лабораторных прикрепи файл лаба три и нажми отправить", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "открой сайт с решебником найди задачу номер сто сорок пять и сделай скриншот ответа", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди в интернете пример титульного листа подставь мою фамилию и сохрани", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой папки курсовая и источники найди там файл с черновиком и скопируй в загрузки", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст выключи компьютер через двадцать минут", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "закажи мне пиццу пепперони на вечер", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "постави будильник на семь утра завтра", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "слухай а ты можешь сдать за меня зачет по истории", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "напомни мне через час сделать перерыв и попить воды", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст какова вероятность что я сдам сессию без хвостов", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "купи билеты в кино на вечерний сеанс", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "сколько будет стоить доставка еды из столовой", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "переведи сто рублей маме по номеру телефона", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст тебе не кажется что препод по матану к нам придирается", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "свари мне кофе а то я сейчас усну над конспектом", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "выключи полностью комп я пошел спать", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "расскажи какой-нибудь анекдот про студентов", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "закажи в лавке молоко и батон", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "напомни завтра купить тетради в клетку", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Будь добр, открой сайт научной библиотеки университета, мне нужно поискать источники для курсовой работы.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Сделай получше звук, пожалуйста, а то лектор говорит слишком тихо и я вообще ничего не могу разобрать.", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Фауст, заблокируй экран компьютера, я пойду на кухню за чаем, чтобы никто в общежитии ничего не трогал.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Будь любезен, открой папку с загрузками, я совсем запутался и не могу найти только что сохранённый реферат.", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Фауст, покажи мне список всех запущенных сейчас процессов, а то компьютер что-то сильно шумит и греется.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Закрой, пожалуйста, браузер, а то у меня там открыта сотня вкладок и они ужасно отвлекают от написания диплома.", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Фауст, открой, пожалуйста, текстовый редактор Word, я наконец-то собрался с духом и хочу начать писать введение.", "target": "{\"type\":\"open_app\",\"appName\":\"word\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Будь другом, закрой Telegram на компьютере, мне постоянно приходят уведомления в чатах и мешают сосредоточиться.", "target": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Фауст, открой сайт КиберЛенинки, мне срочно нужно найти пару рецензируемых статей по теме моего проекта.", "target": "{\"type\":\"open_url\",\"url\":\"https://cyberleninka.ru\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Фауст, заблокируй, пожалуйста, систему, мне нужно ненадолго отойти, а открытую работу светить перед другими не хочется.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Фауст, пожалуйста, закрой программу для видеомонтажа, я уже закончил рендер и она просто так расходует память.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Сделай скриншот текущей страницы с расписанием, а то сайт постоянно падает и я боюсь пропустить завтрашнюю пару.", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "Фауст, найди на сайте университета бланк заявления на тему диплома, скачай его и сразу открой в редакторе.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Пожалуйста, зайди в мой гугл-диск, найди там презентацию по социологии и отправь её старосте нашей группы в мессенджере.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, найди свежую статью по теме машинного обучения на ArXiv, скачай PDF-файл и сохрани его в папку «Источники».", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Помоги мне, пожалуйста: зайди в электронную библиотеку, найди учебник по матaнализу и скачай третью главу.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, открой почту, найди письмо от научного руководителя с правками, скачай прикреплённый документ и сразу открой его.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Будь добр, найди на видеохостинге часовую запись с фоновой музыкой для концентрации, включи её и сделай громкость на 30 процентов.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Открой сайт с ГОСТами, найди стандарт оформления списка литературы за прошлый год и скопируй оттуда правила в файл.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, скачай с учебного портала файл с практическим заданием по физике и перешли его моему одногруппнику.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Пожалуйста, найди в интернете онлайн-конвертер документов, загрузи туда мой файл с рабочего стола и скачай результат.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, зайди на форму регистрации на студенческую конференцию, заполни мои имя и фамилию и сохрани как черновик.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди в архиве на диске C папку со старыми лабораторными работами за прошлый курс и перенеси её на облачный диск.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, открой сайт университета, зайди в раздел расписания для нашей группы и скачай график предстоящей сессии.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Пожалуйста, найди пример оформления титульного листа для курсовой работы, скачай шаблон и открой его.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, зайди на сайт онлайн-переводчика, переведи вот эту вводную статью с английского на русский и сохрани текст.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай с портала обучения все презентации лекций по истории за этот месяц и заархивируй их в один ZIP-файл.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, зайди в почтовый клиент, сформируй ответное письмо преподавателю о том, что я сделал задание, и прикрепи файл.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, привет! Слушай, а ты сам как думаешь, реально ли написать диплом за одну ночь или я совсем безнадёжен?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь мне, пожалуйста, будильник на 7 утра, а то завтра первой парой идет сложный зачёт и опоздать нельзя.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, закажи мне, пожалуйста, большую пиццу на домашний адрес, а то я так заучился, что вообще забыл поесть.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выключи полностью компьютер, пожалуйста, я уже выбился из сил, ничего не соображаю и хочу наконец-то выспаться.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, а оплати, пожалуйста, интернет по моей карте, а то у меня завтра опять отключат связь прямо во время теста.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, купи, пожалуйста, упаковку кофе в доставке, мне нужно как-то продержаться ещё всю ночь за конспектами.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, переведи моему другу пятьсот рублей за вчерашний обед в столовой, а то я пообещал скинуть и забыл.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, выключи, пожалуйста, питание компьютера полностью через полчаса, когда докачается этот большой архив.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Слушай, а ты не помнишь, в каком точно году была Куликовская битва? Забыл дату, а искать в учебнике некогда.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, закажи мне такси до главного корпуса университета на 8:15 утра, чтобы я гарантированно успел к первой паре.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Как думаешь, стоит ли мне бросить учёбу и пойти сразу работать, или всё-таки стоит доучиться ради диплома?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, поставь напоминание на воскресенье вечером: проверить на сайте, выложили ли преподаватели оценки.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выключи, пожалуйста, свет в комнате, я уже закончил заниматься, лег в кровать и ужасно неохота вставать.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Сделай громче процентов на тридцать, а то вообще музон не слышно.", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Заблокируй комп, я отвлекусь до туалета.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Открой папку Downloads, надо кое-что из исходников найти.", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Слушай, закрой этот треклятый Docker Desktop, он ресорсы жрет нещадно.", "target": "{\"type\":\"kill_process\",\"processName\":\"docker.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Замути звук полностью, у меня созвон с тимлидом сейчас.", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Выведи список всех запущенных процессов, а то система лагает ппц.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Фауст, вруби VS Code, погнали дальше кодить.", "target": "{\"type\":\"open_app\",\"appName\":\"visual studio code\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Закрой фигму, она мне на сегодня больше не нужна.", "target": "{\"type\":\"kill_process\",\"processName\":\"figma.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Покажи диспетчер задач или что у тебя там по процессам висит.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Сделай скриншот текущего окна, плиз, баг зафиксировать.", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "Открой Хром, задолбал этот дефолтный браузер.", "target": "{\"type\":\"open_app\",\"appName\":\"chrome\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Сруби процесс питона, он походу в бесконечный цикл ушел и повис.", "target": "{\"type\":\"kill_process\",\"processName\":\"python.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Открой папку с текущим проектом на диске D.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Заблокируй экран, я пошел за кофе на кухню.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Найди на StackOverflow решение ошибки NULL pointer в C++ и скинь первую нормальную ссылку.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай последнюю версию Node.js с официального сайта и открой инсталлятор.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Зайди на хабр, найди свежие статьи про ИИ и заскринь мне заголовки.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Открой Jira, найди таску 404 и переведи ее в статус In Progress.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, найди в гугле доку по FastAPI, скачай pdf и закинь в папочку проекта.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди на гитхабе репозиторий с нейросеткой для аватарок и склонируй его в загрузки.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Открой сайт банка, авторизуйся через SMS и скачай выписку по счету за месяц.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Заполни форму на сайте тестировщиков дефолтными данными и отправь отчет.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди на ютубе какой-нибудь расслабляющий лоу-фай гитарный сет и включи.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди в логах сервера строчку с 500 ошибкой, вырежи ее и отправь в рабочий чат.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Зайди в Гугл Доки, создай новый документ и напиши туда 'ТЗ для фронтендера'.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди в клауд-бакете последний бэкап базы данных и скачай его на рабочий стол.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Открой консоль AWS, найди инстанс prod-01 и сделай ему рестарт.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди курс по Rust на Stepik, добавь в закладки и открой первый урок.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай картинку с логотипом питона из инета и поставь на рабочий стол.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди на реддите тред про новые лейауты в React и заскринь топовый коммент.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Слушай, а в чем вообще смысл жизни, если мы все равно перепишем этот код на Go?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выключи комп полностью, я спать пошел, сил больше нет.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Закажи мне большую пиццу пепперони с доставкой, а то жрать охота.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Напомни мне через полчаса выпить таблетку и размять затекшую спину.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, расскажи какой-нибудь нормальный анекдот про сисадминов.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Свари мне кофе, бро, а то я вообще уже не высыпаюсь с этими дедлайнами.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Купи на Маркете новую механическую клавиатуру на синих свечах.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Какая там погода завтра на улице, стоит вообще из дома вылезать?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Ты кого больше любишь — меня или Илона Маска?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Слушай, выключи свет в комнате, а то глаза режет от монитора.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Переведи пятьсот рублей Васе на карту по номеру телефона.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выключи питание системника ровно через пятнадцать минут.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Короче, а ты сам-то умеешь писать код без багов или такой же как я?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, будь добр, сделай, пожалуйста, звук потише, а то музыка слишком громко играет и мешает мне сосредоточиться на отладке кода.", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Заблокируй экран компьютера, так как я отхожу на кухню за кофе и не хочу оставлять рабочее пространство открытым.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Будь любезен, запусти браузер и сразу открой сайт GitHub, мне необходимо посмотреть свежие пулл-реквесты от команды.", "target": "{\"type\":\"open_url\",\"url\":\"https://github.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Фауст, открой программу VS Code, потому что мне прислали срочную правку по бэкенду и нужно быстро исправить ошибку.", "target": "{\"type\":\"open_app\",\"appName\":\"visual studio code\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Покажи список всех запущенных процессов, у меня сильно тормозит система, хочу понять, какая программа съедает всю оперативную память.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Закрой, пожалуйста, Telegram, он непрерывно присылает уведомления и очень сильно отвлекает меня от написания кода.", "target": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Прибавь немного громкости, а то я включил обучающий вебинар по Rust и совсем не слышу, что говорит спикер.", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Будь добр, открой сайт Stack Overflow, мне срочно нужно найти решение одной неприятной проблемы с асинхронностью.", "target": "{\"type\":\"open_url\",\"url\":\"https://stackoverflow.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Сверни или закрой графический редактор, он мне больше не нужен, а ресурсы процессора сейчас понадобятся для компиляции.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, сделай скриншот правой половины экрана и сохрани его, я отправлю его дизайнеру для согласования верстки.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Открой, пожалуйста, папку «Загрузки», я только что скомпилировал билды и хочу найти свежий архив.", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Будь так любезен, открой терминал, мне нужно запустить локальный сервер для тестирования API.", "target": "{\"type\":\"open_app\",\"appName\":\"терминал\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Закрой все вкладки в браузере, кроме рабочей документации, а то у меня там слишком много лишнего накопилось за день.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, выключи полностью звук на компьютере, мне сейчас будут звонить по видеосвязи, не хочу лишних шумов.", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Фауст, найди, пожалуйста, в интернете последнюю версию библиотеки React, скачай ее и положи в папку «vendor» моего текущего проекта.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Пожалуйста, зайди на сайт Docker Hub, найди образ PostgreSQL последней версии и скачай его, чтобы я мог развернуть базу данных.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Открой браузер, найди документацию по Python 3.12, скачай PDF-версию и открой ее в просмотрщике, мне нужно изучить новые фичи.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, перейди на почту, найди письмо от тимлида со спецификацией, скачай прикрепленный документ и сохрани его в папку проекта.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Пожалуйста, скачай с GitHub репозиторий с шаблоном микросервиса, распакуй его и сразу открой эту папку в моей среде разработки.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, заполни форму отчета о затраченном времени на сайте компании за сегодняшнее число, указав 8 часов работы над модулем оплаты.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Будь так любезен, найди на YouTube обучающий курс по Kubernetes, выбери первый плейлист и запусти его на воспроизведение.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Открой почтовый клиент, создай новое письмо для тестировщика, прикрепи туда последний лог-файл из папки logs и отправь.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, зайди в веб-интерфейс GitLab, найди последний мердж-реквест в ветку main и нажми кнопку слияния, если там все тесты зеленые.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай свежий лог с сервера разработки, сохрани его в корень рабочей директории и открой в текстовом редакторе для анализа.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Зайди на сайт с документацией API, найди раздел по аутентификации JWT, скопируй пример запроса и вставь его в мой блокнот.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, пожалуйста, найди в гугле свежий плагин для форматирования кода в VS Code, скачай его и запусти установку.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Пожалуйста, заполни тестовую форму регистрационными данными на локальном сервере и нажми кнопку отправки, чтобы проверить работу бэкенда.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, найди в сети пример конфигурации Nginx для проксирования WebSocket, скачай его и открой в редакторе.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, выключи полностью ПК, я уже закончил работу на сегодня и хочу пойти отдохнуть.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Слушай, Фауст, а как ты думаешь, стоит ли мне переходить с Python на Go в новом проекте для повышения производительности?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, закажи мне, пожалуйста, большую пиццу Пепперони на дом, а то я заигрался с кодом и совсем забыл пообедать.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Будь добр, оплати счет за интернет с моей карты, а то провайдер обещает отключить связь прямо посреди рабочего дня.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Напомни мне, пожалуйста, через сорок минут сделать разминку для глаз и спины, а то я слишком долго сижу непрерывно.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, какая сегодня погода на улице? Думаю, стоит ли мне сделать перерыв и пройтись до ближайшего парка.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Купи, пожалуйста, в интернет-магазине новую механическую клавиатуру, моя старая совсем перестала нормально кликать.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Расскажи какой-нибудь интересный IT-анекдот, а то у меня компиляция идет слишком долго и становится скучно.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, переведи тысячу рублей моему коллеге по номеру телефона в качестве долга за вчерашний обед.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, включи, пожалуйста, умный чайник на кухне, чтобы вода закипела к тому моменту, как я закончу писать этот метод.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Удали, пожалуйста, всю историю моих поисковых запросов в браузере за неделю, мне кажется, там накопилось много лишнего.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, подскажи, пожалуйста, каков курс доллара к рублю на сегодня, мне нужно рассчитать бюджет на покупку серверов.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выключи свет в кабинете, пожалуйста, а то мне ярко светит в глаза и мешает смотреть на монитор.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Посоветуй мне хороший фильм на вечер в жанре научно-популярной фантастики, чтобы отвлечься от написания алгоритмов.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст сделай потише а то орет ппц", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "заблокируй комп я отошел", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "замуть звук срочно", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "открой папку downloads", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "закрои браузер", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "выруби спотифай", "target": "{\"type\":\"kill_process\",\"processName\":\"spotify.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "громкость на максимум поставь", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "distill"}
+{"phrase": "открой гитхаб", "target": "{\"type\":\"open_url\",\"url\":\"https://github.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "разверни консоль на весь экран", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "закрой фигму", "target": "{\"type\":\"kill_process\",\"processName\":\"figma.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "скриншот быстро", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "открой папку с проектом на диске д", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой пайчарм", "target": "{\"type\":\"open_app\",\"appName\":\"pycharm\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "найди в гугле свежий релиз питона скачай инсталлер и открой", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "зайди в джиру найди таску 404 и сбрось скрин в лс васе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "скачай лог файлы из дженкинса и сгрузи их в папку логи", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой стэковерфлоу найди ошибку сегфолт в с++ и скопируй первый ответ", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "зади в фигму сделай скрин макета авторизации и отправь в чат проекта", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди на гитхабе репозиторий с примерами FastAPI, качни zip и распакуй в загрузки", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "зайди на почту качни акт из последнего письма от бухгалтерии и закинь в папку документы", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой хром найди документацию по docker compose и открой вкладку с сервисами", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди в телеге документ tz_v2.pdf скачай и открой в акробате", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "заполни форму на сайте тестирования вставь там тестмейл и нажми отправить", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди в гугле курс доллара качни график за месяц и сохрани картинку", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "открой ютуб найди фоновую музыку для кода и включи первый плейлист", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "зайди в консоль гита сделай пул из мейна и покажи статус", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "зади в ноушн найди страницу с доками API и скопируй ссылку в буфер", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "скачай последнюю версю VS Code с офф сайта и запусти установку", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди в папке загрузки файл dump.sql и импортируй в бд", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст закажи пиццу с пепперони на дом плз", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "завели будильник на 8 утра завтра", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "почему код опять не собирается ты знаешь??", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "постави чайник", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст ты меня бесишь", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "выключи полностью комп я спать", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "купи батарейки для мышки на озоне", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "напомни через 15 мин созвон с лидом", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "какая погода завтра в питере?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "переведи 500р маме через сбер", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "че делать если прод упал?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст ты робот или человек", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст заблокируй экран я отойду", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "сделаи громкость на максимум не слышно ничо", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "distill"}
+{"phrase": "фауст открой папку загрузки", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "сними скриншот экрана", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "выруби звук совсем", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "открой браузер хром", "target": "{\"type\":\"open_app\",\"appName\":\"chrome\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "фауст покажи какие программы сейчас работают", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "закрой плеер", "target": "{\"type\":\"kill_process\",\"processName\":\"player.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "сделай громче процентов на тридцать", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "distill"}
+{"phrase": "фауст открой диспетчер задач", "target": "{\"type\":\"open_app\",\"appName\":\"taskmgr\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "закрой все вкладки в браузере", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "сверну все окна на рабочем столе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "залочь комп", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "открой сайт кинопоиск", "target": "{\"type\":\"open_url\",\"url\":\"https://kinopoisk.ru\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "фауст закрои телеграм", "target": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "фауст найди на торренте фильм матрица и скачай в папку загрузки", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди в интернете рецепт карбонары и сохрани картинку на рабочий стол", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст открой ютуб найди канал про космос и включи последнее видео на весь экран", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "фауст найди в браузере где купить пиццу скопируй телефон доставки и открой блокнот напиши его туда", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой вк найди сообщение от мамы и ответь ей что я смотрю кино", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст скачай свежую версию стима и запусти установку", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди саундтрек из этого фильма в яндекс музыке и поставь на повтор", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "фауст зайди на авито найди диван синий и отсортируй по цене", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди статью про этот фильм на википедии и скролль вниз потихоньку", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "фауст открой почту найди письмо от банка и скачай прикрепленный файл", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "фауст найди в гугле актера который играет главного героя и открой его фото", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "фауст найди гифку с котиком и отправь в чат в телеграме", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "заполни форму поиска на кинопоиске введи побег из шоушенка и нажми искать", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди клип рамштайн на ютубе включи максимальное качество и разверни", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "фауст выключи компьютер полностью я спать", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "завари мне чай побратски", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "поставь будильник на семь утра завтра", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст ты меня слышишь вообще или нет", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "сколько градусов сейчас на улице", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст выключи свет в комнате", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "закажи две пиццы пепперони на дом", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "напиши напомни мне завтра купить хлеб и молоко", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст кто твой создатель", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "расскажи какой нибудь анекдот а то фильм скучный", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "кто выиграл вчера в футбол спартак или зенит", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст оплати интернет а то завтра отключат", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "поставь таймер на пятнадцать минут", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "принеси мне попкорн из кухни", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "громкостб на макс плз", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "distill"}
+{"phrase": "пжста сделай потише а то орет", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "закррй браузер", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "сделай скрин быстро", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "заблокируй комп я отоцду", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "покажи че за процессы там пашут", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "открой телегу на компе", "target": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "выключи звук ваще нафиг", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "открой папу загрузки", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "закрой кмп плеер", "target": "{\"type\":\"kill_process\",\"processName\":\"kmplayer.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "открой ютуп", "target": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "залочь экран спс", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "паузу поставь", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди сабы к этому фильму русские и скачай", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди фильм матрица в хорошем качестве и разверни на весь экран", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "скачай торрент с фильмам и открой загрузку", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст найди рецепт пасты и пришли первую ссылку в телеграм", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "зайди на кинопоиск покажи актеров этого фильма", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди саундтрек из сцены и качни в папку муз", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "заполни форму обратной связи на сайте и отправь", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди расписание афиши на завтра и открой вкладку", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "скачай след серию и вруби в плеере", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "загугли почему болит спина и открой статью", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "открой гугл док документ резюме и отправь на почту", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "зайди на авито найди ноут и отсортируй по цене", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди книгу в fb2 качни в загрузки", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди клип на ютубе и включи на весь экран", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "открой сайт гидрометцентра и заскринь", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "выключи ПК через 20 минут", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст ты тут? чот скучно", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "поставь будильник на 7 30", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "закажи пиццу с ветчиной", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "купи два билета в кино на вечер", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "напомни через час достать стирку", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "принеси попить ахах", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "выключи свет в спальне", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "оплати инет карточкой", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "скинь маме 1000р", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "расскажи шутку", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "сделай мне чай", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "выруби комп совсем", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "сколько времени ща", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, volume up please.", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Pause movie.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Faust, make screenshot.", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "Close this window.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Open folder Downloads.", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Turn sound down to twenty percent.", "target": "{\"type\":\"set_volume\",\"level\":20}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Close Telegram app on desktop.", "target": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Faust, make it louder, I can't hear.", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Open Netflix website.", "target": "{\"type\":\"open_url\",\"url\":\"https://netflix.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Minimize all windows.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Unmute sound.", "target": "{\"type\":\"set_volume\",\"level\":50}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Open YouTube, search for Dune 2 trailer and play the first video.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Find torrent for Interstellar 1080p and start download.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Faust, open Google Docs, create new file and title it Movie Notes.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Go to Kinopoisk, find rating for Batman and screenshot it.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Open Gmail, check unread emails and reply to boss that I am sick today.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Find subtitles for this movie in English and load them.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Open Steam, check if Cyberpunk finished downloading and launch it if ready.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Faust, translate the current page to Russian and scroll down.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Find actor's name from this scene on IMDb and open his Wikipedia page.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Download latest update for VLC player and install it.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Open Reddit, go to sub movies, find top post today and read comments.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Save current picture from screen to my Pictures folder.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Open WhatsApp desktop, send recent screenshot to Alex.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Find cheap flights to Istanbul for next weekend and save link.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Faust, order me a big pepperoni pizza with extra cheese.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Turn off the computer in one hour.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Set alarm for 8 AM tomorrow morning.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Order popcorn from Yandex Eats.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, why is this movie so boring?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Pay my internet bill using my saved card.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Bring me a glass of water, please.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, do you like sci-fi movies?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Shut down the PC right now, I am going to sleep.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Buy two tickets for Avatar for tomorrow evening.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Turn off the lights in the living room.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "What is the weather like outside right now?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Закрой 1С", "target": "{\"type\":\"kill_process\",\"processName\":\"1c.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Открой Excel", "target": "{\"type\":\"open_app\",\"appName\":\"excel\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Сверни всё", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Открой Outlook", "target": "{\"type\":\"open_app\",\"appName\":\"outlook\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Залочь экран", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Скачай акт из почты", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди шаблон договора", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Заполни свежую смету", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Отправь отчёт Булгакову", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди счет от Матрицы", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Загрузи файл в папку", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Отправь КП на почту", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Переведи PDF в Word", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Выгрузи реестр за май", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди вакансию копирайтера", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Открой и распечатай накладную", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Скачай презентацию проекта", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Отправь сверку бухгалтеру", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди контакты Иванова", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Сохрани скан в PDF", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Привет, Фауст", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь будильник на семь", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Какая погода завтра?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Закажи обед", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Напомни купить молоко", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Оплати интернет", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Включи чайник", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Спаси меня от работы", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Купи пиццу", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь таймер 10 минут", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Сколько время?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Перезагрузи комп", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Будь добр, заблокируй рабочий стол, а то я отхожу на обед и не хочу, чтобы кто-то случайно увидел конфиденциальные файлы.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Фауст, снизь, пожалуйста, уровень громкости на компьютере, потому что я сейчас начну созваниваться с клиентом и музыка будет мешать.", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Открой, пожалуйста, папку с загрузками, я там потерял свежий документ от бухгалтерии и никак не могу его найти.", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Фауст, покажи мне список всех запущенных процессов, кажется, какая-то программа сильно нагружает систему и всё тормозит.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Будь так любезен, открой сайт корпоративной почты, мне нужно срочно проверить, пришло ли письмо от юристов.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, подними громкость на максимум, а то в той обучающей презентации очень тихий звук, ничего не слышно.", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Пожалуйста, открой калькулятор, мне тут нужно быстро пересчитать смету для нового проекта.", "target": "{\"type\":\"open_app\",\"appName\":\"calc\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Закрой браузер Chrome, а то у меня там открыта сотня вкладок и комп начинает сильно гудеть.", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Фауст, сделай, пожалуйста, снимок экрана прямо сейчас, чтобы зафиксировать ошибку в программе для техподдержки.", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "Открой, пожалуйста, сайт КонсультантПлюс, мне необходимо быстро найти одну статью из Трудового кодекса.", "target": "{\"type\":\"open_url\",\"url\":\"https://consultant.ru\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Заблокируй экран, пожалуйста, я иду на пятиминутный перерыв на кофе и забочусь о безопасности данных.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Будь добр, покажи диспетчер задач или запущенные процессы, нужно проверить, не завис ли Word.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Фауст, закрой презентацию PowerPoint, я закончил выступление и она мне больше не понадобится.", "target": "{\"type\":\"kill_process\",\"processName\":\"powerpnt.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Фауст, найди на диске файл 'Отчёт_май.docx', конвертируй его в PDF и отправь по почте моему руководителю с пометкой 'На подпись'.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Пожалуйста, зайди на сайт налоговой, скачай свежую форму декларации и сохрани её в папку 'Бухгалтерия' на рабочем столе.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, откроешь Google Таблицы, заполнишь в первой строке сегодняшнюю дату и скачаешь файл в формате XLSX?", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Будь любезен, найди в интернете шаблон акта выполненных работ, скачай его и сразу открой в Word для редактирования.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, найди в почте последнее письмо от Иванова, скачай оттуда прикреплённый архив и распакуй его в загрузки.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Пожалуйста, зайди на наш сайт, заполни форму обратной связи тестовыми данными и сделай скриншот успешной отправки.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, найди на диске С папку с фотографиями для презентации, выбери самую новую и вставь её в открытый документ Word.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Будь добр, скачай из рабочей системы реестр счетов за прошлый месяц и отправь его на печать на наш офисный принтер.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, зайди на сайт Центрального Банка, посмотри текущий курс евро, впиши его в ячейку B5 в открытой таблице и сохрани её.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Пожалуйста, открой почтовый клиент, создай новое письмо для финансового отдела, прикрепи туда сводную смету и сохрани в черновиках.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, перейди на сайт курьерской службы, введи трек-номер из буфера обмена и сделай скриншот с текущим статусом доставки.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Будь так любезен, найди в папке 'Проекты' документ с условиями контракта, скопируй оттуда третий абзац и отправь его мне в Telegram.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, скачай с корпоративного портала регламент по отпускам, открой его и найди раздел про компенсации.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Пожалуйста, найди в Excel-файле 'Продажи' всех клиентов с задолженностью, отфильтруй их и экспортируй список в отдельный файл.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, закажи, пожалуйста, две пиццы с пепперони на адрес нашего офиса, а то мы тут задерживаемся с отчётом и очень голодны.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Дорогой Фауст, подскажи, какая сегодня будет погода вечером, чтобы я знал, брать ли с собой зонт после работы?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, слушай, я так устал от этих бесконечных отчётов, расскажи какой-нибудь смешной анекдот про офисную жизнь.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Пожалуйста, оплати с моей карты счёт за интернет, а то у меня на рабочем столе вылезло уведомление про задолженность.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, напомни мне, пожалуйста, через полчаса сделать разминку и выпить стакан воды, а то я засиделся за таблицами.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Будь добр, переведи 500 рублей коллеге по номеру телефона в качестве взноса на подарок ко дню рождения.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, как ты думаешь, стоит ли мне просить у начальника повышение в этом месяце или лучше подождать окончания квартала?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, отправь на мой телефон SMS с текстом 'Не забудь купить молоко', чтобы я не забыл по дороге домой.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Будь так любезен, включи мне какую-нибудь расслабляющую музыку для концентрации, а то шум в open-space очень отвлекает.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, поставь таймер на 15 минут, мне нужно ровно столько времени, чтобы проверить эту пачку документов.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Скажи, пожалуйста, кто выиграл вчерашний футбольный матч, а то вчера из-за работы так и не успел посмотреть?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, забронируй, пожалуйста, столик в ресторане на двоих на пятницу вечер, хочу пригласить жену.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, переведи мой компьютер в спящий режим через 20 минут, чтобы он не горел всю ночь, пока я ухожу.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Скажи, Фауст, а ты сам не устаёшь целыми днями выполнять мои поручения и обрабатывать файлы?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, lower the volume to 20 percent, it's too loud.", "target": "{\"type\":\"set_volume\",\"level\":20}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Открой Chrome и залочь экран, please.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, покажи список запущенных процессов, комп лагает.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Mute the master volume right now.", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Faust, close all open Acrobat Reader windows.", "target": "{\"type\":\"kill_process\",\"processName\":\"acrord32.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Lock screen, I'm stepping away for coffee.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Faust, open Gmail in a new browser tab.", "target": "{\"type\":\"open_url\",\"url\":\"https://gmail.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Закрой Figma, she's eating all my RAM.", "target": "{\"type\":\"kill_process\",\"processName\":\"figma.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Фауст, сверни все окна на рабочем столе.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Open my Documents folder, subfolder Reports 2024.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Unmute system audio.", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Скачай последний PDF из письма от бухгалтерии и сохрани его в папку Invoices.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Faust, find the quarterly sales report in Drive, convert to xlsx, and email it to Alex.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Открой CRM, найди карточку клиента ООО Вектор, скопируй ИНН и вставь в открытый Word.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Faust, search Google for current USD to EUR rate, write it in cell B4 of my opened Excel sheet, and save.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Скачай с портала форму KND 1151085, заполни ИНН компании из профиля и сохрани на рабочий стол.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Faust, check unread emails from HR, download the attached vacation form, and open it in Word.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди в Downloads файл report_v1.docx, переименуй в report_final.docx и отправь Ирине по почте.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Faust, go to Trello, move card Q3 Review to Done, and leave a comment Task Completed.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Открой веб-портал, скачай выписку за вчера, упакуй в zip и скинь в рабочий Slack-чат.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Open Google Docs, create a file called Meeting Notes, write today's date on top, and share with team.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Find the latest error log in AppData folder and attach it to a new email to IT support.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Faust, search YouTube for lofi background music, play the first stream, and switch browser to full screen.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Открой 1С, выгрузи отчет по остаткам в Excel и перешли файл директору в Telegram.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Faust, check Notion for unassigned tasks, set status to In Progress for the top one, and assign it to me.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди в почте смету от подрядчика, сконвертируй в PDF, сохрани на Desktop и закрой браузер.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Faust, how are you feeling today?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь будильник на 7:30 утра на завтра.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выключи полностью компьютер через 30 минут.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, buy two tickets for the IMAX movie tonight.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Закажи мне пиццу Пепперони на домашний адрес через Додо.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Remind me to call my accountant at 5 PM.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, расскажи свежий анекдот про системных администраторов.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Какая погода сегодня в Москве, нужен зонт?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, order a taxi to the office right now.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "What is the capital of Australia, Faust?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Переведи 1000 рублей Коле по номеру телефона.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, turn off the light in the kitchen.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь таймер на 15 минут, у меня заваривается чай.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, can you physically clean my keyboard?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Реши за меня эту задачу по сопромату.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Открой Твич", "target": "{\"type\":\"open_url\",\"url\":\"https://twitch.tv\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Скриншот сделай", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "Закрой Стим", "target": "{\"type\":\"kill_process\",\"processName\":\"steam.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Заглуши звук", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Замуть дискорд", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Запусти Телеграм", "target": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Громкость тридцать процентов", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Заблокируй ПК", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Скачай свежий драйвер", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди билды Пуджа", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Отправь скрин в тимспик", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Скачай патч Доты", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Заполни заявку турнира", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай повтор катки", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Отправь статистику клану", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Скинь реплей другу", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Залей запись на ютуб", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди сервер Раст", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай конфиг про игрока", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Сохрани клип", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Зарегистрируй на турнир", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Принеси попить", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Оплати подписку", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Напомни попить воды", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Кто победил вчера?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Купи энергетиков", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Капец я слился", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выруби систему", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Купи боевой пропуск", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Сколько времени?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Какая там погода?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, сруби звук процентов до двадцати, а то в ушах звенит уже.", "target": "{\"type\":\"set_volume\",\"level\":20}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Короче, открой браузер и подруби YouTube.", "target": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Сделай скринок экрана быстренько, пока счет виден!", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "Фауст, вруби Дискорд, надо к пацанам в комнатку зайти.", "target": "{\"type\":\"open_app\",\"appName\":\"discord\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Слушай, а покажи чё там по процессам висит, а то лагает жесть.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Сделай громкость на максимум, ща любимый трек пойдет!", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Фауст, закрой полностью браузер, только ресурсы жрёт.", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Открой папку с загрузками, я туда вроде демку кидал.", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Запусти Твич, посмотрим чё там на стриме происходит.", "target": "{\"type\":\"open_url\",\"url\":\"https://twitch.tv\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Сруби Telegram полностью, чтоб не дёргал своими уведомлениями.", "target": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Фауст, открой Dotabuff быстренько.", "target": "{\"type\":\"open_url\",\"url\":\"https://dotabuff.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Приглуши динамики наполовину, братан.", "target": "{\"type\":\"set_volume\",\"level\":50}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Фауст, найди в инете свежий билд на Пуджа, скачай картинку с раскачкой и открой её на экране.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Скачай последний патч для Киберпанка с нексуса и закинь его в папку Downloads.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди в Гугле гайд по оптимизации винды для КС2, скачай оттуда конфиг и перенеси в папку с игрой.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Зайди в браузер, открой сайт маркетплейса, забей в поиск мышку Logitech G Pro и отсортируй по цене.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, найди последнюю запись моего стрима на Твиче, вырежь последние 30 секунд и сохрани как реплей.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди сайт с гайдами по Геншину, найди промокоды за этот месяц и заполни их у меня в аккаунте.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Короче, найди в инете гифку с фейспалмом и отправь её в наш чат в Дискорде.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Зайди на реддит, найди тред про новый сезон в Апексе, переведи через Яндекс и открой вкладку.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, открой сайт с музыкой, найди плейлист для потёртых каток и поставь на воспроизведение.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди в папке с видео мой вчерашний хайлайт, залей его на Гугл Диск и скопируй ссылку.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Слушай, зайди на Кинопоиск, найди фильмец на вечер с рейтингом выше 8 и добавь в закладки.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай с официального сайта драйвер для видюхи, запусти инсталлятор и нажми 'Далее'.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, найди в поиске кастомные прицелы для КС, скачай файл с кодом и открой его в блокноте.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Открой сайт турнира, найди сетку плей-офф, сделай скриншот именно таблицы и выведи на монитор.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, выруби комп полностью через полчаса, я спать пойду.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Слушай, закажи мне большую пиццу с пепперони, а то в соло лень готовить.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь будильник на 8 утра, а то я опять проспаплю пары из-за этих каток.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, блин, почему мои раки в тиме опять мид слили? Чё делать-то?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Слушай, а задонать мне 500 рублей на пиццу или купи скинчик в Валоранте.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь таймер на 15 минут, надо пельмени с плиты снять.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, оплати коммуналку с карты, а то инет отключат нафиг.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Расскажи какой-нибудь анекдот про геймеров, пока поиск катки идет.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Слушай, бро, как думаешь, стоит брать новый монитор 240 герц или это развод?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, напомни мне завтра в пять вечера, чтобы я пинг провайдеру пошел обнулять.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выруби свет в комнате, а то отсвечивает в мониторе жесть.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Сделай мне чайку, а то горло пересохло орать на тимейтов.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, ты сам-то в Доту гоняешь или только на заднем фоне сидишь?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Купи Премиум в Телеграме, пока скидки идут.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Блин, Фауст, я в тильте, полное дерьмо сыграл... Как успокоиться?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Слушай, напиши Махе в ватсап, что я пока занят, у меня тут важный матч.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Посчитай, сколько я времени проиграл за сегодня, если катка длилась 40 минут, а их было шесть.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "заблокируй экран я отойду в туалет", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "зактрой хром нафиг лагает всё", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "покажи че там по процессам нагрузка какая", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "замуть микрофон в винде", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "скрин катки сделай быстро", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "открой оп гг", "target": "{\"type\":\"open_url\",\"url\":\"https://op.gg\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "закрои стим", "target": "{\"type\":\"kill_process\",\"processName\":\"steam.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "сделай тише на 30 проц", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "открой дотабафф мой", "target": "{\"type\":\"open_url\",\"url\":\"https://dotabuff.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "заблокируи комп", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "покажи диспетчер задач", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "фауст найди гайд на инвокера и скинь в дискорд парням", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "скачай конфиг симпла и закинь в папку кс", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди стрим папича и открой на втором мониторе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "зади на твич найди дропсы залогинься и забери", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "скачай патчноут новый и открой блокнот с ним", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди билд на сфа сохранай скриншот на рабочий стол", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди повтор последней игры и скачай демо", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "заполни форму на турнир и отправь заявку", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди трейлер нового сезона на ютубе и включи 1080p", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди музыку для катки скачай плейлист в мп3", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "зайди на сайт фейсита найди статус серверов и заскринь", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "скачай сборку модов на майн и раззипуй в папку", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди где дешевле купить гифт киберпанка и открой вкладку", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "переведи описание абилки с реддита и скопируй в буфер", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди расписание матчей нави и добавь в закладки", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "фауст завари мне кофе пока пик идет", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "поставь будильник на 8 утра завтра", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "заказажи пиццу пепперони", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "выключи пк полностью", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст ну почему раки в тиме опять", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "купи стим карту на тысячу рублей", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "напомни через 15 минут пиццу из духовки вытащить", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "ты кто ваще фауст", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "выруби свет в комнате", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "задонать в стим 500р", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст поставь таймер на 5 минут до следующей катки", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "сходи в магаз за энергетосом пж", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст ты меня бесиш", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "оплати подписку на дискорд нитро", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "какая погода завтра будет", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, слей громкость на половину, а то башка трещит с утра...", "target": "{\"type\":\"set_volume\",\"level\":50}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Слушай, вруби телегу быстро, надо сообщения глянуть.", "target": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Фауст, открой ютубчик.", "target": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Короче, заблокируй комп, я отползу за кофе.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Закрой этот долбаный хром, он опять всю память жрет!", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Открой папку Загрузки, а то я не помню, куда вчера всё кидал.", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Прибавь звук на максимум, обожаю этот трек!", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Фауст, закрой фигму, она мне пока не нужна.", "target": "{\"type\":\"kill_process\",\"processName\":\"figma.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Залочь экран буквально на пару минут.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Открой Яндекс Музыку, надо проснуться.", "target": "{\"type\":\"open_url\",\"url\":\"https://music.yandex.ru\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Выруби спотифай, мешает.", "target": "{\"type\":\"kill_process\",\"processName\":\"spotify.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Фауст, покажи диспетчер задач.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Скриншотни вот эту часть и скинь в буфер обмена.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Открой стим, надо проверить, че там покачалось за ночь.", "target": "{\"type\":\"open_app\",\"appName\":\"steam\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Музон потише сделай, а то ничего не слышно.", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Слушай, зайди на Хабр, найди статьи про питон за неделю и закинь их в закладки.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Короче, открой почту, найди письмо от начальника за вчера, скачай оттуда отчет и открой в экселе.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Зайди на Авито, вбей кофеварка, отсортируй по цене и скинь мне первую ссылку в телеграм.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, открой сайт банка, залогинься и сгрузи выписку за прошлый месяц.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай с Гитхаба последний релиз моего проекта и раззипуй в загрузки.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди мем про невыспавшегося кота, скачай и отправь Димону в ВК.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Зайди на Госуслуги, проверь штрафы и если есть — скрин мне сделай.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, открой ворд, создай новый документ, напиши План на день и сохрани на стол.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди в гугле рецепт яичницы с беконом, скопируй ингредиенты и отправь мне в заметки.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Скачай свежий драйвер на видюху и запусти установку.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Зайди в хром, открой все вчерашние вкладки и закрепи первую.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, найди курс доллара на сегодня, заскринь и скинь в рабочий чат.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди вакансии python-разработчика на хх, отфильтруй от двухсот тысяч и выгрузи ссылки.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Открой браузер, забей погода питер, сделай скрин и отправь маме.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, доброе утро... Блин, как же спать хочется, ппц.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь будильник на 8:30, а то я сейчас опять засну.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Слушай, а какая погода вообще на улице, стоит куртку надевать?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Закажи мне большой капучино и круассан через Яндекс Еду.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, выключи комп нафиг, я спать дальше.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Ты сам-то выспался, робот?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Напомни мне через полчаса выпить таблетку.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Оплати квитанцию за свет, а то сегодня последний день.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Купи два билета в кино на вечерний сеанс, пожалуйста.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, переведи сотку Коляну по номеру телефона.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Че думаешь, стоит сегодня вообще из дома выходить или ну его?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Вруби чайник на кухне, а то лень вставать.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, расскажи анекдот какой-нить, а то утро вообще мрачное.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Перезагрузи мне мозги, а...", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Закажи такси до офиса на 9 утра.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь таймер на 15 минут, я на кашу ушел.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, забей, я сам всё сделаю, ты меня бесишь с утра.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фаус сделай громче на максимум а то не слышно", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "distill"}
+{"phrase": "открой браузер и зади на сайт новости", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "заблокируй экран я пошел чистить зубы", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "закрой браузер и телеграм", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "покажи какие процессы сейчас загружают проц", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "сделай звук потише голова раскалывается", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "открой папку загруски", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "фауст закрои все сверни окна", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой сайт рбк главною страницу", "target": "{\"type\":\"open_url\",\"url\":\"https://rbc.ru\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "закрой все вкладки кроме первой", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "сделай снимок экрана", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "фауст открой проводник диск ц папку документы", "target": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "покажи диспетчер задач что там зависло", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "фауст выключи звук совсем на компе", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "доброе утро найди свежие новости и открой почту", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди в интернете рецепт яичницы и скачай фото", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "открой почту найди письмо от начальника и скачай файл", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "фауст зайди на сайт банка и скачай выписку за месяц", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди на ютубе спокойную музыку и включи на фоне", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "фауст найди в гугле курс доллара и пришли скрин мне", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "зайди в браузер найди бланк отчета скачай и открой", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст найди расписание электричек и сохрани страницу", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "зайди на авито найди кофеварку и скинь ссылку", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой рабочий чат и отправь сообщение я проснулся", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой файл отчет заполни строчку дата сегодня", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст зайди на гисметео посмотри погоду и открой календарь", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "зайди на сайт и заполни форму укажи мою почту", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "открой браузер найди презентацию и скачай в документы", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст привет я проснулся постави чайник пожалуйста", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "слушай а какая сегодня погода за окном холодно", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "закажи мне большой кофе и круассан с доставкой", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст выключи компьютер через два часа", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "поставь будильник на восемь утра на завтра", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст а ты умеешь варить кофе а то я вообще не встану", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "оплати счет за интернет через сбербанк", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст выключи свет в комнате глаза режет", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст я так не выспался выключи комп я спать", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "переведи маме две тысячи рублей с карты", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст кто победил вчера в футболе", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "сколько сейчас времени я проспал работу или нет", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст перейди в спящий режим и выключи монитор", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "разбуди меня через тридцать минут", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, wake up my PC and set volume to 30%.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, unmute sound, ничего не слышно.", "target": "{\"type\":\"set_volume\",\"level\":50}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Open Telegram and Discord, please.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, залочь экран, I'm going to make coffee.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Show me all running processes right now.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Close all open folders on Desktop.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Open Downloads folder.", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Mute computer completely.", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Фауст, kill VS Code, it hung up.", "target": "{\"type\":\"kill_process\",\"processName\":\"code.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Open YouTube and search for lofi hip hop.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, turn up volume to max!", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Close Spotify and open Apple Music.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Open Chrome with my main work profile.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, открой папку Projects на рабочем столе.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Faust, open Google Docs, create a new doc named Morning Notes and write 'Today tasks:'.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Find the latest release build on GitHub and download the zip file.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Go to Gmail, check if there's any unread email from my boss, and reply 'I am online'.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, зайди в Slack, открой канал #general и напиши 'Good morning team!'.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Open Figma, open project Main Dashboard and take a screenshot.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Go to Trello, move top card from To Do to In Progress.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, найди свежий репоз на GitHub про AI agents и закинь ссылку в Telegram saved messages.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Download latest invoice from AWS console and save it to Documents.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Find today weather forecast for Moscow in Chrome and make a screenshot.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Open Notion, create a page called Standup and paste clipboard text there.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Go to Twitter, find news about OpenAI and bookmark top tweet.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, найди installer Python 3.12, скачай и открой папку Загрузки.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Check my Google Calendar for today, take a screenshot of schedule, and send to my phone Telegram.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Open Zoom, join meeting using link from my last email.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, заполни форму на сайте delivery и отправь заявку.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Faust, brew me a cup of hot coffee please.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Set an alarm for 9:00 AM.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Remind me to turn off stove in 20 minutes.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, выключи комп полностью, я спать.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Order a cappuccino and croissant from Yandex Eats.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Pay my internet bill using saved card.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Hey Faust, how are you feeling this morning?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Tell me a short joke to help me wake up.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, купи молоко и хлеб на Ozon Express.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Turn off PC in 45 minutes.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, как думаешь, погода сегодня норм?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Put a tea timer for 4 minutes.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, уложи комп в sleep mode, еще 10 минут посплю.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Why is waking up so hard, Faust?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Pay for my Spotify subscription, it expired.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Order a taxi to the office for 10:00 AM.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выруби звук", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Открой Телеграм", "target": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Закрой все окна", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Открой YouTube", "target": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Закрой Вконтакте", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Громкость на ноль", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Скачай отчет и отправь", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди фильм на вечер", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Сохрани документ в облако", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Скачай торрент из закладок", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Заполни форму и отправь", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди и скачай презентацию", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Экспортируй проект в PDF", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Отправь файл шефу", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Проверь почту, скачай смету", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди реферат, сохрани", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Рендери видео и выгружай", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Закинь архив на Диск", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Скомпилируй и залей проект", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди картинки и сохрани", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай обновления, установи", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Отправь скриншот в чат", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, выключи компьютер", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Я ушел, пока", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Закажи пиццу на дом", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Напомни купить хлеб", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Какая погода на улице?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Оплати счет за интернет", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Забей, я ушел", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Спасибо, Фауст, до вечера", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Сколько времени сейчас?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выключи питание розетки", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Купи билеты в кино", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст заблокируй экран я ушел", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "сними скриншот рабочего стола на всякий случай", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "закрой телеграм и стим", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "покжи запущенные процессы", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "сделай громкость на десять процентов", "target": "{\"type\":\"set_volume\",\"level\":10}", "cat": "set_volume", "src": "distill"}
+{"phrase": "сделай скрин и заблокируй учетку", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "закрой фотошоп без сохранения", "target": "{\"type\":\"kill_process\",\"processName\":\"photoshop.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "заблокируй компютер", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "закрой все открытые программы", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "сними экран прямо сейчас", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "выкрути звук на ноль", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "фауст найди на трекере новый фильм поставь качаться и заблокируй комп", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "зайди в почту скачай архив из последнего письма и распакуй в загрузки", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой документ отчет допиши в конец готово сохрани и закрой", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди в гугле статью про ремонт скачай пдф и отправь маме на почту", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "зайди на сайт банка скачай выписку за месяц и сохрани в папочку документы", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой стим поставь обновление игры на паузу и закрой приложение", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди в телеграме файл с презентацией скачай и открой в пауэрпоинте", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "зайди на ютуб найди стрим поставь на паузу и выключи звук", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "открой хром найди билеты в театр скачай квитанцию и скинь мне", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди в поиске рецепт борща скопируй текст и отправь мне в чат", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой торрент поставь раздачу на паузу и сними скриншот", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "зайди на сайт почты найди трек номер скопируй его и закрой браузер", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "скачай с диска документ переименуй в финальный и заблокируй экран", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди подкаст про айти скачай эмпетри файл в музыку и закрой браузер", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст выключи свет в прихожей я уже у двери", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "поставил будильник на семь утра не забудь", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст выключи компьютер полностью через полчаса", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст а ты дверь в квартиру запер или нет", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "купи билеты в кино на вечер", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "оплати коммунальные услуги за этот месяц", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "выключи утюг из розетки а то я нервничаю", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "заказажи мне такси до офиса срочно", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "заблокируй утюг и чайник", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "перекрой воду на кухне я кажется не закрыл", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, милый, заблокируй, пожалуйста, рабочий стол, а то я убегаю на встречу и не хочу, чтобы кто-то из домашних случайно увидел мои открытые рабочие файлы.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Фауст, сверни или закрой все открытые вкладки с фильмами и заблокируй систему, потому что ко мне сейчас придет репетитор и мы будем заниматься за этим столом.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Убавь, будь добр, громкость на компьютере до нуля, а то я ухожу в магазин, и если кто-то позвонит в дискорде, звук будет орать на всю квартиру.", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Открой, пожалуйста, папку с загрузками, я вернусь вечером и хочу сразу увидеть все файлы, которые сегодня успел сохранить.", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Будь любезен, закрой программу для видеомонтажа, а то я уже опаздываю на автобус, а она сильно греет процессор.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, закрой, пожалуйста, браузер Chrome, я уже выхожу из дома, а он ест слишком много оперативной памяти.", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Заблокируй экран компьютера прямо сейчас, потому что кот опять прыгает на клавиатуру, когда меня нет в комнате.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Будь добр, сделай снимок экрана, чтобы сохранился статус загрузки файла, а я побежал, у меня электричка через двадцать минут.", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "Пожалуйста, закрой Telegram на компьютере, а то я ухожу, и не хочу, чтобы приходящие сообщения отвлекали брата.", "target": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Фауст, открой главную страницу Кинопоиска, я вернусь из тренажерного зала уставший и сразу хочу выбрать какой-нибудь фильм на вечер.", "target": "{\"type\":\"open_url\",\"url\":\"https://kinopoisk.ru\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Фауст, пока я буду на прогулке с собакой, найди на сайте автовокзала расписание автобусов до Твери, скачай его в формате PDF и сохрани в папку 'Загрузки'.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Пожалуйста, зайди в мою рабочую почту в браузере, найди там последнюю форму отчета, заполни текущую дату и отправь её моему руководителю Иван Ивановичу.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, найди в интернете свежий шаблон резюме для графического дизайнера, скачай его на рабочий стол и открой в Word, чтобы я сразу сел редактировать, когда вернусь.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Будь другом, найди на официальном сайте последнюю версию бесплатного плеера VLC, скачай установочный файл и положи в папку 'Программы', а я пока сбегаю в кулинарию.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, откроешь браузер, зайдешь на сайт налоговой, найдешь там бланк заявления на налоговый вычет, заполнишь мои ФИО из документа и сохранишь черновик?", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Я ухожу на тренировку, а ты пока найди на YouTube расслабляющую музыку для сна без рекламы, включи плейлист и поставь на паузу, чтобы я вечером просто нажал пробел.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Пожалуйста, зайди на сайт нашего интернет-провайдера, перейди в личный кабинет, скачай квитанцию за прошлый месяц и отправь её мне в телеграм, пока я еду в метро.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, найди, пожалуйста, в интернете рецепт лазаньи с мясным фаршем, скопируй список ингредиентов в текстовый документ на рабочем столе и сохрани под именем 'Покупки'.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Пока я бегаю в аптеку, найди на сайте университета списки поступивших, найди там фамилию Иванов и сделай скриншот этой строки.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Будь добр, зайди в Гугл Документы, создай новый файл с названием 'Идеи для отпуска', напиши туда заголовки 'Отели' и 'Билеты' и оставь открытым.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Пожалуйста, зайди на сайт с погодой, найди прогноз для Сочи на всю следующую неделю, сохрани эту страницу в закладки и сделай скриншот.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, пока меня не будет дома, найди в Google картинку с высокой детализацией карты метро Москвы, скачай её и установи как фоновый рисунок рабочего стола.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди, пожалуйста, в электронной почте письмо от сервисного центра, скачай прикрепленный акт выполненных работ и перешли его на почту моей жене.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Будь так любезен, перейди на сайт Авито в раздел аренды квартир, введи фильтр до 40 тысяч рублей, отсортируй по дате и сделай скриншот первых трех объявлений.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, найди в интернете научную статью про нейросети за 2024 год, переведи её на русский язык через онлайн-переводчик и скопируй текст в Блокнот.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, дорогой, выключи полностью компьютер через полчаса, когда закончится рендер, а то я ушел на работу и он будет весь день зря жрать электричество.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Слушай, а ты не знаешь, пойдет ли сегодня вечером дождь, а то я уже на пороге и не знаю, переобуваться мне в сапоги или нет?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, завари мне, пожалуйста, кофе к моему возвращению, а то я бегал три километра и ужасно устал.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, поставь мне будильник на семь утра на завтрашний день, потому что у меня очень важная встреча и я боюсь проспать.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Купи, пожалуйста, на Яндекс Маркете тот пылесос, который лежал у меня в корзине, я просто не успеваю ввести данные карт перед выходом.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь мне напоминание через два часа, чтобы я перезвонил маме, а то я уезжаю на деловую встречу и точно забуду в суматохе.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, как ты думаешь, я правильно делаю, что увольняюсь с этой работы и уезжаю в другой город?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, закажи мне пиццу с ветчиной и грибами на восемь вечера, я как раз приеду с работы голодный.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выключи, пожалуйста, свет в коридоре и проверь, закрыл ли я входную дверь, а то я уже спустился на первый этаж и сомневаюсь.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, расскажи какой-нибудь анекдот или интересную историю, а то мне скучно идти до метро.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Покорми, пожалуйста, кота через пару часов, если он начнет мяукать у компьютера.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, выключи сетевой фильтр из розетки, я поехал на дачу на все выходные и опасаюсь перепадов напряжения.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Забронируй стол на двоих в итальянском ресторане на улице Ленина на сегодня на семь вечера, хочу устроить свидание.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, напомни мне купить хлеб и молоко, когда я буду проходить мимо магазина.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, сделай громче, вообще нифига не слышно за шкворчанием!", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Сделай скриншот экрана, быстро, а то закроется там всё.", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "Короче, заблокируй комп, а то кот опять по клавиатуре пройдется.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Открой Ютубчик, хочу видос переключить.", "target": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Слушай, закрой этот гребаный браузер, он память жрет.", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Фауст, по-братски, вруби громкость на максимум!", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Покажи, че там за процессы сейчас комп грузят?", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Открой папку Загрузки, гляну че там у меня свежего.", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Фауст, выруби Телегу, задолбали уведомления капать.", "target": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Открой Кинопоиск, надо глянуть че вечером посмотреть.", "target": "{\"type\":\"open_url\",\"url\":\"https://kinopoisk.ru\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Закрой нафиг Спотифай, чёт лагает жестко.", "target": "{\"type\":\"kill_process\",\"processName\":\"spotify.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Фауст, сбей громкость процентов до тридцати, а то орет на всю квартиру.", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Поставь браузер на весь экран, а то мелкое всё.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Закрой все вкладки в Хроме, кроме последней.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, найди рецепт пасты карбонара без сливок, скачай картинку и скинь мне в Телегу.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Открой Гугл Доки, найди файл Список покупок и допиши туда сливки 20 процентов.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди на Авито дешёвый блендер в нашем районе и скинь ссылку в избранное.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Короче, зайди на сайт Госуслуг, скачай там последнюю квитанцию и сохрани в Загрузки.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, найди клип на Ютубе, включи на весь экран и сделай громкость на 80.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Зайди в почту, найди письмо от начальника с темой Отчет и скачай оттуда пдфку.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Слушай, найди где скачать новый трек, качни и закинь в папку Музыка.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Открой Вконтакте, найди группу с рецептами и заскринь последний пост про пироги.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Заполни форму на сайте доставки: адрес Ленина 45, квартира 12, и нажми оформить.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди фильм на торренте, поставь на скачивание и заблокируй экран.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Открой файл Рецепты.docx, пролистай до пиццы и сделай скриншот рецепта теста.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Слушай, найди в инете сколько грамм соли в чайной ложке и выведи крупно на экран.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Короче, зайди в Стим, поставь обнову для игры и закрой сам Стим в трей.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди расписание электричек на завтра до дачи, скачай скрином и отправь маме в Ватсап.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Зайди в Телегу, найди диалог с Васей, прикрепи туда последний скриншот и отправь.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Скачай с веб-страницы XLS-таблицу, открой ее в Экселе и покажи мне.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Блин, поставь таймер на 15 минут, а то макароны сгорят!", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выключи комп полностью, я спать пойду через полчаса.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, закажи на Озоне килограмм муки и молоко, карточка привязана.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Слушай, а ты умеешь мясо мариновать или ты только в компах шаришь?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Закинь мне 500 рублей на телефон через Сбер, а то связь отключится.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Блин, а ты можешь плиту отключить, если там закипит?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Расскажи анекдот какой-нибудь про админов, а то скучно готовить.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь будильник на 8:30 и напомни достать курицу из морозилки.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Переведи 1000 рублей Машке по номеру телефона, пожалуйста.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, выключи свет на кухне, у меня руки в фарше!", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Перезагрузи комп, а то он походу намертво завис.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Как думаешь, посолить еще или нормально будет?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, будь любезен, сделай музыку потише, а то у меня тут шкворчит мясо на сковороде и совсем не слышно, что происходит.", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Пожалуйста, заблокируй экран компьютера, чтобы дети случайно ничего не нажали, пока я нарезаю салат.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Фауст, сними, пожалуйста, скриншот с экрана, а то там открыта важная схема, а у меня все руки в муке.", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "Открой, будь добр, сайт с рецептами, мне нужно срочно подсмотреть, сколько граммов сахара идет в этот пирог.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Будь так любезен, открой программу Telegram, мне нужно узнать, пришло ли сообщение от мамы насчет ужина.", "target": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Фауст, сделай громкость на максимум, а то я включила блендер и вообще ничего не слышу из гостиной.", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Открой, пожалуйста, папку Загрузки, я туда вроде бы сохранял файл с инструкцией к новой мультиварке.", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Фауст, покажи мне список всех запущенных процессов, а то кулер на компьютере гудит так сильно, будто он сейчас взлетит.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Будь другом, закрой браузер Chrome, а то он забирает всю оперативку и компьютер начинает сильно греться.", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Фауст, включи, пожалуйста, Яндекс Музыку, а то в полной тишине чистить эту гору картошки как-то совсем грустно.", "target": "{\"type\":\"open_app\",\"appName\":\"яндекс музыка\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Фауст, прибавь немного звук, буквально на два деления, а то вода в кастрюле закипела и перебивает диктора.", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Будь добр, закрой текстовый редактор Word, я там уже все сохранил перед тем, как идти на кухню.", "target": "{\"type\":\"kill_process\",\"processName\":\"winword.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Фауст, милый, сделай звук полностью на паузу на минутку, мне нужно ответить на важный звонок по телефону.", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Будь так любезен, найди в интернете текстовый файл с рецептом торта Наполеон, скопируй список ингредиентов и отправь мне в Telegram.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, зайди на сайт маркетплейса, найди в моих отложенных товарах силиконовую форму для выпечки и добавь её в корзину.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Открой браузер, найди последний счет за коммунальные услуги в почте Gmail, скачай PDF-файл и сохрани его на рабочий стол.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, скачай с сайта Кинопоиск постер к фильмa и поставь его на рабочий стол компьютера, хочу обновить обои.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, открой браузер, найди свежие новости про погоду на завтра в нашем регионе и зачитай мне краткий анонс.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Пожалуйста, найди в Яндексе фото правильно замешанного песочного теста, скачай самое четкое и открой его во весь экран.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, открой программу Excel, найди файл Бюджет, заполни там в последней строчке расход на продукты 3000 рублей и сохрани.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди, пожалуйста, в Гугле рецепт соуса песто, заполни форму обратной связи на сайте своим отзывом и отправь.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, зайди в соцсеть, найди группу с рецептами выпечки, найди там последний пост про пирожки и отправь ссылку моему брату.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Будь любезен, открой браузер, найди таймер на 45 минут онлайн, запусти его и сделай так, чтобы он подал громкий сигнал.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, найди на компьютере документ с названием Заметки, добавь туда в конец строчку 'Купить сливки' и сохрани файл.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, найди в поиске, чем можно заменить яйца в бисквите, отфильтруй самые популярные ответы и прочитай мне вслух.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Зайди, пожалуйста, на сайт доставки, найди в меню пиццу Пепперони, положи в корзину и дойди до экрана оформления.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, найди в моих загрузках презентацию по работе, конвертируй её в PDF через онлайн-сервис и сохрани на рабочий стол.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, помешай, пожалуйста, соус на плите, а то у меня руки в фарше и я совсем не успеваю.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Будь так любезен, выключи полностью компьютер из розетки, потому что я закончил работу и до вечера за него не сяду.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, закажи мне, пожалуйста, с доставкой два килограмма сахарного песка и оплати моей сохраненной картой.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь, пожалуйста, будильник на семь утра на завтра, а то мне нужно рано встать и поставить тесто.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, как ты думаешь, стоит ли мне добавить в этот суп немного чеснока или он испортит весь нежный вкус?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Напомни мне, пожалуйста, через двадцать минут выключить духовку, а то я засмотрюсь сериалом и все сгорит.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, оплати, пожалуйста, интернет по моему лицевому счету, а то завтра его отключат, а у меня руки в масле.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Расскажи мне какой-нибудь смешной анекдот про кулинаров, а то нарезка этого лука доводит меня до слез.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, купи, пожалуйста, билеты в кино на вечерний сеанс на двоих, деньги спиши с привязанной карты.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Посмотри на меня через веб-камеру и скажи, достаточно ли уже подрумянилась корочка у этого пирога?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, включи, пожалуйста, электрический чайник, а то мы скоро будем пить чай с готовым рулетом.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Слушай, Фауст, а какая сегодня температура на улице, стоит ли мне потом идти гулять с собакой?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Передай, пожалуйста, мужу в соседнюю комнату, чтобы он пришел на кухню и помог мне почистить картошку.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, выключи, пожалуйста, свет на кухне, а то мне неудобно тянуться мокрыми руками к выключателю.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Скажи, пожалуйста, сколько калорий в ста граммах жирной сметаны, а то я пытаюсь следить за фигурой.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, переведи мне тысячу рублей на карту маме через банк, а то я обещал сегодня помочь ей с деньгами.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст сделай громче а то за водой не слышно", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "distill"}
+{"phrase": "выключи звук на компе срочно", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "заблокируй экран плз", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "громкость на 30 поставь", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "открой хром", "target": "{\"type\":\"open_app\",\"appName\":\"chrome\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "фауст пауза", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "закрой браузер нафиг", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "громче на макс", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "distill"}
+{"phrase": "найди на ютубе рецепт лазаньи и включи перввое видео", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "зайди на кинопоиск и включи друзья 2 сезон 3 серия", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "забей в гугле чем заменить соевый соус", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "зайди на озон найди фольгу для запекания и отсортируй по цене", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "фауст найди в вк плейлист фолк рок и включи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "забей в яндексе доставка еды и добавь пиццу в корзину", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "открой ворд создай документ и напиши заголовок отчет", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "скачай фотку из телеги и закинь на раб стол", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст найди аккорды к пачке сигарет и сделай крупный шрифт", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "зайди в спотифай и включи мой плейлист для готовки", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди таймер онлайн и запусти на 20 мин", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "зади на гидрометцентр посмотри погоду на завтра", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "зайди на сайт с рецептами найди соус бешамель и пролистай до ингредиентов", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди в гугле сколько запекать курицу", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "фауст выключи духовоу", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "напомни через 15 минут проверить пирог", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "выключи комп совсем", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "купи молоко и хлеб во вкусвилле", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст ты тут? че молчишь", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "переведи маме 1000р через сбер", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "оплати интернет а то отключили", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст выключи свет на кухне", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "принеси мне соль пжлст)))", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "сколько калорий в 100 граммах макарон", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст ты тупой или да", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "закажи доставку из самоката", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "оплати корзину на алиэкспресс", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "сколько будет 450 разделить на 6", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "выруби комп через полчаса", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст сделай послышнее а то вообще ничего не слышно", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "distill"}
+{"phrase": "открывай одноклассники мне надо", "target": "{\"type\":\"open_url\",\"url\":\"https://ok.ru\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "сделай этот как его снимок экрана или скриншот", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "заблокируй комп я пошла чай пить", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "фауст закрути звук совсем тише сделай", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "открой папку где внук фотографии скидывал", "target": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "покажи что там сейчас работает на компьютере", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "сделай громкость на всю катушку", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "distill"}
+{"phrase": "открой документ ворд мне попечатать надо", "target": "{\"type\":\"open_app\",\"appName\":\"word\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "фауст открой сайд почта ру", "target": "{\"type\":\"open_url\",\"url\":\"https://mail.ru\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "заблокируй экран от кота а то прыгает", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "открой мне калькулятор посчитать пенсию", "target": "{\"type\":\"open_app\",\"appName\":\"calc\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "покажи все запущенные программы", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "открой папку загрузки где мои скачанные файлы", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "найди мне в интернете рецепт пирога с яблоками и сохрани на рабочий стол", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст найди песню зыкиной и скачай её на компьютер", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой сбербанк онлайн зайди в платежи и найди там коммунальные услуги", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди открытку с днем рождения подруге и отправь ей в ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "скачай мне сериалы про любовь на вечер и включи первый", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди бланк для записи к врачу заполни мои данные и отправь на почту", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст найди в гугле расписание автобусов на дачу и сфотографируй", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открой сайт госуслуги найди там мои штрафы и покажи на экране", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "напиши дочке в телеграм что я суп сварила и жду в гости", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди в интернете где дешевле лекарство от давления и заказывай", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "открой яндекс найди там погоду на завтра и прочитай вслух", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "скачай картинку с красивыми цветами и поставь на заставку", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди инструкции к стиральной машине индезит и сохрани в документы", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст открой ютуб найди комплексы зарядки для суставов и включи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "фауст ты меня слышишь вообще скажи сколько время", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "завари мне чайку а то спина болит вставать", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст покажи сколько градусов на улице завтра будет дождь", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "поставишь мне будильник на семь утра завтра на базар надо", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "выключи полностью компьютер из розетки я спать лягу", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст а ты знаешь кто вчера в поле чудес выиграл", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "заказывай мне батон хлеба и молоко с доставкой на дом", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "оплати свет за этот месяц у меня карточка на столе лежит", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "напомни мне в три часа выпить таблетку от сердца", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст слушай а где мой второй носок не видал", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "выключи телевизор и свет в коридоре", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "сколько будет если шестьдесят пять умножить на тридцать два", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст поболтай со мной а то скучно одной сидеть", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "купли мне билет на поезд до сызрани на пятницу", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "ты хороший ассистент спасибо тебе большой фауст", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст сделай потише а то орет", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "закрой вконтакт устал читать", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "открои папку с фотками внуков", "target": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "сфоткаи экран скорее", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "заблокируи комп я отойду", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "прибав громкость не слышу ничего", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "distill"}
+{"phrase": "покажи чт ам работает у меня на компе", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "закрои эту программу", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фаус открой однокласники", "target": "{\"type\":\"open_url\",\"url\":\"https://ok.ru\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "открои браузер хром", "target": "{\"type\":\"open_app\",\"appName\":\"chrome\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "фауст открой папку загрузки где всё лежит", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "закрои все вкладки", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "открой ютуб на большом экране", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "фауст найди рецепт кабачков на ютубе и включи самое первое видео", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "скачай пенсионный бланк с сайта фссп и заполни мои данные", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открои почту найди письмо от марии и скачай оттуда квитанцию в документы", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст найди где дешевле лекарство от давления и закажи с доставкой", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "открой ворд напиши текст про расписание автобусов и сохрани", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "найди фильм девчата и включи без рекламы", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "зайди в однокласники найди таню иванову и отправь ей открытку с днем рождения", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди расписание электричек до дачи на завтра и сделай скриншот", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст найди в гугле как лечить колени и скопируй в блокнот", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "зайди на госуслуги найди штрафы и заполни форму", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "скачай картинку с цвитами и поставь на рабочий стол", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "открои вк найди группу садоводов и напиши вопрос про помидоры", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "найди свежие новости про пенсии и перешли дочке в ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "фауст а какая завтра погода будет на даче", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "постави будильник на 7 утра надо к врачу", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "выключи полностью компьютер я спать легла", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "купить молока и хлеба по дороге", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "напомни мне вечером выпить таблетку от давления", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фауст поставь чайник", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "оплати квартплату за этот месяц с моей карты", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "выключи комп а то электричество жрет", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "фаустик расскажи анекдот хороший", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "заказжи мне пирожки с капустой", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "напомни через час выключить плиту", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "а почему комп так сильно шумит не знаешь?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "переведи 500 рублей внуку на телефон", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, please make the sound lower, it is too loud for my ears.", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Фауст, open Youtube dot com for me please.", "target": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Фауст, make screen picture, take screenshot of this page.", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "Lock the computer screen please, I am going to drink tea.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Show me what is working on my computer, open task manager.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Фауст, open folder with my photos from last summer.", "target": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Make sound maximum, I cannot hear anything in this video.", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Close Telegram app on my desktop, it is distracting.", "target": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Фауст, turn off all sound on computer, do mute.", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Open Chrome browser please, my dear.", "target": "{\"type\":\"open_app\",\"appName\":\"chrome\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Фауст, open Word program, I want to write a letter.", "target": "{\"type\":\"open_app\",\"appName\":\"word\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Take screenshot of this soup recipe on the screen.", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "Block computer screen so the cat doesn't press any buttons.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Фауст, open downloads folder, where is my lost file?", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Close browser with all tabs right now, please.", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Show me running processes, why is computer buzzing so loud?", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Faust, find online catalog of vegetable seeds, download price list and send it to my email.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Find pension website, fill form for my registration and press send button.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Faust, open browser, look for weather in Moscow for tomorrow and make it big on screen.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Find picture of red roses, save to my photo folder and print it.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, open email, download file from my daughter and open it in Word.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Go to online shop, find warm socks size 39, put them in shopping cart.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Faust, open news website, scroll down to health section and read me headline.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди в интернете recipe for apple pie, copy text and save to desktop document.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Faust, search for cheap train tickets to Dacha for next Friday and write down prices.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Open Youtube, write in search 'how to fix garden faucet' and start second video.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, download Viber setup file from official site and run installation.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Find telephone number of local clinic in Google and send text with number to my phone.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Find audiobook about history on Youtube, start playing and pause at one hour mark.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, open my document 'letter.docx', attach it to new email and send to my doctor.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Find catalog with garden furniture, download PDF file and put icon on desktop.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Faust, set alarm clock for 7 AM tomorrow morning on computer.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, turn off the light in my room, please.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "How are you feeling today, my dear Faust? Are you tired?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, please buy 2 liters of milk and bread from grocery store.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Remind me to take my pressure pills at 5 o'clock today.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, pay my apartment electricity bill using my bank card.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Who wrote the book Faust, do you know your name history?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, boil the kettle, I want some warm tea now.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Order taxi for me to go to pharmacy at 2 PM.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, tell me a funny joke, I am feeling a bit lonely today.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выключи компьютер completely, I am done looking at monitor.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, is it going to rain outside today? Look out the window.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Order pizza with extra cheese to my home address.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, clean my room, dust is everywhere on the table.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Сделай громче", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Сверни окно", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Сделай тише", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Папка с фото", "target": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Выключи звук", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "На весь экран", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Закрой вкладку", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Поставь на паузу", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Переключи трек", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди трейлер Аватара", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай эту фотку", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Заполни эту форму", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Отправь скрин Даше", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди рецепт пиццы", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Переведи этот текст", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Сохрани картинку", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди отели в Сочи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Открой топ фильмов", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Включи весёлый плейлист", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди смешные мемы", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Отправь документ Владу", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Поставь будильник", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, ты спишь?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Оплати корзину", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Напомни купить чипсы", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Какая завтра погода?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Принеси попкорн", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выключи свет", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Таймер пять минут", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Купи ещё колы", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Где мои ключи?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, пожалуйста, сделай громкость немного потише, а то мы с друзьями пытаемся обсудить эти фотографии, но из-за громкой музыки совсем друг друга не слышим.", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Заблокируй экран компьютера буквально на пару минут, мне нужно отойти на кухню за напитками, и я не хочу, чтобы кто-то случайно что-то нажал.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Фауст, открой сайт YouTube в браузере, мы тут спорим про новый трейлер и я хочу показать его всем на большом экране.", "target": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Покажи, пожалуйста, список всех запущенных процессов, нам стало интересно, какая именно программа так сильно загружает процессор и шумит вентиляторами.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Открой страницу Википедии, пожалуйста, а то мы тут затеяли жаркий спор о том, в каком году вышел этот известный фильм.", "target": "{\"type\":\"open_url\",\"url\":\"https://ru.wikipedia.org\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Будь добр, запусти программу Steam, мы решили показать гостям трейлер новой игры, о которой только что разговаривали.", "target": "{\"type\":\"open_app\",\"appName\":\"steam\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Фауст, открой приложение Telegram, мне прислали отличный ролик в чат, и я хочу вывести его на большой экран для всех.", "target": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Пожалуйста, полностью отключи звук на компьютере на некоторое время, потому что мне звонят по работе и нужно ответить.", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Покажи диспетчер задач или список активных приложений, мы хотим проверить, закрылась ли тяжелая игра до конца.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Открой папку «Загрузки», пожалуйста, мы только что вспоминали про тот PDF-документ, который я скачал вчера вечером.", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Фауст, открывай браузер, найди подробную карту Италии в высоком разрешении, скачай её и сразу открой в просмотрщике фото, чтобы мы с друзьями разметили наш маршрут.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди на YouTube видео с расслабляющей музыкой для фона, включи его на средней громкости и разверни плеер на весь экран, чтобы создать приятную атмосферу.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, зайди на сайт авиакомпании, введи в форме поиска два взрослых билета до Рима на следующие выходные и покажи нам итоговую страницу с ценами.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди в моих документах последний Excel-файл с финансовым отчетом, открой его и пролистай до итоговой диаграммы, чтобы я показал результаты коллегам.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Пожалуйста, найди через поисковик ролик с капибарами, скачай его в максимальном качестве и запусти через VLC-плеер для нашей компании.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, открой Excel, создай пустую таблицу, вбей в первый столбец числа 100, 200 и 300, и построй простую гистограмму, чтобы наглядно объяснить идею друзьям.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди сайт нашей любимой пиццерии, добавь в корзину две Пепперони, подставь мой сохраненный адрес доставки и остановись на шаге оплаты, чтобы мы всё проверили.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, открывай Google Картинки, введи запрос «минималистичные дома», скачай первые три красивые фотографии и открой их вместе во встроенном просмотрщике.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Зайди на сайт онлайн-кинотеатра, авторизуйся под моим профилем, найди второй сезон сериала «Разделение» и включи первую серию на весь экран.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Найди текст стихотворения «Ворон» Эдгара По, скопируй его в Блокнот, сделай шрифт покрупнее и выведи окно на середину экрана для чтения.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, открой почтовый клиент, создай новое черновиковое письмо для моего друга и прикрепи туда последний сделанный скриншот экрана.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Найди пошаговый рецепт классической карбонары, скачай PDF-файл с инструкцией и открой его на большом моните, чтобы мы могли готовить вместе по шагам.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Открой сайт с билетами в театр, выбери спектакль на субботу, отметь два места в центре шестого ряда и покажи нам схему зала с выбранными местами.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Фауст, найди на диске презентацию «Проект_финал.pptx», открой её через PowerPoint и запусти режим демонстрации прямо с пятого слайда.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Перейди на сайт прогноза погоды, укажи город Сочи, сделай скриншот прогноза на десять дней и открой получившуюся картинку на весь экран.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Открой браузер, найди обсуждения лучших настольных игр 2024 года и открывай три самые популярные темы в отдельных вкладках, чтобы мы почитали отзывы.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Скачай свежий драйвер для видеокарты с официального сайта, сохрани его в папку «Загрузки», но сам файл пока не запускай, просто покажи мне папку.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Фауст, мы тут с друзьями заспорили, как ты думаешь, в чём заключается смысл жизни и почему все так стремятся к успеху?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь, пожалуйста, будильник на семь утра на завтра, а то мы засиделись за просмотром фоток и я очень боюсь проспать работу.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, оплати, пожалуйста, заказ на пиццу моей привязанной банковской картой прямо сейчас, а то гости уже совсем проголодались.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Выключи компьютер полностью, мы уже закончили смотреть презентацию и собираемся пойти погулять на улицу.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Напомни мне через два часа, чтобы я переставил напитки в холодильник, а то они не успеют охладиться к приходу остальных гостей.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Расскажи нам с друзьями какую-нибудь смешную шутку или интересную историю, пока я хожу на кухню заваривать чай.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, зайди в мой онлайн-банк и переведи деньги за коммунальные услуги, а то я совсем забыл, что сегодня последний день оплаты.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Подскажи, какая сейчас температура воздуха на улице, чтобы мы с ребятами решили, стоит ли нам выходить на балкон.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Купи, пожалуйста, четыре билета в кино на вечерний сеанс в девять вечера и спиши деньги с моей карты.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, выключи свет в гостиной через систему умного дома, а то блики на большом экране мешают нам смотреть фильм.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Поставь кухонный таймер на пятнадцать минут, чтобы мы не сожгли пиццу в духовке, пока увлекательно беседуем.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Посоветуй хороший ресторан неподалеку от нашего дома, куда мы могли бы переместиться с друзьями для продолжения вечера.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Фауст, переведи компьютер в спящий режим через полчаса, если вдруг мы случайно уснем во время просмотра этого длинного фильма.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Закажи нам такси категории комфорт на четыре человека до центра города прямо сейчас, друзья уже начали собираться.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Расскажи моим гостям, какую музыку я слушал чаще всего в этом году, сделай для нас небольшую аналитическую справку.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Позвони моей маме на мобильный через телефонную связь, я хочу поздравить её с днем рождения на громкой связи вместе со всеми присутствующими.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Open Chrome and go to YouTube.", "target": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "cat": "open_url", "src": "distill"}
+{"phrase": "Take a screenshot real quick.", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "distill"}
+{"phrase": "Faust, show running processes, something is lagging.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "distill"}
+{"phrase": "Lock the screen, I'll be back in two minutes.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Close VLC player.", "target": "{\"type\":\"kill_process\",\"processName\":\"vlc.exe\"}", "cat": "kill_process", "src": "distill"}
+{"phrase": "Открой папку Downloads on desktop.", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Volume up to eighty percent.", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "distill"}
+{"phrase": "Switch to full screen mode.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Faust, open Steam please.", "target": "{\"type\":\"open_app\",\"appName\":\"steam\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Close all open tabs except the current one.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Заблокируй экран.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "distill"}
+{"phrase": "Open Spotify app.", "target": "{\"type\":\"open_app\",\"appName\":\"spotify\"}", "cat": "open_app", "src": "distill"}
+{"phrase": "Faust, find the trailer for Interstellar on YouTube and put it on fullscreen.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Search for cheap flights to Bali on Skyscanner and show me the best option.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Faust, download the latest version of Blender from their official site.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Find that meme photo with the cat in Downloads folder and open it.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Google the weather in Tokyo for tomorrow and open the first result.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Faust, найди наш презентационный pdf в Telegram и скачай его.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Go to Reddit, find top posts in r/gaming today and open the top one.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Open Figma, find the project named Marketing Board and open the last page.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Find a lo-fi chill playlist on Spotify and hit play.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Search for the pizza menu on Dominoes, add two Pepperonis to cart and show me checkout.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Go to IMDb, search for Dune Part Two and show the cast list.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Find my recent photos from vacation in the cloud and launch a slideshow.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Faust, open WhatsApp Web and send 'We are starting' to Alex.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Download the attached PDF from my last email and open it in Adobe Reader.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "distill"}
+{"phrase": "Find the official rules of Catan online and scroll down to the setup section.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Search YouTube for 4K nature relaxation video and play it.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "distill"}
+{"phrase": "Faust, what do you think about this movie?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Order three pizzas with extra cheese to my address.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Set an alarm for 8 AM tomorrow morning.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Pay my electricity bill using my saved card.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Who played Neo in the Matrix?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, tell my friends a funny joke.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Buy two tickets for the movie on Friday.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Can you order us an Uber to the city center?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, do you like hanging out with us?", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Отключи питание компьютера.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Transfer 50 dollars to John via PayPal.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}
+{"phrase": "Faust, set a timer for 15 minutes for the pizza.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "distill"}

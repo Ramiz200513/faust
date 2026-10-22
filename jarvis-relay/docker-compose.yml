@@ -1,0 +1,74 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: jarvis-relay-db
+    environment:
+      POSTGRES_DB: jarvis
+      # Значения по умолчанию совпадают с тем, что было раньше (jarvis/jarvis) —
+      # если .env нет вообще, ничего не ломается. Задай свои в .env, только пока
+      # база создаётся с нуля: смена пароля тут не переучивает уже существующий
+      # том jarvis-db-data.
+      POSTGRES_USER: ${JARVIS_DB_USER:-jarvis}
+      POSTGRES_PASSWORD: ${JARVIS_DB_PASSWORD:-jarvis}
+    ports:
+      - "5432:5432"
+    volumes:
+      - jarvis-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jarvis -d jarvis"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+  relay:
+    build: .
+    container_name: jarvis-relay
+    depends_on:
+      postgres:
+        # Ждём не просто "контейнер запущен", а именно "healthcheck говорит ОК" —
+        # иначе релей может успеть постучаться в ещё не готовую Postgres.
+        condition: service_healthy
+    environment:
+      JARVIS_DB_URL: jdbc:postgresql://postgres:5432/jarvis
+      JARVIS_DB_USER: ${JARVIS_DB_USER:-jarvis}
+      JARVIS_DB_PASSWORD: ${JARVIS_DB_PASSWORD:-jarvis}
+      # Секреты — только из .env (см. .env.example). Если .env нет, берём тот
+      # же дефолт, что и раньше в application.yml/скриптах, чтобы первый запуск
+      # не падал; для реального использования вне localhost задай свой в .env.
+      JARVIS_ADMIN_TOKEN: ${JARVIS_ADMIN_TOKEN:-dev-admin-change-me}
+      # true -> новый ПК подключается сам, без кода от администратора
+      # (см. jarvis.open-registration в application.yml). Выключено по
+      # умолчанию: включай, понимая, что регистрировать агента сможет любой,
+      # кто знает адрес этого релея.
+      JARVIS_OPEN_REGISTRATION: ${JARVIS_OPEN_REGISTRATION:-false}
+      JARVIS_LLM_API_KEY: ${JARVIS_LLM_API_KEY:-}
+      JARVIS_LLM_MODEL: ${JARVIS_LLM_MODEL:-gemini-3.6-flash}
+      # Своя дообученная модель разбора фраз (Ollama на этом же компьютере).
+      # auto — сначала она, при неудаче Gemini; local — без интернета; gemini — как раньше.
+      JARVIS_INTENT_ENGINE: ${JARVIS_INTENT_ENGINE:-auto}
+      JARVIS_LOCAL_LLM_URL: ${JARVIS_LOCAL_LLM_URL:-http://host.docker.internal:11434}
+      JARVIS_LOCAL_LLM_MODEL: ${JARVIS_LOCAL_LLM_MODEL:-faust-intent}
+      JARVIS_LOCAL_LLM_MIN_CONFIDENCE: ${JARVIS_LOCAL_LLM_MIN_CONFIDENCE:-0.9}
+      JARVIS_LOCAL_LLM_TRUST_UNKNOWN_ABOVE: ${JARVIS_LOCAL_LLM_TRUST_UNKNOWN_ABOVE:-2.0}
+      JARVIS_FORBIDDEN_GOALS: ${JARVIS_FORBIDDEN_GOALS:-true}
+    # Чтобы из контейнера была видна Ollama, работающая на самом компьютере.
+    # Docker Desktop знает это имя и так; строка нужна для Linux-сервера.
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8080:8080"
+    healthcheck:
+      # Полноценного /actuator/health в проекте нет, поэтому проверяем самое
+      # простое: слушает ли процесс порт 8080. /dev/tcp — это возможность
+      # самого bash (он есть в базовом образе eclipse-temurin), сторонние
+      # утилиты (curl/wget) для этого не нужны.
+      test: ["CMD-SHELL", "bash -c 'echo > /dev/tcp/127.0.0.1/8080' || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 20s
+    restart: unless-stopped
+
+volumes:
+  jarvis-db-data:

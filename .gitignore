@@ -1,0 +1,49 @@
+# Общий .gitignore проекта «Фауст» (монорепозиторий: приложение, релей, агент, ML).
+# Принцип: в git — только то, что написано руками и нельзя быстро получить заново.
+# Сборки, кэши, веса моделей и секреты — мимо.
+
+# --- секреты: никогда в репозиторий ---
+.env
+*.env.local
+local.properties
+token.properties
+*.keystore
+*.jks
+
+# --- сборки и кэши Gradle / IDE ---
+.gradle/
+build/
+out/
+.kotlin/
+captures/
+.idea/
+.vs/
+*.iml
+.DS_Store
+Thumbs.db
+
+# --- Python ---
+.venv/
+__pycache__/
+*.pyc
+
+# --- ML: веса и промежуточные результаты обучения ---
+# Базовые модели скачиваются заново (3,9 ГБ), адаптеры LoRA и чекпоинты
+# воспроизводятся train.py; готовые версии живут в Ollama (faust-intent-v1/v2/v3).
+jarvis-ml/models/
+jarvis-ml/runs/*/
+*.gguf
+*.safetensors
+*.bin
+*.pt
+# Логи и отчёты обучения (runs/*.log, *.md, current.json) — оставляем: это цифры для диплома.
+
+# Конвертер llama.cpp — отдельный чужой git-клон, ставится заново по README jarvis-ml.
+jarvis-ml/llama.cpp/
+
+# --- помощник UI Automation (C#) ---
+bin/
+obj/
+
+# Готовая сборка помощника UIA (dotnet publish) — пересобирается из Program.cs
+jarvis-agent/uia-helper/publish/

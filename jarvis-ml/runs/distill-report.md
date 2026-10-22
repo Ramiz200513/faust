@@ -1,0 +1,378 @@
+# Дистилляция: наша модель faust-intent-v1 и Gemini на живых фразах
+
+Фраз с разметкой Gemini: 1426 (ещё без разметки: 0, разметка не годится: 0).
+Наша модель согласна с Gemini: 1110 из 1426 (77.8%).
+В обучение: 1199, в экзамен Б: 201.
+
+## Расхождения (Gemini -> наша модель)
+
+- agent_task -> agent_task: 137
+- unknown -> agent_task: 36
+- screenshot -> agent_task: 27
+- open_app -> open_app: 17
+- open_app -> agent_task: 16
+- kill_process -> kill_process: 15
+- agent_task -> kill_process: 15
+- agent_task -> unknown: 13
+- set_volume -> set_volume: 11
+- agent_task -> open_app: 9
+- agent_task -> open_url: 7
+- open_url -> open_url: 7
+- open_url -> agent_task: 5
+- agent_task -> screenshot: 4
+- agent_task -> set_volume: 4
+- kill_process -> agent_task: 3
+- screenshot -> screenshot: 3
+- unknown -> open_url: 2
+- agent_task -> lock_screen: 2
+- unknown -> lock_screen: 2
+- list_processes -> agent_task: 1
+- unknown -> set_volume: 1
+- kill_process -> unknown: 1
+- open_app -> open_url: 1
+- set_volume -> agent_task: 1
+- open_url -> open_app: 1
+- list_processes -> open_app: 1
+
+- [обучение] «Найди и скачай ГОСТ» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.99): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Скачай лекции по матану» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.91): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Скачай шпаргалку по физике» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Загрузи курсовую на диск» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.81): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Скачай презентацию по истории» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.95): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Скачай методичку по терверу» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.93): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Найди и скинь учебник» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.98): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «закрои все вкладки в хроме» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.97): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «фауст найди в гугле методичку по физике за третий семестр и скачай ее в документы» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «зайди на сайт библиотеки найди книгу по правоведению и скачай главу два» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.72): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «найди в браузере гост по оформлению диплома и скачай файл образца» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «зайди на форму отправки лабораторных прикрепи файл лаба три и нажми отправить» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Помоги мне, пожалуйста: зайди в электронную библиотеку, найди учебник по матaнализу и скачай третью главу.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.99): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Будь добр, найди на видеохостинге часовую запись с фоновой музыкой для концентрации, включи её и сделай громкость на 30 процентов.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (1.00): `{"type":"agent_task","scope":"browser"}`
+- [экзамен Б] «Фауст, зайди в личный кабинет студента, найди там текущую ведомость с оценками за семестр и сделай её скриншот.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, зайди на форму регистрации на студенческую конференцию, заполни мои имя и фамилию и сохрани как черновик.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.81): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, открой сайт университета, зайди в раздел расписания для нашей группы и скачай график предстоящей сессии.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, зайди на сайт онлайн-переводчика, переведи вот эту вводную статью с английского на русский и сохрани текст.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.99): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Открой Jira, найди таску 404 и переведи ее в статус In Progress.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.99): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Открой сайт банка, авторизуйся через SMS и скачай выписку по счету за месяц.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.99): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Заполни форму на сайте тестировщиков дефолтными данными и отправь отчет.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Зайди в Гугл Доки, создай новый документ и напиши туда 'ТЗ для фронтендера'.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Открой консоль AWS, найди инстанс prod-01 и сделай ему рестарт.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Пожалуйста, зайди на сайт Docker Hub, найди образ PostgreSQL последней версии и скачай его, чтобы я мог развернуть базу данных.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «Будь добр, зайди в трекер задач, создай новую карточку с заголовком «Исправление бага с авторизацией» и назначь ее на меня.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.99): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Пожалуйста, заполни тестовую форму регистрационными данными на локальном сервере и нажми кнопку отправки, чтобы проверить работу бэкенда.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.88): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «открой стэковерфлоу найди ошибку сегфолт в с++ и скопируй первый ответ» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.97): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «открой хром найди документацию по docker compose и открой вкладку с сервисами» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.99): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «найди в гугле курс доллара качни график за месяц и сохрани картинку» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «зади в ноушн найди страницу с доками API и скопируй ссылку в буфер» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «найди субтитры к этому фильму на русском и подгрузи в плеер» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.87): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «фауст открой почту найди письмо от банка и скачай прикрепленный файл» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «скачай с торрента новую серию сериала и открой ее в кмплеере» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.98): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «найди сабы к этому фильму русские и скачай» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «скачай торрент с фильмам и открой загрузку» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.91): `{"type":"agent_task","scope":"browser"}`
+- [экзамен Б] «открой почту найди письмо от сбера и скачай чек» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «заполни форму обратной связи на сайте и отправь» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «найди расписание афиши на завтра и открой вкладку» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.90): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «скачай след серию и вруби в плеере» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.97): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «найди книгу в fb2 качни в загрузки» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «Switch tab in browser.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.91): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Faust, open Google Docs, create new file and title it Movie Notes.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Go to Kinopoisk, find rating for Batman and screenshot it.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.81): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Open Gmail, check unread emails and reply to boss that I am sick today.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Find subtitles for this movie in English and load them.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (1.00): `{"type":"agent_task","scope":"browser"}`
+- [экзамен Б] «Open Spotify, find playlist Chill Vibes and hit shuffle play.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.97): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Скачай акт из почты» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Найди шаблон договора» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (1.00): `{"type":"agent_task","scope":"browser"}`
+- [экзамен Б] «Скачай таблицу за квартал» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Найди счет от Матрицы» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (1.00): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Скачай презентацию проекта» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Найди контакты Иванова» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (1.00): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Фауст, откроешь Google Таблицы, заполнишь в первой строке сегодняшнюю дату и скачаешь файл в формате XLSX?» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Faust, go to Trello, move card Q3 Review to Done, and leave a comment Task Completed.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.72): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Open Google Docs, create a file called Meeting Notes, write today's date on top, and share with team.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Faust, check Notion for unassigned tasks, set status to In Progress for the top one, and assign it to me.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Скачай свежий драйвер» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.72): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Скачай патч Доты» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.84): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Скачай повтор катки» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Скачай конфиг про игрока» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Сохрани клип» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.58): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Найди сайт с гайдами по Геншину, найди промокоды за этот месяц и заполни их у меня в аккаунте.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.97): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, открой сайт с музыкой, найди плейлист для потёртых каток и поставь на воспроизведение.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.96): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Открой сайт турнира, найди сетку плей-офф, сделай скриншот именно таблицы и выведи на монитор.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «найди повтор последней игры и скачай демо» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «заполни форму на турнир и отправь заявку» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «найди музыку для катки скачай плейлист в мп3» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «найди где дешевле купить гифт киберпанка и открой вкладку» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.92): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «переведи описание абилки с реддита и скопируй в буфер» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Слушай, зайди на Хабр, найди статьи про питон за неделю и закинь их в закладки.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Зайди на Госуслуги, проверь штрафы и если есть — скрин мне сделай.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.92): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Зайди в хром, открой все вчерашние вкладки и закрепи первую.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «закрой все вкладки кроме первой» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «доброе утро найди свежие новости и открой почту» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.99): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «найди в интернете рецепт яичницы и скачай фото» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «открой почту найди письмо от начальника и скачай файл» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «фауст зайди на сайт банка и скачай выписку за месяц» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.70): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «зайди на авито найди кофеварку и скинь ссылку» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.90): `{"type":"agent_task","scope":"browser"}`
+- [экзамен Б] «найди свежий подкаст про технологии скачай и включи» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (1.00): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «фауст зайди на гисметео посмотри погоду и открой календарь» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (1.00): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Faust, open Google Docs, create a new doc named Morning Notes and write 'Today tasks:'.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Find the latest release build on GitHub and download the zip file.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Go to Gmail, check if there's any unread email from my boss, and reply 'I am online'.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.99): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Download latest invoice from AWS console and save it to Documents.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Find today weather forecast for Moscow in Chrome and make a screenshot.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.89): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Open Notion, create a page called Standup and paste clipboard text there.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, заполни форму на сайте delivery и отправь заявку.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Скачай торрент из закладок» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.96): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Заполни форму и отправь» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Найди и скачай презентацию» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.95): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Найди реферат, сохрани» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «Скачай трек из ВК» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.52): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Рендери видео и выгружай» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (1.00): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Найди картинки и сохрани» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «зайди на гисметео посмотри погоду на завтра скачай график и закрой вкладку» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «зайди на сайт почты найди трек номер скопируй его и закрой браузер» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Пожалуйста, зайди в мою рабочую почту в браузере, найди там последнюю форму отчета, заполни текущую дату и отправь её моему руководителю Иван Ивановичу.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Пока я бегаю в аптеку, найди на сайте университета списки поступивших, найди там фамилию Иванов и сделай скриншот этой строки.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.77): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Будь добр, зайди в Гугл Документы, создай новый файл с названием 'Идеи для отпуска', напиши туда заголовки 'Отели' и 'Билеты' и оставь открытым.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Пожалуйста, зайди на сайт с погодой, найди прогноз для Сочи на всю следующую неделю, сохрани эту страницу в закладки и сделай скриншот.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.84): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Поставь браузер на весь экран, а то мелкое всё.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.96): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Закрой все вкладки в Хроме, кроме последней.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.89): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Открой Гугл Доки, найди файл Список покупок и допиши туда сливки 20 процентов.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Найди на Авито дешёвый блендер в нашем районе и скинь ссылку в избранное.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Короче, зайди на сайт Госуслуг, скачай там последнюю квитанцию и сохрани в Загрузки.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Зайди в почту, найди письмо от начальника с темой Отчет и скачай оттуда пдфку.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Слушай, найди в инете сколько грамм соли в чайной ложке и выведи крупно на экран.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.99): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «Будь добр, зайди на сайт с кулинарными конвертерами, переведи 150 грамм муки в столовые ложки и зачитай мне результат.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, открой браузер, найди свежие новости про погоду на завтра в нашем регионе и зачитай мне краткий анонс.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Найди, пожалуйста, в Гугле рецепт соуса песто, заполни форму обратной связи на сайте своим отзывом и отправь.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Будь любезен, открой браузер, найди таймер на 45 минут онлайн, запусти его и сделай так, чтобы он подал громкий сигнал.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, найди в поиске, чем можно заменить яйца в бисквите, отфильтруй самые популярные ответы и прочитай мне вслух.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.71): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «скачай с торрента последнюю серию джентльменов» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.99): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «фауст найди аккорды к пачке сигарет и сделай крупный шрифт» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «скачай мне сериалы про любовь на вечер и включи первый» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.94): `{"type":"agent_task","scope":"browser"}`
+- [экзамен Б] «найди фильм девчата скачай в хорошем качестве и открой» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (1.00): `{"type":"agent_task","scope":"browser"}`
+- [экзамен Б] «зайди на сайт поликлиники и запиши меня к терапевту на утро» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «закрои все вкладки» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «найди в интернете песню зыкиной и скачай на рабочий стол» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «фауст найди сайт пенсеоного фонда заполни заявление на перерасчет и отправь» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «зайди в однокласники найди таню иванову и отправь ей открытку с днем рождения» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «открои вк найди группу садоводов и напиши вопрос про помидоры» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.95): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Faust, search for cheap train tickets to Dacha for next Friday and write down prices.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.92): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Закрой вкладку» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Скачай эту фотку» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.99): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Сохрани картинку» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.89): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «Скачай этот файл» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, открывай Google Картинки, введи запрос «минималистичные дома», скачай первые три красивые фотографии и открой их вместе во встроенном просмотрщике.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.61): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Перейди на сайт прогноза погоды, укажи город Сочи, сделай скриншот прогноза на десять дней и открой получившуюся картинку на весь экран.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.69): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Открой браузер, найди обсуждения лучших настольных игр 2024 года и открывай три самые популярные темы в отдельных вкладках, чтобы мы почитали отзывы.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Close all open tabs except the current one.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Faust, download the latest version of Blender from their official site.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.76): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Find that meme photo with the cat in Downloads folder and open it.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.53): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Open Figma, find the project named Marketing Board and open the last page.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.97): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Find a lo-fi chill playlist on Spotify and hit play.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (1.00): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Find my recent photos from vacation in the cloud and launch a slideshow.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.52): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Faust, open WhatsApp Web and send 'We are starting' to Alex.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «закрои браузер телеграм и зум» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.42): `{"type":"kill_process","processName":"telegram.exe"}`
+- [обучение] «Фауст, пожалуйста, закрой программу для видеомонтажа, я уже закончил рендер и она просто так расходует память.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.20): `{"type":"kill_process","processName":"videojs.exe"}`
+- [обучение] «Close this window.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.52): `{"type":"kill_process","processName":"mspaint.exe"}`
+- [обучение] «Замуть дискорд» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.98): `{"type":"kill_process","processName":"discord.exe"}`
+- [обучение] «закрой браузер и телеграм» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.97): `{"type":"kill_process","processName":"telegram.exe"}`
+- [обучение] «фауст закрои все сверни окна» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.20): `{"type":"kill_process","processName":"winms2.exe"}`
+- [обучение] «Закрой все окна» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.49): `{"type":"kill_process","processName":"mspaint.exe"}`
+- [обучение] «Закрой Вконтакте» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.63): `{"type":"kill_process","processName":"vk.exe"}`
+- [обучение] «закрой телеграм и стим» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (1.00): `{"type":"kill_process","processName":"telegram.exe"}`
+- [обучение] «закрой все открытые программы» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.51): `{"type":"kill_process","processName":"mspaint.exe"}`
+- [обучение] «Будь любезен, закрой программу для видеомонтажа, а то я уже опаздываю на автобус, а она сильно греет процессор.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.27): `{"type":"kill_process","processName":"viber.exe"}`
+- [экзамен Б] «выключи это окно с рекламой крестик не вижу» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.45): `{"type":"kill_process","processName":"browser.exe"}`
+- [обучение] «закрои эту программу» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.34): `{"type":"kill_process","processName":"mspaint.exe"}`
+- [экзамен Б] «Close this program window right now, I don't need it.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.79): `{"type":"kill_process","processName":"mspaint.exe"}`
+- [экзамен Б] «Будь любезен, закрой окно графического редактора, оно сейчас только занимает место на экране и отвлекает гостей от презентации.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.70): `{"type":"kill_process","processName":"mspaint.exe"}`
+- [обучение] «Открой Chrome и залочь экран, please.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.99): `{"type":"lock_screen"}`
+- [обучение] «сделай скрин и заблокируй учетку» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.32): `{"type":"lock_screen","scope":"screen"}`
+- [обучение] «Открой папку с текущим проектом на диске D.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.45): `{"type":"open_app","appName":"параметры"}`
+- [обучение] «открой папку с проектом на диске д» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.46): `{"type":"open_app","appName":"параметры"}`
+- [экзамен Б] «Open Excel and my Downloads folder side by side.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.63): `{"type":"open_app","appName":"excel"}`
+- [обучение] «Open my Documents folder, subfolder Reports 2024.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.92): `{"type":"open_app","appName":"документы"}`
+- [обучение] «Open Telegram and Discord, please.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.92): `{"type":"open_app","appName":"telegram","appName":"discord"}`
+- [обучение] «Close Spotify and open Apple Music.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.49): `{"type":"open_app","appName":"apple music"}`
+- [обучение] «Open Chrome with my main work profile.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.99): `{"type":"open_app","appName":"chrome"}`
+- [обучение] «Фауст, открой папку Projects на рабочем столе.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.45): `{"type":"open_app","appName":"параметры"}`
+- [обучение] «Переключи трек» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.29): `{"type":"open_app","appName":"track"}`
+- [обучение] «открой сайт нашего университета» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.23): `{"type":"open_url","url":"https://university.com"}`
+- [обучение] «Отправь отчёт Булгакову» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.04): `{"type":"open_url","url":"https://ok.ru"}`
+- [обучение] «Будь так любезен, открой сайт корпоративной почты, мне нужно срочно проверить, пришло ли письмо от юристов.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.80): `{"type":"open_url","url":"https://mail.ru"}`
+- [экзамен Б] «Open Jira board in Google Chrome.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.00): `{"type":"open_url","url":"https://chris.ch/jquery-ui.js"}`
+- [обучение] «Отправь статистику клану» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.39): `{"type":"open_url","url":"https://kolesa.kz"}`
+- [обучение] «открой ютуб на большом экране» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (1.00): `{"type":"open_url","url":"https://youtube.com"}`
+- [обучение] «Открой топ фильмов» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.07): `{"type":"open_url","url":"https://topfilms.kz"}`
+- [обучение] «открой сайт гидрометцентра и заскринь» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.83): `{"type":"screenshot"}`
+- [обучение] «На весь экран» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (1.00): `{"type":"screenshot"}`
+- [обучение] «Отправь скрин Даше» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (1.00): `{"type":"screenshot"}`
+- [экзамен Б] «Сделай скриншот and save it to Pictures.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.55): `{"type":"screenshot"}`
+- [экзамен Б] «Open Spotify app and turn up the volume slightly.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.62): `{"type":"set_volume","level":80}`
+- [обучение] «замуть микрофон в винде» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.95): `{"type":"set_volume","level":0}`
+- [экзамен Б] «Музыку на паузу» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.87): `{"type":"set_volume","level":0}`
+- [экзамен Б] «Включи фоновую музыку» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.57): `{"type":"set_volume","level":0}`
+- [экзамен Б] «Отправь отчёт преподу» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.50): `{"type":"unknown"}`
+- [обучение] «Заполни заявку на повышенную» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.71): `{"type":"unknown"}`
+- [обучение] «паузу поставь» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.49): `{"type":"unknown"}`
+- [экзамен Б] «Сделай full screen.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.33): `{"type":"full_screen"}`
+- [обучение] «Pause movie.» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.53): `{"type":"pause"}`
+- [обучение] «Заполни свежую смету» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.93): `{"type":"unknown"}`
+- [обучение] «Выгрузи реестр за май» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.99): `{"type":"unknown"}`
+- [обучение] «Отправь сверку бухгалтеру» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.66): `{"type":"unknown"}`
+- [обучение] «Будь так любезен, включи мне какую-нибудь расслабляющую музыку для концентрации, а то шум в open-space очень отвлекает.» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.99): `{"type":"unknown"}`
+- [обучение] «фауст пауза» — Gemini: `{"type": "agent_task", "scope": "screen"}`, наша (0.66): `{"type":"unknown"}`
+- [обучение] «Заполни эту форму» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.95): `{"type":"unknown"}`
+- [обучение] «Включи весёлый плейлист» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.90): `{"type":"unknown"}`
+- [экзамен Б] «Загрузи свежий выпуск» — Gemini: `{"type": "agent_task", "scope": "browser"}`, наша (0.91): `{"type":"unknown"}`
+- [обучение] «Закрой, пожалуйста, браузер, а то у меня там открыта сотня вкладок и они ужасно отвлекают от написания диплома.» — Gemini: `{"type": "kill_process", "processName": "chrome.exe"}`, наша (0.50): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Будь добр, закрой текстовый редактор Word, я там уже все сохранил перед тем, как идти на кухню.» — Gemini: `{"type": "kill_process", "processName": "winword.exe"}`, наша (0.93): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «закрой эту хновину на экране как ее там браузер» — Gemini: `{"type": "kill_process", "processName": "chrome.exe"}`, наша (0.88): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Закрой браузер» — Gemini: `{"type": "kill_process", "processName": "chrome.exe"}`, наша (0.95): `{"type":"kill_process","processName":"browser.exe"}`
+- [обучение] «Закрой фигму, она мне на сегодня больше не нужна.» — Gemini: `{"type": "kill_process", "processName": "figma.exe"}`, наша (0.31): `{"type":"kill_process","processName":"figma.js"}`
+- [обучение] «закрои браузер» — Gemini: `{"type": "kill_process", "processName": "chrome.exe"}`, наша (0.96): `{"type":"kill_process","processName":"browser.exe"}`
+- [обучение] «закрой фигму» — Gemini: `{"type": "kill_process", "processName": "figma.exe"}`, наша (0.31): `{"type":"kill_process","processName":"figma.js"}`
+- [обучение] «закрой плеер» — Gemini: `{"type": "kill_process", "processName": "player.exe"}`, наша (0.51): `{"type":"kill_process","processName":"mspaint.exe"}`
+- [обучение] «закррй браузер» — Gemini: `{"type": "kill_process", "processName": "chrome.exe"}`, наша (0.97): `{"type":"kill_process","processName":"browser.exe"}`
+- [обучение] «закрой кмп плеер» — Gemini: `{"type": "kill_process", "processName": "kmplayer.exe"}`, наша (0.64): `{"type":"kill_process","processName":"mspaint.exe"}`
+- [обучение] «Закрой 1С» — Gemini: `{"type": "kill_process", "processName": "1c.exe"}`, наша (0.18): `{"type":"kill_process","processName":"onecms.exe"}`
+- [обучение] «Faust, close all open Acrobat Reader windows.» — Gemini: `{"type": "kill_process", "processName": "acrord32.exe"}`, наша (1.00): `{"type":"kill_process","processName":"acrobat.exe"}`
+- [обучение] «Фауст, закрой полностью браузер, только ресурсы жрёт.» — Gemini: `{"type": "kill_process", "processName": "chrome.exe"}`, наша (0.55): `{"type":"kill_process","processName":"browser.exe"}`
+- [обучение] «Фауст, закрой фигму, она мне пока не нужна.» — Gemini: `{"type": "kill_process", "processName": "figma.exe"}`, наша (0.29): `{"type":"kill_process","processName":"figma.js"}`
+- [обучение] «Слушай, закрой этот гребаный браузер, он память жрет.» — Gemini: `{"type": "kill_process", "processName": "chrome.exe"}`, наша (0.94): `{"type":"kill_process","processName":"browser.exe"}`
+- [обучение] «Закрой нафиг Спотифай, чёт лагает жестко.» — Gemini: `{"type": "kill_process", "processName": "spotify.exe"}`, наша (0.44): `{"type":"kill_process","processName":"firefox.exe"}`
+- [обучение] «закрой браузер нафиг» — Gemini: `{"type": "kill_process", "processName": "chrome.exe"}`, наша (0.94): `{"type":"kill_process","processName":"browser.exe"}`
+- [обучение] «Close browser with all tabs right now, please.» — Gemini: `{"type": "kill_process", "processName": "chrome.exe"}`, наша (0.81): `{"type":"kill_process","processName":"browser.exe"}`
+- [обучение] «Фауст, выруби Телегу, задолбали уведомления капать.» — Gemini: `{"type": "kill_process", "processName": "telegram.exe"}`, наша (0.49): `{"type":"unknown"}`
+- [экзамен Б] «покажи че там по процессам в диспетчере» — Gemini: `{"type": "list_processes"}`, наша (0.94): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Show me what is working on my computer, open task manager.» — Gemini: `{"type": "list_processes"}`, наша (0.52): `{"type":"open_app","appName":"taskmgr"}`
+- [обучение] «Открой папку «Учёба 2024», она у меня лежит на рабочем столе, хочу взять оттуда один нужный файл.» — Gemini: `{"type": "open_app", "appName": "учеба 2024"}`, наша (0.69): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: произвольная папка — open_app таких не открывает] «Открой папку «Учёба 2024», она у меня лежит на рабочем столе, хочу взять оттуда один нужный файл.» — Gemini: `{"type": "open_app", "appName": "учеба 2024"}`, наша (0.69): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Открой Хром, задолбал этот дефолтный браузер.» — Gemini: `{"type": "open_app", "appName": "chrome"}`, наша (0.97): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Открой, пожалуйста, папку с проектом на диске D, мне нужно срочно проверить конфигурационные файлы перед релизом.» — Gemini: `{"type": "open_app", "appName": "папка с проектом на диске d"}`, наша (0.97): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: произвольная папка — open_app таких не открывает] «Открой, пожалуйста, папку с проектом на диске D, мне нужно срочно проверить конфигурационные файлы перед релизом.» — Gemini: `{"type": "open_app", "appName": "папка с проектом на диске d"}`, наша (0.97): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Открой, пожалуйста, папку «Загрузки», я только что скомпилировал билды и хочу найти свежий архив.» — Gemini: `{"type": "open_app", "appName": "загрузки"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Пожалуйста, открой калькулятор, мне тут нужно быстро пересчитать смету для нового проекта.» — Gemini: `{"type": "open_app", "appName": "calc"}`, наша (0.95): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, открой папку 'Договоры 2024', мне нужно сверять номера документов перед отправкой.» — Gemini: `{"type": "open_app", "appName": "договоры 2024"}`, наша (0.96): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: произвольная папка — open_app таких не открывает] «Фауст, открой папку 'Договоры 2024', мне нужно сверять номера документов перед отправкой.» — Gemini: `{"type": "open_app", "appName": "договоры 2024"}`, наша (0.96): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Открой, пожалуйста, папку 'Документы 2024', мне вечером нужно будет срочно перепроверить один договор, пусть висит открытой.» — Gemini: `{"type": "open_app", "appName": "документы 2024"}`, наша (0.99): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: произвольная папка — open_app таких не открывает] «Открой, пожалуйста, папку 'Документы 2024', мне вечером нужно будет срочно перепроверить один договор, пусть висит открытой.» — Gemini: `{"type": "open_app", "appName": "документы 2024"}`, наша (0.99): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Открой, пожалуйста, папку Загрузки, я туда вроде бы сохранял файл с инструкцией к новой мультиварке.» — Gemini: `{"type": "open_app", "appName": "загрузки"}`, наша (0.96): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «открой документ ворд мне попечатать надо» — Gemini: `{"type": "open_app", "appName": "word"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Будь добр, запусти программу Steam, мы решили показать гостям трейлер новой игры, о которой только что разговаривали.» — Gemini: `{"type": "open_app", "appName": "steam"}`, наша (0.77): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, открой приложение Telegram, мне прислали отличный ролик в чат, и я хочу вывести его на большой экран для всех.» — Gemini: `{"type": "open_app", "appName": "telegram"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Открой папку «Загрузки», пожалуйста, мы только что вспоминали про тот PDF-документ, который я скачал вчера вечером.» — Gemini: `{"type": "open_app", "appName": "загрузки"}`, наша (0.73): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Папку Учёба» — Gemini: `{"type": "open_app", "appName": "учеба"}`, наша (0.11): `{"type":"open_app","appName":"документы"}`
+- [ВЫБРОШЕНО: произвольная папка — open_app таких не открывает] «Папку Учёба» — Gemini: `{"type": "open_app", "appName": "учеба"}`, наша (0.11): `{"type":"open_app","appName":"документы"}`
+- [обучение] «открой проводник папку курсовая» — Gemini: `{"type": "open_app", "appName": "курсовая"}`, наша (0.00): `{"type":"open_app","appName":"курсовая посыл"}`
+- [ВЫБРОШЕНО: произвольная папка — open_app таких не открывает] «открой проводник папку курсовая» — Gemini: `{"type": "open_app", "appName": "курсовая"}`, наша (0.00): `{"type":"open_app","appName":"курсовая посыл"}`
+- [обучение] «Будь так любезен, открой терминал, мне нужно запустить локальный сервер для тестирования API.» — Gemini: `{"type": "open_app", "appName": "терминал"}`, наша (0.28): `{"type":"open_app","appName":"terminal"}`
+- [обучение] «фауст открой папку с фильмами» — Gemini: `{"type": "open_app", "appName": "фильмы"}`, наша (0.53): `{"type":"open_app","appName":"изображения"}`
+- [ВЫБРОШЕНО: произвольная папка — open_app таких не открывает] «фауст открой папку с фильмами» — Gemini: `{"type": "open_app", "appName": "фильмы"}`, наша (0.53): `{"type":"open_app","appName":"изображения"}`
+- [обучение] «папку с видео открой» — Gemini: `{"type": "open_app", "appName": "видео"}`, наша (0.22): `{"type":"open_app","appName":"video"}`
+- [ВЫБРОШЕНО: произвольная папка — open_app таких не открывает] «папку с видео открой» — Gemini: `{"type": "open_app", "appName": "видео"}`, наша (0.22): `{"type":"open_app","appName":"video"}`
+- [обучение] «Папку Отчёты открой» — Gemini: `{"type": "open_app", "appName": "отчеты"}`, наша (0.05): `{"type":"open_app","appName":"отчет"}`
+- [ВЫБРОШЕНО: произвольная папка — open_app таких не открывает] «Папку Отчёты открой» — Gemini: `{"type": "open_app", "appName": "отчеты"}`, наша (0.05): `{"type":"open_app","appName":"отчет"}`
+- [обучение] «Открой папку скриншотов» — Gemini: `{"type": "open_app", "appName": "скриншоты"}`, наша (0.93): `{"type":"open_app","appName":"screenshot"}`
+- [ВЫБРОШЕНО: произвольная папка — open_app таких не открывает] «Открой папку скриншотов» — Gemini: `{"type": "open_app", "appName": "скриншоты"}`, наша (0.93): `{"type":"open_app","appName":"screenshot"}`
+- [экзамен Б] «Ну-ка открой папку с играми на диске D.» — Gemini: `{"type": "open_app", "appName": "игры"}`, наша (0.48): `{"type":"open_app","appName":"изображения"}`
+- [обучение] «Слушай, открой Проводник на диске Д.» — Gemini: `{"type": "open_app", "appName": "диск d"}`, наша (0.98): `{"type":"open_app","appName":"explorer"}`
+- [ВЫБРОШЕНО: произвольная папка — open_app таких не открывает] «Слушай, открой Проводник на диске Д.» — Gemini: `{"type": "open_app", "appName": "диск d"}`, наша (0.98): `{"type":"open_app","appName":"explorer"}`
+- [экзамен Б] «Открой папку «Отпуск 2023» на рабочем столе, чтобы я мог показать друзьям наши фотографии с моря.» — Gemini: `{"type": "open_app", "appName": "отпуск 2023"}`, наша (0.29): `{"type":"open_app","appName":"изображения"}`
+- [обучение] «Фауст, включи, пожалуйста, Яндекс Музыку, а то в полной тишине чистить эту гору картошки как-то совсем грустно.» — Gemini: `{"type": "open_app", "appName": "яндекс музыка"}`, наша (0.76): `{"type":"open_url","url":"https://music.yandex.ru"}`
+- [обучение] «Фауст, открой сайт КиберЛенинки, мне срочно нужно найти пару рецензируемых статей по теме моего проекта.» — Gemini: `{"type": "open_url", "url": "https://cyberleninka.ru"}`, наша (0.97): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Будь добр, открой сайт Stack Overflow, мне срочно нужно найти решение одной неприятной проблемы с асинхронностью.» — Gemini: `{"type": "open_url", "url": "https://stackoverflow.com"}`, наша (0.55): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Открой, пожалуйста, сайт КонсультантПлюс, мне необходимо быстро найти одну статью из Трудового кодекса.» — Gemini: `{"type": "open_url", "url": "https://consultant.ru"}`, наша (0.98): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Запусти Твич, посмотрим чё там на стриме происходит.» — Gemini: `{"type": "open_url", "url": "https://twitch.tv"}`, наша (0.97): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Фауст, открой главную страницу Кинопоиска, я вернусь из тренажерного зала уставший и сразу хочу выбрать какой-нибудь фильм на вечер.» — Gemini: `{"type": "open_url", "url": "https://kinopoisk.ru"}`, наша (0.96): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «фаус открой однокласники» — Gemini: `{"type": "open_url", "url": "https://ok.ru"}`, наша (0.08): `{"type":"open_app","appName":"onenotes"}`
+- [обучение] «Faust, open Gmail in a new browser tab.» — Gemini: `{"type": "open_url", "url": "https://gmail.com"}`, наша (0.99): `{"type":"open_url","url":"https://mail.google.com"}`
+- [обучение] «Фауст, открой Dotabuff быстренько.» — Gemini: `{"type": "open_url", "url": "https://dotabuff.com"}`, наша (0.80): `{"type":"open_url","url":"https://dotabuff.kz"}`
+- [обучение] «открой оп гг» — Gemini: `{"type": "open_url", "url": "https://op.gg"}`, наша (0.64): `{"type":"open_url","url":"https://opera.com"}`
+- [обучение] «открой дотабафф мой» — Gemini: `{"type": "open_url", "url": "https://dotabuff.com"}`, наша (0.26): `{"type":"open_url","url":"https://dota2.com"}`
+- [экзамен Б] «Открой сайт Яндекс Погоды, хочу быстро глянуть перед выходом на улицу, брать ли мне с собой зонтик или обойдется.» — Gemini: `{"type": "open_url", "url": "https://pogoda.yandex.ru"}`, наша (0.01): `{"type":"open_url","url":"https://yandex.ru/pageload"}`
+- [обучение] «открой мне ютуб поиграть песни» — Gemini: `{"type": "open_url", "url": "https://youtube.com"}`, наша (0.98): `{"type":"open_url","url":"https://music.youtube.com"}`
+- [ВЫБРОШЕНО: сайт из словаря, но адреса разные] «открой мне ютуб поиграть песни» — Gemini: `{"type": "open_url", "url": "https://youtube.com"}`, наша (0.98): `{"type":"open_url","url":"https://music.youtube.com"}`
+- [обучение] «сними скриншот экрана и сохрани в картинки» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: скриншот с продолжением (сохрани/отправь) — у нас это задача агенту] «сними скриншот экрана и сохрани в картинки» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, сфотографируй, пожалуйста, мой экран и сохрани картинку, а то преподаватель просит показать промежуточный результат лабораторной.» — Gemini: `{"type": "screenshot"}`, наша (0.92): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: скриншот с продолжением (сохрани/отправь) — у нас это задача агенту] «Фауст, сфотографируй, пожалуйста, мой экран и сохрани картинку, а то преподаватель просит показать промежуточный результат лабораторной.» — Gemini: `{"type": "screenshot"}`, наша (0.92): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Сделай скриншот текущей страницы с расписанием, а то сайт постоянно падает и я боюсь пропустить завтрашнюю пару.» — Gemini: `{"type": "screenshot"}`, наша (0.87): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Фауст, заскринь экран и сохрани куда-нибудь в загрузки.» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: скриншот с продолжением (сохрани/отправь) — у нас это задача агенту] «Фауст, заскринь экран и сохрани куда-нибудь в загрузки.» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Сделай скриншот текущего окна, плиз, баг зафиксировать.» — Gemini: `{"type": "screenshot"}`, наша (0.96): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «скрин сделай и сохрани на рабочий» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: скриншот с продолжением (сохрани/отправь) — у нас это задача агенту] «скрин сделай и сохрани на рабочий» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, сделай, пожалуйста, снимок экрана прямо сейчас, чтобы зафиксировать ошибку в программе для техподдержки.» — Gemini: `{"type": "screenshot"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Take a screenshot of the main monitor and save it to Desktop.» — Gemini: `{"type": "screenshot"}`, наша (0.57): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: скриншот с продолжением (сохрани/отправь) — у нас это задача агенту] «Take a screenshot of the main monitor and save it to Desktop.» — Gemini: `{"type": "screenshot"}`, наша (0.57): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «Сделай скриншот активного окна.» — Gemini: `{"type": "screenshot"}`, наша (0.79): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, заскринь и сохрани в скриншоты, такой клатч был!» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: скриншот с продолжением (сохрани/отправь) — у нас это задача агенту] «Фауст, заскринь и сохрани в скриншоты, такой клатч был!» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Сделай скрин экрана и сохрани прямо на рабочий стол.» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: скриншот с продолжением (сохрани/отправь) — у нас это задача агенту] «Сделай скрин экрана и сохрани прямо на рабочий стол.» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «фауст сделай скриншот и сохрани на рабочий стол» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: скриншот с продолжением (сохрани/отправь) — у нас это задача агенту] «фауст сделай скриншот и сохрани на рабочий стол» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Пожалуйста, сделай скриншот всего экрана и сохрани его, мне нужно будет позже проверить, завершилась ли установка той программы, пока меня нет.» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: скриншот с продолжением (сохрани/отправь) — у нас это задача агенту] «Пожалуйста, сделай скриншот всего экрана и сохрани его, мне нужно будет позже проверить, завершилась ли установка той программы, пока меня нет.» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Будь добр, сделай снимок экрана, чтобы сохранился статус загрузки файла, а я побежал, у меня электричка через двадцать минут.» — Gemini: `{"type": "screenshot"}`, наша (0.97): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Сделай скрин и сохрани прямо на рабочий стол, плиз.» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: скриншот с продолжением (сохрани/отправь) — у нас это задача агенту] «Сделай скрин и сохрани прямо на рабочий стол, плиз.» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, сделай быстро снимок экрана и сохрани его, мой друг попросил запомнить, как выглядит этот необычный дизайн сайта.» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: скриншот с продолжением (сохрани/отправь) — у нас это задача агенту] «Фауст, сделай быстро снимок экрана и сохрани его, мой друг попросил запомнить, как выглядит этот необычный дизайн сайта.» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [ВЫБРОШЕНО: скриншот с продолжением (сохрани/отправь) — у нас это задача агенту] «Сделай, пожалуйста, скриншот текущего экрана, я хочу сохранить этот баг для отчета в Jira, чтобы не забыть детали.» — Gemini: `{"type": "screenshot"}`, наша (0.65): `{"type":"screenshot"}`
+- [ВЫБРОШЕНО: скриншот с продолжением (сохрани/отправь) — у нас это задача агенту] «Фауст, будь любезен, сделай скриншот моего экрана, а то мне нужно сохранить подтверждение отправки этой формы для отчёта начальнику.» — Gemini: `{"type": "screenshot"}`, наша (0.98): `{"type":"screenshot"}`
+- [ВЫБРОШЕНО: скриншот с продолжением (сохрани/отправь) — у нас это задача агенту] «Сделай, будь добр, скриншот текущего экрана, потому что ребята хотят сохранить этот смешной график себе на память.» — Gemini: `{"type": "screenshot"}`, наша (1.00): `{"type":"screenshot"}`
+- [обучение] «Фауст, милый, сделай звук полностью на паузу на минутку, мне нужно ответить на важный звонок по телефону.» — Gemini: `{"type": "set_volume", "level": 0}`, наша (0.58): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Сделай громче процентов на тридцать, а то вообще музон не слышно.» — Gemini: `{"type": "set_volume", "level": 80}`, наша (1.00): `{"type":"set_volume","level":30}`
+- [обучение] «сделай громче процентов на тридцать» — Gemini: `{"type": "set_volume", "level": 80}`, наша (1.00): `{"type":"set_volume","level":30}`
+- [экзамен Б] «сделай громче на 20%» — Gemini: `{"type": "set_volume", "level": 80}`, наша (1.00): `{"type":"set_volume","level":20}`
+- [обучение] «Unmute sound.» — Gemini: `{"type": "set_volume", "level": 50}`, наша (0.99): `{"type":"set_volume","level":0}`
+- [обучение] «Unmute system audio.» — Gemini: `{"type": "set_volume", "level": 30}`, наша (0.99): `{"type":"set_volume","level":0}`
+- [обучение] «Фауст, unmute sound, ничего не слышно.» — Gemini: `{"type": "set_volume", "level": 50}`, наша (0.96): `{"type":"set_volume","level":0}`
+- [обучение] «Фауст, прибавь немного звук, буквально на два деления, а то вода в кастрюле закипела и перебивает диктора.» — Gemini: `{"type": "set_volume", "level": 80}`, наша (0.56): `{"type":"set_volume","level":3}`
+- [обучение] «громче на макс» — Gemini: `{"type": "set_volume", "level": 100}`, наша (0.87): `{"type":"set_volume","level":80}`
+- [обучение] «фауст закрути звук совсем тише сделай» — Gemini: `{"type": "set_volume", "level": 0}`, наша (0.99): `{"type":"set_volume","level":30}`
+- [обучение] «Пожалуйста, полностью отключи звук на компьютере на некоторое время, потому что мне звонят по работе и нужно ответить.» — Gemini: `{"type": "set_volume", "level": 0}`, наша (0.45): `{"type":"set_volume","level":30}`
+- [экзамен Б] «Unmute the sound.» — Gemini: `{"type": "set_volume", "level": 50}`, наша (0.99): `{"type":"set_volume","level":0}`
+- [обучение] «Фауст, закажи мне, пожалуйста, большую пиццу на домашний адрес, а то я так заучился, что вообще забыл поесть.» — Gemini: `{"type": "unknown"}`, наша (0.90): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, поставь напоминание на воскресенье вечером: проверить на сайте, выложили ли преподаватели оценки.» — Gemini: `{"type": "unknown"}`, наша (0.99): `{"type":"agent_task","scope":"browser"}`
+- [экзамен Б] «Оплати квитанцию за инет через карточку, а то сейчас провайдер все обрубит.» — Gemini: `{"type": "unknown"}`, наша (0.94): `{"type":"agent_task","scope":"browser"}`
+- [экзамен Б] «Напомни в пять вечера созвониться с PM'ом по поводу ревью кода.» — Gemini: `{"type": "unknown"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Слушай, Фауст, а как ты думаешь, стоит ли мне переходить с Python на Go в новом проекте для повышения производительности?» — Gemini: `{"type": "unknown"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Напомни мне, пожалуйста, через сорок минут сделать разминку для глаз и спины, а то я слишком долго сижу непрерывно.» — Gemini: `{"type": "unknown"}`, наша (0.59): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, переведи тысячу рублей моему коллеге по номеру телефона в качестве долга за вчерашний обед.» — Gemini: `{"type": "unknown"}`, наша (0.64): `{"type":"agent_task","scope":"screen"}`
+- [экзамен Б] «Как ты считаешь, сможем ли мы с командой уложиться в дедлайн по проекту, если продолжим работать в таком же темпе?» — Gemini: `{"type": "unknown"}`, наша (0.92): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «напомни через 15 мин созвон с лидом» — Gemini: `{"type": "unknown"}`, наша (0.91): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «оплати инет карточкой» — Gemini: `{"type": "unknown"}`, наша (0.81): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Фауст, закажи, пожалуйста, две пиццы с пепперони на адрес нашего офиса, а то мы тут задерживаемся с отчётом и очень голодны.» — Gemini: `{"type": "unknown"}`, наша (0.94): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, отправь на мой телефон SMS с текстом 'Не забудь купить молоко', чтобы я не забыл по дороге домой.» — Gemini: `{"type": "unknown"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Закажи мне пиццу Пепперони на домашний адрес через Додо.» — Gemini: `{"type": "unknown"}`, наша (0.85): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Фауст, ты сам-то в Доту гоняешь или только на заднем фоне сидишь?» — Gemini: `{"type": "unknown"}`, наша (0.55): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Купи Премиум в Телеграме, пока скидки идут.» — Gemini: `{"type": "unknown"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «оплати подписку на дискорд нитро» — Gemini: `{"type": "unknown"}`, наша (0.39): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Закажи мне большой капучино и круассан через Яндекс Еду.» — Gemini: `{"type": "unknown"}`, наша (0.98): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «перекрой воду на кухне я кажется не закрыл» — Gemini: `{"type": "unknown"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Купи, пожалуйста, на Яндекс Маркете тот пылесос, который лежал у меня в корзине, я просто не успеваю ввести данные карт перед выходом.» — Gemini: `{"type": "unknown"}`, наша (0.98): `{"type":"agent_task","scope":"browser"}`
+- [экзамен Б] «Пожалуйста, переведи три тысячи рублей моему другу Васе по номеру телефона, пока я иду до остановки.» — Gemini: `{"type": "unknown"}`, наша (0.50): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Выключи, пожалуйста, свет в коридоре и проверь, закрыл ли я входную дверь, а то я уже спустился на первый этаж и сомневаюсь.» — Gemini: `{"type": "unknown"}`, наша (0.90): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, выключи сетевой фильтр из розетки, я поехал на дачу на все выходные и опасаюсь перепадов напряжения.» — Gemini: `{"type": "unknown"}`, наша (0.87): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Забронируй стол на двоих в итальянском ресторане на улице Ленина на сегодня на семь вечера, хочу устроить свидание.» — Gemini: `{"type": "unknown"}`, наша (0.68): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Фауст, закажи на Озоне килограмм муки и молоко, карточка привязана.» — Gemini: `{"type": "unknown"}`, наша (1.00): `{"type":"agent_task","scope":"browser"}`
+- [экзамен Б] «Фауст, оплати квитанцию за свет, я тебе на почту скидывал PDF-ку.» — Gemini: `{"type": "unknown"}`, наша (0.98): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, купи, пожалуйста, билеты в кино на вечерний сеанс на двоих, деньги спиши с привязанной карты.» — Gemini: `{"type": "unknown"}`, наша (0.90): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Посмотри на меня через веб-камеру и скажи, достаточно ли уже подрумянилась корочка у этого пирога?» — Gemini: `{"type": "unknown"}`, наша (0.99): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «Передай, пожалуйста, мужу в соседнюю комнату, чтобы он пришел на кухню и помог мне почистить картошку.» — Gemini: `{"type": "unknown"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «найди в интернете где дешевле лекарство от давления и заказывай» — Gemini: `{"type": "unknown"}`, наша (1.00): `{"type":"agent_task","scope":"browser"}`
+- [обучение] «оплати свет за этот месяц у меня карточка на столе лежит» — Gemini: `{"type": "unknown"}`, наша (0.96): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «фауст слушай а где мой второй носок не видал» — Gemini: `{"type": "unknown"}`, наша (0.91): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «фауст найди где дешевле лекарство от давления и закажи с доставкой» — Gemini: `{"type": "unknown"}`, наша (0.94): `{"type":"agent_task","scope":"browser"}`
+- [экзамен Б] «открои сбербанк найди шаблон за свет и переведи 1000р» — Gemini: `{"type": "unknown"}`, наша (0.89): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Фауст, зайди в мой онлайн-банк и переведи деньги за коммунальные услуги, а то я совсем забыл, что сегодня последний день оплаты.» — Gemini: `{"type": "unknown"}`, наша (0.84): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Закажи нам такси категории комфорт на четыре человека до центра города прямо сейчас, друзья уже начали собираться.» — Gemini: `{"type": "unknown"}`, наша (0.54): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «Позвони моей маме на мобильный через телефонную связь, я хочу поздравить её с днем рождения на громкой связи вместе со всеми присутствующими.» — Gemini: `{"type": "unknown"}`, наша (1.00): `{"type":"agent_task","scope":"screen"}`
+- [обучение] «фауст а ты дверь в квартиру запер или нет» — Gemini: `{"type": "unknown"}`, наша (0.54): `{"type":"lock_screen"}`
+- [обучение] «заблокируй утюг и чайник» — Gemini: `{"type": "unknown"}`, наша (1.00): `{"type":"lock_screen"}`
+- [обучение] «Закажи доширак» — Gemini: `{"type": "unknown"}`, наша (0.07): `{"type":"open_url","url":"https://duckduckgo.com"}`
+- [экзамен Б] «Order some beer on Drizly.» — Gemini: `{"type": "unknown"}`, наша (0.15): `{"type":"open_url","url":"https://drizzle.kz"}`
+- [обучение] «Faust, wake up my PC and set volume to 30%.» — Gemini: `{"type": "unknown"}`, наша (0.98): `{"type":"set_volume","level":30}`

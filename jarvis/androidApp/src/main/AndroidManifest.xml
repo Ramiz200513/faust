@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Нужен для сети. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Нужен для записи речи через SpeechRecognizer. Спрашивается ещё и в runtime. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Нужен для сканирования QR-кода при привязке ПК. Спрашивается в runtime;
+         без неё остаётся ручной ввод одноразового кода, поэтому required=false. -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <!-- Разрешения для фонового сервиса, который держит соединение с ПК, пока
+         приложение свёрнуто, и для уведомления о завершении agent_task. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <!-- Android 14+: foreground-сервис, который пишет звук (wake-word), обязан
+         объявить тип microphone и иметь это разрешение. Обычное, не runtime. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+
+    <!--
+      Android 11+ по умолчанию прячет от приложения другие пакеты. Без этого
+      блока SpeechRecognizer.isRecognitionAvailable() вернёт false, а TextToSpeech
+      не найдёт голосовой движок. Перечисляем сервисы, к которым обращаемся.
+    -->
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
+
+    <application
+        android:label="Faust"
+        android:usesCleartextTraffic="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Два типа через "|": dataSync — когда сервис просто держит процесс
+             живым до конца agent_task; microphone — когда включён wake-word.
+             Конкретный тип выбирается в рантайме в startForeground(...), потому
+             что объявлять microphone без выданного RECORD_AUDIO нельзя. -->
+        <service
+            android:name=".JarvisConnectionService"
+            android:foregroundServiceType="dataSync|microphone"
+            android:exported="false" />
+    </application>
+</manifest>

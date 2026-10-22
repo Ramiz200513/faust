@@ -1,0 +1,27 @@
+# ============================================================================
+#  Быстрый образ релея: готовый jar собран Gradle на самом компьютере, Docker
+#  только кладёт его в образ с JRE.
+#
+#  Зачем второй Dockerfile. Основной (Dockerfile) собирает jar ВНУТРИ Docker:
+#  это честно и переносимо, но при сброшенном кэше он заново качает из
+#  интернета Gradle и все библиотеки (~0.5 ГБ, 10–15 минут на медленной сети —
+#  так было 02.10). На компьютере разработчика всё это уже скачано, и сборка
+#  jar занимает 20–40 секунд без интернета.
+#
+#  Кто им пользуется: faust.ps1 (Build-RelayLocally). Если локальная сборка не
+#  удалась, скрипт сам вернётся к основному Dockerfile.
+#
+#  Контекст сборки — папка build/docker-local, в ней только app.jar:
+#    docker build -f Dockerfile.local -t jarvis-relay-relay:latest build/docker-local
+# ============================================================================
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+
+COPY app.jar app.jar
+
+# Не запускаем процесс от root — как и в основном Dockerfile.
+RUN useradd --create-home --shell /usr/sbin/nologin relay
+USER relay
+
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]

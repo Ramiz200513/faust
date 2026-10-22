@@ -1,0 +1,773 @@
+{"phrase": "Открой озон и найди клип любимой группы", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Фауст, зайди на сайт вконтакте пожалуйста.", "target": "{\"type\":\"open_url\",\"url\":\"https://vk.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "громкость тридцать", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "template"}
+{"phrase": "давай майнкрафт на компьютере", "target": "{\"type\":\"open_app\",\"appName\":\"minecraft\"}", "cat": "open_app", "src": "template"}
+{"phrase": "слушай, глянь что на экране и пришли пожалуйста", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "template"}
+{"phrase": "быстро покажи что запущено", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "template"}
+{"phrase": "быстро нужно заблокировать экран сейчас", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "template"}
+{"phrase": "давай obs studio на компе", "target": "{\"type\":\"open_app\",\"appName\":\"obs studio\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Запусти приложение нотпад плюс плюс!", "target": "{\"type\":\"open_app\",\"appName\":\"notepad++\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Фауст, запусти-ка юнити!", "target": "{\"type\":\"open_app\",\"appName\":\"unity\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Покажи папку документы.", "target": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Открой в браузере store.io", "target": "{\"type\":\"open_url\",\"url\":\"https://store.io\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Открой мне mechta.", "target": "{\"type\":\"open_url\",\"url\":\"https://mechta.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "найди как решить квадратное уравнение на ютубе и открой первый результат", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "фауст, мне нужен steam, мне нужно", "target": "{\"type\":\"open_app\",\"appName\":\"steam\"}", "cat": "open_app", "src": "template"}
+{"phrase": "открой-ка браузер, надо поработать", "target": "{\"type\":\"open_app\",\"appName\":\"браузер\"}", "cat": "open_app", "src": "template"}
+{"phrase": "открой иви и войди в аккаунт", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "contrast"}
+{"phrase": "kill agent32.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"agent32.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "открой стак оверфлоу пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://stackoverflow.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "run notepad, срочно", "target": "{\"type\":\"open_app\",\"appName\":\"notepad\"}", "cat": "open_app", "src": "template"}
+{"phrase": "поставь 96 процентов громкости", "target": "{\"type\":\"set_volume\",\"level\":96}", "cat": "set_volume", "src": "template"}
+{"phrase": "отправь арману по телеграму архив с проектом и напиши, что я уже выехал", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "поищи на озоне ответ на ошибку null pointer", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "оплати коммуналку быстро", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "dangerous"}
+{"phrase": "перенеси все docx из загрузок в документы", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Найди билеты в кино на вечер в интернете и запиши в блокнот!", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "запиши я опоздаю в блокнот и отправь файл папе в дискорде", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "покажи запущенные процесы", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "template"}
+{"phrase": "Закрой программу dota 2", "target": "{\"type\":\"kill_process\",\"processName\":\"dota2.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "закрой наконец андроид студио", "target": "{\"type\":\"kill_process\",\"processName\":\"studio64.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Завреши все процессы блокнота.", "target": "{\"type\":\"kill_process\",\"processName\":\"notepad.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Открой notepad на компе", "target": "{\"type\":\"open_app\",\"appName\":\"notepad\"}", "cat": "open_app", "src": "template"}
+{"phrase": "запусти блокнот и напиши список покупок", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Открой сайт чат гпт.", "target": "{\"type\":\"open_url\",\"url\":\"https://chatgpt.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "включи google photos, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://photos.google.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "загугли трейлер нового фильма", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Хочу на букинг, быстро!", "target": "{\"type\":\"open_url\",\"url\":\"https://booking.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "найди чат с мамой в телеграм", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "погромче, голова болит", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "template"}
+{"phrase": "открой вскод, создай файл main.py и напиши hello world", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "сними задачу slack", "target": "{\"type\":\"kill_process\",\"processName\":\"slack.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Найди как решить квадратное уравнение и отправь Саше в телеграм", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "стартани ванноут на компе", "target": "{\"type\":\"open_app\",\"appName\":\"onenote\"}", "cat": "open_app", "src": "template"}
+{"phrase": "открой телеграм, найди чат с мамой и отправь диплом", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Поставь звук на 95 процентов.", "target": "{\"type\":\"set_volume\",\"level\":95}", "cat": "set_volume", "src": "template"}
+{"phrase": "открой sulpak, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://sulpak.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "останови zoom", "target": "{\"type\":\"kill_process\",\"processName\":\"zoom.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "открой программу нотпад плюс плюс пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"notepad++\"}", "cat": "open_app", "src": "template"}
+{"phrase": "запусти приложение калькулятор windows, хочу кое-что записать", "target": "{\"type\":\"open_app\",\"appName\":\"calc\"}", "cat": "open_app", "src": "template"}
+{"phrase": "уровень громкости 9", "target": "{\"type\":\"set_volume\",\"level\":9}", "cat": "set_volume", "src": "template"}
+{"phrase": "можешь отправь компьютер в сон", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "dangerous"}
+{"phrase": "зайди в мои картинки", "target": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "cat": "open_app", "src": "template"}
+{"phrase": "зайди на сайт portal.com", "target": "{\"type\":\"open_url\",\"url\":\"https://portal.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "зайди в хаггингфейс, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://huggingface.co\"}", "cat": "open_url", "src": "template"}
+{"phrase": "перейди на сайт lamoda пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://lamoda.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "загугли кафе рядом", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "перейди на тенгриньюс пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://tengrinews.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "открой кинопоиск и найди ноутбук подешевле", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "contrast"}
+{"phrase": "Отправь таблицу с оценками Кате в тг.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "открой авито и найди инструкцию как установить докер", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Открой настройки, поменяй обои.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "включи photoshop пожалйуста", "target": "{\"type\":\"open_app\",\"appName\":\"photoshop\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Звук 87", "target": "{\"type\":\"set_volume\",\"level\":87}", "cat": "set_volume", "src": "template"}
+{"phrase": "эй, открой всё для работы", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "сними экран, если не сложно", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "template"}
+{"phrase": "запусти-ка browser на компе", "target": "{\"type\":\"open_app\",\"appName\":\"браузер\"}", "cat": "open_app", "src": "template"}
+{"phrase": "включи deepl", "target": "{\"type\":\"open_url\",\"url\":\"https://deepl.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "включи тёмную тему в настройки", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "открой explorer на компе", "target": "{\"type\":\"open_app\",\"appName\":\"explorer\"}", "cat": "open_app", "src": "template"}
+{"phrase": "сделай скриншот и отправь его научному руководителю в тг", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "фауст, зайди на сайт city54.net", "target": "{\"type\":\"open_url\",\"url\":\"https://city54.net\"}", "cat": "open_url", "src": "template"}
+{"phrase": "фауст, открой последний скачанный файл", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Скопируй текст из блокнота и отправь Лере в телеграме", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "зайди на сайт lab64.info", "target": "{\"type\":\"open_url\",\"url\":\"https://lab64.info\"}", "cat": "open_url", "src": "template"}
+{"phrase": "можешь какой сегодня праздник", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "question"}
+{"phrase": "open google meet", "target": "{\"type\":\"open_url\",\"url\":\"https://meet.google.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Будь добр, отправь мне скриншот экрана", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "template"}
+{"phrase": "придумай название для проекта", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "unsupported"}
+{"phrase": "отправь последний скриншот в избранное в вотсапе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "kill dota 2 process пожалуйста", "target": "{\"type\":\"kill_process\",\"processName\":\"dota2.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Кто выиграл вчера в футбол!", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "question"}
+{"phrase": "можешь remind me to call mom срочно", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "unsupported"}
+{"phrase": "открой мне ноушн", "target": "{\"type\":\"open_url\",\"url\":\"https://notion.so\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Включи канву", "target": "{\"type\":\"open_url\",\"url\":\"https://canva.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "мне нужен почту gmail", "target": "{\"type\":\"open_url\",\"url\":\"https://mail.google.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "открой программу эдж", "target": "{\"type\":\"open_app\",\"appName\":\"edge\"}", "cat": "open_app", "src": "template"}
+{"phrase": "звук на 89", "target": "{\"type\":\"set_volume\",\"level\":89}", "cat": "set_volume", "src": "template"}
+{"phrase": "мне нужен хаггингфейс", "target": "{\"type\":\"open_url\",\"url\":\"https://huggingface.co\"}", "cat": "open_url", "src": "template"}
+{"phrase": "открой линкедин и найди там новости", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "contrast"}
+{"phrase": "запусти колеса кз", "target": "{\"type\":\"open_url\",\"url\":\"https://kolesa.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "убей процесс sync32.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"sync32.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "го на trello", "target": "{\"type\":\"open_url\",\"url\":\"https://trello.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "убей процесс тимс", "target": "{\"type\":\"kill_process\",\"processName\":\"ms-teams.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "покажи мне мои картинки", "target": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "cat": "open_app", "src": "template"}
+{"phrase": "поищи на степике квартиру в аренду и открой что-нибудь", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Открой edu24.io", "target": "{\"type\":\"open_url\",\"url\":\"https://edu24.io\"}", "cat": "open_url", "src": "template"}
+{"phrase": "переименуй файл реферат в курсовая", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Принудительно закрой powerpoint срочно", "target": "{\"type\":\"kill_process\",\"processName\":\"powerpnt.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "громкость на 0 процентов", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "template"}
+{"phrase": "открой ватсап и создай новый файл", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "contrast"}
+{"phrase": "Открой программу zoom на компьютере!", "target": "{\"type\":\"open_app\",\"appName\":\"zoom\"}", "cat": "open_app", "src": "template"}
+{"phrase": "фауст найди бесплатные иконки на гитхабе и открой первый результат", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой в браузере leetcode", "target": "{\"type\":\"open_url\",\"url\":\"https://leetcode.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "зайди на edu-14.com", "target": "{\"type\":\"open_url\",\"url\":\"https://edu-14.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "найди на стековерфлоу урок по питону и включи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Пайчарм завис, закрой!", "target": "{\"type\":\"kill_process\",\"processName\":\"pycharm64.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Перейди на сайт market-83.net!", "target": "{\"type\":\"open_url\",\"url\":\"https://market-83.net\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Открой авито и найди гайд по майнкрафту.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "сделай звук 77", "target": "{\"type\":\"set_volume\",\"level\":77}", "cat": "set_volume", "src": "template"}
+{"phrase": "собери все docx с рабочего стола в папку архив", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Скачай фото паспорта кота по ссылке и отправь в избранное и преподавателю в ватсап.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "пожалуйста включи экран блокировки сейчас", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "template"}
+{"phrase": "отправь тимуру в вотсапе диплом и напиши, что всё готово", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Кгвчмч асыфцхэ сгз!", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "gibberish"}
+{"phrase": "скачай презентацию с сайта и отправь начальнику в ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "очитси весь диск", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "dangerous"}
+{"phrase": "поставь громкость на 43", "target": "{\"type\":\"set_volume\",\"level\":43}", "cat": "set_volume", "src": "template"}
+{"phrase": "Можешь дай список процессов!", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "template"}
+{"phrase": "выключи anydesk", "target": "{\"type\":\"kill_process\",\"processName\":\"anydesk.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Открой папку с документами пожалуйста!", "target": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "cat": "open_app", "src": "template"}
+{"phrase": "перемести файл таблица.xlsx из зарузок на рабочий стол", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "зайди на сайт team.by", "target": "{\"type\":\"open_url\",\"url\":\"https://team.by\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Параметры, срочно", "target": "{\"type\":\"open_app\",\"appName\":\"параметры\"}", "cat": "open_app", "src": "template"}
+{"phrase": "зайди на photo.net", "target": "{\"type\":\"open_url\",\"url\":\"https://photo.net\"}", "cat": "open_url", "src": "template"}
+{"phrase": "открой-ка мейл ру", "target": "{\"type\":\"open_url\",\"url\":\"https://mail.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Отправь мне скриншот экрана плиз", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "template"}
+{"phrase": "пожалуйста покажи что на эркане быстро", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "template"}
+{"phrase": "открой программу obs", "target": "{\"type\":\"open_app\",\"appName\":\"obs studio\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Запутси habr!", "target": "{\"type\":\"open_url\",\"url\":\"https://habr.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "заверши пайчарм", "target": "{\"type\":\"kill_process\",\"processName\":\"pycharm64.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "найди диван недорого, запиши в блокнот и сохрани на рабочий стол", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "включи ок ру", "target": "{\"type\":\"open_url\",\"url\":\"https://ok.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "запусти либреофис", "target": "{\"type\":\"open_app\",\"appName\":\"libreoffice writer\"}", "cat": "open_app", "src": "template"}
+{"phrase": "найди в папке диплом реферат и перешли его жене через ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Заверши вацап пожалуйста!", "target": "{\"type\":\"kill_process\",\"processName\":\"whatsapp.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "отправь Саше в дискорде файл отчёт.docx и напиши, что сервер поднят", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "открой paint и нарисуй смайлик и сохрани", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Открой hh и найди видео про котов", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "contrast"}
+{"phrase": "Сними задачу whatsapp", "target": "{\"type\":\"kill_process\",\"processName\":\"whatsapp.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "открой мне мозиллу, надо поработать", "target": "{\"type\":\"open_app\",\"appName\":\"firefox\"}", "cat": "open_app", "src": "template"}
+{"phrase": "скачай договор с сайта и отправь преподавателю в тг", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Мне нужен телеграмм на компьютере!", "target": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "cat": "open_app", "src": "template"}
+{"phrase": "закрой эксель, он тормозит", "target": "{\"type\":\"kill_process\",\"processName\":\"excel.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "сравни цены на первые два товара плиз", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "полностью без звука, голова болит", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "template"}
+{"phrase": "kill opera", "target": "{\"type\":\"kill_process\",\"processName\":\"opera.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "скачай резюме из почты и скинь преподавателю в дискорде", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "скачай архив с проектом с сайта и отправь маме в дискорде", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Зайди в телеграм и напиши научному руководителю, что жду файл", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "останови процесс render64.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"render64.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "стартани фотошоп", "target": "{\"type\":\"open_app\",\"appName\":\"photoshop\"}", "cat": "open_app", "src": "template"}
+{"phrase": "сними задачу excel", "target": "{\"type\":\"kill_process\",\"processName\":\"excel.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "перешли лабораторную в группу в вайбере", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "открой в браузере яндекс музыку", "target": "{\"type\":\"open_url\",\"url\":\"https://music.yandex.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "открой приложение аутлук, мне нужно", "target": "{\"type\":\"open_app\",\"appName\":\"outlook\"}", "cat": "open_app", "src": "template"}
+{"phrase": "пока", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "chat"}
+{"phrase": "останови процесс game.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"game.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Надо открыть файрфокс!", "target": "{\"type\":\"open_app\",\"appName\":\"firefox\"}", "cat": "open_app", "src": "template"}
+{"phrase": "volmue 75", "target": "{\"type\":\"set_volume\",\"level\":75}", "cat": "set_volume", "src": "template"}
+{"phrase": "Останови пэинт.", "target": "{\"type\":\"kill_process\",\"processName\":\"mspaint.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "переименуй файл диплом.docx в резюме.pdf", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "мне нужен блокнот пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"notepad\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Открой гитхаб!", "target": "{\"type\":\"open_url\",\"url\":\"https://github.com\"}", "cat": "open_url", "src": "contrast"}
+{"phrase": "найди мне на 2гис инструкцию как установить докер", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "скинь айгерим в тг отчёт", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "отправь чек саше и преподавателю в вотсапе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Перейди на гугл диск", "target": "{\"type\":\"open_url\",\"url\":\"https://drive.google.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Фауст, останови spotify", "target": "{\"type\":\"kill_process\",\"processName\":\"spotify.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Быстро сколько весит слон пожалуйста!", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "question"}
+{"phrase": "открой в браузере сайт ену", "target": "{\"type\":\"open_url\",\"url\":\"https://enu.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "поищи на стековерфлоу вакансии java разработчика и открой что-нибудь", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "хочу на переводчик гугл", "target": "{\"type\":\"open_url\",\"url\":\"https://translate.google.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "эй, нужен скриншот сейчас", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "template"}
+{"phrase": "а ну-ка напомни завтра сдать отчёт", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "unsupported"}
+{"phrase": "Как дойти до библиотеки", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "question"}
+{"phrase": "убей процесс skype пожалуйста", "target": "{\"type\":\"kill_process\",\"processName\":\"skype.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Удали файл реферат из загрузок", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "будь добр, напиши комментарий под видео: круто сейчас", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "вбей в поиск на 2гис документацию по kotlin", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой мои картинки", "target": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "cat": "open_app", "src": "template"}
+{"phrase": "поставь лайк сейчас", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "перешли последнее сообщение папе в ватсапе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Грхни тимс!", "target": "{\"type\":\"kill_process\",\"processName\":\"ms-teams.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "запусти приложение вс код", "target": "{\"type\":\"open_app\",\"appName\":\"visual studio code\"}", "cat": "open_app", "src": "template"}
+{"phrase": "зайди на сайт tech.info", "target": "{\"type\":\"open_url\",\"url\":\"https://tech.info\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Ттмяд баеохр шюмбыш", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "gibberish"}
+{"phrase": "Открой вскод, открой папку проекта", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "перейди в папку изображения пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "cat": "open_app", "src": "template"}
+{"phrase": "громкость на минимум", "target": "{\"type\":\"set_volume\",\"level\":5}", "cat": "set_volume", "src": "template"}
+{"phrase": "зайди на степик", "target": "{\"type\":\"open_url\",\"url\":\"https://stepik.org\"}", "cat": "open_url", "src": "template"}
+{"phrase": "зайди в ватсап и напиши папе, что задача выполнена", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "загугли лекцию по матанализу", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой мне microsoft teams, срочно", "target": "{\"type\":\"open_app\",\"appName\":\"teams\"}", "cat": "open_app", "src": "template"}
+{"phrase": "открой-ка контакт", "target": "{\"type\":\"open_url\",\"url\":\"https://vk.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "зайди в дискорд и напиши сестре, что задача выполнена", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "запусти-ка docker, срочно", "target": "{\"type\":\"open_app\",\"appName\":\"docker desktop\"}", "cat": "open_app", "src": "template"}
+{"phrase": "напиши Пете в тг: сервер поднят", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "перейди на сайт егов", "target": "{\"type\":\"open_url\",\"url\":\"https://egov.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "останови процесс agent64.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"agent64.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Вбей в поиск на ютубе ноутбук для учёбы!", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Найди телефон самсунг и отправь преподавателю в ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "lock the pc", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "template"}
+{"phrase": "Надо открыть мозилу, мне нужно", "target": "{\"type\":\"open_app\",\"appName\":\"firefox\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Открой инстаграм", "target": "{\"type\":\"open_url\",\"url\":\"https://instagram.com\"}", "cat": "open_url", "src": "contrast"}
+{"phrase": "громкость на 66 проентов", "target": "{\"type\":\"set_volume\",\"level\":66}", "cat": "set_volume", "src": "template"}
+{"phrase": "перезагрузи ноутбук плиз", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "dangerous"}
+{"phrase": "Фауст, закрой программу steam пожалуйста.", "target": "{\"type\":\"kill_process\",\"processName\":\"steam.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "найди трейлер нового фильма на алиэкспрессе и открой первый результат", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "скачай таблицу с оценками по ссылке и отправь диме и маме в ватсапе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "открой в браузере example59.com", "target": "{\"type\":\"open_url\",\"url\":\"https://example59.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Поищи лекцию по матанализу на кинопоиске и покажи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "фауст переименуй файл заявление в резюме.pdf", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Заверши все процессы экселя!", "target": "{\"type\":\"kill_process\",\"processName\":\"excel.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "верни звук на 37", "target": "{\"type\":\"set_volume\",\"level\":37}", "cat": "set_volume", "src": "template"}
+{"phrase": "стартани notepad", "target": "{\"type\":\"open_app\",\"appName\":\"notepad\"}", "cat": "open_app", "src": "template"}
+{"phrase": "закрой окно калькулятора", "target": "{\"type\":\"kill_process\",\"processName\":\"calculatorapp.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Давай на закон кз, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://zakon.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Открой-ка влц на компьютере", "target": "{\"type\":\"open_app\",\"appName\":\"vlc\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Вбей в поиск в гугл картах стрим по доте.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "запусти-ка winrar", "target": "{\"type\":\"open_app\",\"appName\":\"winrar\"}", "cat": "open_app", "src": "template"}
+{"phrase": "открой сайт кинопоиск", "target": "{\"type\":\"open_url\",\"url\":\"https://kinopoisk.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Хочу на веб версию телеграма!", "target": "{\"type\":\"open_url\",\"url\":\"https://web.telegram.org\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Найди мне на степике перевод слова hello", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "сними задачу мозилу", "target": "{\"type\":\"kill_process\",\"processName\":\"firefox.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "надо открыть магазин приложений, мне нужно", "target": "{\"type\":\"open_app\",\"appName\":\"microsoft store\"}", "cat": "open_app", "src": "template"}
+{"phrase": "открой мне телеграмм пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "cat": "open_app", "src": "template"}
+{"phrase": "найди в папке диплом резюме и перешли его в избранное в вотсапе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "останови процесс client.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"client.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "закрой приложение notepad", "target": "{\"type\":\"kill_process\",\"processName\":\"notepad.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "скинь айгерим в дискорде таблицу с оценками", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Найди в яндексе ноутбук для учёбы", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой скайп и открой последний документ", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "contrast"}
+{"phrase": "фауст перейди на ламоду", "target": "{\"type\":\"open_url\",\"url\":\"https://lamoda.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "давай на rutube, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://rutube.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "запусти docker desktop пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"docker desktop\"}", "cat": "open_app", "src": "template"}
+{"phrase": "покорми сбаку", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "impossible"}
+{"phrase": "в эксель сделай таблицу с оценками", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Volume to 75 percent!", "target": "{\"type\":\"set_volume\",\"level\":75}", "cat": "set_volume", "src": "template"}
+{"phrase": "open postman please", "target": "{\"type\":\"open_app\",\"appName\":\"postman\"}", "cat": "open_app", "src": "template"}
+{"phrase": "перемести файл заявление из загрузок на рабочий стол", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Погугли песню группы кино и открой первый сайт.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Закрой процесс python!", "target": "{\"type\":\"kill_process\",\"processName\":\"python.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "пожалуйста включи рабочий режим, если не сложно", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "посмотри в гугле гайд по майнкрафту", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "прибей intellij idea", "target": "{\"type\":\"kill_process\",\"processName\":\"idea64.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Принеси воды", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "impossible"}
+{"phrase": "фауст запусти word, срочно", "target": "{\"type\":\"open_app\",\"appName\":\"word\"}", "cat": "open_app", "src": "template"}
+{"phrase": "будь добр, какие приложения работают быстро", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "template"}
+{"phrase": "заверши калькулятор срочно", "target": "{\"type\":\"kill_process\",\"processName\":\"calculatorapp.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "открой приложение севен зип, срочно", "target": "{\"type\":\"open_app\",\"appName\":\"7-zip\"}", "cat": "open_app", "src": "template"}
+{"phrase": "заверши notepad пожалуйста", "target": "{\"type\":\"kill_process\",\"processName\":\"notepad.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "принудительно закорй тг пожалуйста", "target": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Vs code завис, закрой.", "target": "{\"type\":\"kill_process\",\"processName\":\"code.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "открой apple.com пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://apple.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Можешь сохрани документ сейчас", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "фауст, запусти krisha", "target": "{\"type\":\"open_url\",\"url\":\"https://krisha.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Пожалуйста скрин экрана быстро", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "template"}
+{"phrase": "найди документацию по kotlin на кольсах и открой первый результат", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "перейди на сайт сулпак", "target": "{\"type\":\"open_url\",\"url\":\"https://sulpak.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "найди на олх подкаст про историю", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "фауст, блокировка, если не сложно", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "template"}
+{"phrase": "Открой-ка телегу на компьютере", "target": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "cat": "open_app", "src": "template"}
+{"phrase": "включи гисметео", "target": "{\"type\":\"open_url\",\"url\":\"https://gismeteo.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Run word пожалуйста.", "target": "{\"type\":\"open_app\",\"appName\":\"word\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Открой крышу и посмотри что нового", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "contrast"}
+{"phrase": "открой сайт blog3.com", "target": "{\"type\":\"open_url\",\"url\":\"https://blog3.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "start notepad++, мне нужно", "target": "{\"type\":\"open_app\",\"appName\":\"notepad++\"}", "cat": "open_app", "src": "template"}
+{"phrase": "открой сайт twitch, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://twitch.tv\"}", "cat": "open_url", "src": "template"}
+{"phrase": "перейди на game.net", "target": "{\"type\":\"open_url\",\"url\":\"https://game.net\"}", "cat": "open_url", "src": "template"}
+{"phrase": "вруби вацап", "target": "{\"type\":\"open_app\",\"appName\":\"whatsapp\"}", "cat": "open_app", "src": "template"}
+{"phrase": "включи трелло", "target": "{\"type\":\"open_url\",\"url\":\"https://trello.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "фауст, перейди на сайт soundcloud, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://soundcloud.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "поищи игровую мышь на вайлдберриз и покажи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "вбей в поиск на реддите фильм интерстеллар", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "увеличь звук на компьютере", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "template"}
+{"phrase": "фауст открой меню сайта и выбери контакты", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой college-55.org", "target": "{\"type\":\"open_url\",\"url\":\"https://college-55.org\"}", "cat": "open_url", "src": "template"}
+{"phrase": "выгрузи вацап срочно", "target": "{\"type\":\"kill_process\",\"processName\":\"whatsapp.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "отправь отчёт сестре и данияру в телеграм", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "скопируй файл заявление на флешку", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Громкость на половину, соседи спят", "target": "{\"type\":\"set_volume\",\"level\":50}", "cat": "set_volume", "src": "template"}
+{"phrase": "заверши спотифай срочно", "target": "{\"type\":\"kill_process\",\"processName\":\"spotify.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "show me google translate пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://translate.google.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Вруби google chrome на компьютере.", "target": "{\"type\":\"open_app\",\"appName\":\"chrome\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Эй, ау срочно", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "chat"}
+{"phrase": "фауст, поищи на вайлдберриз стрим по доте и открой что-нибудь", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "быстро включи телевизор", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "impossible"}
+{"phrase": "эй, введи номер карты", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "dangerous"}
+{"phrase": "Открой настройки, включи тёмную тему", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "найди обзор айфона на вайлдберриз", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "запусти программу steam пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"steam\"}", "cat": "open_app", "src": "template"}
+{"phrase": "покажи мейл ру", "target": "{\"type\":\"open_url\",\"url\":\"https://mail.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "прибей notepad", "target": "{\"type\":\"kill_process\",\"processName\":\"notepad.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Открой авито и найди репозиторий spring boot.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "установи громкость 99", "target": "{\"type\":\"set_volume\",\"level\":99}", "cat": "set_volume", "src": "template"}
+{"phrase": "Завешри pycharm", "target": "{\"type\":\"kill_process\",\"processName\":\"pycharm64.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "создай папку диплом в папке диплом", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Грохни vscode пожалуйста!", "target": "{\"type\":\"kill_process\",\"processName\":\"code.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "открой сайт lab87.com", "target": "{\"type\":\"open_url\",\"url\":\"https://lab87.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Открой сайт market-18.kz!", "target": "{\"type\":\"open_url\",\"url\":\"https://market-18.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Давай на ozon пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://ozon.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "перейди на гугл почту", "target": "{\"type\":\"open_url\",\"url\":\"https://mail.google.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "найди рецепт пиццы в яндексе", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "фауст включи рабочий режим, если не сложно", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "вруби контру, надо поработать", "target": "{\"type\":\"open_app\",\"appName\":\"counter-strike 2\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Выгрузи телеграм пожалуйста", "target": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Выруби excel", "target": "{\"type\":\"kill_process\",\"processName\":\"excel.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "останови процесс editor8.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"editor8.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "фауст, переименуй файл презентация в таблица.xlsx", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "открой телеграм, отправь стикер Пете", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "хочу на booking пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://booking.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "сними экран пожалуйста", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "template"}
+{"phrase": "пожалуйста какой заряд батареи", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "unsupported"}
+{"phrase": "run android stdio на компе", "target": "{\"type\":\"open_app\",\"appName\":\"android studio\"}", "cat": "open_app", "src": "template"}
+{"phrase": "открой ворд на компе", "target": "{\"type\":\"open_app\",\"appName\":\"word\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Full volume", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "template"}
+{"phrase": "убей процесс dota 2 пожалуйста", "target": "{\"type\":\"kill_process\",\"processName\":\"dota2.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "фауст хочу на duckduckgo, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://duckduckgo.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Скинь Даше в телеграм отчёт!", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "заверши мозилу", "target": "{\"type\":\"kill_process\",\"processName\":\"firefox.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "зайди на рбк пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://rbc.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Покажи мне documents!", "target": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "cat": "open_app", "src": "template"}
+{"phrase": "запусти блокнот и напиши план на день и сохрани", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Убей процесс google chrome", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "загугли кроссовки найк", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Открой степик и найди стажировку для студентов.", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Show me linkedin", "target": "{\"type\":\"open_url\",\"url\":\"https://linkedin.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "зайди в ватсап и напиши пете, что позвоню позже", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "поищи квартиру в аренду на 2гис и покажи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой сайт work-edu.ru", "target": "{\"type\":\"open_url\",\"url\":\"https://work-edu.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "останови процесс game32.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"game32.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Покажи самый большой файл на рабочем столе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "найди на реддите шаблон презентации и включи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "слушай, разбуди меня в 5 пожалуйста", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "unsupported"}
+{"phrase": "напиши Айгерим в вайбере, что буду через час", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "сгенерируй картинку кота", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "unsupported"}
+{"phrase": "закрой приложение оперу", "target": "{\"type\":\"kill_process\",\"processName\":\"opera.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "открой авито, найди инструкцию как установить докер и открой первую ссылку", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой сайт wiki.com", "target": "{\"type\":\"open_url\",\"url\":\"https://wiki.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Зайди на сайт kino84.io!", "target": "{\"type\":\"open_url\",\"url\":\"https://kino84.io\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Создай файл main.py и напиши hello world в вскод", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "хочу громкость 70", "target": "{\"type\":\"set_volume\",\"level\":70}", "cat": "set_volume", "src": "template"}
+{"phrase": "вруби докер десктоп", "target": "{\"type\":\"open_app\",\"appName\":\"docker desktop\"}", "cat": "open_app", "src": "template"}
+{"phrase": "поищи велосипед на озоне и покажи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "вруби idea", "target": "{\"type\":\"open_app\",\"appName\":\"intellij idea\"}", "cat": "open_app", "src": "template"}
+{"phrase": "сними процесс daemon_x64.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"daemon_x64.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Зайди на сайт google photos", "target": "{\"type\":\"open_url\",\"url\":\"https://photos.google.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "найди мне на крыше биографию абая", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "стартани firefox на компе", "target": "{\"type\":\"open_app\",\"appName\":\"firefox\"}", "cat": "open_app", "src": "template"}
+{"phrase": "звук 22", "target": "{\"type\":\"set_volume\",\"level\":22}", "cat": "set_volume", "src": "template"}
+{"phrase": "Фауст заверши эксель срочно", "target": "{\"type\":\"kill_process\",\"processName\":\"excel.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "отыщи на википедии машину до трёх миллионов", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Грохни ptyhon", "target": "{\"type\":\"kill_process\",\"processName\":\"python.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "вруби эпик геймс", "target": "{\"type\":\"open_app\",\"appName\":\"epic games\"}", "cat": "open_app", "src": "template"}
+{"phrase": "зайди на яндекс и найди бесплатные иконки", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой дс, срочно", "target": "{\"type\":\"open_app\",\"appName\":\"discord\"}", "cat": "open_app", "src": "template"}
+{"phrase": "поищи в интернете кроссовки найк и открой что-нибудь", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "kill backup.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"backup.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Перейди на сайт dev.io!", "target": "{\"type\":\"open_url\",\"url\":\"https://dev.io\"}", "cat": "open_url", "src": "template"}
+{"phrase": "погугли как решить квадратное уравнение и открой первый сайт", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "уровень громкости 100", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "template"}
+{"phrase": "переключись на другое окно", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "открой в браузере teamcloud.org", "target": "{\"type\":\"open_url\",\"url\":\"https://teamcloud.org\"}", "cat": "open_url", "src": "template"}
+{"phrase": "найди в яндексе клип любимой группы", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Фауст, сделай скриншот и сохрани его в документы", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "скачай последний скриншот с сайта и отправь начальнику в ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "заверши teams срочно", "target": "{\"type\":\"kill_process\",\"processName\":\"ms-teams.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "открой колёса и войди в аккаунт", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "contrast"}
+{"phrase": "открой documents", "target": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "cat": "open_app", "src": "template"}
+{"phrase": "вруби хром", "target": "{\"type\":\"open_app\",\"appName\":\"chrome\"}", "cat": "open_app", "src": "template"}
+{"phrase": "запусти проводник и создай папку проект на рабочем столе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "закрой приложение discord", "target": "{\"type\":\"kill_process\",\"processName\":\"discord.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Поищи на стековерфлоу гайд по майнкрафту", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "open pictures", "target": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "cat": "open_app", "src": "template"}
+{"phrase": "отправь файл с расписанием жене и даше в телеграм", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Фауст перейди на сайт forumnews.com", "target": "{\"type\":\"open_url\",\"url\":\"https://forumnews.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "хочу на твич", "target": "{\"type\":\"open_url\",\"url\":\"https://twitch.tv\"}", "cat": "open_url", "src": "template"}
+{"phrase": "включи свет в комнате плиз", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "impossible"}
+{"phrase": "погладь кота", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "impossible"}
+{"phrase": "Скинь брату в вотсапе файл с расписанием!", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "скинь жене в телеграме реферат", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Скопируй путь к файлу диплом.docx!", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "фауст, зайди в папку downloads пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "template"}
+{"phrase": "открой в проводнике папку с документами", "target": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "cat": "open_app", "src": "template"}
+{"phrase": "зайди на сайт яндекс музыку", "target": "{\"type\":\"open_url\",\"url\":\"https://music.yandex.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "дискорд завис, закрой срочно", "target": "{\"type\":\"kill_process\",\"processName\":\"discord.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Зайди в папку documents!", "target": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "cat": "open_app", "src": "template"}
+{"phrase": "отыщи в гугле клип любимой группы", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "хочу на enu.kz", "target": "{\"type\":\"open_url\",\"url\":\"https://enu.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Сделай звук 20", "target": "{\"type\":\"set_volume\",\"level\":20}", "cat": "set_volume", "src": "template"}
+{"phrase": "Найди в документах файл отчёт.docx и перешли его начальнику в дискорде", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "скачай картинку из интернета и поставь на обои", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Прибавь громкость, я разговариваю по телефону.", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "template"}
+{"phrase": "найди на кинопоиске характеристики rtx 3050 и включи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Найди на компьютере файл расписание!", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "громкость 54 процентов", "target": "{\"type\":\"set_volume\",\"level\":54}", "cat": "set_volume", "src": "template"}
+{"phrase": "Открой в браузере тикетон", "target": "{\"type\":\"open_url\",\"url\":\"https://ticketon.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Открой мне кс пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"counter-strike 2\"}", "cat": "open_app", "src": "template"}
+{"phrase": "установи громкость пять", "target": "{\"type\":\"set_volume\",\"level\":5}", "cat": "set_volume", "src": "template"}
+{"phrase": "отправь архив с проектом алие и лере в вотсапе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "сделай скриншот и отправь его диме по телеграму", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "открой кинопоиск, найди трейлер нового фильма и открой первую ссылку", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "найди документацию по kotlin, запиши в блокнот и сохрани на рабочий стол", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "надо открыть firefox, срочно", "target": "{\"type\":\"open_app\",\"appName\":\"firefox\"}", "cat": "open_app", "src": "template"}
+{"phrase": "громкость на 72 процентов", "target": "{\"type\":\"set_volume\",\"level\":72}", "cat": "set_volume", "src": "template"}
+{"phrase": "открой сайт univer.org", "target": "{\"type\":\"open_url\",\"url\":\"https://univer.org\"}", "cat": "open_url", "src": "template"}
+{"phrase": "открой мне гугл календарь пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://calendar.google.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Прочитай последнее сообщение через ватсап.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Скачай резюме по ссылке и распакуй в документы", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "открой изображения и найди там отчёт", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "contrast"}
+{"phrase": "Будь добр, включи пылесос!", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "impossible"}
+{"phrase": "зайди на яндекс и поищи отзывы", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "contrast"}
+{"phrase": "Можешь я отошёл, заблокируй сейчас.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "template"}
+{"phrase": "найди на авито песню группы кино и включи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Ею ээтрю", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "gibberish"}
+{"phrase": "хочу на яндекс музыку", "target": "{\"type\":\"open_url\",\"url\":\"https://music.yandex.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Open store-97.org!", "target": "{\"type\":\"open_url\",\"url\":\"https://store-97.org\"}", "cat": "open_url", "src": "template"}
+{"phrase": "зайди на python.org, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://python.org\"}", "cat": "open_url", "src": "template"}
+{"phrase": "звук на 14", "target": "{\"type\":\"set_volume\",\"level\":14}", "cat": "set_volume", "src": "template"}
+{"phrase": "сделай блокировку срочно", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "template"}
+{"phrase": "будь добр, сколько будет 57 умножить на 67 пожалуйста", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "question"}
+{"phrase": "громкость 35", "target": "{\"type\":\"set_volume\",\"level\":35}", "cat": "set_volume", "src": "template"}
+{"phrase": "сделай скриншот и отправь его кате через ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "full volume, голова болит", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "template"}
+{"phrase": "открой-ка каггл, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://kaggle.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "отправь Данияру деньги", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "dangerous"}
+{"phrase": "Найди на крыше ответ на ошибку null pointer и открой первое!", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "запусти докер хаб", "target": "{\"type\":\"open_url\",\"url\":\"https://hub.docker.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "открой приложение vs code, хочу кое-что записать", "target": "{\"type\":\"open_app\",\"appName\":\"visual studio code\"}", "cat": "open_app", "src": "template"}
+{"phrase": "открой сайт гитхаб", "target": "{\"type\":\"open_url\",\"url\":\"https://github.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "сделай скриншот и отправь его даше через ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "заверши все процессы тимса", "target": "{\"type\":\"kill_process\",\"processName\":\"ms-teams.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "открой мне браузер", "target": "{\"type\":\"open_app\",\"appName\":\"браузер\"}", "cat": "open_app", "src": "template"}
+{"phrase": "запусти телеграм в браузере, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://web.telegram.org\"}", "cat": "open_url", "src": "template"}
+{"phrase": "открой первую ссылку на странице", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "скинь тимуру по телеграму таблицу с оценками", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Сделай скриншот и отправь его Саше в вайбере", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "поставь скорость видео полтора", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Напиши другу в ватсап, что задача выполнена", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "закрой программу notepad", "target": "{\"type\":\"kill_process\",\"processName\":\"notepad.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Уровень громкости 10", "target": "{\"type\":\"set_volume\",\"level\":10}", "cat": "set_volume", "src": "template"}
+{"phrase": "фауст, сними задачу вскод", "target": "{\"type\":\"kill_process\",\"processName\":\"code.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "верни звук, а то фильм не слышно", "target": "{\"type\":\"set_volume\",\"level\":50}", "cat": "set_volume", "src": "template"}
+{"phrase": "Отправь файл с расписанием преподавателю по телеграму.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "пожалуйста скинь две тысячи на карту срочно", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "dangerous"}
+{"phrase": "Поставь громкость на 89.", "target": "{\"type\":\"set_volume\",\"level\":89}", "cat": "set_volume", "src": "template"}
+{"phrase": "запусти интеллидж идею", "target": "{\"type\":\"open_app\",\"appName\":\"intellij idea\"}", "cat": "open_app", "src": "template"}
+{"phrase": "фауст, будь добр, какая сегодня погода в алматы быстро", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "question"}
+{"phrase": "что сейчас работает на пк быстро", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "template"}
+{"phrase": "перешли договор саше в ватсапе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Таск менджер на компе", "target": "{\"type\":\"open_app\",\"appName\":\"taskmgr\"}", "cat": "open_app", "src": "template"}
+{"phrase": "открой мне docker desktop", "target": "{\"type\":\"open_app\",\"appName\":\"docker desktop\"}", "cat": "open_app", "src": "template"}
+{"phrase": "найди в почте письмо от деканата и перешли вложение пете в ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "сделай скриншот и отрпавь его научному руководителю в тг", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Отправь реферат папе и Лере через ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Хочу посмотреть downloads пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "template"}
+{"phrase": "фауст, пощии в гугле урок по питону", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Давай на ватсап в браузере пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://web.whatsapp.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "сними задачу visual studio code", "target": "{\"type\":\"kill_process\",\"processName\":\"code.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "будь добр, поменяй раскладку на английскую срочно", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Выгрузи пейнт!", "target": "{\"type\":\"kill_process\",\"processName\":\"mspaint.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "поставь громкость на 83", "target": "{\"type\":\"set_volume\",\"level\":83}", "cat": "set_volume", "src": "template"}
+{"phrase": "перейди в папку рабочий стол пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"рабочий стол\"}", "cat": "open_app", "src": "template"}
+{"phrase": "фауст, мне нужен pinterest, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://pinterest.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "открой сайт devblog.io", "target": "{\"type\":\"open_url\",\"url\":\"https://devblog.io\"}", "cat": "open_url", "src": "template"}
+{"phrase": "давай потише", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "template"}
+{"phrase": "Отыщи на алиэкспрессе инструкцию как установить докер", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой вайлдберриз и посмотри что нового", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "contrast"}
+{"phrase": "Фауст ответь жене в дискорде, что я заболел", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "давай мзоилу", "target": "{\"type\":\"open_app\",\"appName\":\"firefox\"}", "cat": "open_app", "src": "template"}
+{"phrase": "звук на 38", "target": "{\"type\":\"set_volume\",\"level\":38}", "cat": "set_volume", "src": "template"}
+{"phrase": "launch microsoft store", "target": "{\"type\":\"open_app\",\"appName\":\"microsoft store\"}", "cat": "open_app", "src": "template"}
+{"phrase": "будь добр, поажи что там на мониторе плиз", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "template"}
+{"phrase": "открой paint и залей холст красным", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "сделай скриншот и отправь его одногруппникам в дискорде", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "запусти интернет, мне нужно", "target": "{\"type\":\"open_app\",\"appName\":\"браузер\"}", "cat": "open_app", "src": "template"}
+{"phrase": "найди в изображениях чек и перешли его одногруппникам в телеграм", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "скачай презентацию по ссылке и отправь научному руководителю и саше в телеграм", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "сколько будет 91 плюс 57 плиз", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "question"}
+{"phrase": "фауст unity, надо поработать", "target": "{\"type\":\"open_app\",\"appName\":\"unity\"}", "cat": "open_app", "src": "template"}
+{"phrase": "открой-ка pinterest пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://pinterest.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "открой сайт степик", "target": "{\"type\":\"open_url\",\"url\":\"https://stepik.org\"}", "cat": "open_url", "src": "template"}
+{"phrase": "напиши начальнику в ватсап: всё готово", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "закрой программу java срочно", "target": "{\"type\":\"kill_process\",\"processName\":\"java.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "а ну-ка блокируй комп", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "template"}
+{"phrase": "зайди в ватсап и напиши преподавателю, что пары сегодня не будет", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Выключи звук, а то фильм не слышно", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "template"}
+{"phrase": "принудительно закрой intellij idea", "target": "{\"type\":\"kill_process\",\"processName\":\"idea64.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "будь добр, что там работает плиз", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "template"}
+{"phrase": "Хэдхантер пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://hh.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "set volume to 20", "target": "{\"type\":\"set_volume\",\"level\":20}", "cat": "set_volume", "src": "template"}
+{"phrase": "выключи звук", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "template"}
+{"phrase": "открой блокнот и сохрани файл на рабочий стол", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "contrast"}
+{"phrase": "Отправь сестре в дискорде диплом и напиши, что жду файл!", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Найди на олх характеристики rtx 3050", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Погугли лекцию по матанализу и открой первый сайт!", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "грохни paint", "target": "{\"type\":\"kill_process\",\"processName\":\"mspaint.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "отправь лере в телеграме фото паспорта кота и напиши, что я заболел", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Открой мне ticketon!", "target": "{\"type\":\"open_url\",\"url\":\"https://ticketon.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Kill client_x64.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"client_x64.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "запусти программу paint на компьютере", "target": "{\"type\":\"open_app\",\"appName\":\"paint\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Фауст, закрой наконец android studio пожалуйста.", "target": "{\"type\":\"kill_process\",\"processName\":\"studio64.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "выгрузи телегу", "target": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "перейди в загрузки", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "template"}
+{"phrase": "напиши в избранное через ватсап, что пары сегодня не будет", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "го на lenta.ru", "target": "{\"type\":\"open_url\",\"url\":\"https://lenta.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Поищи перевод слова hello на каспи и покажи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "сколько будет 44 минус 99", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "question"}
+{"phrase": "Посмотри на алиэкспрессе отзывы о ноутбуке", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "подними базу данных", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "замьють на компьютере", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "template"}
+{"phrase": "лцздаше еаа", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "gibberish"}
+{"phrase": "Эй, алло", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "chat"}
+{"phrase": "найди в гугле ответ на ошибку null pointer", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Open duolingo", "target": "{\"type\":\"open_url\",\"url\":\"https://duolingo.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "открой в проводнике папку документы пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "cat": "open_app", "src": "template"}
+{"phrase": "разверни видео на весь экарн пожалуйста", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "сделай копию файла диплом.docx", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "фауст го на википедия", "target": "{\"type\":\"open_url\",\"url\":\"https://ru.wikipedia.org\"}", "cat": "open_url", "src": "template"}
+{"phrase": "громкость на 36 процентов", "target": "{\"type\":\"set_volume\",\"level\":36}", "cat": "set_volume", "src": "template"}
+{"phrase": "найди на ютубе обзор айфона и включи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Закрой наконец powerpoint.", "target": "{\"type\":\"kill_process\",\"processName\":\"powerpnt.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "форматни флешку быстро", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "dangerous"}
+{"phrase": "сделай звук средним, соседи спят", "target": "{\"type\":\"set_volume\",\"level\":50}", "cat": "set_volume", "src": "template"}
+{"phrase": "Создай текстовый файл практика на рабочем столе!", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "даю цу смлчу", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "gibberish"}
+{"phrase": "хочу посмотреть картинки пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "cat": "open_app", "src": "template"}
+{"phrase": "напиши другу в дискорде, что сервер поднят", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "перейди на сайт blog-mysite.com", "target": "{\"type\":\"open_url\",\"url\":\"https://blog-mysite.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "найди на кольсах бесплатные иконки", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "задйи на сайт edu-14.com", "target": "{\"type\":\"open_url\",\"url\":\"https://edu-14.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "сколько весит слон пожалуйста", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "question"}
+{"phrase": "Покажи мне фотки.", "target": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "cat": "open_app", "src": "template"}
+{"phrase": "заверши процесс блокнот пожалуйста", "target": "{\"type\":\"kill_process\",\"processName\":\"notepad.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "открой в браузере newstravel.io", "target": "{\"type\":\"open_url\",\"url\":\"https://newstravel.io\"}", "cat": "open_url", "src": "template"}
+{"phrase": "можешь разбуди меня в 9, если не сложно", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "unsupported"}
+{"phrase": "зайди на твич и поищи отзывы", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "contrast"}
+{"phrase": "открой сайт yandex, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://yandex.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "в телеграм напиши в избранное привет", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "перешли резюме папе через ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "скинь данияру в ватсап диплом", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "надо открыть севен зип, надо поработать", "target": "{\"type\":\"open_app\",\"appName\":\"7-zip\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Андроид студио.", "target": "{\"type\":\"open_app\",\"appName\":\"android studio\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Надо открыть энидеск.", "target": "{\"type\":\"open_app\",\"appName\":\"anydesk\"}", "cat": "open_app", "src": "template"}
+{"phrase": "фауст поищи на hh квартиру в аренду", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "будь добр, скинь снимок экрана", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "template"}
+{"phrase": "открой shop17.kz", "target": "{\"type\":\"open_url\",\"url\":\"https://shop17.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "зайди на крыша кз, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://krisha.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "хабрахабр", "target": "{\"type\":\"open_url\",\"url\":\"https://habr.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "найди отзывы о ноутбуке на олх", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "хочу посмотреть документы", "target": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "cat": "open_app", "src": "template"}
+{"phrase": "посмотри на озоне новости спорта", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "вбей в поиск на вайлдберриз наушники до 20 тысяч", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "давай на bing", "target": "{\"type\":\"open_url\",\"url\":\"https://bing.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Выруби слак срочно!", "target": "{\"type\":\"kill_process\",\"processName\":\"slack.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "найди на каспи машину до трёх миллионов", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "отправь презентацию в группу и одногруппникам в ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "надо открыть discord", "target": "{\"type\":\"open_app\",\"appName\":\"discord\"}", "cat": "open_app", "src": "template"}
+{"phrase": "выруби paint", "target": "{\"type\":\"kill_process\",\"processName\":\"mspaint.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "открой в браузере днс, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://dns-shop.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Сними процесс server.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"server.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "запусти программу пайчарм, надо поработать", "target": "{\"type\":\"open_app\",\"appName\":\"pycharm\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Take a screneshot сейчас!", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "template"}
+{"phrase": "сверни все окна срочно", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Фауст, перейди в раздел новости на этом сайте!", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "go to gitlab", "target": "{\"type\":\"open_url\",\"url\":\"https://gitlab.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "фауст, открой gmail и открой первую ссылку", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "contrast"}
+{"phrase": "Найди в изображениях pdf из загрузок и отправь Диме в вайбере", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "отправь курсовую Кате и брату через ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "ппя лч", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "gibberish"}
+{"phrase": "открой сайт imdb", "target": "{\"type\":\"open_url\",\"url\":\"https://imdb.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "фауст, а ну-ка заполни форму поиска словом билеты и нажми нйти", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "напиши в избранное привет в телеграм", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "перейди на study-kino.com", "target": "{\"type\":\"open_url\",\"url\":\"https://study-kino.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "а ну-ка сколько времени срочно", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "question"}
+{"phrase": "открой стековерфлоу и открой первую ссылку", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "contrast"}
+{"phrase": "ничего не надо", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "chat"}
+{"phrase": "Напиши стих про всену плиз.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "unsupported"}
+{"phrase": "дай скин", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "template"}
+{"phrase": "Что сейчас запущено.", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "template"}
+{"phrase": "быстро перезагрузи систему быстро", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "dangerous"}
+{"phrase": "запусти программу vs code пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"visual studio code\"}", "cat": "open_app", "src": "template"}
+{"phrase": "фауст, сделай звук двадцать", "target": "{\"type\":\"set_volume\",\"level\":20}", "cat": "set_volume", "src": "template"}
+{"phrase": "подготовь компьютер к презентации сейчас", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "эй, how are you", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "chat"}
+{"phrase": "убей процесс monitor.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"monitor.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "открой в браузере shop.info", "target": "{\"type\":\"open_url\",\"url\":\"https://shop.info\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Хочу громкость 99!", "target": "{\"type\":\"set_volume\",\"level\":99}", "cat": "set_volume", "src": "template"}
+{"phrase": "поищи на каспи машину до трёх миллионов и открой что-нибудь", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой яндекс маркет", "target": "{\"type\":\"open_url\",\"url\":\"https://market.yandex.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Зайди на сайт leetcode, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://leetcode.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Какие приложения работают пожалуйста", "target": "{\"type\":\"list_processes\"}", "cat": "list_processes", "src": "template"}
+{"phrase": "запусти приложение ексель пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"excel\"}", "cat": "open_app", "src": "template"}
+{"phrase": "отправь диплом алие в тг", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "open music.net", "target": "{\"type\":\"open_url\",\"url\":\"https://music.net\"}", "cat": "open_url", "src": "template"}
+{"phrase": "включи звук на ноуте", "target": "{\"type\":\"set_volume\",\"level\":50}", "cat": "set_volume", "src": "template"}
+{"phrase": "а ну-ка set an alarm for 8", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "unsupported"}
+{"phrase": "выруби vscode срочно", "target": "{\"type\":\"kill_process\",\"processName\":\"code.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "зайди в закон кз", "target": "{\"type\":\"open_url\",\"url\":\"https://zakon.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "открой блокнот, напиши всё готово и сохрани на рабочий стол", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "сравни цены на первые два товара срочно", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "давай на reddit", "target": "{\"type\":\"open_url\",\"url\":\"https://reddit.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "напиши папе в телеграм, что жду файл", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "алло", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "chat"}
+{"phrase": "найди в згарузках файл отчёт.docx и перешли его в группу в ватсапе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "найди как решить квадратное уравнение и отправь папе в тг", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Как сварить борщ.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "question"}
+{"phrase": "фауст найди на hh репозиторий spring boot и открой первое", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "фауст, эй, закрой экран на пароль", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "template"}
+{"phrase": "Перейди на сайт гугл фото.", "target": "{\"type\":\"open_url\",\"url\":\"https://photos.google.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "скачай отчёт по ссылке и отправь брату и научному руководителю в телеграм", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "найди новости спорта в гугле и перешли ссылку кате в ватсапе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Фауст, quieter, а то фильм не слышно", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "template"}
+{"phrase": "убей процесс worker32.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"worker32.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "закрой программу зум срочно", "target": "{\"type\":\"kill_process\",\"processName\":\"zoom.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "включи спидтест", "target": "{\"type\":\"open_url\",\"url\":\"https://speedtest.net\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Закрой все окна фотошопа!", "target": "{\"type\":\"kill_process\",\"processName\":\"photoshop.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Зайди в ватсап и напиши Кате, что сервер поднят", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "давай блокнотик", "target": "{\"type\":\"open_app\",\"appName\":\"notepad\"}", "cat": "open_app", "src": "template"}
+{"phrase": "выруби звук на компьютере", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "template"}
+{"phrase": "сделай минимальную громкость, а то фильм не слышно", "target": "{\"type\":\"set_volume\",\"level\":5}", "cat": "set_volume", "src": "template"}
+{"phrase": "ычохзд ливтмп хду", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "gibberish"}
+{"phrase": "найди рецепт пиццы, запиши в блокнот и сохрани на рабочий стол", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "го на вайлдбериз", "target": "{\"type\":\"open_url\",\"url\":\"https://wildberries.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "включи субтитры на видео бытсро", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "отправь смс брату", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "impossible"}
+{"phrase": "Громкость на четверть, мешает.", "target": "{\"type\":\"set_volume\",\"level\":25}", "cat": "set_volume", "src": "template"}
+{"phrase": "открой-ка идею, хочу кое-что записать", "target": "{\"type\":\"open_app\",\"appName\":\"intellij idea\"}", "cat": "open_app", "src": "template"}
+{"phrase": "зайди в kaspi", "target": "{\"type\":\"open_url\",\"url\":\"https://kaspi.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "чуть погромче, голова болит", "target": "{\"type\":\"set_volume\",\"level\":70}", "cat": "set_volume", "src": "template"}
+{"phrase": "Фауст, убей процсес server.exe!", "target": "{\"type\":\"kill_process\",\"processName\":\"server.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "закрой окно вскода", "target": "{\"type\":\"kill_process\",\"processName\":\"code.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "найди на озоне шаблон презентации и включи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой диспетчер задач", "target": "{\"type\":\"open_app\",\"appName\":\"taskmgr\"}", "cat": "open_app", "src": "contrast"}
+{"phrase": "закрой launcher.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"launcher.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "запусти всё для стрима быстро", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "загугли песню группы кино", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "эй, запусти мой рабочий набор пожалуйста", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "заверши процесс viewer64.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"viewer64.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Отсортируй фалы в документах по дате.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "найди в интернете вакансии java разработчика", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Фауст, звук тридцать.", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "template"}
+{"phrase": "эй, мне скучно, если не сложно", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "chat"}
+{"phrase": "включи ексель", "target": "{\"type\":\"open_app\",\"appName\":\"excel\"}", "cat": "open_app", "src": "template"}
+{"phrase": "заархивируй папку архив", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "сбавь громкость на ноуте", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "template"}
+{"phrase": "открой файрфокс и открой последний документ", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "contrast"}
+{"phrase": "Перейди на сайт тенгри", "target": "{\"type\":\"open_url\",\"url\":\"https://tengrinews.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "эй, включи экран блокировки сейчас", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "template"}
+{"phrase": "мне нужен стим", "target": "{\"type\":\"open_app\",\"appName\":\"steam\"}", "cat": "open_app", "src": "template"}
+{"phrase": "открой телеграм и прочитай последнее сообщение", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "фауст поставь громкость на 56", "target": "{\"type\":\"set_volume\",\"level\":56}", "cat": "set_volume", "src": "template"}
+{"phrase": "Перешли последнее сообщение Айгерим в телеграме", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "убей калькулятор", "target": "{\"type\":\"kill_process\",\"processName\":\"calculatorapp.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "зайди на сайт docs21.com", "target": "{\"type\":\"open_url\",\"url\":\"https://docs21.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "set the volume at 75", "target": "{\"type\":\"set_volume\",\"level\":75}", "cat": "set_volume", "src": "template"}
+{"phrase": "Открой ватсап, найди чат группы и отправь фотку.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "найди в почте письмо от деканата и перешли вложение другу в вотсапе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "либреофис", "target": "{\"type\":\"open_app\",\"appName\":\"libreoffice writer\"}", "cat": "open_app", "src": "template"}
+{"phrase": "найди в загрузках диплом и отправь алие в телеграм", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "сделай скриншот и отправь его в группу в телеграме", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Включи елайбрари.", "target": "{\"type\":\"open_url\",\"url\":\"https://elibrary.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Open dev19.info", "target": "{\"type\":\"open_url\",\"url\":\"https://dev19.info\"}", "cat": "open_url", "src": "template"}
+{"phrase": "поставь громкость на 21", "target": "{\"type\":\"set_volume\",\"level\":21}", "cat": "set_volume", "src": "template"}
+{"phrase": "включи cyberleninka", "target": "{\"type\":\"open_url\",\"url\":\"https://cyberleninka.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Вруби майкрософт эдж.", "target": "{\"type\":\"open_app\",\"appName\":\"edge\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Распакуй презентация.zip и открой папку", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "фауст, прочитай последнее сообщение в телеграме", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "открой дискорд, найди чат с Машей и отправь фотку", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Прочитай последнее сообщение в ватсапе.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Громкость побольше на ноуте.", "target": "{\"type\":\"set_volume\",\"level\":80}", "cat": "set_volume", "src": "template"}
+{"phrase": "покажи хх", "target": "{\"type\":\"open_url\",\"url\":\"https://hh.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "быстро поставь таймер, если не сложно", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "unsupported"}
+{"phrase": "Какой заряд батареи.", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "unsupported"}
+{"phrase": "хочу посмотреть папку с картинками пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "cat": "open_app", "src": "template"}
+{"phrase": "перешли последнее сообщение Тимуру в телгерам", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "надйи подкаст про историю в интернете и запиши в блокнот", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "а ну-ка разверни окно на весь экран плиз", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Перешли последнее сообщение жене в тг.", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "найди в документах последний скачанный файл и отправь сестре в телеграм", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "go to facebook пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://facebook.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "open paint please", "target": "{\"type\":\"open_app\",\"appName\":\"paint\"}", "cat": "open_app", "src": "template"}
+{"phrase": "найди на гитхабе биографию абая", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Шшсбткс", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "gibberish"}
+{"phrase": "Запиши задача выполнена в блокнот и отправь файл Пете в вотсапе", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "найди на hh стажировку для студентов и открой первое", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "запусти приложение доту", "target": "{\"type\":\"open_app\",\"appName\":\"dota 2\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Открой тимс, срочно.", "target": "{\"type\":\"open_app\",\"appName\":\"teams\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Можешь сфоткай экран!", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "template"}
+{"phrase": "отправь арману в телеграм курсовую и напиши, что купи хлеб", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "перейди на сайт college-61.com", "target": "{\"type\":\"open_url\",\"url\":\"https://college-61.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "найди в гугл картах лекцию по матанализу и открой первое", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой store.com", "target": "{\"type\":\"open_url\",\"url\":\"https://store.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Убей chrome срочно", "target": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "найди вакансии java разработчика на гитхабе и открой первый результат", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "open auto15.ru", "target": "{\"type\":\"open_url\",\"url\":\"https://auto15.ru\"}", "cat": "open_url", "src": "template"}
+{"phrase": "ребутни комп", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "dangerous"}
+{"phrase": "перейди на два гис пожалуйста", "target": "{\"type\":\"open_url\",\"url\":\"https://2gis.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "открой вскод и создай файл main.py и напиши hello world", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "звук на максимум, голова болит", "target": "{\"type\":\"set_volume\",\"level\":100}", "cat": "set_volume", "src": "template"}
+{"phrase": "Перешли файл с расписанием жене в телеграме", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "слушай, set an alarm for 6 срочно", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "unsupported"}
+{"phrase": "Отключи звук", "target": "{\"type\":\"set_volume\",\"level\":0}", "cat": "set_volume", "src": "template"}
+{"phrase": "Найди расписание поездов алматы астана на стековерфлоу и открой первый результат", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Найди лекцию по матанализу в интернете и запиши в блокнот", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Зайди на каспи и найди перевод слова hello", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "запусти вскод и создай файл main.py и напиши hello world", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "запусти-ка ворд пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"word\"}", "cat": "open_app", "src": "template"}
+{"phrase": "установи громкость тридцтаь", "target": "{\"type\":\"set_volume\",\"level\":30}", "cat": "set_volume", "src": "template"}
+{"phrase": "перейди на сайт youtube music, быстро", "target": "{\"type\":\"open_url\",\"url\":\"https://music.youtube.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "открой папку с загрузками", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "template"}
+{"phrase": "перешли последнее сообщение в группу в телеграм", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "зайди в w3schools", "target": "{\"type\":\"open_url\",\"url\":\"https://w3schools.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Скопируй файл заявление на флешку!", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "открой пауэрпоинт и посчитай 2 плюс 2", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "contrast"}
+{"phrase": "запусти программу dota 2, хочу кое-что записать", "target": "{\"type\":\"open_app\",\"appName\":\"dota 2\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Удали мой аккаунт", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "dangerous"}
+{"phrase": "зайди на team-music.net", "target": "{\"type\":\"open_url\",\"url\":\"https://team-music.net\"}", "cat": "open_url", "src": "template"}
+{"phrase": "miro", "target": "{\"type\":\"open_url\",\"url\":\"https://miro.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "зайди на гитлаб и найди что-нибудь интересное", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "contrast"}
+{"phrase": "хочу громкость семьдесят", "target": "{\"type\":\"set_volume\",\"level\":70}", "cat": "set_volume", "src": "template"}
+{"phrase": "быстро включи ночной свет, если не сложно", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "поищи на стековерфлоу реецпт пиццы и открой что-нибудь", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "давай нотпад плюс плюс, мне нужно", "target": "{\"type\":\"open_app\",\"appName\":\"notepad++\"}", "cat": "open_app", "src": "template"}
+{"phrase": "эй, смени пароль от компьютера, если не сложно", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "dangerous"}
+{"phrase": "найди репозиторий spring boot на ютубе и открой первый результат", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой авито, найди реферат по экономике и открой первую ссылку", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Открой в проводнике то, что я скачал!", "target": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "cat": "open_app", "src": "template"}
+{"phrase": "открой мне картинки пожалуйста", "target": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Сними скрншот", "target": "{\"type\":\"screenshot\"}", "cat": "screenshot", "src": "template"}
+{"phrase": "найди рецепт пиццы в гугл картах и открой первый результат", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой в браузере mechta", "target": "{\"type\":\"open_url\",\"url\":\"https://mechta.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Найди в изображениях отчёт и перешли его преподавателю в тг!", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "фауст, обнови страницу", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой-ка крыша кз", "target": "{\"type\":\"open_url\",\"url\":\"https://krisha.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "Перешли последний скачанный файл Даше в дискорде", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "найди на алиэкспрессе гайд по майнкрафту и открой первое", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "загугли обзор айфона", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "Заблокируй экран.", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "template"}
+{"phrase": "поищи курс по английскому на гитхабе и покажи", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "найди туториал по фотошопу на алиэкспрессе и открой первый результат", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "найди кафе рядом на озоне", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "найди курс доллара в гугле и перешли ссылку диме в телеграм", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "найди рецепт плова на степике", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "сгенерируй картинку кота, если не сложно", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "unsupported"}
+{"phrase": "отправь одногруппникам в ватсапе последний скриншот и напиши, что я заболел", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "найди игровую мышь на олх", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "найди на рабочем столе файл с расписанием и отправь брату в ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "го на телеграм веб", "target": "{\"type\":\"open_url\",\"url\":\"https://web.telegram.org\"}", "cat": "open_url", "src": "template"}
+{"phrase": "open exampleshop.info", "target": "{\"type\":\"open_url\",\"url\":\"https://exampleshop.info\"}", "cat": "open_url", "src": "template"}
+{"phrase": "заархиируй папку работа", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Будь добр, сколько будет 67 плюс 83", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "question"}
+{"phrase": "фауст напиши кате через ватсап: пары сегодня не будет", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "скопируй путь к файлу диплом.docx", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "пожалуйста отправь смс брату плиз", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "impossible"}
+{"phrase": "покажи инста", "target": "{\"type\":\"open_url\",\"url\":\"https://instagram.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "kill monitor64.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"monitor64.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "сг", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "gibberish"}
+{"phrase": "найди стажировку для студентов на озоне", "target": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "cat": "agent_browser", "src": "template"}
+{"phrase": "открой настройки и поменяй обои", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "останови процесс setup_x64.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"setup_x64.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "aliexpress", "target": "{\"type\":\"open_url\",\"url\":\"https://aliexpress.com\"}", "cat": "open_url", "src": "template"}
+{"phrase": "давай контру, мне нужно", "target": "{\"type\":\"open_app\",\"appName\":\"counter-strike 2\"}", "cat": "open_app", "src": "template"}
+{"phrase": "kill sync8.exe", "target": "{\"type\":\"kill_process\",\"processName\":\"sync8.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Сними задачу стим", "target": "{\"type\":\"kill_process\",\"processName\":\"steam.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "Бытсро lock the pc плиз", "target": "{\"type\":\"lock_screen\"}", "cat": "lock_screen", "src": "template"}
+{"phrase": "давай блендер", "target": "{\"type\":\"open_app\",\"appName\":\"blender\"}", "cat": "open_app", "src": "template"}
+{"phrase": "отправь фото паспорта кота тимуру в ватсап", "target": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "cat": "agent_screen", "src": "template"}
+{"phrase": "Выключи ворд!", "target": "{\"type\":\"kill_process\",\"processName\":\"winword.exe\"}", "cat": "kill_process", "src": "template"}
+{"phrase": "гыв ягч", "target": "{\"type\":\"unknown\"}", "cat": "unknown", "src": "gibberish"}
+{"phrase": "запусти-ка postman на компьютере", "target": "{\"type\":\"open_app\",\"appName\":\"postman\"}", "cat": "open_app", "src": "template"}
+{"phrase": "Зайди в мечту кз!", "target": "{\"type\":\"open_url\",\"url\":\"https://mechta.kz\"}", "cat": "open_url", "src": "template"}
+{"phrase": "запусти программу контру на компе", "target": "{\"type\":\"open_app\",\"appName\":\"counter-strike 2\"}", "cat": "open_app", "src": "template"}

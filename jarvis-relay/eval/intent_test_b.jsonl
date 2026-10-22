@@ -1,0 +1,201 @@
+{"id": "b-1", "source": "gemini", "phrase": "Сверни все окна", "type": "agent_task", "scope": "screen"}
+{"id": "b-2", "source": "gemini", "phrase": "Отправь отчёт преподу", "type": "agent_task", "scope": "screen"}
+{"id": "b-3", "source": "gemini", "phrase": "Найди решение третьей задачи", "type": "agent_task", "scope": "browser"}
+{"id": "b-4", "source": "gemini", "phrase": "Найди билеты к экзамену", "type": "agent_task", "scope": "browser"}
+{"id": "b-5", "source": "gemini", "phrase": "Закажи большую пиццу", "type": "unknown"}
+{"id": "b-6", "source": "gemini", "phrase": "Выключи свет в комнате", "type": "unknown"}
+{"id": "b-7", "source": "gemini", "phrase": "Оплати общагу", "type": "unknown"}
+{"id": "b-8", "source": "gemini", "phrase": "Погода на завтра", "type": "unknown"}
+{"id": "b-9", "source": "gemini", "phrase": "фауст найди в гугле методичку по физике за третий семестр и скачай ее в документы", "type": "agent_task", "scope": "browser"}
+{"id": "b-10", "source": "gemini", "phrase": "найди в письмах от старосты ссылку на гугл диск скачай оттуда архив и распакуй", "type": "agent_task", "scope": "screen"}
+{"id": "b-11", "source": "gemini", "phrase": "скачай сборник задач по матану распакуй и открой первую главу", "type": "agent_task", "scope": "screen"}
+{"id": "b-12", "source": "gemini", "phrase": "оплати интернет а то завтра отключат", "type": "unknown"}
+{"id": "b-13", "source": "gemini", "phrase": "Фауст, сделай, пожалуйста, громкость потише, а то у меня от этой видеолекции уже голова начинает болеть.", "type": "set_volume", "level": [20, 40]}
+{"id": "b-14", "source": "gemini", "phrase": "Поставь звук на максимум, пожалуйста, хочу включить фоном музыкальный альбом для учёбы и отойти в другой конец комнаты.", "type": "set_volume", "level": [90, 100]}
+{"id": "b-15", "source": "gemini", "phrase": "Фауст, зайди в личный кабинет студента, найди там текущую ведомость с оценками за семестр и сделай её скриншот.", "type": "agent_task", "scope": "browser"}
+{"id": "b-16", "source": "gemini", "phrase": "Слушай, Фауст, а какая завтра будет погода с утра? Думаю, надевать мне тёплую куртку в университет или нет.", "type": "unknown"}
+{"id": "b-17", "source": "gemini", "phrase": "Напомни мне через полчаса сделать перерыв и встать размяться, а то от этого сидения у меня уже спина отваливается.", "type": "unknown"}
+{"id": "b-18", "source": "gemini", "phrase": "Расскажи какой-нибудь смешной анекдот про студентов и сессию, а то я над этой высшей математикой скоро заплачу.", "type": "unknown"}
+{"id": "b-19", "source": "gemini", "phrase": "Поставь таймер на 45 минут, хочу заниматься по специальной методике и ни на что больше не отвлекаться.", "type": "unknown"}
+{"id": "b-20", "source": "gemini", "phrase": "Открой гитхаб в браузере, гляну пулл-реквесты пока чай пью.", "type": "open_url", "hosts": ["github.com"]}
+{"id": "b-21", "source": "gemini", "phrase": "Сделай тише, а то орут из динамиков на всю квартиру.", "type": "set_volume", "level": [20, 40]}
+{"id": "b-22", "source": "gemini", "phrase": "Зайди в Постман, сгенери кёрл-запрос для нашего API и скопируй в буфер.", "type": "agent_task", "scope": "screen"}
+{"id": "b-23", "source": "gemini", "phrase": "Поставь будильник на 8 утра, а то завтра опять суппорт-смена ранняя.", "type": "unknown"}
+{"id": "b-24", "source": "gemini", "phrase": "Оплати квитанцию за инет через карточку, а то сейчас провайдер все обрубит.", "type": "unknown"}
+{"id": "b-25", "source": "gemini", "phrase": "Напомни в пять вечера созвониться с PM'ом по поводу ревью кода.", "type": "unknown"}
+{"id": "b-26", "source": "gemini", "phrase": "Будь добр, зайди в трекер задач, создай новую карточку с заголовком «Исправление бага с авторизацией» и назначь ее на меня.", "type": "agent_task", "scope": "browser"}
+{"id": "b-27", "source": "gemini", "phrase": "Зайди в Figma, найди макет мобильного приложения для нашего клиента, экспортируй все PNG-иконки и выгрузи их в папку assets.", "type": "agent_task", "scope": "screen"}
+{"id": "b-28", "source": "gemini", "phrase": "Поставь, пожалуйста, будильник на 7:30 утра, мне завтра нужно рано встать на созвон с американскими коллегами.", "type": "unknown"}
+{"id": "b-29", "source": "gemini", "phrase": "Сделай мне, пожалуйста, чашку крепкого кофе, а то после обеда меня очень сильно клонит в сон.", "type": "unknown"}
+{"id": "b-30", "source": "gemini", "phrase": "Как ты считаешь, сможем ли мы с командой уложиться в дедлайн по проекту, если продолжим работать в таком же темпе?", "type": "unknown"}
+{"id": "b-31", "source": "gemini", "phrase": "Закажи, пожалуйста, такси до нашего офиса через полчаса, мне нужно забрать кое-какие документы у менеджера.", "type": "unknown"}
+{"id": "b-32", "source": "gemini", "phrase": "открой телегу", "type": "open_app", "apps": ["telegram", "тг", "телега", "телеграм", "телеграмм", "телегу"]}
+{"id": "b-33", "source": "gemini", "phrase": "покажи че там по процессам в диспетчере", "type": "list_processes"}
+{"id": "b-34", "source": "gemini", "phrase": "оплати интернет а то ща отключит", "type": "unknown"}
+{"id": "b-35", "source": "gemini", "phrase": "сколько будет 256 умножить на 18", "type": "unknown"}
+{"id": "b-36", "source": "gemini", "phrase": "фауст а ты умеешь писать код за меня?", "type": "unknown"}
+{"id": "b-37", "source": "gemini", "phrase": "забронируй столик в баре на пятницу", "type": "unknown"}
+{"id": "b-38", "source": "gemini", "phrase": "фауст сделай потише а то орет на всю квартиру", "type": "set_volume", "level": [20, 40]}
+{"id": "b-39", "source": "gemini", "phrase": "найди субтитры к этому фильму на русском и подгрузи в плеер", "type": "agent_task", "scope": "screen"}
+{"id": "b-40", "source": "gemini", "phrase": "зайди на сайт погоды найди москву на завтра и сделай скриншот", "type": "agent_task", "scope": "browser"}
+{"id": "b-41", "source": "gemini", "phrase": "скачай с торрента новую серию сериала и открой ее в кмплеере", "type": "agent_task", "scope": "screen"}
+{"id": "b-42", "source": "gemini", "phrase": "переведи сто рублей пете на карту", "type": "unknown"}
+{"id": "b-43", "source": "gemini", "phrase": "фауст сколько будет шестьдесят четыре умножить на двенадцать", "type": "unknown"}
+{"id": "b-44", "source": "gemini", "phrase": "скрин экрана сдклой", "type": "screenshot"}
+{"id": "b-45", "source": "gemini", "phrase": "сделай громче на 20%", "type": "set_volume", "level": [70, 90]}
+{"id": "b-46", "source": "gemini", "phrase": "открой почту найди письмо от сбера и скачай чек", "type": "agent_task", "scope": "browser"}
+{"id": "b-47", "source": "gemini", "phrase": "найди в гугле отель в сочи и открой карту", "type": "agent_task", "scope": "browser"}
+{"id": "b-48", "source": "gemini", "phrase": "какая погода за окном", "type": "unknown"}
+{"id": "b-49", "source": "gemini", "phrase": "фауст кто ты по жизни", "type": "unknown"}
+{"id": "b-50", "source": "gemini", "phrase": "Mute the sound right now.", "type": "set_volume", "level": [0, 10]}
+{"id": "b-51", "source": "gemini", "phrase": "Сделай full screen.", "type": "agent_task", "scope": "screen"}
+{"id": "b-52", "source": "gemini", "phrase": "Lock the PC screen.", "type": "lock_screen"}
+{"id": "b-53", "source": "gemini", "phrase": "Open Chrome browser.", "type": "open_app", "apps": ["chrome", "google chrome", "гугл хром", "хром"]}
+{"id": "b-54", "source": "gemini", "phrase": "Faust, show me running processes.", "type": "list_processes"}
+{"id": "b-55", "source": "gemini", "phrase": "Switch tab in browser.", "type": "agent_task", "scope": "browser"}
+{"id": "b-56", "source": "gemini", "phrase": "Search for pizza delivery near me, add pepperoni to cart and go to checkout.", "type": "agent_task", "scope": "browser"}
+{"id": "b-57", "source": "gemini", "phrase": "Open Spotify, find playlist Chill Vibes and hit shuffle play.", "type": "agent_task", "scope": "screen"}
+{"id": "b-58", "source": "gemini", "phrase": "Google recipe for carbonara and copy ingredients to my Notepad app.", "type": "agent_task", "scope": "screen"}
+{"id": "b-59", "source": "gemini", "phrase": "Hey Faust, what is the meaning of life?", "type": "unknown"}
+{"id": "b-60", "source": "gemini", "phrase": "Remind me to buy milk tomorrow at 10.", "type": "unknown"}
+{"id": "b-61", "source": "gemini", "phrase": "Faust, tell me a good joke.", "type": "unknown"}
+{"id": "b-62", "source": "gemini", "phrase": "Pay my Netflix subscription.", "type": "unknown"}
+{"id": "b-63", "source": "gemini", "phrase": "Громкость на максимум", "type": "set_volume", "level": [90, 100]}
+{"id": "b-64", "source": "gemini", "phrase": "Без звука", "type": "set_volume", "level": [0, 10]}
+{"id": "b-65", "source": "gemini", "phrase": "Скрин в буфер", "type": "screenshot"}
+{"id": "b-66", "source": "gemini", "phrase": "Скачай таблицу за квартал", "type": "agent_task", "scope": "browser"}
+{"id": "b-67", "source": "gemini", "phrase": "Выключи ПК", "type": "unknown"}
+{"id": "b-68", "source": "gemini", "phrase": "Ты кто такой?", "type": "unknown"}
+{"id": "b-69", "source": "gemini", "phrase": "Устал, силы закончились", "type": "unknown"}
+{"id": "b-70", "source": "gemini", "phrase": "Закрой, пожалуйста, Excel, я уже закончил сводить квартальную таблицу и хочу освободить оперативную память.", "type": "kill_process", "procs": ["excel.exe"]}
+{"id": "b-71", "source": "gemini", "phrase": "Фауст, зайди в CRM-систему, найди карточку компании 'Вектор', скачай их реквизиты и закинь их в папку 'Новые контрагенты'.", "type": "agent_task", "scope": "screen"}
+{"id": "b-72", "source": "gemini", "phrase": "Будь добр, открой шаблон коммерческого предложения, подставь туда сегодняшнее число и имя клиента 'Технопром', а затем сохрани.", "type": "agent_task", "scope": "screen"}
+{"id": "b-73", "source": "gemini", "phrase": "Фауст, поставь мне, пожалуйста, будильник на 7 утра на завтра, а то у меня очень важная встреча и я боюсь проспать.", "type": "unknown"}
+{"id": "b-74", "source": "gemini", "phrase": "Будь любезен, выключи мой рабочий компьютер полностью, я уже уехал домой и забыл завершить работу.", "type": "unknown"}
+{"id": "b-75", "source": "gemini", "phrase": "Пожалуйста, купи два билета в кино на вечерний сеанс на завтра, хочется отвлечься от этой рутины.", "type": "unknown"}
+{"id": "b-76", "source": "gemini", "phrase": "Помоги мне, пожалуйста, сварить кофе, если бы ты умел управлять кофемашиной, я был бы самым счастливым сотрудником.", "type": "unknown"}
+{"id": "b-77", "source": "gemini", "phrase": "Open Excel and my Downloads folder side by side.", "type": "agent_task", "scope": "screen"}
+{"id": "b-78", "source": "gemini", "phrase": "Open Spotify app and turn up the volume slightly.", "type": "agent_task", "scope": "screen"}
+{"id": "b-79", "source": "gemini", "phrase": "Сделай скриншот активного окна.", "type": "screenshot"}
+{"id": "b-80", "source": "gemini", "phrase": "Open Jira board in Google Chrome.", "type": "agent_task", "scope": "browser"}
+{"id": "b-81", "source": "gemini", "phrase": "Faust, find today's invoices in my inbox, aggregate total sum, and paste it into a new Notion page.", "type": "agent_task", "scope": "screen"}
+{"id": "b-82", "source": "gemini", "phrase": "Скачай с веб-диска архив с макетами, распакуй в папку Project_Assets и залочь экран.", "type": "agent_task", "scope": "screen"}
+{"id": "b-83", "source": "gemini", "phrase": "Pay my electricity bill using my saved bank card.", "type": "unknown"}
+{"id": "b-84", "source": "gemini", "phrase": "Сделай мне чашку кофе, пока я переписываю отчет.", "type": "unknown"}
+{"id": "b-85", "source": "gemini", "phrase": "Найди гайд на Линка", "type": "agent_task", "scope": "browser"}
+{"id": "b-86", "source": "gemini", "phrase": "Загрузи клип в дискорд", "type": "agent_task", "scope": "screen"}
+{"id": "b-87", "source": "gemini", "phrase": "Найди скидки Стима", "type": "agent_task", "scope": "browser"}
+{"id": "b-88", "source": "gemini", "phrase": "Отправь лог ошибок", "type": "agent_task", "scope": "screen"}
+{"id": "b-89", "source": "gemini", "phrase": "Выключи комп", "type": "unknown"}
+{"id": "b-90", "source": "gemini", "phrase": "Заблокируй комп, я отбегу до туалета на пару минут.", "type": "lock_screen"}
+{"id": "b-91", "source": "gemini", "phrase": "Выруби Стимовый оверлей или просто сам Стим закрой нафиг.", "type": "kill_process", "procs": ["steam.exe"]}
+{"id": "b-92", "source": "gemini", "phrase": "Ну-ка открой папку с играми на диске D.", "type": "open_app", "apps": ["игры"]}
+{"id": "b-93", "source": "gemini", "phrase": "Короче, зайди на HLTV, найди расписание матчей NaVi на сегодня и сбрось скрин мне в телегу.", "type": "agent_task", "scope": "screen"}
+{"id": "b-94", "source": "gemini", "phrase": "Фауст, забей в поиске видео с разбором раскидок на Мираже, открой первое и поставь на паузу.", "type": "agent_task", "scope": "browser"}
+{"id": "b-95", "source": "gemini", "phrase": "Фауст, завари мне энергетик и принеси, а то ночная сессия накрывается.", "type": "unknown"}
+{"id": "b-96", "source": "gemini", "phrase": "фауст сделай скин экрана фастом", "type": "screenshot"}
+{"id": "b-97", "source": "gemini", "phrase": "гшромкость на сотку пж", "type": "set_volume", "level": [90, 100]}
+{"id": "b-98", "source": "gemini", "phrase": "выруби звук вообще", "type": "set_volume", "level": [0, 10]}
+{"id": "b-99", "source": "gemini", "phrase": "фауст открой дс", "type": "open_app", "apps": ["discord", "дискорд", "дс"]}
+{"id": "b-100", "source": "gemini", "phrase": "открой маркет ксго найди цену на мой калаш и выстави за минималку", "type": "agent_task", "scope": "browser"}
+{"id": "b-101", "source": "gemini", "phrase": "оплати интернет а то шас отклюбчат", "type": "unknown"}
+{"id": "b-102", "source": "gemini", "phrase": "фауст каков шанс проиграть со счета 14-1", "type": "unknown"}
+{"id": "b-103", "source": "gemini", "phrase": "выключи комп через два часа я спать буду", "type": "unknown"}
+{"id": "b-104", "source": "gemini", "phrase": "Фауст, покажи чо там сейчас запущенно вообще.", "type": "list_processes"}
+{"id": "b-105", "source": "gemini", "phrase": "Фауст, найди в инете свежие новости про IT, скачай первую PDF-ку и открой её.", "type": "agent_task", "scope": "screen"}
+{"id": "b-106", "source": "gemini", "phrase": "Найди мне саундтрек из Киберпанка, скачай в mp3 и сразу закинь в плеер.", "type": "agent_task", "scope": "screen"}
+{"id": "b-107", "source": "gemini", "phrase": "открой блокнот напиши план на день и сохрани", "type": "agent_task", "scope": "screen"}
+{"id": "b-108", "source": "gemini", "phrase": "найди свежий подкаст про технологии скачай и включи", "type": "agent_task", "scope": "screen"}
+{"id": "b-109", "source": "gemini", "phrase": "напомни мне через полчаса выпить лекарство", "type": "unknown"}
+{"id": "b-110", "source": "gemini", "phrase": "закажи такси до офиса на девять утра", "type": "unknown"}
+{"id": "b-111", "source": "gemini", "phrase": "Фауст, сделай screenshot экрана.", "type": "screenshot"}
+{"id": "b-112", "source": "gemini", "phrase": "Фауст, покажи запущенные процессы.", "type": "list_processes"}
+{"id": "b-113", "source": "gemini", "phrase": "Go to GitHub notifications, clear all read ones and open the first issue.", "type": "agent_task", "scope": "browser"}
+{"id": "b-114", "source": "gemini", "phrase": "Order breakfast from Uber Eats.", "type": "unknown"}
+{"id": "b-115", "source": "gemini", "phrase": "Фауст, включи чайник на кухне.", "type": "unknown"}
+{"id": "b-116", "source": "gemini", "phrase": "Сверни Стим", "type": "agent_task", "scope": "screen"}
+{"id": "b-117", "source": "gemini", "phrase": "Музыку на паузу", "type": "agent_task", "scope": "screen"}
+{"id": "b-118", "source": "gemini", "phrase": "Сними скрин", "type": "screenshot"}
+{"id": "b-119", "source": "gemini", "phrase": "Скачай трек из ВК", "type": "agent_task", "scope": "browser"}
+{"id": "b-120", "source": "gemini", "phrase": "Погаси свет в комнате", "type": "unknown"}
+{"id": "b-121", "source": "gemini", "phrase": "Фауст, ты тут?", "type": "unknown"}
+{"id": "b-122", "source": "gemini", "phrase": "Переведи деньги маме", "type": "unknown"}
+{"id": "b-123", "source": "gemini", "phrase": "выключи звук совсем на компе", "type": "set_volume", "level": [0, 10]}
+{"id": "b-124", "source": "gemini", "phrase": "закрой браузер хром", "type": "kill_process", "procs": ["chrome.exe"]}
+{"id": "b-125", "source": "gemini", "phrase": "открой хром найди расписание автобусов сделай скриншот и скинь мне в телегу", "type": "agent_task", "scope": "screen"}
+{"id": "b-126", "source": "gemini", "phrase": "зайди на гисметео посмотри погоду на завтра скачай график и закрой вкладку", "type": "agent_task", "scope": "browser"}
+{"id": "b-127", "source": "gemini", "phrase": "открой эксель найди последнюю строку напиши итого и сохрани файл", "type": "agent_task", "scope": "screen"}
+{"id": "b-128", "source": "gemini", "phrase": "завари мне кофе пока я спускаюсь", "type": "unknown"}
+{"id": "b-129", "source": "gemini", "phrase": "фауст ты тут не скучай я скоро вернусь", "type": "unknown"}
+{"id": "b-130", "source": "gemini", "phrase": "напомни купить молоко когда я буду в магазине", "type": "unknown"}
+{"id": "b-131", "source": "gemini", "phrase": "фауст какая погода на улице куртку брать", "type": "unknown"}
+{"id": "b-132", "source": "gemini", "phrase": "переведи маме три тысячи с карты", "type": "unknown"}
+{"id": "b-133", "source": "gemini", "phrase": "сколько времени сейчас я уже опаздываю", "type": "unknown"}
+{"id": "b-134", "source": "gemini", "phrase": "Фауст, покажи мне список всех запущенных сейчас процессов, хочу убедиться перед выходом, что ничего лишнего не нагружает видеокарту.", "type": "list_processes"}
+{"id": "b-135", "source": "gemini", "phrase": "Открой сайт Яндекс Погоды, хочу быстро глянуть перед выходом на улицу, брать ли мне с собой зонтик или обойдется.", "type": "open_url", "hosts": ["pogoda.yandex.ru"]}
+{"id": "b-136", "source": "gemini", "phrase": "Фауст, сделай звук на максимум, а то я ухожу на кухню готовить обед и хочу оттуда слышать уведомления о важных письмах.", "type": "set_volume", "level": [90, 100]}
+{"id": "b-137", "source": "gemini", "phrase": "Заблокируй, пожалуйста, систему, я побежал на работу, вернусь только поздно вечером.", "type": "lock_screen"}
+{"id": "b-138", "source": "gemini", "phrase": "Фауст, найди в браузере последнюю серию моего сериала на любом бесплатном сайте, открой на весь экран и поставь в самое начало на паузу, я приду и сразу буду смотреть.", "type": "agent_task", "scope": "browser"}
+{"id": "b-139", "source": "gemini", "phrase": "Фауст, зайди на сайт книжного магазина, найди книгу 'Мастер и Маргарита', добавь её в корзину и оставь страницу открытой, я приду и оформлю заказ.", "type": "agent_task", "scope": "browser"}
+{"id": "b-140", "source": "gemini", "phrase": "Оплати, пожалуйста, с моей карты счет за коммунальные услуги, а то я уже вышел из дома и забыл это сделать, а сегодня последний день без пени.", "type": "unknown"}
+{"id": "b-141", "source": "gemini", "phrase": "Пожалуйста, переведи три тысячи рублей моему другу Васе по номеру телефона, пока я иду до остановки.", "type": "unknown"}
+{"id": "b-142", "source": "gemini", "phrase": "Закажи мне такси до аэропорта на пять часов вечера, а то у меня чемоданы тяжелые и я не хочу ехать на общественном транспорте.", "type": "unknown"}
+{"id": "b-143", "source": "gemini", "phrase": "Замуть звук на секунду, а то вода шумит, не слышно ни черта.", "type": "set_volume", "level": [0, 10]}
+{"id": "b-144", "source": "gemini", "phrase": "Фауст, зайди на Яндекс Музыку, найди плейлист для готовки и нажми перемешать.", "type": "agent_task", "scope": "browser"}
+{"id": "b-145", "source": "gemini", "phrase": "Фауст, слушай, а че у нас по погоде на завтра, дождевик брать?", "type": "unknown"}
+{"id": "b-146", "source": "gemini", "phrase": "Фауст, разбуди меня завтра в 7 утра, только громко, ок?", "type": "unknown"}
+{"id": "b-147", "source": "gemini", "phrase": "Фауст, оплати квитанцию за свет, я тебе на почту скидывал PDF-ку.", "type": "unknown"}
+{"id": "b-148", "source": "gemini", "phrase": "Слушай, а че ты такой умный, а суп за меня сварить не можешь?", "type": "unknown"}
+{"id": "b-149", "source": "gemini", "phrase": "Фауст, закрой, пожалуйста, плеер VLC, потому что фильм уже закончился, а лишние звуки меня сейчас отвлекают от готовки.", "type": "kill_process", "procs": ["vlc.exe"]}
+{"id": "b-150", "source": "gemini", "phrase": "Открой, пожалуйста, калькулятор на рабочем столе, мне надо пересчитать пропорции специй для маринада.", "type": "open_app", "apps": ["calc", "calculator", "калькулятор", "калькулятор windows"]}
+{"id": "b-151", "source": "gemini", "phrase": "Фауст, открой, пожалуйста, сайт YouTube, хочу включить какой-нибудь фоновый подкаст про историю.", "type": "open_url", "hosts": ["youtube.com"]}
+{"id": "b-152", "source": "gemini", "phrase": "Заблокируй, пожалуйста, систему, а то я отойду надолго делать заготовки и не хочу оставлять ПК открытым.", "type": "lock_screen"}
+{"id": "b-153", "source": "gemini", "phrase": "Фауст, найди, пожалуйста, на Youtube видеорецепт классической лазаньи, скачай его в папку Видео и запусти мне аудиодорожку.", "type": "agent_task", "scope": "screen"}
+{"id": "b-154", "source": "gemini", "phrase": "Будь добр, зайди на сайт с кулинарными конвертерами, переведи 150 грамм муки в столовые ложки и зачитай мне результат.", "type": "agent_task", "scope": "browser"}
+{"id": "b-155", "source": "gemini", "phrase": "Скачай, пожалуйста, с первого попавшегося сайта таблицу перевода градусов духовки из Фаренгейтов в Цельсии и открой её.", "type": "agent_task", "scope": "screen"}
+{"id": "b-156", "source": "gemini", "phrase": "фауст сфоткай экран и скинь мне", "type": "screenshot"}
+{"id": "b-157", "source": "gemini", "phrase": "какие проги сейчас работают", "type": "list_processes"}
+{"id": "b-158", "source": "gemini", "phrase": "открой стим", "type": "open_app", "apps": ["steam", "стим"]}
+{"id": "b-159", "source": "gemini", "phrase": "скачай с торрента последнюю серию джентльменов", "type": "agent_task", "scope": "screen"}
+{"id": "b-160", "source": "gemini", "phrase": "скачай презентацию из почты и скинь в папку работа", "type": "agent_task", "scope": "screen"}
+{"id": "b-161", "source": "gemini", "phrase": "закрой эту хновину на экране как ее там браузер", "type": "kill_process", "procs": ["chrome.exe"]}
+{"id": "b-162", "source": "gemini", "phrase": "выключи это окно с рекламой крестик не вижу", "type": "agent_task", "scope": "screen"}
+{"id": "b-163", "source": "gemini", "phrase": "найди фильм девчата скачай в хорошем качестве и открой", "type": "agent_task", "scope": "screen"}
+{"id": "b-164", "source": "gemini", "phrase": "зайди на сайт поликлиники и запиши меня к терапевту на утро", "type": "agent_task", "scope": "browser"}
+{"id": "b-165", "source": "gemini", "phrase": "найди текст песни катюша скопируй и распечатай на принтере", "type": "agent_task", "scope": "screen"}
+{"id": "b-166", "source": "gemini", "phrase": "пожарь мне картошки а то я устала сегодня", "type": "unknown"}
+{"id": "b-167", "source": "gemini", "phrase": "заскринь картинку", "type": "screenshot"}
+{"id": "b-168", "source": "gemini", "phrase": "заблокируи монитор", "type": "lock_screen"}
+{"id": "b-169", "source": "gemini", "phrase": "погромче сделай кино", "type": "set_volume", "level": [70, 90]}
+{"id": "b-170", "source": "gemini", "phrase": "найди в интернете песню зыкиной и скачай на рабочий стол", "type": "agent_task", "scope": "browser"}
+{"id": "b-171", "source": "gemini", "phrase": "фауст найди сайт пенсеоного фонда заполни заявление на перерасчет и отправь", "type": "agent_task", "scope": "browser"}
+{"id": "b-172", "source": "gemini", "phrase": "найди в яндексе инструкцию к тонометру и сохрани в файлы", "type": "agent_task", "scope": "screen"}
+{"id": "b-173", "source": "gemini", "phrase": "открои сбербанк найди шаблон за свет и переведи 1000р", "type": "unknown"}
+{"id": "b-174", "source": "gemini", "phrase": "фауст ты меня слышишь или опять завис", "type": "unknown"}
+{"id": "b-175", "source": "gemini", "phrase": "сколько сейчас времени в красноярске", "type": "unknown"}
+{"id": "b-176", "source": "gemini", "phrase": "Close this program window right now, I don't need it.", "type": "agent_task", "scope": "screen"}
+{"id": "b-177", "source": "gemini", "phrase": "Фауст, open Google, search classical music, play first video on Youtube.", "type": "agent_task", "scope": "browser"}
+{"id": "b-178", "source": "gemini", "phrase": "Faust, open browser, find government site, log in with my saved password and check my status.", "type": "agent_task", "scope": "browser"}
+{"id": "b-179", "source": "gemini", "phrase": "Фауст, shutdown computer completely after 30 minutes.", "type": "unknown"}
+{"id": "b-180", "source": "gemini", "phrase": "Фауст, call my grandson on his mobile phone right now.", "type": "unknown"}
+{"id": "b-181", "source": "gemini", "phrase": "Включи фоновую музыку", "type": "agent_task", "scope": "browser"}
+{"id": "b-182", "source": "gemini", "phrase": "Найди билеты в кино", "type": "agent_task", "scope": "browser"}
+{"id": "b-183", "source": "gemini", "phrase": "Скачай этот файл", "type": "agent_task", "scope": "browser"}
+{"id": "b-184", "source": "gemini", "phrase": "Загрузи свежий выпуск", "type": "agent_task", "scope": "browser"}
+{"id": "b-185", "source": "gemini", "phrase": "Закажи нам пиццу", "type": "unknown"}
+{"id": "b-186", "source": "gemini", "phrase": "Сколько стоит ноут?", "type": "unknown"}
+{"id": "b-187", "source": "gemini", "phrase": "Кто играет главного?", "type": "unknown"}
+{"id": "b-188", "source": "gemini", "phrase": "Будь любезен, закрой окно графического редактора, оно сейчас только занимает место на экране и отвлекает гостей от презентации.", "type": "agent_task", "scope": "screen"}
+{"id": "b-189", "source": "gemini", "phrase": "Открой папку «Отпуск 2023» на рабочем столе, чтобы я мог показать друзьям наши фотографии с моря.", "type": "open_app", "apps": ["отпуск 2023"]}
+{"id": "b-190", "source": "gemini", "phrase": "Фауст, увеличивай громкость системных звуков и плеера процентов до восьмидесяти, а то видеоклип записан очень тихо и с дивана ничего не разобрать.", "type": "set_volume", "level": [70, 90]}
+{"id": "b-191", "source": "gemini", "phrase": "Закрой все вкладки в браузере, кроме активной, чтобы очистить экран от лишней информации перед тем, как я покажу слайды.", "type": "agent_task", "scope": "browser"}
+{"id": "b-192", "source": "gemini", "phrase": "Срочно заблокируй систему, пожалуйста, мне нужно ввести пароль от личного кабинета так, чтобы никто из присутствующих его не увидел.", "type": "lock_screen"}
+{"id": "b-193", "source": "gemini", "phrase": "Faust, make it louder, guys can't hear anything.", "type": "set_volume", "level": [70, 90]}
+{"id": "b-194", "source": "gemini", "phrase": "Mute the audio right now.", "type": "set_volume", "level": [0, 10]}
+{"id": "b-195", "source": "gemini", "phrase": "Сделай скриншот and save it to Pictures.", "type": "agent_task", "scope": "screen"}
+{"id": "b-196", "source": "gemini", "phrase": "Show active windows.", "type": "list_processes"}
+{"id": "b-197", "source": "gemini", "phrase": "Unmute the sound.", "type": "set_volume", "level": [40, 60]}
+{"id": "b-198", "source": "gemini", "phrase": "Faust, fill out the email field with my Gmail on this form and click submit.", "type": "agent_task", "scope": "browser"}
+{"id": "b-199", "source": "gemini", "phrase": "Faust, turn off the computer completely.", "type": "unknown"}
+{"id": "b-200", "source": "gemini", "phrase": "Remind me to call mom in one hour.", "type": "unknown"}
+{"id": "b-201", "source": "gemini", "phrase": "Order some beer on Drizly.", "type": "unknown"}

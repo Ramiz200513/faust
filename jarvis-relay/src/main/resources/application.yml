@@ -1,0 +1,69 @@
+server:
+  port: 8080
+
+jarvis:
+  # Секрет для админ-эндпоинта POST /api/pairing-codes (генерация кода паринга).
+  # Самим устройствам он больше не нужен — телефон/агент парятся по одноразовому коду.
+  # В проде переопредели: JARVIS_ADMIN_TOKEN=...
+  admin-token: ${JARVIS_ADMIN_TOKEN:dev-admin-change-me}
+  pairing:
+    # Сколько минут одноразовый код паринга остаётся действительным.
+    ttl-minutes: ${JARVIS_PAIRING_TTL_MINUTES:10}
+  open-registration:
+    # true -> новый ПК регистрируется сам через POST /api/agent/register, без
+    # админского кода (сценарий "скачал инсталлятор и всё работает").
+    # false (по умолчанию) -> эндпоинт отвечает 403, коды выписывает только
+    # админ через POST /api/pairing-codes, а окно агента просит ввести код
+    # руками. Выключено по умолчанию сознательно: включать это стоит осознанно,
+    # зная, что зарегистрировать агента сможет любой, кто знает адрес релея.
+    # Включить на своём сервере: JARVIS_OPEN_REGISTRATION=true в .env
+    enabled: ${JARVIS_OPEN_REGISTRATION:false}
+    # Сколько регистраций в час разрешено с одного адреса.
+    per-hour: ${JARVIS_OPEN_REGISTRATION_PER_HOUR:10}
+  llm:
+    # LLM API key lives HERE on the backend, never in the app or agent.
+    # Set it via env var: JARVIS_LLM_API_KEY=...
+    # Empty -> GeminiIntentParser silently falls back to the regex StubIntentParser.
+    api-key: ${JARVIS_LLM_API_KEY:}
+    # Gemini model name. Override with JARVIS_LLM_MODEL if needed.
+    model: ${JARVIS_LLM_MODEL:gemini-3.6-flash}
+  intent:
+    # Кто разбирает фразу с телефона (HybridIntentParser):
+    #   auto   — своя модель, а если она не справилась — Gemini (по умолчанию)
+    #   local  — только своя модель и регулярки, без интернета
+    #   gemini — как было до своей модели
+    engine: ${JARVIS_INTENT_ENGINE:auto}
+  local-llm:
+    # НАША дообученная модель, запущенная в Ollama на этом же компьютере.
+    # Релей живёт в Docker, поэтому адрес — host.docker.internal, а не localhost.
+    # Пустой адрес выключает свою модель целиком.
+    url: ${JARVIS_LOCAL_LLM_URL:http://host.docker.internal:11434}
+    model: ${JARVIS_LOCAL_LLM_MODEL:faust-intent}
+    # Ниже этой уверенности ответ своей модели перепроверяет Gemini.
+    # Порог подобран 08.10 для второй версии модели на отложенном наборе (313 фраз,
+    # не экзамен): при 0.9 в Gemini уходит 3.5% фраз, и среди них 8 из 13 ошибок
+    # модели; при 0.7 — 1.9% фраз и 6 ошибок. Выше 0.9 выигрыш уже мал.
+    min-confidence: ${JARVIS_LOCAL_LLM_MIN_CONFIDENCE:0.9}
+    # «Не понял» своей модели обычно перепроверяет Gemini. Значение больше 1
+    # — перепроверять всегда; например 0.95 — верить уверенному «не понял».
+    trust-unknown-above: ${JARVIS_LOCAL_LLM_TRUST_UNKNOWN_ABOVE:2.0}
+  forbidden-goals:
+    # Запрет опасных целей для ИИ-агента (выключение ПК, форматирование,
+    # переводы денег, покупки) — см. ForbiddenGoals. Выключать не стоит.
+    enabled: ${JARVIS_FORBIDDEN_GOALS:true}
+
+spring:
+  datasource:
+    url: ${JARVIS_DB_URL:jdbc:postgresql://localhost:5432/jarvis}
+    username: ${JARVIS_DB_USER:jarvis}
+    password: ${JARVIS_DB_PASSWORD:jarvis}
+  jpa:
+    open-in-view: false
+    hibernate:
+      # MVP: Hibernate сам доводит схему до соответствия сущностям.
+      # Для продакшена стоит перейти на Flyway/Liquibase с явными миграциями.
+      ddl-auto: update
+
+logging:
+  level:
+    com.jarvis.relay: INFO
