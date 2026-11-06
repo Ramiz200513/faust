@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Какие файлы приложение может отдать камере через FileProvider: только
+     папку снимков во внутреннем кэше (см. PhotoAttach.newCameraUri). -->
+<paths>
+    <cache-path name="photos" path="photos/" />
+</paths>

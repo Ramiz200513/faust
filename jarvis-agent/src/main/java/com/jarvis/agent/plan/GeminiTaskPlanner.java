@@ -249,7 +249,34 @@ public class GeminiTaskPlanner implements TaskPlanner {
         }
         sb.append("\n\n");
 
-        if (failed != null) {
+        if (failed != null && failed.summary() != null && failed.summary().startsWith(PlanRunner.CORRECTION_MARK)) {
+            // Перестройка по ПОПРАВКЕ человека — это не неудача. Обычная ветка ниже
+            // велела бы «сделать ту же подзадачу по-другому», а человек как раз
+            // сказал, что делать надо другое. Сама поправка уже в ПРОСЬБЕ (раздел
+            // «ПОПРАВКИ» — его добавляет Clarifications.goalFor).
+            sb.append("ПЛАН УЖЕ ВЫПОЛНЯЛСЯ, И ЧЕЛОВЕК ПРИСЛАЛ ПОПРАВКУ ПО ХОДУ ЗАДАЧИ.\n");
+            if (!done.isEmpty()) {
+                sb.append("Уже сделано (НЕ повторяй):\n");
+                for (int i = 0; i < done.size(); i++) {
+                    StepResult r = done.get(i);
+                    sb.append("  ").append(i + 1).append(". ").append(r.step().describe())
+                      .append(" — итог: ").append(r.summary()).append("\n");
+                }
+            }
+            sb.append("Поправка пришла во время подзадачи: ").append(failed.step().describe())
+              .append(" — ").append(failed.summary().substring(PlanRunner.CORRECTION_MARK.length())).append("\n");
+            if (!remaining.isEmpty()) {
+                sb.append("Оставалось по старому плану:\n");
+                for (PlanStep s : remaining) sb.append("  - ").append(s.describe()).append("\n");
+            }
+            sb.append("Составь план ТОЛЬКО на оставшуюся часть, С УЧЁТОМ ПОПРАВКИ: где она противоречит\n")
+              .append("просьбе — делай как в поправке. Сделанное не повторяй. Если по старой версии уже\n")
+              .append("начато то, что поправка отменяет, и это можно исправить (стереть ещё НЕ отправленный\n")
+              .append("текст, выбрать другой чат) — начни с исправляющей подзадачи. Уже отправленное\n")
+              .append("сообщение сам не удаляй — если это важно, спроси человека (ask).\n")
+              .append("Если после поправки делать больше нечего — give_up с причиной, начинающейся словами\n")
+              .append("«НЕЧЕГО ДЕЛАТЬ».\n\n");
+        } else if (failed != null) {
             // Перепланирование: модели нужно знать, что уже сделано (иначе она
             // начнёт с начала и, например, скачает файл второй раз) и почему
             // сломался шаг (иначе предложит тот же самый путь).

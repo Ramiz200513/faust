@@ -204,6 +204,9 @@ public class CommandExecutor {
                 case Command.AgentTask c      -> agentTask(requestId, c);
                 case Command.CancelTask c     -> cancelTask(requestId);
                 case Command.AnswerQuestion c -> answerQuestion(requestId, c);
+                case Command.CorrectTask c    -> correctTask(requestId, c);
+                case Command.PhotoTask c      -> photoTask(requestId, c);
+                case Command.GetTaskReport c  -> getTaskReport(requestId, c);
                 case Command.SetDisplayOption c -> setDisplayOption(requestId, c);
                 case Command.StartScreenStream c -> startScreenStream(requestId, c);
                 case Command.StopScreenStream c  -> stopScreenStream(requestId);
@@ -368,6 +371,166 @@ public class CommandExecutor {
                 : error(requestId, "вопрос уже неактуален");
     }
 
+    // --- поправка на ходу, фото с телефона, видео-отчёт -----------------------
+
+    /**
+     * Вопросы и поправки идущей задачи. Поток задачи заводит их в начале
+     * runAgentTask, а поправку кладёт сюда поток чтения сокета — отсюда volatile.
+     */
+    private volatile Clarifications activeQuestions;
+
+    /**
+     * Поправка к идущей задаче («нет, не Пете, а Васе»). Как и отмена, работает
+     * в потоке чтения сокета и только передаёт поправку — что с ней делать,
+     * решает поток задачи:
+     * <ul>
+     *   <li>задача по плану — текущая подзадача прерывается после ближайшего
+     *       шага, и хвост плана перестраивается с учётом поправки (PlanRunner);</li>
+     *   <li>задача в одной программе — поправка попадает в цель, и модель увидит
+     *       её уже на следующем шаге (Clarifications.goalFor).</li>
+     * </ul>
+     */
+    private List<JarvisMessage> correctTask(String requestId, Command.CorrectTask c) {
+        Clarifications q = activeQuestions;
+        if (busyGoal.get() == null || q == null) {
+            return error(requestId, "сейчас нечего поправлять — отправьте это новой задачей");
+        }
+        if (!q.addCorrection(c.text())) return error(requestId, "пустая поправка");
+        FaustOverlayController.onThinking("Поправка с телефона: " + c.text().strip());
+        return ok(requestId, "поправка принята: «" + c.text().strip() + "» — перестраиваю план");
+    }
+
+    /** Сколько текста с фото вставлять в цель: остальное модель всё равно не удержит в голове. */
+    private static final int PHOTO_TEXT_MAX = 2000;
+
+    /**
+     * Задача с фотографией с телефона: «сохрани в конспект по базам данных и
+     * отправь в группу» + снимок доски.
+     *
+     * <p>Фото само по себе модели-исполнителю не передаётся: она видит экран ПК,
+     * а не телефон. Поэтому сначала код делает то, что умеет надёжно:
+     * <ol>
+     *   <li>сохраняет фото в «Изображения\Фауст» — теперь это обычный файл, и
+     *       find_file/paste_file прикрепят его в любом мессенджере;</li>
+     *   <li>один раз просит модель переписать текст с фото (через релей —
+     *       ключ ИИ остаётся там) и кладёт текст в буфер обмена;</li>
+     *   <li>отдаёт обычной agent_task цель, где всё это записано фактами:
+     *       путь к файлу и сам текст. Дальше — план, подтверждение, вопросы,
+     *       как у любой задачи.</li>
+     * </ol>
+     */
+    private List<JarvisMessage> photoTask(String requestId, Command.PhotoTask c) throws IOException {
+        // Занят — не сохраняем фото и не тратим запрос к ИИ впустую.
+        if (busyGoal.get() != null) {
+            return error(requestId, "агент занят: выполняется \"" + busyGoal.get() + "\"");
+        }
+        if (c.text() == null || c.text().isBlank()) return error(requestId, "что сделать с фото? — добавьте просьбу");
+        byte[] jpeg;
+        try {
+            jpeg = Base64.getDecoder().decode(c.imageBase64());
+        } catch (IllegalArgumentException e) {
+            return error(requestId, "фото повреждено при передаче");
+        }
+        if (jpeg.length == 0 || jpeg.length > FileCatalog.MAX_FILE_BYTES) {
+            return error(requestId, "фото пустое или больше 5 МБ");
+        }
+        Path folder = FileCatalog.resolveFolder("Изображения")
+                .orElseThrow(() -> new IOException("не нашлась папка «Изображения»"))
+                .resolve("Фауст");
+        Files.createDirectories(folder);
+        String name = "фото-" + java.time.LocalDateTime.now()
+                .format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd-HHmmss")) + ".jpg";
+        Path saved = folder.resolve(name);
+        Files.write(saved, jpeg);
+
+        if (tray != null) tray.setTaskStatus("читаю фото с телефона");
+        FaustOverlayController.onCommand("Читаю фото с телефона");
+        PhotoText recognized = recognizePhoto(jpeg);
+        if (recognized.text() != null) setClipboard(recognized.text());
+
+        return agentTask(requestId, new Command.AgentTask(photoGoal(c.text(), saved, recognized),
+                AgentScope.SCREEN, MAX_AGENT_STEPS));
+    }
+
+    /** Что модель увидела на фото: текст (null — текста нет) и одна фраза описания. */
+    record PhotoText(String text, String description) {}
+
+    private PhotoText recognizePhoto(byte[] jpeg) {
+        try {
+            return parsePhotoReply(llmClient.generate(PHOTO_PROMPT, jpeg));
+        } catch (Exception e) {
+            // Без распознавания задача всё равно выполнима: файл с фото на месте.
+            return new PhotoText(null, null);
+        }
+    }
+
+    static final String PHOTO_PROMPT = """
+            Это фото, которое человек снял телефоном (доска, конспект, документ, экран).
+            1) Перепиши ВЕСЬ текст с фото дословно, сохраняя строки, нумерацию и формулы.
+               Ничего не добавляй и не исправляй. Если текста нет — напиши ровно: НЕТ ТЕКСТА
+            2) Последней строкой напиши: ОПИСАНИЕ: <одно короткое предложение, что на фото>
+            """;
+
+    /** Разбор ответа модели на PHOTO_PROMPT. Не private — ради тестов. */
+    static PhotoText parsePhotoReply(String reply) {
+        if (reply == null || reply.isBlank()) return new PhotoText(null, null);
+        String text = reply.strip();
+        String description = null;
+        int at = text.lastIndexOf("ОПИСАНИЕ:");
+        if (at >= 0) {
+            description = text.substring(at + "ОПИСАНИЕ:".length()).strip();
+            text = text.substring(0, at).strip();
+        }
+        if (text.isEmpty() || text.toUpperCase(java.util.Locale.ROOT).startsWith("НЕТ ТЕКСТА")) text = null;
+        if (text != null && text.length() > PHOTO_TEXT_MAX) text = text.substring(0, PHOTO_TEXT_MAX) + "…";
+        return new PhotoText(text, description == null || description.isEmpty() ? null : description);
+    }
+
+    /**
+     * Цель задачи с фото: просьба человека + факты, которые установил код.
+     * Факты — в том же виде, что у скачанных файлов (DownloadWatcher): точный путь
+     * важнее слов модели, его исполнитель и вставит в мессенджер.
+     */
+    static String photoGoal(String request, Path saved, PhotoText photo) {
+        StringBuilder sb = new StringBuilder(request.strip());
+        sb.append("\n\nФОТО С ТЕЛЕФОНА уже сохранено на этом ПК: ").append(saved)
+          .append(" (файл «").append(saved.getFileName()).append("» в папке «Изображения\\Фауст»; ")
+          .append("чтобы приложить его к сообщению — find_file по имени и paste_file).");
+        if (photo.description() != null) sb.append("\nНа фото: ").append(photo.description());
+        if (photo.text() != null) {
+            sb.append("\nТЕКСТ С ФОТО (распознан и уже лежит в буфере обмена — в документ его можно ")
+              .append("вставить Ctrl+V, пока буфер не занят файлом):\n«").append(photo.text()).append("»");
+        } else {
+            sb.append("\nТекста на фото не найдено.");
+        }
+        return sb.toString();
+    }
+
+    /**
+     * Видео-отчёт о законченной задаче: кадры (TaskReport) — посмотреть в
+     * приложении, или GIF (FileTransfer) — сохранить в «Загрузки» и переслать.
+     * Только чтение: файлы берутся из папки отчётов, имя папки — из очищенного id.
+     */
+    private List<JarvisMessage> getTaskReport(String requestId, Command.GetTaskReport c) throws IOException {
+        if (c.asGif()) {
+            Optional<Path> gif = TaskReportRecorder.gif(c.taskId());
+            if (gif.isEmpty()) return error(requestId, "видео-отчёта этой задачи нет на ПК");
+            long size = Files.size(gif.get());
+            if (size > FileCatalog.MAX_FILE_BYTES) {
+                return error(requestId, "GIF слишком большой (" + (size / 1024 / 1024) + " МБ) — посмотрите отчёт в приложении");
+            }
+            String name = "фауст-отчёт-" + TaskReportRecorder.safeName(c.taskId()).substring(0,
+                    Math.min(8, TaskReportRecorder.safeName(c.taskId()).length())) + ".gif";
+            return List.of(new JarvisMessage.CommandResult(requestId, CommandStatus.OK, "GIF-отчёт отправлен",
+                    new ResultData.FileTransfer(name, Base64.getEncoder().encodeToString(Files.readAllBytes(gif.get())),
+                            size)));
+        }
+        Optional<ResultData.TaskReport> report = TaskReportRecorder.load(c.taskId());
+        if (report.isEmpty()) return error(requestId, "видео-отчёта этой задачи нет на ПК");
+        return List.of(new JarvisMessage.CommandResult(requestId, CommandStatus.OK,
+                "видео-отчёт: " + report.get().frames().size() + " кадров", report.get()));
+    }
+
     /**
      * Что показывать на экране ПК — переключатели из настроек телефона.
      *
@@ -517,6 +680,9 @@ public class CommandExecutor {
         // потому что лямбды ниже могут менять только такие «ячейки».
         int[] stepOffset = {0};
         String[] phase = {null};
+        // Видео-отчёт задачи: кадры шагов с отметками и мыслями модели (null —
+        // выключен в agent.properties: report.enabled=false).
+        TaskReportRecorder video = TaskReportRecorder.start(requestId, goal, robot);
 
         IntConsumer onStep = localStep -> {
             int step = localStep + stepOffset[0];
@@ -557,6 +723,9 @@ public class CommandExecutor {
                 // Модель ответила, сейчас будет клик/ввод: дуги встают, точка
                 // пульсирует, а в строке статуса — что именно агент делает.
                 FaustOverlayController.onStep(describeStep(description));
+                // В отчёт — до пересчёта координат под стрим: у отчёта свой контракт,
+                // тот же, что у StepReporter (без картинки — пиксели экрана).
+                if (video != null) video.onStep(step, description, jpeg, tx, ty, phase[0]);
 
                 Integer targetX = tx, targetY = ty;
                 if (jpeg == null && tx != null && ty != null) {
@@ -586,6 +755,13 @@ public class CommandExecutor {
         // Вопросы человеку — свои на каждую задачу: лимит, память ответов и
         // время ожидания считаются заново.
         Clarifications questions = new Clarifications(askerFor(requestId, goal));
+        // Через них же приходят поправки с телефона (correctTask).
+        activeQuestions = questions;
+        // Исполнителю подзадачи плана поправка — тоже повод остановиться: дальше
+        // по старому плану идти нельзя, нужен новый хвост (его строит PlanRunner).
+        // В задаче без плана такого сигнала нет: там поправка просто попадает в
+        // цель, и модель учтёт её следующим шагом, не начиная заново.
+        CancelSignal subtaskCancel = () -> cancelRequested.get() || questions.hasPendingCorrection();
 
         long start = System.currentTimeMillis();
         int llmCallsBefore = llmClient.calls();
@@ -667,8 +843,8 @@ public class CommandExecutor {
 
                 PlanRunner.SubtaskExecutor runSubtask = (step, subDeadline) -> {
                     ResultData.AgentReport r = step.kind() == PlanStep.Kind.BROWSER
-                            ? browserAgent.run(step.goal(), maxSteps, subDeadline, onStep, stepReporter, cancelSignal, questions)
-                            : screenAgent.run(step.goal(), maxSteps, subDeadline, onStep, stepReporter, cancelSignal, questions);
+                            ? browserAgent.run(step.goal(), maxSteps, subDeadline, onStep, stepReporter, subtaskCancel, questions)
+                            : screenAgent.run(step.goal(), maxSteps, subDeadline, onStep, stepReporter, subtaskCancel, questions);
                     stepOffset[0] += r.stepsTaken();
                     return r;
                 };
@@ -743,6 +919,8 @@ public class CommandExecutor {
                 };
             }
         } finally {
+            // Задача кончилась — поправки к ней больше не принимаем.
+            activeQuestions = null;
             // Убрать анимации обязательно, в том числе если задача упала или её
             // отменили: висящая на экране «вечная» анимация пугала бы сильнее,
             // чем её отсутствие. Поэтому — в finally.
@@ -755,6 +933,8 @@ public class CommandExecutor {
         long durationMs = System.currentTimeMillis() - start;
         int llmCalls = llmClient.calls() - llmCallsBefore;
         journalExtra.put("llmCalls", llmCalls);
+        // Поправки по ходу — своей цифрой: «сколько раз человек вмешался сам».
+        if (questions.correctionsCount() > 0) journalExtra.put("corrections", questions.correctionsCount());
         RunJournal.write(goal, task.scope(), maxSteps, report, durationMs,
                 questions.asked(), questions.answeredCount(), questions.waitedMs(), journalExtra);
 
@@ -781,6 +961,10 @@ public class CommandExecutor {
                         .filter(line -> line.startsWith(DownloadWatcher.FACT_MARK))
                         .map(line -> "\n" + line.substring(DownloadWatcher.FACT_MARK.length()))
                         .collect(java.util.stream.Collectors.joining());
+
+        // Итоговый кадр и GIF — до ответа телефону: кнопка «Видео-отчёт» под
+        // итогом должна сработать сразу, а не через секунду, когда GIF допишется.
+        if (video != null) video.finish(report.completed(), msg.lines().findFirst().orElse(msg));
 
         // Долгая задача заканчивается двумя сообщениями с одним requestId: сначала
         // картинка (что видно на экране сейчас), затем итог — телефон показывает оба.

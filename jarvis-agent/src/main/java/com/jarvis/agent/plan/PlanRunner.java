@@ -127,6 +127,20 @@ public final class PlanRunner {
     /** Человек уже сказал «Да» на план — перестройка из-за неудачи не спрашивает снова. */
     private boolean planConfirmed = false;
 
+    /**
+     * Начало итога подзадачи, прерванной поправкой человека. По нему планировщик
+     * отличает перестройку «человек передумал» от перестройки «шаг не удался»
+     * (см. GeminiTaskPlanner.buildPrompt) — это разные просьбы к модели.
+     */
+    public static final String CORRECTION_MARK = "поправка человека: ";
+    /**
+     * Больше поправок за одну задачу не принимаем: каждая — это запрос к
+     * планировщику и новое подтверждение. Четвёртая подряд поправка значит, что
+     * задачу проще сформулировать заново.
+     */
+    static final int MAX_CORRECTIONS = 3;
+    private int correctionsApplied = 0;
+
     /** Метка в трейсе: план взят из памяти, планировщик не вызывался. */
     public static final String PLAN_MEMORY_MARK = "план взят из памяти";
     private PlanMemory memory = PlanMemory.NONE;
@@ -360,6 +374,9 @@ public final class PlanRunner {
         // --- 1. план, уточнения, подтверждение ----------------------------------
         for (int round = 0; plan == null; round++) {
             if (cancel.isCancelled()) return finish(false, "стоп: задачу отменил пользователь");
+            // Поправка, пришедшая, пока план ещё не составлен, ничего прерывать не
+            // должна: она уже в цели (goalFor), и план сразу учтёт её. Сигнал гасим.
+            questions.takePendingCorrection();
             if (round > limits.maxClarifyRounds()) {
                 return finish(false, "стоп: не удалось согласовать план за " + limits.maxClarifyRounds() + " уточнения");
             }
@@ -415,6 +432,15 @@ public final class PlanRunner {
             if (Instant.now().isAfter(questions.extend(deadline).plusMillis(waitedMs))) {
                 return finish(false, "стоп: превышен общий лимит времени задачи");
             }
+            // Поправка пришла между подзадачами — эту ещё не начинали: план
+            // перестраивается начиная с неё самой.
+            String early = questions.takePendingCorrection();
+            if (early != null) {
+                Outcome stop = applyCorrection(early, item.step, null, i);
+                if (stop != null) return stop;
+                i--; // на месте i теперь первая подзадача нового хвоста
+                continue;
+            }
 
             item.status = JarvisMessage.PlanItemStatus.RUNNING;
             publish();
@@ -427,6 +453,26 @@ public final class PlanRunner {
                 result = execute(item.step, following, deadline);
             } finally {
                 questions.setTaskContext(null);
+            }
+            // Поправка пришла во время подзадачи. Исполнитель её уже прервал (его
+            // сигнал отмены учитывает поправку, см. CommandExecutor) — или успел
+            // закончить сам. В обоих случаях хвост плана строится заново.
+            String correction = cancel.isCancelled() ? null : questions.takePendingCorrection();
+            if (correction != null) {
+                if (result.completed()) {
+                    // Успела закончиться — сделанное засчитываем, перестраиваем то, что после.
+                    item.status = JarvisMessage.PlanItemStatus.DONE;
+                    item.note = shorten(result.summary());
+                    done.add(result);
+                } else {
+                    item.status = JarvisMessage.PlanItemStatus.SKIPPED;
+                    item.note = "прервано поправкой";
+                    item.replaced = true;
+                }
+                trace.add("  итог подзадачи: " + (result.completed() ? result.summary() : "прервана поправкой человека"));
+                Outcome stop = applyCorrection(correction, item.step, result, i + 1);
+                if (stop != null) return stop;
+                continue;
             }
             // У ожидания проверка и есть его условие — второй раз смотреть (и платить) незачем.
             if (result.completed() && item.step.kind() != PlanStep.Kind.WAIT) result = verified(result);
@@ -485,10 +531,85 @@ public final class PlanRunner {
         // Запоминаем только «чистый» успех: без перестроек, без опровергнутых
         // проверок и без уточнений у человека (ответы могли относиться только к
         // тому разу). Перестроенный план хранить нельзя — в нём неудачный шаг.
-        if (preset == null && !planFromMemory && replans == 0 && checksFailed == 0 && planningAsks == 0) {
+        // С поправками — тоже нет: исходный план человек по ходу изменил.
+        if (preset == null && !planFromMemory && replans == 0 && checksFailed == 0 && planningAsks == 0
+                && correctionsApplied == 0) {
             memory.save(goal, plan.steps(), plan.confirm(), (System.nanoTime() - startNanos) / 1_000_000);
         }
         return finish(true, "план выполнен");
+    }
+
+    // --- поправка человека по ходу задачи ---------------------------------------
+
+    /**
+     * Перестроить план с позиции {@code from} с учётом поправки человека.
+     *
+     * <p>Чем отличается от перестройки после неудачи:
+     * <ul>
+     *   <li>планировщик получает не «шаг не удался, сделай иначе», а «человек
+     *       передумал» (см. {@link #CORRECTION_MARK});</li>
+     *   <li>подтверждение спрашивается ВСЕГДА, даже если план уже подтверждали:
+     *       поправка меняет именно то, что и кому делается («не Пете, а Васе»), а
+     *       прежнее «Да» относилось к Пете. Правило «не переспрашивать после
+     *       перестройки» придумано для смены способа, а не цели;</li>
+     *   <li>свой лимит ({@link #MAX_CORRECTIONS}), не общий с перестройками после неудач.</li>
+     * </ul>
+     *
+     * @param during подзадача, во время (или перед) которой пришла поправка
+     * @param result её итог; null — подзадачу ещё не начинали
+     * @param from   с какого места списка заменить план новым хвостом
+     * @return null — план перестроен, можно продолжать; иначе — итог задачи (остановка)
+     */
+    private Outcome applyCorrection(String correction, PlanStep during, StepResult result, int from) {
+        trace.add("  поправка человека: «" + correction + "»");
+        // План составлял человек (скрипт, git) — за него другой план не придумываем.
+        if (preset != null && resume == null) {
+            return finish(false, "стоп: задача по готовому плану не перестраивается — пришлите её заново с поправкой");
+        }
+        if (correctionsApplied >= MAX_CORRECTIONS) {
+            return finish(false, "стоп: поправок больше " + MAX_CORRECTIONS + " — сформулируйте задачу заново");
+        }
+        correctionsApplied++;
+
+        String state = result == null ? "подзадачу ещё не начинали"
+                : result.completed() ? "подзадача успела завершиться: " + result.summary()
+                : "подзадача прервана на середине: " + result.summary();
+        StepResult marker = new StepResult(during, false, CORRECTION_MARK + "«" + correction + "»; " + state);
+        List<PlanStep> remaining = items.subList(from, items.size()).stream()
+                .filter(it -> it.status == JarvisMessage.PlanItemStatus.PENDING)
+                .map(it -> it.step)
+                .toList();
+
+        PlannerReply reply = replan(currentGoal, done, marker, remaining);
+        if (reply instanceof PlannerReply.GiveUp g) {
+            // Модель сказала, что после поправки делать нечего (например, «не надо
+            // ничего отправлять»): это не провал задачи, а её законный конец.
+            if (g.reason() != null && g.reason().strip().toUpperCase(Locale.ROOT).startsWith("НЕЧЕГО ДЕЛАТЬ")) {
+                items.subList(from, items.size()).clear();
+                publish();
+                return finish(true, "поправка учтена: " + g.reason().strip());
+            }
+            return finish(false, "стоп: поправку не учесть — " + g.reason());
+        }
+        if (!(reply instanceof PlannerReply.Steps s)) {
+            return finish(false, "стоп: поправку не учесть — планировщик недоступен");
+        }
+        s = capped(s);
+        String confirm = confirmFor(s);
+        if (!confirm.isEmpty()) {
+            Clarifications.Reply r = questions.request(confirm, List.of("Да", "Нет"), cancel);
+            trace.add("  " + r.note());
+            if (verdict(r.answer()) != Verdict.YES) {
+                return finish(false, "стоп: план после поправки не подтверждён");
+            }
+            planConfirmed = true;
+        }
+        revision++;
+        items.subList(from, items.size()).clear();
+        s.steps().forEach(step -> items.add(new Item(step)));
+        trace.add("план перестроен по поправке (версия " + revision + "): " + describe(s.steps()));
+        publish();
+        return null;
     }
 
     // --- выполнение одной подзадачи --------------------------------------------
@@ -604,6 +725,8 @@ public final class PlanRunner {
         trace.add("  жду до " + minutes + " мин: " + step.goal());
         while (true) {
             if (cancel.isCancelled()) return new StepResult(step, false, "ожидание отменено");
+            // Поправку саму не забираем — её разберёт цикл плана сразу после этого шага.
+            if (questions.hasPendingCorrection()) return new StepResult(step, false, "ожидание прервано поправкой");
             long now = System.currentTimeMillis();
             String waited = " (ждал " + human(now - start) + ")";
             if (step.app() != null && !processRunning.test(step.app())) {

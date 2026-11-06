@@ -6,6 +6,7 @@ import com.jarvis.relay.persistence.PairingCode;
 import com.jarvis.relay.persistence.PhoneBinding;
 import com.jarvis.relay.persistence.PhoneBindingRepository;
 import com.jarvis.relay.protocol.DeviceRole;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,13 +39,21 @@ public class DeviceAuthService {
     private final PhoneBindingRepository phoneBindings;
     private final PairingService pairingService;
     private final PasswordEncoder passwordEncoder;
+    /**
+     * Пускать ли телефон по старой схеме (строка в devices, без конкретного ПК).
+     * По умолчанию нет — см. SessionRegistry: такой телефон видел бы все ПК
+     * релея. Тот же переключатель, что и там.
+     */
+    private final boolean legacyPhones;
 
     public DeviceAuthService(DeviceRepository devices, PhoneBindingRepository phoneBindings,
-                             PairingService pairingService, PasswordEncoder passwordEncoder) {
+                             PairingService pairingService, PasswordEncoder passwordEncoder,
+                             @Value("${jarvis.legacy-phones.enabled:false}") boolean legacyPhones) {
         this.devices = devices;
         this.phoneBindings = phoneBindings;
         this.pairingService = pairingService;
         this.passwordEncoder = passwordEncoder;
+        this.legacyPhones = legacyPhones;
     }
 
     /**
@@ -87,7 +96,12 @@ public class DeviceAuthService {
             }
         }
 
-        // Путь 2: устройство из таблицы devices.
+        // Путь 2: устройство из таблицы devices. Для телефона это старая схема
+        // «управляю любым ПК» — без явного разрешения не пускаем вовсе, в том
+        // числе не заводим новый такой телефон по коду устройства.
+        if (role == DeviceRole.PHONE && !legacyPhones) {
+            return Result.fail("телефон не привязан к конкретному ПК — привяжите ПК заново по QR-коду");
+        }
         Optional<Device> existing = devices.findById(deviceId);
         if (existing.isPresent()) {
             Device device = existing.get();

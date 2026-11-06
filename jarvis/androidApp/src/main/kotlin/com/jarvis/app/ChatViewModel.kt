@@ -84,7 +84,19 @@ data class ChatMessage(
      * Одна на задачу: новые версии плана заменяют её содержимое на месте.
      */
     val plan: AgentPlan? = null,
+    /**
+     * Не null — это итог ИИ-задачи с таким requestId: под ним кнопка «Видео-отчёт»
+     * (кадры шагов с мыслями модели, их хранит ПК).
+     */
+    val reportTaskId: String? = null,
 )
+
+/** Что сейчас с видео-отчётом, открытым на весь экран. */
+sealed interface ReportState {
+    data class Loading(val taskId: String) : ReportState
+    data class Ready(val report: TaskReport) : ReportState
+    data class Failed(val taskId: String, val reason: String) : ReportState
+}
 
 /**
  * Holds all UI state and talks to the relay through JarvisClient.
@@ -143,6 +155,47 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
      */
     private val answerRequests = ConcurrentHashMap<String, String>()
 
+    /** Все привязанные ПК — по их именам разбирается «на рабочем …». */
+    private val pairedDevices: StateFlow<List<PairedDevice>> = devicesRepo.devices
+        .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+
+    /**
+     * Идущие команды на других (не выбранном) ПК: requestId -> связь с тем ПК.
+     * По ней же уходят ответы на вопросы этих задач и «стоп».
+     */
+    private val remoteLinks = ConcurrentHashMap<String, PcLink>()
+
+    /**
+     * requestId всего, что ушло через [PcLink]. Если такая связь ведёт к
+     * выбранному ПК (перенос файла с него), постоянное соединение чата тоже
+     * получит эти ответы — их оно должно пропустить, иначе файл, который
+     * переносится с ПК на ПК, заодно сохранился бы в «Загрузки» телефона.
+     */
+    private val linkRequests = ConcurrentHashMap.newKeySet<String>()
+
+    /**
+     * requestId ИИ-задачи, которая сейчас выполняется на ПК, или null.
+     *
+     * Узнаём не по отправке (фраза уходит на релей как текст, и заранее не
+     * известно, станет ли она задачей агенту), а по первому знаку от самой
+     * задачи — шагу, плану или вопросу. Пока она идёт, всё, что человек
+     * напечатал или сказал, — это поправка к ней, а не новая команда
+     * (см. [send]): агент всё равно занят и новую задачу не взял бы.
+     */
+    private val _activeTaskId = MutableStateFlow<String?>(null)
+    val activeTaskId: StateFlow<String?> = _activeTaskId.asStateFlow()
+
+    /** Фото, прикреплённое к следующей просьбе (JPEG в base64), или null. */
+    private val _pendingPhoto = MutableStateFlow<String?>(null)
+    val pendingPhoto: StateFlow<String?> = _pendingPhoto.asStateFlow()
+
+    /** Видео-отчёт, открытый на весь экран, или null. */
+    private val _report = MutableStateFlow<ReportState?>(null)
+    val report: StateFlow<ReportState?> = _report.asStateFlow()
+
+    /** requestId запросов кадров отчёта — их итог не пузырь в ленте, а экран отчёта. */
+    private val reportRequests = ConcurrentHashMap.newKeySet<String>()
+
     private val _status = MutableStateFlow("не подключено")
     val status: StateFlow<String> = _status.asStateFlow()
 
@@ -173,12 +226,23 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
     private val streamHolders = mutableSetOf<String>()
 
     companion object {
+        /** Что во время задачи значит «остановись», а не поправку. */
+        private val STOP_PHRASES = setOf(
+            "стоп", "отмена", "отмени", "отменить", "хватит", "остановись", "прекрати", "стой",
+            "фауст стоп", "стоп стоп", "отмени задачу",
+        )
+
         /** Окошко живого экрана поверх переписки. */
         const val HOLDER_PREVIEW = "preview"
         /** Полноэкранный «Экран ПК». */
         const val HOLDER_FULLSCREEN = "fullscreen"
         /** Дольше этого без кадров — считаем, что стрим оборвался (опорный кадр идёт раз в 3 с). */
         private const val STREAM_SILENCE_MS = 12_000L
+        /**
+         * Сколько ждать итога команды на другом ПК. С запасом над самой долгой
+         * ИИ-задачей: у агента свой предел времени, и итог он пришлёт сам.
+         */
+        private const val REMOTE_TASK_TIMEOUT_MS = 15 * 60_000L
     }
 
     /** Ширина кадра, которую просит каждый из владельцев: берём наибольшую. */
@@ -444,6 +508,26 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
     /** User typed a phrase and hit send. */
     fun send(text: String) {
         if (text.isBlank()) return
+        // Агент задал вопрос и ждёт — то, что человек напечатал или сказал,
+        // это ответ, а не новая команда. Иначе «Маше» ушло бы на релей как
+        // фраза для разбора и превратилось бы в непонятную команду.
+        // (Вопрос может быть и от другого ПК — ответ уйдёт тому, кто спросил.)
+        val question = openQuestion.value
+        if (question != null) {
+            answerQuestion(question.id, text.trim())
+            return
+        }
+        // «Стоп», пока идут задачи на других ПК, — остановить их. Задача на
+        // выбранном ПК останавливается своим путём ниже.
+        if (_activeTaskId.value == null && remoteLinks.isNotEmpty() && isStopPhrase(text)) {
+            remoteLinks.values.forEach { it.send(CancelTask) }
+            note("отменяю задачи на других ПК — агенты остановятся после текущего шага")
+            return
+        }
+        // «На рабочем …», «на всех ПК …», «перекинь … с домашнего на рабочий» —
+        // фраза адресована не (только) выбранному ПК. Раньше проверки «выбранный
+        // ПК офлайн»: другие ПК от этого не зависят.
+        if (_pendingPhoto.value == null && _activeTaskId.value == null && routeToNamedPcs(text.trim())) return
         // Известно, что агент офлайн — не ждём таймаут от релея, а сразу
         // говорим понятным языком, что происходит и что делать.
         if (activeAgentOffline) {
@@ -454,12 +538,18 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
             )
             return
         }
-        // Агент задал вопрос и ждёт — то, что человек напечатал или сказал,
-        // это ответ, а не новая команда. Иначе «Маше» ушло бы на релей как
-        // фраза для разбора и превратилось бы в непонятную команду.
-        val question = openQuestion.value
-        if (question != null) {
-            answerQuestion(question.id, text.trim())
+        // К просьбе прикреплено фото — это задача с фото («сохрани в конспект и
+        // отправь в группу»): на ПК уходят и слова, и снимок одной командой.
+        val photo = _pendingPhoto.value
+        if (photo != null) {
+            _pendingPhoto.value = null
+            sendTracked("📷 ${text.trim()}", PhotoTask(text.trim(), photo), imageBase64 = photo)
+            return
+        }
+        // Задача уже идёт — сказанное относится к ней: «стоп» её останавливает,
+        // всё остальное — поправка («нет, не Пете, а Васе»).
+        if (_activeTaskId.value != null) {
+            if (isStopPhrase(text)) cancelTask() else sendCorrection(text.trim())
             return
         }
         // «Навык утро» / «доброе утро» — рецепт, который человек записал словами
@@ -472,6 +562,93 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
         }
         // Send as a natural-language command; the relay turns it into a real one.
         sendTracked(text, NaturalLanguage(text))
+    }
+
+    // --- Несколько ПК ------------------------------------------------------------
+
+    /**
+     * Если фраза называет ПК («на рабочем …», «на всех …», «… с домашнего на
+     * рабочий») — выполнить её там и вернуть true. false — адреса нет, фраза
+     * идёт обычным путём на выбранный ПК.
+     *
+     * Разбор адреса — на телефоне (PcAddressing в :shared): только он знает
+     * имена привязанных ПК. Сама просьба без адреса дальше разбирается как
+     * обычно — релеем и своей моделью, уже на нужном ПК.
+     */
+    private fun routeToNamedPcs(text: String): Boolean {
+        val devices = pairedDevices.value
+        if (devices.size < 2) return false // один ПК — адресовать некого
+        val route = PcAddressing.route(text, devices.map { PcName(it.id, it.name) })
+        val active = _activeDevice.value
+        when (route) {
+            PcRoute.Active -> return false
+            is PcRoute.One -> {
+                val device = devices.first { it.id == route.pcId }
+                if (device.id == active?.id) runOnActive("→ «${device.name}»: ${route.rest}", route.rest)
+                else runOnRemote(device, "→ «${device.name}»: ${route.rest}", NaturalLanguage(route.rest))
+            }
+            is PcRoute.All -> {
+                // Одна реплика — что сказал человек, под ней по строке на каждый ПК:
+                // у каждого свой ход, свои вопросы и свой итог.
+                add(ChatMessage(author = Author.ME, text = text))
+                for (device in devices) {
+                    if (device.id == active?.id) runOnActive("→ «${device.name}»: ${route.rest}", route.rest)
+                    else runOnRemote(device, "→ «${device.name}»: ${route.rest}", NaturalLanguage(route.rest))
+                }
+            }
+            is PcRoute.Transfer -> {
+                val from = devices.first { it.id == route.fromId }
+                val to = devices.first { it.id == route.toId }
+                runTransfer(text, from, to, route.fileQuery)
+            }
+        }
+        return true
+    }
+
+    /** Просьба к выбранному ПК, но уже без адреса — обычным путём через постоянное соединение. */
+    private fun runOnActive(shown: String, rest: String) {
+        if (activeAgentOffline) {
+            note("ПК «${_activeDevice.value?.name}» сейчас офлайн — там не выполнено")
+            return
+        }
+        sendTracked(shown, NaturalLanguage(rest))
+    }
+
+    /**
+     * Команда на НЕ выбранный ПК — через свою связь [PcLink] на время команды.
+     * Шаги, план, вопросы и итог идут в ту же ленту и тем же обработчиком
+     * [handle], что и у выбранного ПК, только с именем ПК впереди.
+     */
+    private fun runOnRemote(device: PairedDevice, shown: String, command: Command) {
+        val requestId = UUID.randomUUID().toString()
+        add(ChatMessage(author = Author.ME, text = shown, requestId = requestId, progress = CommandProgress.SENT))
+        val link = PcLink(device)
+        remoteLinks[requestId] = link
+        linkRequests += requestId
+        viewModelScope.launch {
+            delay(600)
+            updateProgress(requestId) { if (it == CommandProgress.SENT) CommandProgress.RUNNING else it }
+        }
+        viewModelScope.launch {
+            val outcome = link.run(command, REMOTE_TASK_TIMEOUT_MS, requestId) { handle(it, from = device) }
+            remoteLinks.remove(requestId)
+            val result = when (outcome) {
+                is CommandOutcome.Success -> outcome.result
+                else -> CommandResult(requestId, CommandStatus.ERROR, PcTransfer.describe(outcome))
+            }
+            handle(result, from = device)
+        }
+    }
+
+    /** «Перекинь отчёт с домашнего на рабочий»: ход — служебными строками, итог — ответом под репликой. */
+    private fun runTransfer(text: String, from: PairedDevice, to: PairedDevice, query: String) {
+        val requestId = UUID.randomUUID().toString()
+        add(ChatMessage(author = Author.ME, text = text, requestId = requestId, progress = CommandProgress.RUNNING))
+        viewModelScope.launch {
+            val result = PcTransfer.run(from, to, query, onNote = { note("🔁 $it") }, register = { linkRequests += it })
+            updateProgress(requestId) { if (result.ok) CommandProgress.DONE else CommandProgress.ERROR }
+            add(ChatMessage(author = Author.PC, text = (if (result.ok) "✅ " else "") + result.text, requestId = requestId))
+        }
     }
 
     /**
@@ -492,12 +669,13 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     /** Реплика в чате + команда с тем же requestId: ответы, план и вопросы агента прикрепятся к ней. */
-    private fun sendTracked(shownText: String, command: Command): String {
+    private fun sendTracked(shownText: String, command: Command, imageBase64: String? = null): String {
         val requestId = UUID.randomUUID().toString()
         add(
             ChatMessage(
                 author = Author.ME,
                 text = shownText,
+                imageBase64 = imageBase64,
                 requestId = requestId,
                 progress = CommandProgress.SENT,
             )
@@ -604,13 +782,56 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     /**
+     * Поправка к идущей задаче. Видна в ленте своей репликой с пометкой ✏️, а
+     * ответ агента («поправка принята — перестраиваю план») придёт под ней.
+     * Задачу заново не отправляем: агент сохранит сделанное и перестроит
+     * только остаток плана.
+     */
+    fun sendCorrection(text: String) {
+        if (text.isBlank()) return
+        sendTracked("✏️ $text", CorrectTask(text))
+    }
+
+    /** «стоп», «отмена», «хватит» — во время задачи это не поправка, а отмена. */
+    private fun isStopPhrase(text: String): Boolean =
+        text.lowercase().replace(Regex("[^\\p{L} ]"), "").trim() in STOP_PHRASES
+
+    /** Фото готово к отправке — уйдёт вместе со следующей просьбой. */
+    fun attachPhoto(base64: String) {
+        _pendingPhoto.value = base64
+    }
+
+    fun clearPhoto() {
+        _pendingPhoto.value = null
+    }
+
+    /** Открыть видео-отчёт задачи: ПК пришлёт кадры (TaskReport). */
+    fun openReport(taskId: String) {
+        _report.value = ReportState.Loading(taskId)
+        val requestId = UUID.randomUUID().toString()
+        reportRequests.add(requestId)
+        client.send(CommandRequest(requestId = requestId, command = GetTaskReport(taskId)))
+    }
+
+    /** Сохранить отчёт GIF-анимацией в «Загрузки» — чтобы переслать. Ответ — обычный FileTransfer. */
+    fun saveReportGif(taskId: String) {
+        sendCommand(GetTaskReport(taskId, asGif = true))
+        note("запросил GIF у ПК — сохраню в Загрузки")
+    }
+
+    fun closeReport() {
+        _report.value = null
+    }
+
+    /**
      * Ответить на вопрос ИИ-агента — кнопкой в карточке или текстом из поля
      * ввода (см. [send]). Ответ уходит командой AnswerQuestion; её результат
      * не рисуется отдельным пузырём, а переключает состояние карточки.
      */
     fun answerQuestion(messageId: String, answer: String) {
         if (answer.isBlank()) return
-        val card = _messages.value.firstOrNull { it.id == messageId }?.question ?: return
+        val cardMessage = _messages.value.firstOrNull { it.id == messageId } ?: return
+        val card = cardMessage.question ?: return
         if (!card.isOpen()) {
             // Агент уже не ждёт — не шлём впустую, а честно говорим почему.
             // Если это была новая команда, её надо просто отправить ещё раз.
@@ -624,6 +845,18 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
         // Ответ — ещё и реплика в переписке: так диалог читается естественно
         // («Кому отправить?» — «Лере и Маше»), как в обычном мессенджере.
         add(ChatMessage(author = Author.ME, text = answer))
+        // Спросил другой ПК — ответ уходит по его связи, а не на выбранный ПК
+        // (тот про этот вопрос ничего не знает и ответил бы «нет такого вопроса»).
+        val link = cardMessage.requestId?.let { remoteLinks[it] }
+        if (link != null) {
+            linkRequests += requestId
+            if (!link.send(AnswerQuestion(card.questionId, answer), requestId)) {
+                answerRequests.remove(requestId)
+                expireQuestion(messageId)
+                note("связь с «${link.device.name}» уже закрыта — ответ не отправлен")
+            }
+            return
+        }
         client.send(CommandRequest(requestId = requestId, command = AnswerQuestion(card.questionId, answer)))
     }
 
@@ -707,8 +940,18 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
         note(if (ok) "файл «$fileName» сохранён в Загрузки" else "не удалось сохранить «$fileName»")
     }
 
-    /** Handle a message coming back from the relay. */
-    private fun handle(msg: JarvisMessage) {
+    /**
+     * Handle a message coming back from the relay.
+     *
+     * [from] — не null, если сообщение пришло по связи с другим (не выбранным)
+     * ПК ([runOnRemote]). Тогда в ленте впереди имя этого ПК, а задача не
+     * превращает поле ввода в «поправку» и «стоп»: они ушли бы на выбранный ПК.
+     */
+    private fun handle(msg: JarvisMessage, from: PairedDevice? = null) {
+        // Ответ на команду, которую телефон послал через отдельную связь (перенос
+        // файла с выбранного ПК), — его уже обработал тот, кто посылал.
+        if (from == null && msg.requestId in linkRequests) return
+        val pc = if (from != null) "🖥 ${from.name} · " else ""
         when (msg) {
             is CommandResult -> {
                 // Служебная синхронизация настроек — в чат не пишем.
@@ -724,6 +967,26 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
                         _reposNote.value = msg.message ?: "ПК не ответил списком проектов"
                     }
                     return
+                }
+                // Кадры видео-отчёта — не реплика, а содержимое экрана отчёта.
+                if (reportRequests.remove(msg.requestId)) {
+                    val data = msg.data
+                    _report.update { current ->
+                        // Экран успели закрыть — ничего не открываем заново.
+                        if (current == null) null
+                        else if (data is TaskReport) ReportState.Ready(data)
+                        else ReportState.Failed((current as? ReportState.Loading)?.taskId.orEmpty(),
+                            msg.message ?: "ПК не прислал отчёт")
+                    }
+                    return
+                }
+                // Задача кончилась — поле ввода снова для новых команд, а не для поправок.
+                if (_activeTaskId.value == msg.requestId) _activeTaskId.value = null
+                // Итог задачи потерялся (например, при обрыве связи), и телефон всё
+                // ещё считает её идущей. Агент на поправку ответил, что задачи нет, —
+                // верим ему, иначе всё сказанное и дальше уходило бы поправками в никуда.
+                if (msg.status == CommandStatus.ERROR && msg.message?.startsWith("сейчас нечего поправлять") == true) {
+                    _activeTaskId.value = null
                 }
                 // Задача с экрана «Проекты» закончилась — карточки проектов устарели.
                 if (devTasks.remove(msg.requestId)) refreshRepos()
@@ -755,7 +1018,8 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
                 // в чате (буфер обмена -> в буфер телефона, список файлов -> в диалог, файл -> сохранить).
                 when (val data = msg.data) {
                     is ClipboardText -> copyToPhoneClipboard(data.text)
-                    is FileList -> _fileList.value = data.entries
+                    // Список файлов другого ПК не должен подменить диалог «Файлы» выбранного.
+                    is FileList -> if (from == null) _fileList.value = data.entries
                     is FileTransfer -> saveDownloadedFile(data.fileName, data.base64)
                     is AgentReport -> {
                         saveToHistory(msg, data)
@@ -769,7 +1033,15 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
                     JarvisConnectionService.taskKeepAlive(getApplication(), false)
                 }
                 // requestId у итога — чтобы экран «Проекты» нашёл итог своей задачи.
-                add(ChatMessage(author = Author.PC, text = resultText(msg), requestId = msg.requestId))
+                add(ChatMessage(
+                    author = Author.PC,
+                    text = pc + resultText(msg),
+                    requestId = msg.requestId,
+                    // Итог ИИ-задачи — под ним кнопка «Видео-отчёт». Отчёт хранит
+                    // тот ПК, что выполнял, а кнопка спрашивает выбранный — поэтому
+                    // у задач с других ПК её пока нет.
+                    reportTaskId = if (msg.data is AgentReport && from == null) msg.requestId else null,
+                ))
             }
             is ScreenFrame -> {
                 if (msg.seq != null) {
@@ -788,13 +1060,14 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
                 }
             }
             is AgentStep -> {
+                if (from == null) markTaskActive(msg.requestId)
                 // Промежуточный шаг agent_task — просто новая карточка в чате, без
                 // обновления progress (за это отвечает финальный CommandResult с тем
                 // же requestId, он придёт позже).
                 add(ChatMessage(
                     author = Author.PC,
                     // Вторая строка описания — обоснование модели («зачем»), см. агент.
-                    text = "🔎 ${msg.description.replace("\n", "\n💭 ")}",
+                    text = "$pc🔎 ${msg.description.replace("\n", "\n💭 ")}",
                     imageBase64 = msg.screenshotBase64,
                     targetX = msg.targetX,
                     targetY = msg.targetY,
@@ -802,6 +1075,7 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
                 ))
             }
             is AgentPlan -> {
+                if (from == null) markTaskActive(msg.requestId)
                 // Агент шлёт план целиком при каждом изменении. Карточка у задачи
                 // одна: если она уже есть — меняем содержимое на месте, а не
                 // добавляем в ленту пятую копию того же списка.
@@ -818,20 +1092,21 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
                     add(ChatMessage(
                         author = Author.PC,
                         // Этот текст и озвучит TTS при появлении карточки.
-                        text = "План из ${msg.steps.size} шагов",
+                        text = "${pc}План из ${msg.steps.size} шагов",
                         requestId = msg.requestId,
                         plan = msg,
                     ))
                 }
             }
             is AgentQuestion -> {
+                if (from == null) markTaskActive(msg.requestId)
                 // В локальную переменную: smart cast свойства класса из другого
                 // модуля (:shared) Kotlin не разрешает.
                 val timeoutSec = msg.timeoutSeconds
                 val expiresAt = timeoutSec?.let { System.currentTimeMillis() + it * 1000L }
                 val message = ChatMessage(
                     author = Author.PC,
-                    text = msg.question,
+                    text = pc + msg.question,
                     // requestId задачи — по нему карточка погаснет, когда придёт итог задачи.
                     requestId = msg.requestId,
                     question = QuestionCard(
@@ -892,6 +1167,19 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
         is AgentReport -> if (data.completed) "готово за ${data.stepsTaken} шагов"
             else "не завершено за ${data.stepsTaken} шагов"
         else -> msg.status.name
+    }
+
+    /**
+     * Знак от ИИ-задачи (шаг, план, вопрос) — значит, она идёт. Только если её
+     * реплика ещё ждёт итога: шаг, опоздавший после итога, не должен снова
+     * превратить поле ввода в «поправку».
+     */
+    private fun markTaskActive(requestId: String) {
+        val pending = _messages.value.any {
+            it.author == Author.ME && it.requestId == requestId &&
+                (it.progress == CommandProgress.SENT || it.progress == CommandProgress.RUNNING)
+        }
+        if (pending) _activeTaskId.value = requestId
     }
 
     /** Обновить индикатор у сообщения-команды с данным requestId. */

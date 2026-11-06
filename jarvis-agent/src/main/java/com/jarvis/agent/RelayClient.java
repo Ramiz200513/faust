@@ -68,7 +68,8 @@ public class RelayClient {
      * задачей, которая ждёт этот ответ, — и не дождалась бы никогда).
      */
     private ExecutorService poolFor(Command command) {
-        if (command instanceof Command.AgentTask) return agentPool;
+        // Задача с фото — та же agent_task: долгая, и сокет на неё блокировать нельзя.
+        if (command instanceof Command.AgentTask || command instanceof Command.PhotoTask) return agentPool;
         if (command instanceof Command.KillProcess
                 || command instanceof Command.SendFileToPhone
                 || command instanceof Command.SendFileToPc) return confirmPool;

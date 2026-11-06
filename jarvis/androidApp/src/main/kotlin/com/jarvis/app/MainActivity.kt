@@ -49,6 +49,8 @@ import androidx.compose.material.icons.filled.Memory
 import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material.icons.filled.PauseCircle
 import androidx.compose.material.icons.filled.PhotoCamera
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Movie
 import androidx.compose.material.icons.automirrored.filled.VolumeOff
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.filled.Videocam
@@ -205,6 +207,12 @@ fun ChatScreen(
     // Что показывать на экране ПК — переключатели в настройках.
     val xrayEnabled by vm.xrayEnabled.collectAsState()
     val planPanelEnabled by vm.planPanelEnabled.collectAsState()
+    // Идёт ИИ-задача: сказанное — поправка к ней («нет, не Пете, а Васе»).
+    val activeTaskId by vm.activeTaskId.collectAsState()
+    // Фото, прикреплённое к следующей просьбе.
+    val pendingPhoto by vm.pendingPhoto.collectAsState()
+    // Открытый видео-отчёт задачи.
+    val report by vm.report.collectAsState()
 
     // Сторож обрыва: агент сам гасит показ через 10 минут, да и поток может
     // прерваться при переподключении к релею. Без этого окошко просто застывало
@@ -367,6 +375,44 @@ fun ChatScreen(
                 PackageManager.PERMISSION_GRANTED
             if (stillOpen && micAllowed && !voice.isListening.value) startManualListening()
         }
+    }
+
+    // --- Фото к просьбе: «телефон как глаза» ---------------------------------
+    // Снимок или картинка из галереи уменьшаются (PhotoAttach) и ждут просьбы:
+    // «сохрани в конспект по базам данных и отправь в группу».
+    fun attachFrom(uri: android.net.Uri?) {
+        if (uri == null) return
+        scope.launch {
+            val b64 = PhotoAttach.encodeForPc(context, uri)
+            if (b64 == null) vm.note("не удалось прочитать фото") else vm.attachPhoto(b64)
+        }
+    }
+    var cameraUri by remember { mutableStateOf<android.net.Uri?>(null) }
+    val takePicture = rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()) { saved ->
+        if (saved) attachFrom(cameraUri)
+    }
+    fun openCamera() {
+        val uri = PhotoAttach.newCameraUri(context)
+        cameraUri = uri
+        takePicture.launch(uri)
+    }
+    // Разрешение CAMERA объявлено в манифесте (для QR) — а раз объявлено, Android
+    // не даст вызвать даже чужую камеру, пока его не выдали. Поэтому спрашиваем.
+    val cameraPermission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+        if (granted) openCamera() else vm.note("без доступа к камере можно выбрать фото из галереи")
+    }
+    fun onCameraClick() {
+        val granted = context.checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+        if (granted) openCamera() else cameraPermission.launch(Manifest.permission.CAMERA)
+    }
+    val pickImage = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri -> attachFrom(uri) }
+
+    report?.let { state ->
+        TaskReportDialog(
+            state = state,
+            onClose = { vm.closeReport() },
+            onSaveGif = { vm.saveReportGif(it) },
+        )
     }
 
     // Повторная привязка отвязанного ПК — тот же сканер, что на других экранах.
@@ -570,7 +616,7 @@ fun ChatScreen(
                                 QuestionBubble(msg, onAnswer = { vm.answerQuestion(msg.id, it) }, Modifier.animateItem())
                             // План многоэтапной задачи — чек-лист, обновляется на месте.
                             plan != null -> PlanBubble(plan, Modifier.animateItem())
-                            else -> MessageBubble(msg, Modifier.animateItem())
+                            else -> MessageBubble(msg, Modifier.animateItem(), onOpenReport = { vm.openReport(it) })
                         }
                     }
                 }
@@ -639,17 +685,78 @@ fun ChatScreen(
                 }
             }
 
+            // --- Прикреплённое фото: ждёт просьбы, что с ним сделать ---
+            pendingPhoto?.let { b64 ->
+                val thumb = rememberDecodedFrame(b64)
+                Surface(
+                    color = MaterialTheme.colorScheme.surfaceContainerHigh,
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp),
+                ) {
+                    Row(Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                        thumb?.let {
+                            Image(
+                                bitmap = it,
+                                contentDescription = "прикреплённое фото",
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier.size(52.dp).clip(RoundedCornerShape(10.dp)),
+                            )
+                        }
+                        Text(
+                            "Фото прикреплено — скажите, что с ним сделать",
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.weight(1f).padding(horizontal = 10.dp),
+                        )
+                        IconButton(onClick = { vm.clearPhoto() }) {
+                            Icon(Icons.Default.Close, contentDescription = "Убрать фото")
+                        }
+                    }
+                }
+            }
+
             // --- Поле ввода: одна капсула, внутри — микрофон и отправка ---
+            // Рамка — когда сказанное уйдёт не новой командой: ответом на вопрос
+            // агента или поправкой к идущей задаче.
+            val inputSpecial = openQuestion != null || (activeTaskId != null && pendingPhoto == null)
             Surface(
                 color = MaterialTheme.colorScheme.surfaceContainerHigh,
                 shape = RoundedCornerShape(28.dp),
-                border = if (openQuestion != null) BorderStroke(1.5.dp, MaterialTheme.colorScheme.primary) else null,
+                border = if (inputSpecial) BorderStroke(1.5.dp, MaterialTheme.colorScheme.primary) else null,
                 modifier = Modifier.fillMaxWidth().padding(start = 12.dp, end = 12.dp, top = 2.dp, bottom = 12.dp),
             ) {
                 Row(
                     Modifier.padding(start = 6.dp, end = 6.dp, top = 4.dp, bottom = 4.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
+                    // Фото к просьбе: снять сейчас или взять из галереи.
+                    var attachMenu by remember { mutableStateOf(false) }
+                    Box {
+                        IconButton(onClick = { attachMenu = true }) {
+                            Icon(
+                                Icons.Default.PhotoCamera,
+                                contentDescription = "Прикрепить фото к просьбе",
+                                tint = if (pendingPhoto != null) MaterialTheme.colorScheme.primary
+                                       else MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                        DropdownMenu(expanded = attachMenu, onDismissRequest = { attachMenu = false }) {
+                            DropdownMenuItem(
+                                text = { Text("Сфотографировать") },
+                                onClick = { attachMenu = false; onCameraClick() },
+                            )
+                            DropdownMenuItem(
+                                text = { Text("Выбрать из галереи") },
+                                onClick = {
+                                    attachMenu = false
+                                    pickImage.launch(
+                                        androidx.activity.result.PickVisualMediaRequest(
+                                            ActivityResultContracts.PickVisualMedia.ImageOnly
+                                        )
+                                    )
+                                },
+                            )
+                        }
+                    }
                     // Микрофон: подсветка, пока идёт запись — повторный тап останавливает.
                     IconButton(onClick = { onMicClick() }) {
                         Icon(
@@ -668,6 +775,9 @@ fun ChatScreen(
                         placeholder = { Text(when {
                             isListening -> "слушаю…"
                             openQuestion != null -> "ответ для Фауста…"
+                            pendingPhoto != null -> "что сделать с фото?"
+                            // Задача идёт: напечатанное поправит её, «стоп» — остановит.
+                            activeTaskId != null -> "поправка к задаче… («стоп» — отменить)"
                             else -> "Скажите или напишите команду"
                         }) },
                         maxLines = 4,
@@ -1049,7 +1159,7 @@ fun FileTransferDialog(vm: ChatViewModel, onDismiss: () -> Unit) {
  * note instead of a full-width bubble ([SystemNote]).
  */
 @Composable
-fun MessageBubble(msg: ChatMessage, modifier: Modifier = Modifier) {
+fun MessageBubble(msg: ChatMessage, modifier: Modifier = Modifier, onOpenReport: ((String) -> Unit)? = null) {
     if (msg.author == Author.SYSTEM) {
         SystemNote(msg.text, modifier)
         return
@@ -1152,6 +1262,20 @@ fun MessageBubble(msg: ChatMessage, modifier: Modifier = Modifier) {
                                 onDismiss = { zoomOpen = false },
                             )
                         }
+                    }
+                }
+
+                // Итог ИИ-задачи — «Видео-отчёт»: кадры шагов с мыслями модели.
+                val reportId = msg.reportTaskId
+                if (reportId != null && onOpenReport != null) {
+                    Spacer(Modifier.height(6.dp))
+                    FilledTonalButton(
+                        onClick = { onOpenReport(reportId) },
+                        contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp),
+                    ) {
+                        Icon(Icons.Default.Movie, contentDescription = null, modifier = Modifier.size(18.dp))
+                        Spacer(Modifier.width(6.dp))
+                        Text("Видео-отчёт", style = MaterialTheme.typography.labelLarge)
                     }
                 }
 

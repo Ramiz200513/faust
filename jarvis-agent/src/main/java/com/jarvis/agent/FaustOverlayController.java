@@ -252,6 +252,9 @@ public final class FaustOverlayController {
      * элементов, ровно тот список, что уйдёт модели.
      */
     public static void onSeen(String windowTitle, java.util.List<com.jarvis.agent.vision.UiaElement> elements) {
+        // Видео-отчёт — до всех проверок: он пишется, даже если «рентген» на
+        // экране ПК выключен или окна-оверлеи здесь не поддерживаются.
+        TaskReportRecorder.noteSeen(elements);
         if (session != Session.TASK || elements == null || elements.isEmpty()) return;
         SwingUtilities.invokeLater(() -> {
             if (session != Session.TASK || !AgentSettings.flag(AgentSettings.OVERLAY_XRAY, true)
@@ -263,6 +266,7 @@ public final class FaustOverlayController {
 
     /** Модель выбрала элемент с этим номером — его рамка вспыхивает. */
     public static void onChosen(int index) {
+        TaskReportRecorder.noteChosen(index);
         if (session != Session.TASK) return;
         SwingUtilities.invokeLater(() -> {
             if (xray != null) xray.setTarget(index);
@@ -271,6 +275,7 @@ public final class FaustOverlayController {
 
     /** Действие выполнено, окно сейчас изменится — рамки убрать до следующего снимка. */
     public static void onSeenDone() {
+        TaskReportRecorder.noteSeenDone();
         if (session != Session.TASK) return;
         SwingUtilities.invokeLater(() -> {
             if (xray != null) xray.clear();
@@ -292,6 +297,7 @@ public final class FaustOverlayController {
      * @param reason обоснование модели из её ответа (поле reason), может быть null
      */
     public static void onThought(String action, String reason) {
+        TaskReportRecorder.noteThought(action, reason);
         if (session != Session.TASK) return;
         SwingUtilities.invokeLater(() -> {
             if (planPanel != null) planPanel.setThought(action, reason);

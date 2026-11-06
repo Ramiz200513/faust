@@ -77,6 +77,24 @@ public final class Clarifications {
     private String taskContext;
 
     /**
+     * Поправки человека, присланные по ходу задачи («нет, не Пете, а Васе»).
+     *
+     * <p>Пишет их поток чтения сокета (команда correct_task), а читает поток
+     * задачи — поэтому потокобезопасный список, а не обычный ArrayList.
+     */
+    private final List<String> corrections = new java.util.concurrent.CopyOnWriteArrayList<>();
+    /**
+     * Самая свежая поправка, которую план ещё не учёл; null — таких нет.
+     *
+     * <p>Отдельно от списка, потому что у них разная роль. Список — это память:
+     * все поправки до конца задачи остаются частью цели. А «необработанная»
+     * поправка — сигнал: текущую подзадачу пора прервать и перестроить хвост
+     * плана. Сигнал гаснет, как только PlanRunner его забрал.
+     */
+    private final java.util.concurrent.atomic.AtomicReference<String> pendingCorrection =
+            new java.util.concurrent.atomic.AtomicReference<>();
+
+    /**
      * Итог одного вопроса.
      *
      * @param answer ответ человека; null — ответа нет (молчание, лимит, спросить некого)
@@ -184,15 +202,59 @@ public final class Clarifications {
      * есть, так что без плана и вопросов промпт не меняется ни на символ.
      */
     public String goalFor(String goal) {
-        if (answered.isEmpty() && taskContext == null) return goal;
+        if (answered.isEmpty() && taskContext == null && corrections.isEmpty()) return goal;
         StringBuilder sb = new StringBuilder(goal);
         if (taskContext != null) sb.append("\n\n").append(taskContext);
-        if (answered.isEmpty()) return sb.toString();
-        sb.append("\n\nУТОЧНЕНИЯ ОТ ПОЛЬЗОВАТЕЛЯ (он ответил на твои вопросы — считай это частью цели):\n");
-        for (String[] qa : answered) {
-            sb.append("  - на вопрос «").append(qa[0]).append("» ответил: «").append(qa[1]).append("»\n");
+        if (!answered.isEmpty()) {
+            sb.append("\n\nУТОЧНЕНИЯ ОТ ПОЛЬЗОВАТЕЛЯ (он ответил на твои вопросы — считай это частью цели):\n");
+            for (String[] qa : answered) {
+                sb.append("  - на вопрос «").append(qa[0]).append("» ответил: «").append(qa[1]).append("»\n");
+            }
+        }
+        if (!corrections.isEmpty()) {
+            // Поправки — последними и с прямым указанием, что они важнее исходной
+            // просьбы: модель читает цель сверху вниз, и без этой фразы «отправь
+            // Пете» в начале перевешивало бы «нет, Васе» в конце.
+            sb.append("\n\nПОПРАВКИ ПОЛЬЗОВАТЕЛЯ ПО ХОДУ ЗАДАЧИ (важнее исходной просьбы; где они ей "
+                      + "противоречат — делай как в поправке; уже сделанное по старой версии исправь, если можно):\n");
+            for (String c : corrections) {
+                sb.append("  - «").append(c).append("»\n");
+            }
         }
         return sb.toString().stripTrailing();
+    }
+
+    /**
+     * Принять поправку человека к идущей задаче. Вызывается из потока чтения
+     * сокета — поток задачи увидит её на следующем шаге (через {@link #goalFor})
+     * или, в плане, после текущей подзадачи (через {@link #takePendingCorrection}).
+     *
+     * @return false — поправка пустая, принимать нечего
+     */
+    public boolean addCorrection(String text) {
+        String t = text == null ? "" : text.strip();
+        if (t.isEmpty()) return false;
+        corrections.add(t);
+        pendingCorrection.set(t);
+        return true;
+    }
+
+    /** Есть ли поправка, которую план ещё не учёл, — по ней прерывается текущая подзадача. */
+    public boolean hasPendingCorrection() {
+        return pendingCorrection.get() != null;
+    }
+
+    /**
+     * Забрать необработанную поправку (и погасить сигнал). null — новых поправок нет.
+     * Сама поправка из цели не пропадает: она остаётся в {@link #goalFor} до конца задачи.
+     */
+    public String takePendingCorrection() {
+        return pendingCorrection.getAndSet(null);
+    }
+
+    /** Сколько поправок прислал человек — для журнала прогонов. */
+    public int correctionsCount() {
+        return corrections.size();
     }
 
     /**

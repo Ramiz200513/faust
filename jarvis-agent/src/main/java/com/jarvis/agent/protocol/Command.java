@@ -36,7 +36,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = Command.SetDisplayOption.class, name = "set_display_option"),
         @JsonSubTypes.Type(value = Command.QuickAction.class, name = "quick_action"),
         @JsonSubTypes.Type(value = Command.Sequence.class, name = "sequence"),
-        @JsonSubTypes.Type(value = Command.DevRepos.class, name = "dev_repos")
+        @JsonSubTypes.Type(value = Command.DevRepos.class, name = "dev_repos"),
+        @JsonSubTypes.Type(value = Command.CorrectTask.class, name = "correct_task"),
+        @JsonSubTypes.Type(value = Command.PhotoTask.class, name = "photo_task"),
+        @JsonSubTypes.Type(value = Command.GetTaskReport.class, name = "get_task_report")
 })
 public sealed interface Command permits
         Command.NaturalLanguage, Command.SetVolume, Command.Shutdown, Command.Reboot,
@@ -46,7 +49,8 @@ public sealed interface Command permits
         Command.GetClipboard, Command.SetClipboard,
         Command.ListFiles, Command.SendFileToPhone, Command.SendFileToPc,
         Command.CancelTask, Command.AnswerQuestion, Command.SetDisplayOption,
-        Command.QuickAction, Command.Sequence, Command.DevRepos {
+        Command.QuickAction, Command.Sequence, Command.DevRepos,
+        Command.CorrectTask, Command.PhotoTask, Command.GetTaskReport {
 
     /** Stable name used by the whitelist and audit log. */
     String name();
@@ -168,5 +172,22 @@ public sealed interface Command permits
     /** Список разрешённых репозиториев и их состояние — для экрана «Проекты» на телефоне. Только чтение. */
     record DevRepos() implements Command {
         public String name() { return "dev_repos"; }
+    }
+
+    // Layer 10: поправка на ходу, фото с телефона, видео-отчёт
+    /**
+     * Поправка к идущей задаче («нет, не Пете, а Васе»). Как и cancel_task,
+     * выполняется в потоке чтения сокета: поток задачи занят самой задачей.
+     */
+    record CorrectTask(String text) implements Command {
+        public String name() { return "correct_task"; }
+    }
+    /** Задача ИИ-агенту с фотографией с телефона (JPEG в base64). */
+    record PhotoTask(String text, String imageBase64) implements Command {
+        public String name() { return "photo_task"; }
+    }
+    /** Видео-отчёт о законченной задаче taskId: кадры (TaskReport) или GIF (FileTransfer). */
+    record GetTaskReport(String taskId, boolean asGif) implements Command {
+        public String name() { return "get_task_report"; }
     }
 }

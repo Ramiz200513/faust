@@ -38,7 +38,14 @@ public class CommandWhitelist {
             // Несколько простых команд из одной фразы — каждая проверяется отдельно (см. denyReason).
             "sequence",
             // Список проектов git и их состояние — только чтение, без путей на диске.
-            "dev_repos"
+            "dev_repos",
+            // Поправка к идущей задаче («нет, не Пете, а Васе»). Текст проверяется
+            // как цель задачи (см. denyReason) — поправка не лазейка мимо фильтра.
+            "correct_task",
+            // Задача агенту с фото с телефона — та же agent_task с вложением.
+            "photo_task",
+            // Видео-отчёт о законченной задаче — только чтение.
+            "get_task_report"
     );
 
     /** Что может стоять внутри sequence: только простые мгновенные команды. */
@@ -82,9 +89,20 @@ public class CommandWhitelist {
                 if (why != null) return why;
             }
         }
-        if (goalsGuard && command instanceof Command.AgentTask task) {
-            String why = ForbiddenGoals.reason(task.goal());
-            if (why != null) return "агенту нельзя поручать: " + why;
+        if (goalsGuard) {
+            // Всё, что становится целью ИИ-агента, проверяется одинаково: сама
+            // задача, задача с фото и поправка к идущей задаче. Иначе «выключи
+            // компьютер» можно было бы прислать поправкой к безобидной задаче.
+            String goal = switch (command) {
+                case Command.AgentTask task -> task.goal();
+                case Command.PhotoTask photo -> photo.text();
+                case Command.CorrectTask correction -> correction.text();
+                default -> null;
+            };
+            if (goal != null) {
+                String why = ForbiddenGoals.reason(goal);
+                if (why != null) return "агенту нельзя поручать: " + why;
+            }
         }
         return null;
     }

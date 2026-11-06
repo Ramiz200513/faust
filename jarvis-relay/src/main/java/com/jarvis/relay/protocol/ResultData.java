@@ -13,10 +13,12 @@ import java.util.List;
         @JsonSubTypes.Type(value = ResultData.ClipboardText.class, name = "clipboard_text"),
         @JsonSubTypes.Type(value = ResultData.FileList.class, name = "file_list"),
         @JsonSubTypes.Type(value = ResultData.FileTransfer.class, name = "file_transfer"),
-        @JsonSubTypes.Type(value = ResultData.RepoList.class, name = "repo_list")
+        @JsonSubTypes.Type(value = ResultData.RepoList.class, name = "repo_list"),
+        @JsonSubTypes.Type(value = ResultData.TaskReport.class, name = "task_report")
 })
 public sealed interface ResultData permits ResultData.ProcessList, ResultData.AgentReport,
-        ResultData.ClipboardText, ResultData.FileList, ResultData.FileTransfer, ResultData.RepoList {
+        ResultData.ClipboardText, ResultData.FileList, ResultData.FileTransfer, ResultData.RepoList,
+        ResultData.TaskReport {
 
     record ProcessList(List<ProcessInfo> processes) implements ResultData {}
 
@@ -42,6 +44,15 @@ public sealed interface ResultData permits ResultData.ProcessList, ResultData.Ag
      */
     record RepoInfo(String name, String branch, List<String> changed, int ahead, int behind,
                     String lastCommit, boolean hasRemote, String error) {}
+
+    /**
+     * Результат get_task_report: кадры шагов задачи с уже нарисованными
+     * отметками. caption — тот же текст, что на кадре, отдельно (озвучка, TalkBack).
+     */
+    record TaskReport(String taskId, String goal, boolean completed, List<ReportFrame> frames) implements ResultData {}
+
+    /** Один кадр отчёта: step 0 — титульный, -1 — итоговый; base64 — JPEG. */
+    record ReportFrame(int step, String caption, String base64) {}
 
     /** Not a ResultData itself — just a row inside ProcessList. */
     record ProcessInfo(long pid, String name) {}

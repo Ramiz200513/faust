@@ -34,6 +34,9 @@ class CommandWhitelist(
                 "quick_action",
                 "sequence",
                 "dev_repos",
+                "correct_task",
+                "photo_task",
+                "get_task_report",
                 // "shutdown" and "reboot" left OUT on purpose — opt in explicitly.
             )
         )

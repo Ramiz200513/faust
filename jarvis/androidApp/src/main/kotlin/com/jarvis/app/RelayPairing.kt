@@ -106,62 +106,12 @@ object RelayPairing {
      * без переподключений; используется для одновременной рассылки одной
      * команды нескольким ПК сразу (экран «Мульти-ПК»), где держать
      * постоянный JarvisClient на каждый ПК было бы избыточно.
+     *
+     * Сама связь — [PcLink]: та же, что у ИИ-задач на другом ПК, только без
+     * событий по ходу (быстрой команде они не нужны).
      */
-    suspend fun sendCommand(device: PairedDevice, command: Command, timeoutMs: Long = 15_000): CommandOutcome {
-        val outcome = withTimeoutOrNull(timeoutMs) {
-            suspendCancellableCoroutine<CommandOutcome> { cont ->
-                val httpUrl = device.relayUrl.replaceFirst("ws://", "http://").replaceFirst("wss://", "https://")
-                val commandRequestId = UUID.randomUUID().toString()
-
-                val listener = object : WebSocketListener() {
-                    override fun onOpen(webSocket: WebSocket, response: Response) {
-                        webSocket.send(
-                            JarvisJson.encodeToString<JarvisMessage>(
-                                Auth(
-                                    requestId = UUID.randomUUID().toString(),
-                                    deviceId = device.id,
-                                    token = device.token,
-                                    role = DeviceRole.PHONE,
-                                )
-                            )
-                        )
-                    }
-
-                    override fun onMessage(webSocket: WebSocket, text: String) {
-                        val msg = try {
-                            JarvisJson.decodeFromString<JarvisMessage>(text)
-                        } catch (e: Exception) {
-                            Log.e("RelayPairing", "не разобрал ответ: $text", e)
-                            null
-                        }
-                        when {
-                            msg is AuthResult && msg.ok -> webSocket.send(
-                                JarvisJson.encodeToString<JarvisMessage>(CommandRequest(commandRequestId, command))
-                            )
-                            msg is AuthResult -> {
-                                if (cont.isActive) cont.resume(CommandOutcome.Rejected(msg.reason ?: "вход отклонён"))
-                                webSocket.close(1000, "done")
-                            }
-                            msg is CommandResult && msg.requestId == commandRequestId -> {
-                                if (cont.isActive) cont.resume(CommandOutcome.Success(msg))
-                                webSocket.close(1000, "done")
-                            }
-                            // Прочее (например, случайный ScreenFrame) игнорируем — ждём именно свой CommandResult.
-                        }
-                    }
-
-                    override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
-                        Log.e("RelayPairing", "ошибка соединения", t)
-                        if (cont.isActive) cont.resume(CommandOutcome.Failed(t.message ?: "ошибка соединения"))
-                    }
-                }
-
-                val ws = http.newWebSocket(Request.Builder().url(httpUrl).build(), listener)
-                cont.invokeOnCancellation { ws.cancel() }
-            }
-        }
-        return outcome ?: CommandOutcome.Failed("нет ответа от ПК (офлайн или таймаут)")
-    }
+    suspend fun sendCommand(device: PairedDevice, command: Command, timeoutMs: Long = 15_000): CommandOutcome =
+        PcLink(device).run(command, timeoutMs)
 
     /**
      * Открыть сокет, отправить первое сообщение через [onOpen] и вернуть

@@ -57,6 +57,32 @@ data class FileList(val entries: List<FileEntry>) : ResultData
 @SerialName("file_transfer")
 data class FileTransfer(val fileName: String, val base64: String, val sizeBytes: Long) : ResultData
 
+/**
+ * Результат [GetTaskReport]: «видео» задачи — кадры шагов по порядку.
+ *
+ * Отметки (куда нажал агент, рамка выбранного элемента, подпись с мыслью
+ * модели) уже нарисованы на самих кадрах на ПК: так GIF и телефон показывают
+ * одно и то же. [ReportFrame.caption] — тот же текст отдельно, для озвучки и
+ * TalkBack.
+ */
+@Serializable
+@SerialName("task_report")
+data class TaskReport(
+    val taskId: String,
+    val goal: String,
+    val completed: Boolean,
+    val frames: List<ReportFrame>,
+) : ResultData
+
+@Serializable
+data class ReportFrame(
+    /** Номер шага; 0 — титульный кадр, -1 — итоговый. */
+    val step: Int,
+    val caption: String,
+    /** JPEG в base64. */
+    val base64: String,
+)
+
 /** Результат [DevRepos]: разрешённые репозитории на ПК. */
 @Serializable
 @SerialName("repo_list")

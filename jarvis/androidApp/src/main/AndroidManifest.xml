@@ -56,5 +56,17 @@
             android:name=".JarvisConnectionService"
             android:foregroundServiceType="dataSync|microphone"
             android:exported="false" />
+        <!-- Снимок для задачи с фото: камера пишет файл в кэш приложения по
+             временному адресу content://, который выдаёт этот провайдер
+             (PhotoAttach.newCameraUri). Сам провайдер наружу не открыт. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.photos"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/photo_paths" />
+        </provider>
     </application>
 </manifest>

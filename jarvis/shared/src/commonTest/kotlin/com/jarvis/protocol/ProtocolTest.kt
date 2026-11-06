@@ -186,6 +186,32 @@ class ProtocolTest {
     }
 
     @Test
+    fun correctionPhotoAndReport_commands_roundTrip() {
+        assertTrue(roundTrip<JarvisMessage>(CommandRequest("c1", CorrectTask("нет, не Пете, а Васе")))
+            .contains("\"type\":\"correct_task\""))
+        val photo = roundTrip<JarvisMessage>(CommandRequest("p1", PhotoTask("сохрани в конспект", "AAAA")))
+        assertTrue(photo.contains("\"type\":\"photo_task\"") && photo.contains("\"imageBase64\":\"AAAA\""), photo)
+        // asGif по умолчанию тоже уходит в JSON (encodeDefaults) — Java-сторона его ждёт.
+        val get = roundTrip<JarvisMessage>(CommandRequest("g1", GetTaskReport("task-1")))
+        assertTrue(get.contains("\"taskId\":\"task-1\"") && get.contains("\"asGif\":false"), get)
+        for (c in listOf(CorrectTask("x"), PhotoTask("x", "y"), GetTaskReport("t"))) {
+            assertTrue(CommandWhitelist.DEFAULT.isAllowed(c), c.name)
+        }
+    }
+
+    @Test
+    fun taskReport_fromJavaAgent_isReadable() {
+        // Ровно так ответ на get_task_report пишет Jackson в агенте.
+        val json = """{"type":"command_result","requestId":"r1","status":"ok","message":"видео-отчёт: 2 кадров",
+            "data":{"type":"task_report","taskId":"task-1","goal":"отправь отчёт Васе","completed":true,
+            "frames":[{"step":0,"caption":"Задача: отправь отчёт Васе","base64":"AA=="},
+                      {"step":-1,"caption":"Итог: цель достигнута.","base64":"BB=="}]}}"""
+        val report = (JarvisJson.decodeFromString<JarvisMessage>(json) as CommandResult).data as TaskReport
+        assertEquals(listOf(0, -1), report.frames.map { it.step })
+        assertTrue(report.completed)
+    }
+
+    @Test
     fun whitelist_blocksShutdown_allowsSetVolume() {
         val wl = CommandWhitelist.DEFAULT
         assertTrue(wl.isAllowed(SetVolume(10)))

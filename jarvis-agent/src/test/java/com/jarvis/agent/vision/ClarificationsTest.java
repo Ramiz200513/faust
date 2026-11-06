@@ -34,6 +34,32 @@ class ClarificationsTest {
     }
 
     @Test
+    void correction_isPartOfGoalUntilTheEnd_butSignalsOnlyOnce() {
+        Clarifications c = new Clarifications(new FakePhone(), true, 5);
+        assertEquals("отправь отчёт Пете", c.goalFor("отправь отчёт Пете"), "без поправок цель не меняется ни на символ");
+
+        assertTrue(c.addCorrection("  нет, не Пете, а Васе "));
+        assertTrue(c.hasPendingCorrection());
+        String goal = c.goalFor("отправь отчёт Пете");
+        assertTrue(goal.contains("ПОПРАВКИ ПОЛЬЗОВАТЕЛЯ") && goal.contains("«нет, не Пете, а Васе»"), goal);
+        assertTrue(goal.indexOf("ПОПРАВКИ") > goal.indexOf("отправь отчёт Пете"), "поправка — после исходной просьбы");
+
+        assertEquals("нет, не Пете, а Васе", c.takePendingCorrection());
+        assertNull(c.takePendingCorrection(), "сигнал гаснет после первого чтения");
+        assertFalse(c.hasPendingCorrection());
+        assertTrue(c.goalFor("отправь отчёт Пете").contains("а Васе"), "а в цели поправка остаётся");
+        assertEquals(1, c.correctionsCount());
+    }
+
+    @Test
+    void emptyCorrection_isRejected() {
+        Clarifications c = new Clarifications(new FakePhone(), true, 5);
+        assertFalse(c.addCorrection("   "));
+        assertFalse(c.addCorrection(null));
+        assertFalse(c.hasPendingCorrection());
+    }
+
+    @Test
     void answerIsGluedToGoal_soModelSeesItOnEveryStep() {
         FakePhone phone = new FakePhone("Лере и Маше");
         Clarifications c = new Clarifications(phone, true, 5);
