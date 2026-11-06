@@ -1,6 +1,11 @@
 package com.jarvis.app
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Devices
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -29,7 +34,7 @@ import com.jarvis.protocol.SetVolume
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MultiPcScreen(onBack: () -> Unit, vm: MultiPcViewModel = viewModel()) {
+fun MultiPcScreen(onBack: () -> Unit, onOpenDevices: () -> Unit = {}, vm: MultiPcViewModel = viewModel()) {
     val rows by vm.rows.collectAsState()
     val transfer by vm.transfer.collectAsState()
     var showUrlDialog by remember { mutableStateOf(false) }
@@ -63,10 +68,11 @@ fun MultiPcScreen(onBack: () -> Unit, vm: MultiPcViewModel = viewModel()) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Мульти-ПК") },
+                title = { Text("Несколько ПК") },
                 navigationIcon = { IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Назад") } },
                 actions = {
-                    if (rows.isNotEmpty()) {
+                    // «Все» нужно, только когда есть из чего выбирать.
+                    if (rows.size >= 2) {
                         TextButton(onClick = { vm.selectAll(selectedCount < rows.size) }) {
                             Text(if (selectedCount < rows.size) "Все" else "Снять")
                         }
@@ -77,16 +83,50 @@ fun MultiPcScreen(onBack: () -> Unit, vm: MultiPcViewModel = viewModel()) {
     ) { padding ->
         Column(Modifier.padding(padding).fillMaxSize()) {
             if (rows.size < 2) {
-                Box(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
+                // Пустой экран объясняет, что здесь будет и как туда попасть, —
+                // раньше была одна строка текста без выхода.
+                Column(
+                    Modifier.weight(1f).fillMaxWidth().padding(32.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                ) {
+                    Box(
+                        Modifier.size(88.dp).clip(RoundedCornerShape(28.dp))
+                            .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.12f)),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Icon(Icons.Default.Devices, contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(44.dp))
+                    }
+                    Spacer(Modifier.height(18.dp))
+                    Text("Один телефон — несколько компьютеров", style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
+                    Spacer(Modifier.height(8.dp))
                     Text(
-                        "Нужно хотя бы два привязанных ПК.\nПривяжите ещё один на экране «Устройства».",
+                        "Привяжите ещё один ПК — и здесь можно будет отправить команду или задачу ИИ " +
+                            "сразу на все, а в чате говорить «на рабочем…», «на всех ПК…» " +
+                            "и «перекинь отчёт с домашнего на рабочий».",
                         style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         textAlign = TextAlign.Center,
-                        modifier = Modifier.padding(24.dp),
                     )
+                    Spacer(Modifier.height(20.dp))
+                    Button(onClick = onOpenDevices) {
+                        Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp))
+                        Spacer(Modifier.width(6.dp))
+                        Text("Привязать ещё ПК")
+                    }
                 }
                 return@Scaffold
             }
+
+            Text(
+                "Отметьте компьютеры — команда или задача уйдёт на все отмеченные сразу. " +
+                    "Каждый ПК спросит подтверждение у себя.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+            )
 
             LazyColumn(
                 Modifier.weight(1f).fillMaxWidth(),

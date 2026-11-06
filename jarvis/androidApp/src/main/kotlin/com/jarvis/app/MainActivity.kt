@@ -72,6 +72,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
@@ -99,23 +100,27 @@ import com.jarvis.protocol.SetVolume
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import androidx.activity.compose.BackHandler
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.AutoAwesome
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Lightbulb
+import androidx.compose.material.icons.filled.Link
+import androidx.compose.material.icons.filled.LinkOff
+import androidx.compose.material.icons.filled.TouchApp
+import androidx.compose.foundation.verticalScroll
 
 /** Экраны приложения; переключаемся простым состоянием. */
 private enum class AppScreen { CHAT, DEVICES, SCREEN_VIEW, HISTORY, MULTI_PC, CUSTOM_ACTIONS, PROJECTS }
 
 /**
- * Подсказка пустого чата: иконка, заголовок, пример и фраза, которая уйдёт.
- * Тексты — то, что «Фауст» понимает без ИИ-агента или быстро (быстрые и
- * составные команды разбираются правилами и своей моделью за доли секунды).
+ * «Попробуйте» на пустом чате: фразы, которые «Фауст» понимает без ИИ-агента
+ * (правилами и своей моделью за доли секунды), — отправляются сразу по нажатию.
  */
-private data class Suggestion(val icon: ImageVector, val title: String, val phrase: String)
+private val TRY_PHRASES = listOf("сделай потише и открой ютуб", "скриншот", "следующий трек")
 
-private val SUGGESTIONS = listOf(
-    Suggestion(Icons.Default.GraphicEq, "Два дела", "сделай потише и открой ютуб"),
-    Suggestion(Icons.Default.PhotoCamera, "Скриншот", "скриншот"),
-    Suggestion(Icons.Default.MusicNote, "Трек вперёд", "следующий трек"),
-    Suggestion(Icons.Default.Memory, "Процессы", "покажи процессы"),
-)
+/** Пример многошаговой задачи для карточки — подставляется в поле, а не уходит сразу. */
+private const val MULTISTEP_EXAMPLE = "найди в загрузках последний файл и отправь его в Избранное в Telegram"
 
 /** Одна быстрая команда: кнопка-чип, которая сразу шлёт Command, без поля ввода. */
 private data class QuickAction(val icon: ImageVector, val label: String, val run: (ChatViewModel) -> Unit)
@@ -150,6 +155,11 @@ class MainActivity : ComponentActivity() {
                         PairingScreen()
                     } else {
                         var screen by remember { mutableStateOf(AppScreen.CHAT) }
+                        // Системная «Назад» на любом разделе — в чат. Без этого она
+                        // закрывала всё приложение: экраны переключаются состоянием,
+                        // а не через стек Activity, и Android считал чат последним
+                        // (найдено 06.11 на эмуляторе: «Назад» из «Мульти-ПК» -> рабочий стол).
+                        BackHandler(enabled = screen != AppScreen.CHAT) { screen = AppScreen.CHAT }
                         // Crossfade вместо мгновенной подмены: переход между
                         // разделами перестаёт выглядеть как моргание.
                         Crossfade(targetState = screen, label = "screen") { current ->
@@ -165,7 +175,10 @@ class MainActivity : ComponentActivity() {
                             AppScreen.DEVICES -> DevicesScreen(onBack = { screen = AppScreen.CHAT })
                             AppScreen.SCREEN_VIEW -> ScreenViewScreen(onBack = { screen = AppScreen.CHAT })
                             AppScreen.HISTORY -> HistoryScreen(onBack = { screen = AppScreen.CHAT })
-                            AppScreen.MULTI_PC -> MultiPcScreen(onBack = { screen = AppScreen.CHAT })
+                            AppScreen.MULTI_PC -> MultiPcScreen(
+                                onBack = { screen = AppScreen.CHAT },
+                                onOpenDevices = { screen = AppScreen.DEVICES },
+                            )
                             AppScreen.CUSTOM_ACTIONS -> CustomActionsScreen(onBack = { screen = AppScreen.CHAT })
                             AppScreen.PROJECTS -> ProjectsScreen(onBack = { screen = AppScreen.CHAT })
                         }
@@ -213,6 +226,9 @@ fun ChatScreen(
     val pendingPhoto by vm.pendingPhoto.collectAsState()
     // Открытый видео-отчёт задачи.
     val report by vm.report.collectAsState()
+    // Все привязанные ПК и кто из них на связи — для списка в шапке.
+    val pairedDevices by vm.pairedDevices.collectAsState()
+    val pcOnline by vm.pcOnline.collectAsState()
 
     // Сторож обрыва: агент сам гасит показ через 10 минут, да и поток может
     // прерваться при переподключении к релею. Без этого окошко просто застывало
@@ -364,12 +380,14 @@ fun ChatScreen(
         val last = messages.lastOrNull() ?: return@LaunchedEffect
         if (last.author != Author.PC || last.imageBase64 != null) return@LaunchedEffect
         val card = last.question
+        // С другого ПК — сначала его имя: на слух иначе не понять, кто ответил.
+        val spoken = last.pcName?.let { "$it: ${last.text}" } ?: last.text
         if (card == null) {
-            voice.speak(last.text)
+            voice.speak(spoken)
             return@LaunchedEffect
         }
         val hint = if (card.options.any { it.equals("да", ignoreCase = true) }) " Скажите «да» или «нет»." else ""
-        voice.speak(last.text + hint) {
+        voice.speak(spoken + hint) {
             val stillOpen = vm.openQuestion.value?.id == last.id
             val micAllowed = context.checkSelfPermission(Manifest.permission.RECORD_AUDIO) ==
                 PackageManager.PERMISSION_GRANTED
@@ -455,6 +473,8 @@ fun ChatScreen(
     // заголовок со строкой статуса места уже не оставалось. Плюс в меню у
     // каждого раздела есть подпись, а не только картинка, которую надо угадывать.
     val drawerState = rememberDrawerState(DrawerValue.Closed)
+    // Открыто меню — «Назад» закрывает его, а не приложение.
+    BackHandler(enabled = drawerState.isOpen) { scope.launch { drawerState.close() } }
     fun closeDrawerThen(action: () -> Unit) {
         scope.launch { drawerState.close() }
         action()
@@ -491,7 +511,8 @@ fun ChatScreen(
                             Row(
                                 verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.spacedBy(10.dp),
-                                modifier = Modifier.clip(RoundedCornerShape(12.dp)).clickable { connMenu = true }
+                                modifier = Modifier.clip(RoundedCornerShape(12.dp))
+                                    .clickable { connMenu = true; vm.refreshPcOnline() }
                                     .padding(end = 8.dp, top = 2.dp, bottom = 2.dp),
                             ) {
                                 FaustLogo(30.dp, withTile = true)
@@ -512,17 +533,73 @@ fun ChatScreen(
                                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                                             maxLines = 1,
                                             overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
+                                            modifier = Modifier.weight(1f, fill = false),
                                         )
+                                        // Подсказка, что ПК здесь меняются, — стрелка вниз.
+                                        Icon(Icons.Default.ArrowDropDown, contentDescription = "Сменить ПК",
+                                            tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(18.dp))
                                     }
                                 }
                             }
                             DropdownMenu(expanded = connMenu, onDismissRequest = { connMenu = false }) {
+                                // Все привязанные ПК: сменить — одно касание, а не
+                                // меню → «Устройства» → выбрать → назад. С несколькими
+                                // ПК («на рабочем…», «на всех…») это нужно часто.
+                                if (pairedDevices.size > 1) {
+                                    Text(
+                                        "КОМПЬЮТЕРЫ",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        modifier = Modifier.padding(start = 16.dp, top = 8.dp, bottom = 4.dp),
+                                    )
+                                    pairedDevices.forEach { d ->
+                                        val online = pcOnline[d.id]
+                                        DropdownMenuItem(
+                                            text = {
+                                                Column {
+                                                    Text(d.name, fontWeight = if (d.id == activeDevice?.id) FontWeight.SemiBold else null)
+                                                    Text(
+                                                        when (online) {
+                                                            DeviceOnlineStatus.ONLINE -> "на связи"
+                                                            DeviceOnlineStatus.OFFLINE -> "не в сети"
+                                                            DeviceOnlineStatus.UNAUTHORIZED -> "отвязан"
+                                                            else -> "проверяю…"
+                                                        },
+                                                        style = MaterialTheme.typography.labelSmall,
+                                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                                    )
+                                                }
+                                            },
+                                            leadingIcon = {
+                                                StatusDot(
+                                                    when (online) {
+                                                        DeviceOnlineStatus.ONLINE -> onlineColor()
+                                                        DeviceOnlineStatus.OFFLINE, DeviceOnlineStatus.UNAUTHORIZED -> MaterialTheme.colorScheme.error
+                                                        else -> MaterialTheme.colorScheme.outline
+                                                    },
+                                                    pulsing = online == null,
+                                                )
+                                            },
+                                            trailingIcon = {
+                                                if (d.id == activeDevice?.id) {
+                                                    Icon(Icons.Default.Check, contentDescription = "выбран",
+                                                        tint = MaterialTheme.colorScheme.primary)
+                                                }
+                                            },
+                                            onClick = { connMenu = false; vm.switchTo(d.id) },
+                                        )
+                                    }
+                                    HorizontalDivider(Modifier.padding(vertical = 4.dp))
+                                }
                                 DropdownMenuItem(
                                     text = { Text(if (connected) "Отключиться от ПК" else "Подключиться к ПК") },
+                                    leadingIcon = { Icon(if (connected) Icons.Default.LinkOff else Icons.Default.Link, contentDescription = null) },
                                     onClick = { connMenu = false; if (connected) vm.disconnect() else vm.connect() },
                                 )
                                 DropdownMenuItem(
                                     text = { Text("Устройства…") },
+                                    leadingIcon = { Icon(Icons.Default.Settings, contentDescription = null) },
                                     onClick = { connMenu = false; onOpenDevices() },
                                 )
                             }
@@ -615,7 +692,7 @@ fun ChatScreen(
                             msg.question != null ->
                                 QuestionBubble(msg, onAnswer = { vm.answerQuestion(msg.id, it) }, Modifier.animateItem())
                             // План многоэтапной задачи — чек-лист, обновляется на месте.
-                            plan != null -> PlanBubble(plan, Modifier.animateItem())
+                            plan != null -> PlanBubble(plan, Modifier.animateItem(), pcName = msg.pcName)
                             else -> MessageBubble(msg, Modifier.animateItem(), onOpenReport = { vm.openReport(it) })
                         }
                     }
@@ -625,9 +702,15 @@ fun ChatScreen(
                 // растянут на весь экран, и под ним карточки-подсказки не получали нажатий.
                 if (messages.none { it.author != Author.SYSTEM }) {
                     EmptyChatHint(
-                        onSuggestion = { submit(it) },
-                        onOpenProjects = onOpenProjects,
-                        modifier = Modifier.align(Alignment.Center),
+                        actions = EmptyChatActions(
+                            send = { submit(it) },
+                            fill = { input = it },
+                            attachPhoto = { onCameraClick() },
+                            openMultiPc = onOpenMultiPc,
+                            openSkills = onOpenCustomActions,
+                            openProjects = onOpenProjects,
+                        ),
+                        multiPc = pairedDevices.size >= 2,
                     )
                 }
 
@@ -660,10 +743,30 @@ fun ChatScreen(
             }
 
             // --- Быстрые команды: один ряд, шлют сразу, без поля ввода ---
+            // Ряд шире экрана; затухание по краю, за которым есть ещё кнопки, —
+            // знак «листается» (раньше последняя кнопка просто обрезалась).
+            val chipsScroll = rememberScrollState()
+            val fadeColor = MaterialTheme.colorScheme.background
+            Box(
+                Modifier.fillMaxWidth().drawWithContent {
+                    drawContent()
+                    val w = 28.dp.toPx()
+                    if (chipsScroll.value > 0) drawRect(
+                        androidx.compose.ui.graphics.Brush.horizontalGradient(listOf(fadeColor, Color.Transparent), 0f, w),
+                        size = androidx.compose.ui.geometry.Size(w, size.height),
+                    )
+                    if (chipsScroll.value < chipsScroll.maxValue) drawRect(
+                        androidx.compose.ui.graphics.Brush.horizontalGradient(
+                            listOf(Color.Transparent, fadeColor), size.width - w, size.width),
+                        topLeft = androidx.compose.ui.geometry.Offset(size.width - w, 0f),
+                        size = androidx.compose.ui.geometry.Size(w, size.height),
+                    )
+                }
+            ) {
             Row(
                 Modifier
                     .fillMaxWidth()
-                    .horizontalScroll(rememberScrollState())
+                    .horizontalScroll(chipsScroll)
                     .padding(horizontal = 12.dp, vertical = 6.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
@@ -683,6 +786,7 @@ fun ChatScreen(
                 customActions.forEach { action ->
                     ActionChip(null, "${action.emoji} ${action.label}") { vm.runCustomAction(action) }
                 }
+            }
             }
 
             // --- Прикреплённое фото: ждёт просьбы, что с ним сделать ---
@@ -882,7 +986,7 @@ private fun ChatDrawer(
         DrawerSection("Компьютер")
         DrawerLink(Icons.Default.DesktopWindows, "Экран ПК", onOpenScreenView)
         DrawerLink(Icons.Default.Folder, "Файлы", onOpenFiles)
-        DrawerLink(Icons.Default.Devices, "Мульти-ПК", onOpenMultiPc)
+        DrawerLink(Icons.Default.Devices, "Несколько ПК", onOpenMultiPc)
 
         DrawerSection("Работа")
         DrawerLink(Icons.Default.Code, "Проекты (git)", onOpenProjects)
@@ -1198,6 +1302,8 @@ fun MessageBubble(msg: ChatMessage, modifier: Modifier = Modifier, onOpenReport:
             modifier = Modifier.widthIn(max = 300.dp),
         ) {
             Column(Modifier.padding(horizontal = 14.dp, vertical = 10.dp)) {
+                // Ответ не от выбранного ПК («на рабочем…», «на всех ПК…») — чей он.
+                msg.pcName?.let { PcLabel(it); Spacer(Modifier.height(4.dp)) }
                 // Шаг agent_task: маленький заголовок «ИИ-агент · шаг N», а в тексте —
                 // только само действие, без повтора «🔎 шаг N:».
                 val stepNo = msg.agentStep
@@ -1366,6 +1472,8 @@ internal fun QuestionBubble(msg: ChatMessage, onAnswer: (String) -> Unit, modifi
                         tint = MaterialTheme.colorScheme.primary)
                     Text("Фауст спрашивает", style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.primary)
+                    // Спрашивает не выбранный ПК — какой именно (ответ уйдёт ему).
+                    msg.pcName?.let { PcLabel(it) }
                 }
                 Spacer(Modifier.height(6.dp))
                 // Вопрос перед коммитом несёт дифф — он рисуется как в редакторе кода.
@@ -1416,7 +1524,7 @@ internal fun QuestionBubble(msg: ChatMessage, onAnswer: (String) -> Unit, modifi
  * по нему видно, где агент находится в длинной задаче, не листая шаги.
  */
 @Composable
-internal fun PlanBubble(plan: com.jarvis.protocol.AgentPlan, modifier: Modifier = Modifier) {
+internal fun PlanBubble(plan: com.jarvis.protocol.AgentPlan, modifier: Modifier = Modifier, pcName: String? = null) {
     val done = plan.steps.count { it.status == com.jarvis.protocol.PlanItemStatus.DONE }
     Row(modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start) {
         Surface(
@@ -1427,6 +1535,7 @@ internal fun PlanBubble(plan: com.jarvis.protocol.AgentPlan, modifier: Modifier 
             modifier = Modifier.widthIn(max = 320.dp),
         ) {
             Column(Modifier.padding(horizontal = 14.dp, vertical = 12.dp)) {
+                pcName?.let { PcLabel(it); Spacer(Modifier.height(6.dp)) }
                 Text(
                     // Перестроенный план помечаем явно: человеку важно знать,
                     // что агент поменял подход, а не просто продолжил.
@@ -1662,67 +1771,151 @@ private fun AgentStepHeader(step: Int, aiming: Boolean, contentColor: Color) {
     }
 }
 
+/** Что делать по нажатию на карточки пустого чата. */
+private class EmptyChatActions(
+    /** Отправить фразу сразу. */
+    val send: (String) -> Unit,
+    /** Подставить фразу в поле — чтобы поправить перед отправкой. */
+    val fill: (String) -> Unit,
+    val attachPhoto: () -> Unit,
+    val openMultiPc: () -> Unit,
+    val openSkills: () -> Unit,
+    val openProjects: () -> Unit,
+)
+
 /**
- * Пустой чат: знак «Фауста» с мягким свечением, приветствие и карточки-подсказки.
- * Карточка сразу отправляет свою фразу — первый опыт без набора текста.
+ * Пустой чат: знак «Фауста», приветствие и то, что он умеет СЕЙЧАС.
+ *
+ * Два уровня: «Попробуйте» — быстрые фразы, уходят сразу (первый опыт без
+ * набора текста); «Что ещё умеет» — карточки больших возможностей: задача в
+ * несколько шагов, фото с просьбой, несколько ПК, обучение показом, проекты.
+ * Многошаговую задачу карточка только подставляет в поле: её почти всегда
+ * хочется поправить под себя, а отправленная сразу запустила бы агента.
+ *
+ * Прокручивается: на маленьком экране карточки не помещаются целиком.
  */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun EmptyChatHint(onSuggestion: (String) -> Unit, onOpenProjects: () -> Unit, modifier: Modifier = Modifier) {
-    Column(
-        modifier.padding(horizontal = 20.dp, vertical = 24.dp).widthIn(max = 460.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Box(contentAlignment = Alignment.Center) {
-            // Свечение под знаком — радиальный градиент цвета primary.
-            Box(
-                Modifier.size(132.dp).background(
-                    androidx.compose.ui.graphics.Brush.radialGradient(
-                        listOf(MaterialTheme.colorScheme.primary.copy(alpha = 0.22f), Color.Transparent)
-                    ),
-                    CircleShape,
+private fun EmptyChatHint(actions: EmptyChatActions, multiPc: Boolean, modifier: Modifier = Modifier) {
+    BoxWithConstraints(modifier.fillMaxSize()) {
+        val minHeight = maxHeight
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
+                .heightIn(min = minHeight)
+                .padding(horizontal = 20.dp, vertical = 20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+        ) {
+            Column(Modifier.widthIn(max = 460.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                Box(contentAlignment = Alignment.Center) {
+                    // Свечение под знаком — радиальный градиент цвета primary.
+                    Box(
+                        Modifier.size(112.dp).background(
+                            androidx.compose.ui.graphics.Brush.radialGradient(
+                                listOf(MaterialTheme.colorScheme.primary.copy(alpha = 0.22f), Color.Transparent)
+                            ),
+                            CircleShape,
+                        )
+                    )
+                    FaustLogo(64.dp, withTile = true, breathing = true)
+                }
+                Spacer(Modifier.height(10.dp))
+                Text(
+                    "Чем помочь?",
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface,
                 )
-            )
-            FaustLogo(76.dp, withTile = true, breathing = true)
-        }
-        Spacer(Modifier.height(12.dp))
-        Text(
-            "Чем помочь?",
-            style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.SemiBold,
-            color = MaterialTheme.colorScheme.onSurface,
-        )
-        Spacer(Modifier.height(6.dp))
-        Text(
-            "Скажите «Фауст» или нажмите микрофон. Можно сразу несколько дел: «сделай потише и открой ютуб».",
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            textAlign = TextAlign.Center,
-        )
-        Spacer(Modifier.height(20.dp))
-        // Сетка 2×2 карточек-подсказок.
-        SUGGESTIONS.chunked(2).forEach { row ->
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                row.forEach { s ->
-                    SuggestionCard(s.icon, s.title, "«${s.phrase}»", Modifier.weight(1f)) { onSuggestion(s.phrase) }
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    "Скажите «Фауст» или нажмите микрофон — и просите обычными словами.",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    textAlign = TextAlign.Center,
+                )
+
+                SectionLabel("Попробуйте")
+                FlowRow(
+                    Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    TRY_PHRASES.forEach { phrase ->
+                        ActionChip(null, "«$phrase»") { actions.send(phrase) }
+                    }
+                }
+
+                SectionLabel("Что ещё умеет Фауст")
+                Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    FeatureCard(Icons.Default.AutoAwesome, "Задача целиком",
+                        "найдёт, откроет и отправит сам", Modifier.weight(1f).fillMaxHeight()) {
+                        actions.fill(MULTISTEP_EXAMPLE)
+                    }
+                    FeatureCard(Icons.Default.PhotoCamera, "Фото + просьба",
+                        "снимок доски → текст в конспект на ПК", Modifier.weight(1f).fillMaxHeight(), onClick = actions.attachPhoto)
+                }
+                Spacer(Modifier.height(10.dp))
+                Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    FeatureCard(Icons.Default.Devices, "Несколько ПК",
+                        if (multiPc) "«на всех ПК сделай потише»" else "привяжите ещё один ПК",
+                        Modifier.weight(1f).fillMaxHeight()) {
+                        if (multiPc) actions.fill("на всех ПК сделай потише") else actions.openMultiPc()
+                    }
+                    FeatureCard(Icons.Default.TouchApp, "Научить показом",
+                        "покажите раз — повторит с другими данными", Modifier.weight(1f).fillMaxHeight(), onClick = actions.openSkills)
+                }
+                Spacer(Modifier.height(10.dp))
+                FeatureCard(Icons.Default.Code, "Проекты и git",
+                    "коммит, push, правка кода — с телефона", Modifier.fillMaxWidth(), onClick = actions.openProjects)
+
+                // Поправки и «стоп» — не кнопка, а знание: пригодится, когда задача уже идёт.
+                Spacer(Modifier.height(14.dp))
+                Row(
+                    Modifier.clip(RoundedCornerShape(14.dp))
+                        .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.08f))
+                        .padding(horizontal = 12.dp, vertical = 10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(Icons.Default.Lightbulb, contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(18.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text(
+                        "Пока задача идёт, её можно поправить словами — «нет, не Пете, а Васе» — или сказать «стоп».",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
                 }
             }
-            Spacer(Modifier.height(10.dp))
         }
-        SuggestionCard(Icons.Default.Code, "Проекты и git", "коммит, push, правка кода — с телефона",
-            Modifier.fillMaxWidth(), onClick = onOpenProjects)
     }
 }
 
+/** Подпись блока на пустом чате. */
 @Composable
-private fun SuggestionCard(icon: ImageVector, title: String, subtitle: String, modifier: Modifier, onClick: () -> Unit) {
+private fun SectionLabel(text: String) {
+    Text(
+        text.uppercase(),
+        style = MaterialTheme.typography.labelSmall,
+        fontWeight = FontWeight.SemiBold,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.fillMaxWidth().padding(top = 18.dp, bottom = 8.dp),
+        textAlign = TextAlign.Center,
+    )
+}
+
+/** Карточка возможности: значок в плашке, название и короткое пояснение под ним. */
+@Composable
+private fun FeatureCard(icon: ImageVector, title: String, subtitle: String, modifier: Modifier, onClick: () -> Unit) {
     Surface(
         onClick = onClick,
         color = MaterialTheme.colorScheme.surfaceContainer,
         shape = RoundedCornerShape(18.dp),
         border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
-        modifier = modifier,
+        modifier = modifier.heightIn(min = 104.dp),
     ) {
-        Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+        Column(Modifier.padding(14.dp)) {
             Box(
                 Modifier.size(36.dp).clip(RoundedCornerShape(12.dp))
                     .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.14f)),
@@ -1730,12 +1923,11 @@ private fun SuggestionCard(icon: ImageVector, title: String, subtitle: String, m
             ) {
                 Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
             }
-            Spacer(Modifier.width(10.dp))
-            Column {
-                Text(title, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.SemiBold, maxLines = 1)
-                Text(subtitle, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 2)
-            }
+            Spacer(Modifier.height(10.dp))
+            Text(title, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold, maxLines = 1)
+            Spacer(Modifier.height(2.dp))
+            Text(subtitle, style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 2)
         }
     }
 }
@@ -1763,6 +1955,27 @@ private fun ActionChip(icon: ImageVector?, label: String, accent: Color? = null,
             }
             Text(label, style = MaterialTheme.typography.labelLarge, color = accent ?: MaterialTheme.colorScheme.onSurface)
         }
+    }
+}
+
+/**
+ * Метка «чей это ответ» над пузырём — для сообщений не от выбранного ПК.
+ * Раньше имя ПК стояло в начале текста («🖥 Рабочий ПК · готово») и
+ * сливалось с ответом; отдельной плашкой оно читается сразу.
+ */
+@Composable
+internal fun PcLabel(name: String) {
+    Row(
+        Modifier.clip(CircleShape)
+            .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.14f))
+            .padding(horizontal = 8.dp, vertical = 2.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
+        Icon(Icons.Default.Computer, contentDescription = null,
+            tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(12.dp))
+        Text(name, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.primary, maxLines = 1)
     }
 }
 

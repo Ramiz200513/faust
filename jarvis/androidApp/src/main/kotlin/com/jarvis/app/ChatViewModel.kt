@@ -89,6 +89,11 @@ data class ChatMessage(
      * (кадры шагов с мыслями модели, их хранит ПК).
      */
     val reportTaskId: String? = null,
+    /**
+     * Имя ПК, если сообщение пришло НЕ от выбранного ПК («на рабочем …», «на
+     * всех ПК …»): рисуется меткой над пузырём. null — от выбранного ПК.
+     */
+    val pcName: String? = null,
 )
 
 /** Что сейчас с видео-отчётом, открытым на весь экран. */
@@ -155,9 +160,32 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
      */
     private val answerRequests = ConcurrentHashMap<String, String>()
 
-    /** Все привязанные ПК — по их именам разбирается «на рабочем …». */
-    private val pairedDevices: StateFlow<List<PairedDevice>> = devicesRepo.devices
+    /** Все привязанные ПК — по их именам разбирается «на рабочем …»; их же список в шапке. */
+    val pairedDevices: StateFlow<List<PairedDevice>> = devicesRepo.devices
         .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+
+    /** На связи ли агент каждого ПК — для списка в шапке; обновляется при открытии списка. */
+    private val _pcOnline = MutableStateFlow<Map<String, DeviceOnlineStatus>>(emptyMap())
+    val pcOnline: StateFlow<Map<String, DeviceOnlineStatus>> = _pcOnline.asStateFlow()
+
+    /**
+     * Проверить все ПК разом (короткие соединения, параллельно) — когда
+     * человек открыл список ПК в шапке. Постоянно опрашивать незачем.
+     */
+    fun refreshPcOnline() {
+        for (d in pairedDevices.value) {
+            viewModelScope.launch {
+                val st = RelayPairing.checkStatus(d)
+                _pcOnline.update { it + (d.id to st) }
+            }
+        }
+    }
+
+    /** Сделать ПК выбранным — чат переподключится к нему сам (слушатель в init). */
+    fun switchTo(deviceId: String) {
+        if (deviceId == _activeDevice.value?.id) return
+        viewModelScope.launch { devicesRepo.setActive(deviceId) }
+    }
 
     /**
      * Идущие команды на других (не выбранном) ПК: requestId -> связь с тем ПК.
@@ -951,7 +979,8 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
         // Ответ на команду, которую телефон послал через отдельную связь (перенос
         // файла с выбранного ПК), — его уже обработал тот, кто посылал.
         if (from == null && msg.requestId in linkRequests) return
-        val pc = if (from != null) "🖥 ${from.name} · " else ""
+        // Имя ПК — меткой над пузырём (MessageBubble), а не префиксом в тексте.
+        val pc = from?.name
         when (msg) {
             is CommandResult -> {
                 // Служебная синхронизация настроек — в чат не пишем.
@@ -1035,7 +1064,8 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
                 // requestId у итога — чтобы экран «Проекты» нашёл итог своей задачи.
                 add(ChatMessage(
                     author = Author.PC,
-                    text = pc + resultText(msg),
+                    text = resultText(msg),
+                    pcName = pc,
                     requestId = msg.requestId,
                     // Итог ИИ-задачи — под ним кнопка «Видео-отчёт». Отчёт хранит
                     // тот ПК, что выполнял, а кнопка спрашивает выбранный — поэтому
@@ -1067,7 +1097,8 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
                 add(ChatMessage(
                     author = Author.PC,
                     // Вторая строка описания — обоснование модели («зачем»), см. агент.
-                    text = "$pc🔎 ${msg.description.replace("\n", "\n💭 ")}",
+                    text = "🔎 ${msg.description.replace("\n", "\n💭 ")}",
+                    pcName = pc,
                     imageBase64 = msg.screenshotBase64,
                     targetX = msg.targetX,
                     targetY = msg.targetY,
@@ -1092,7 +1123,8 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
                     add(ChatMessage(
                         author = Author.PC,
                         // Этот текст и озвучит TTS при появлении карточки.
-                        text = "${pc}План из ${msg.steps.size} шагов",
+                        text = "План из ${msg.steps.size} шагов",
+                        pcName = pc,
                         requestId = msg.requestId,
                         plan = msg,
                     ))
@@ -1106,7 +1138,8 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
                 val expiresAt = timeoutSec?.let { System.currentTimeMillis() + it * 1000L }
                 val message = ChatMessage(
                     author = Author.PC,
-                    text = pc + msg.question,
+                    text = msg.question,
+                    pcName = pc,
                     // requestId задачи — по нему карточка погаснет, когда придёт итог задачи.
                     requestId = msg.requestId,
                     question = QuestionCard(

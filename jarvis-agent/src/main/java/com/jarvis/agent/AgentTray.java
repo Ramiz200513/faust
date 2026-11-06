@@ -125,59 +125,67 @@ public class AgentTray implements RelayStatusListener {
     /** Пункты меню — один список и для трея, и для предпросмотра картинкой. */
     private JPopupMenu buildMenu() {
         JPopupMenu menu = new JPopupMenu();
+        menu.setBackground(SURFACE_CONTAINER);
         menu.setBorder(javax.swing.BorderFactory.createCompoundBorder(
                 javax.swing.BorderFactory.createLineBorder(OUTLINE),
-                new EmptyBorder(6, 0, 6, 0)));
+                new EmptyBorder(4, 0, 8, 0)));
         menu.add(header());
-        menu.addSeparator();
-        menu.add(item("☎", "Привязать телефон", PRIMARY, onPairPhone));
-        menu.add(item("</>", "Проекты (git)…", PRIMARY, ProjectsWindow::open));
-        menu.addSeparator();
-        menu.add(item("●", "Научить навыку показом…", new Color(0xF85149), onTeach));
-        menu.add(item("★", "Выученные навыки…", new Color(0xE3B341), onManageSkills));
-        menu.add(item("↺", "Забыть выученные задачи", ON_SURFACE_VARIANT, this::forgetLearnedTasks));
-        menu.addSeparator();
-        menu.add(item("≡", "Открыть лог", ON_SURFACE_VARIANT, this::openLog));
-        menu.add(item("⚙", "Настроить заново", ON_SURFACE_VARIANT, onResetPairing));
-        menu.add(item("×", "Выход", ERROR, () -> System.exit(0)));
+        menu.add(FaustMenu.divider());
+
+        // Разделы с подписями — как меню приложения на телефоне: сразу видно,
+        // где связь с телефоном, где навыки, а где служебное.
+        menu.add(FaustMenu.section("Телефон и работа"));
+        menu.add(FaustMenu.row(FaustMenu.Glyph.PHONE, PRIMARY, "Привязать телефон",
+                "QR-код для приложения «Фауст»", null, onPairPhone));
+        menu.add(FaustMenu.row(FaustMenu.Glyph.CODE, PRIMARY, "Проекты и git",
+                "статус, коммит и push — и с телефона", null, ProjectsWindow::open));
+
+        menu.add(FaustMenu.section("Навыки"));
+        menu.add(FaustMenu.row(FaustMenu.Glyph.RECORD, PRIMARY, "Научить показом",
+                "покажите раз — повторит с новыми данными", null, onTeach));
+        int skills = SkillStore.all().size();
+        menu.add(FaustMenu.row(FaustMenu.Glyph.SKILLS, PRIMARY, "Выученные навыки",
+                skills == 0 ? "пока ни одного" : "посмотреть и удалить",
+                skills == 0 ? null : String.valueOf(skills), onManageSkills));
+        menu.add(FaustMenu.row(FaustMenu.Glyph.ERASE, ON_SURFACE_VARIANT, "Забыть выученные задачи",
+                "память повторов без ИИ", null, this::forgetLearnedTasks));
+
+        menu.add(FaustMenu.divider());
+        menu.add(FaustMenu.row(FaustMenu.Glyph.LOG, ON_SURFACE_VARIANT, "Открыть журнал", null, null, this::openLog));
+        menu.add(FaustMenu.row(FaustMenu.Glyph.GEAR, ON_SURFACE_VARIANT, "Настроить заново", null, null, onResetPairing));
+        menu.add(FaustMenu.row(FaustMenu.Glyph.POWER, ERROR, "Выход", null, null, () -> System.exit(0)));
         return menu;
     }
 
     /** Шапка меню: логотип, имя, статус связи и текущая задача. */
     private JPanel header() {
-        JPanel p = new JPanel(new BorderLayout(10, 0));
+        JPanel p = new JPanel(new BorderLayout(12, 0));
         p.setBackground(SURFACE_CONTAINER);
-        p.setBorder(new EmptyBorder(8, 14, 10, 18));
-        p.add(new JLabel(FaustWindows.logo(34)), BorderLayout.WEST);
+        p.setBorder(new EmptyBorder(12, 16, 12, 18));
+        p.add(new JLabel(FaustWindows.logo(42)), BorderLayout.WEST);
         JPanel text = new JPanel();
         text.setLayout(new BoxLayout(text, BoxLayout.Y_AXIS));
         text.setOpaque(false);
         JLabel name = new JLabel("Фауст");
-        name.setFont(font(Font.BOLD, 15f));
+        name.setFont(font(Font.BOLD, 16f));
         name.setForeground(ON_BACKGROUND);
         text.add(name);
+        text.add(javax.swing.Box.createVerticalStrut(3));
         JLabel status = new JLabel(currentStatus.label + (connDetail == null || connDetail.isBlank() ? "" : " · " + connDetail),
-                FaustWindows.dot(currentStatus.color, 12), JLabel.LEFT);
-        status.setIconTextGap(5);
+                FaustWindows.dot(currentStatus.color, 10), JLabel.LEFT);
+        status.setIconTextGap(6);
         status.setFont(font(Font.PLAIN, 12f));
-        status.setForeground(ON_SURFACE_VARIANT);
+        status.setForeground(currentStatus == Status.CONNECTED ? ON_BACKGROUND : ON_SURFACE_VARIANT);
         text.add(status);
         if (taskLabel != null) {
-            JLabel task = new JLabel(shorten(taskLabel, 46));
+            text.add(javax.swing.Box.createVerticalStrut(2));
+            JLabel task = new JLabel(shorten(taskLabel, 42));
             task.setFont(font(Font.PLAIN, 12f));
             task.setForeground(PRIMARY);
             text.add(task);
         }
         p.add(text, BorderLayout.CENTER);
         return p;
-    }
-
-    private static JMenuItem item(String glyph, String text, Color glyphColor, Runnable action) {
-        JMenuItem it = new JMenuItem(text, FaustWindows.glyphIcon(glyph, glyphColor));
-        it.setIconTextGap(10);
-        it.setBorder(new EmptyBorder(7, 12, 7, 26));
-        it.addActionListener(e -> action.run());
-        return it;
     }
 
     /**
