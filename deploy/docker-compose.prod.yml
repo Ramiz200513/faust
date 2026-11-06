@@ -1,0 +1,114 @@
+# ============================================================================
+#  «Фауст» на сервере (VPS): релей + PostgreSQL + Caddy.
+#
+#  Чем отличается от jarvis-relay/docker-compose.yml (домашний запуск):
+#   - наружу открыт ТОЛЬКО Caddy (порты 80/443). База и сам релей видны лишь
+#     внутри сети Docker — к Postgres из интернета не подключиться вовсе;
+#   - Caddy сам получает сертификат Let's Encrypt для домена и шифрует связь:
+#     телефон и ПК ходят по wss://домен/ws, а не по открытому ws://;
+#   - релей не стартует со слабыми секретами (JARVIS_REQUIRE_STRONG_SECRETS);
+#   - лимит перебора считает настоящий адрес клиента из X-Forwarded-For,
+#     который ставит Caddy (JARVIS_BEHIND_PROXY).
+#
+#  Запуск на сервере (из папки deploy, рядом лежит .env — см. .env.prod.example):
+#    docker compose -f docker-compose.prod.yml up -d
+#  Обновление (это же делает пайплайн GitHub Actions):
+#    docker compose -f docker-compose.prod.yml pull relay && docker compose -f docker-compose.prod.yml up -d
+# ============================================================================
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: jarvis
+      POSTGRES_USER: ${JARVIS_DB_USER:-jarvis}
+      # Без значения по умолчанию: пустой пароль — ошибка запуска, а не дыра.
+      POSTGRES_PASSWORD: ${JARVIS_DB_PASSWORD:?задайте JARVIS_DB_PASSWORD в .env}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      # Папка для резервных копий (scripts/backup.sh пишет сюда дамп базы).
+      - ./backups:/backups
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d jarvis"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+    # ports не указаны намеренно: базу видит только релей.
+
+  relay:
+    # Готовый образ из реестра (его собирает и публикует пайплайн). Для пробы
+    # на своём ПК без реестра: RELAY_IMAGE не задавать — соберётся из исходников.
+    image: ${RELAY_IMAGE:-faust-relay:local}
+    build: ../jarvis-relay
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      JARVIS_DB_URL: jdbc:postgresql://postgres:5432/jarvis
+      JARVIS_DB_USER: ${JARVIS_DB_USER:-jarvis}
+      JARVIS_DB_PASSWORD: ${JARVIS_DB_PASSWORD}
+      JARVIS_ADMIN_TOKEN: ${JARVIS_ADMIN_TOKEN:?задайте JARVIS_ADMIN_TOKEN в .env}
+      JARVIS_REQUIRE_STRONG_SECRETS: "true"
+      JARVIS_BEHIND_PROXY: "true"
+      JARVIS_OPEN_REGISTRATION: ${JARVIS_OPEN_REGISTRATION:-false}
+      JARVIS_LLM_API_KEY: ${JARVIS_LLM_API_KEY:-}
+      JARVIS_LLM_MODEL: ${JARVIS_LLM_MODEL:-gemini-3.6-flash}
+      # Своя модель: на сервере — сервис ollama ниже (профиль model), если его
+      # включили; иначе релей сам уходит к Gemini (предохранитель в HybridIntentParser).
+      JARVIS_INTENT_ENGINE: ${JARVIS_INTENT_ENGINE:-auto}
+      JARVIS_LOCAL_LLM_URL: ${JARVIS_LOCAL_LLM_URL:-http://ollama:11434}
+      JARVIS_LOCAL_LLM_MODEL: ${JARVIS_LOCAL_LLM_MODEL:-faust-intent}
+      JARVIS_LOCAL_LLM_MIN_CONFIDENCE: ${JARVIS_LOCAL_LLM_MIN_CONFIDENCE:-0.9}
+      JARVIS_FORBIDDEN_GOALS: "true"
+      # Ограничить память Java: дешёвый VPS — это 1–2 ГБ на всё сразу.
+      JAVA_TOOL_OPTIONS: ${RELAY_JAVA_OPTS:--Xmx384m}
+    expose:
+      - "8080"
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'echo > /dev/tcp/127.0.0.1/8080' || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 12
+      start_period: 40s
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    depends_on:
+      - relay
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      # Домен сервера (например faust.example.kz). localhost — для пробы на
+      # своём ПК: Caddy выпустит свой сертификат, браузер ему не поверит, но
+      # проверить, что вся цепочка работает, можно.
+      FAUST_DOMAIN: ${FAUST_DOMAIN:-localhost}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data        # сертификаты — чтобы не выпускать заново при каждом перезапуске
+      - caddy-config:/config
+    restart: unless-stopped
+
+  # Своя модель разбора фраз на сервере (необязательно). Включается так:
+  #   docker compose -f docker-compose.prod.yml --profile model up -d
+  # и разовой загрузкой модели — см. deploy/README.md, раздел «Своя модель».
+  # На процессоре дешёвого VPS ответ медленнее, чем на видеокарте дома, —
+  # это нужно замерить, прежде чем решать.
+  ollama:
+    # Та же версия, что дома (0.40.14): на ней собран и проверен faust-intent.
+    image: ollama/ollama:0.40.14
+    profiles: ["model"]
+    volumes:
+      - ollama-data:/root/.ollama
+      - ./model:/model:ro
+    expose:
+      - "11434"
+    restart: unless-stopped
+
+volumes:
+  db-data:
+  caddy-data:
+  caddy-config:
+  ollama-data:

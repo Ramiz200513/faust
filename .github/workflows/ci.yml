@@ -1,0 +1,146 @@
+# ============================================================================
+#  Пайплайн «Фауста» (GitHub Actions).
+#
+#  На каждый push и pull request:
+#    1. relay   — тесты релея (Linux);
+#    2. agent   — тесты агента ПК (Windows: агент работает с окнами Windows);
+#    3. android — тесты общего протокола и сборка APK (APK — во вложениях запуска).
+#  Только push в main, и только если все тесты зелёные:
+#    4. image   — Docker-образ релея -> реестр GitHub (ghcr.io/<владелец>/faust-relay);
+#    5. deploy  — сервер тянет новый образ и перезапускает релей.
+#
+#  Почему деплой только из main и только после тестов: релей — ворота ко всем
+#  ПК пользователя. Непроверенный код туда не должен попасть даже случайно,
+#  а ветки (в том числе те, куда пушит агент для кода) на сервер не уходят.
+#
+#  Секреты репозитория (Settings -> Secrets and variables -> Actions), нужны
+#  только для шага deploy; без них он просто пропускается:
+#    VPS_HOST         адрес сервера
+#    VPS_USER         пользователь для входа по SSH (например deploy)
+#    VPS_SSH_KEY      закрытый ключ, которым пайплайн входит на сервер
+#    VPS_KNOWN_HOSTS  строка из `ssh-keyscan <адрес>` — чтобы не подменили сервер
+# ============================================================================
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# Новый push в ту же ветку отменяет недоделанный прогон старого.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  relay:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: jarvis-relay
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: gradle/actions/setup-gradle@v4
+      - run: chmod +x gradlew && ./gradlew test --no-daemon
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: relay-test-report
+          path: jarvis-relay/build/reports/tests
+
+  agent:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: jarvis-agent
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: gradle/actions/setup-gradle@v4
+      # Тесты агента не нажимают ничего на экране — проверяется логика (план,
+      # поправки, фильтры, отчёт). Картинки отчёта рисуются в памяти.
+      - run: ./gradlew.bat test --no-daemon
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: agent-test-report
+          path: jarvis-agent/build/reports/tests
+
+  android:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: jarvis
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: gradle/actions/setup-gradle@v4
+      - run: chmod +x gradlew && ./gradlew :shared:allTests :androidApp:assembleDebug --no-daemon
+      # Готовый APK — во вложениях запуска: скачать и поставить на телефон.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: faust-debug-apk
+          path: jarvis/androidApp/build/outputs/apk/debug/*.apk
+          retention-days: 14
+
+  image:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [relay, agent, android]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.name.outputs.image }}
+    steps:
+      - uses: actions/checkout@v4
+      # Имя образа в реестре — только строчными буквами.
+      - id: name
+        run: echo "image=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/faust-relay" >> "$GITHUB_OUTPUT"
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: jarvis-relay
+          push: true
+          # latest — то, что берёт сервер; sha — чтобы можно было откатиться
+          # на любую прошлую версию одной строкой в .env.
+          tags: |
+            ${{ steps.name.outputs.image }}:latest
+            ${{ steps.name.outputs.image }}:${{ github.sha }}
+
+  deploy:
+    needs: image
+    runs-on: ubuntu-latest
+    # Сервер ещё не настроен — шаг пропускается, а не падает.
+    if: ${{ vars.DEPLOY_ENABLED == 'true' }}
+    environment: production
+    steps:
+      - name: Обновить релей на сервере
+        env:
+          SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+          TARGET: ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          # На сервере выполняется только этот скрипт: подтянуть образ,
+          # перезапустить релей, дождаться, что он поднялся.
+          ssh -i ~/.ssh/id_deploy "$TARGET" 'sh /opt/faust/deploy/scripts/update.sh'

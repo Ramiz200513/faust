@@ -1,0 +1,22 @@
+# Caddy — «входная дверь» сервера. Принимает https/wss на 443, сам получает и
+# продлевает сертификат Let's Encrypt для домена и передаёт запросы релею
+# внутри сети Docker. WebSocket проксируется без отдельной настройки.
+#
+# Домен берётся из переменной FAUST_DOMAIN (см. docker-compose.prod.yml).
+{$FAUST_DOMAIN} {
+	# Сжатие ответов HTTP (сами кадры экрана уже JPEG — им не поможет).
+	encode gzip
+
+	# Адрес клиента Caddy сам кладёт в X-Forwarded-For — по нему релей
+	# считает лимит перебора (JARVIS_BEHIND_PROXY). Присланный клиентом
+	# X-Forwarded-For Caddy не доверяет (trusted_proxies не задан).
+	reverse_proxy relay:8080
+
+	# Не показываем версию сервера в заголовках — мелочь, но бесплатная.
+	header -Server
+
+	log {
+		output stdout
+		format console
+	}
+}

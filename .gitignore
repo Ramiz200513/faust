@@ -47,3 +47,7 @@ obj/
 
 # Готовая сборка помощника UIA (dotnet publish) — пересобирается из Program.cs
 jarvis-agent/uia-helper/publish/
+
+# Сервер: резервные копии базы и файл модели — не в git (deploy/README.md)
+deploy/backups/
+deploy/model/

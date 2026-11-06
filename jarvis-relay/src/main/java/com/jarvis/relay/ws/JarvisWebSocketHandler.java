@@ -8,13 +8,16 @@ import com.jarvis.relay.pairing.DeviceAuthService;
 import com.jarvis.relay.protocol.*;
 import com.jarvis.relay.security.CommandWhitelist;
 import org.slf4j.Logger;
+import com.jarvis.relay.security.AttemptLimiter;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import java.time.Duration;
 import java.util.UUID;
 
 /**
@@ -45,6 +48,17 @@ public class JarvisWebSocketHandler extends TextWebSocketHandler {
     private final DeviceAuthService deviceAuthService;
     private final AuditService auditService;
     private final IntentLessons lessons;
+    /**
+     * Неудачные входы и привязки по адресу клиента. Плюс к общему лимиту кодов
+     * (PairingService): один шумный адрес не съедает запас попыток у всех.
+     */
+    private final AttemptLimiter badLogins;
+    /**
+     * Стоит ли перед релеем свой прокси (Caddy на сервере). Тогда адрес сокета —
+     * адрес прокси, а настоящий клиент — в X-Forwarded-For. Без прокси этому
+     * заголовку верить нельзя: клиент впишет туда что угодно и обойдёт лимит.
+     */
+    private final boolean behindProxy;
 
     public JarvisWebSocketHandler(ObjectMapper mapper,
                                   CommandWhitelist whitelist,
@@ -52,7 +66,9 @@ public class JarvisWebSocketHandler extends TextWebSocketHandler {
                                   SessionRegistry sessions,
                                   DeviceAuthService deviceAuthService,
                                   AuditService auditService,
-                                  IntentLessons lessons) {
+                                  IntentLessons lessons,
+                                  @Value("${jarvis.login-limit.max-failures:10}") int maxBadLogins,
+                                  @Value("${jarvis.behind-proxy:false}") boolean behindProxy) {
         this.mapper = mapper;
         this.whitelist = whitelist;
         this.intentParser = intentParser;
@@ -60,6 +76,24 @@ public class JarvisWebSocketHandler extends TextWebSocketHandler {
         this.deviceAuthService = deviceAuthService;
         this.auditService = auditService;
         this.lessons = lessons;
+        this.badLogins = new AttemptLimiter(maxBadLogins, Duration.ofMinutes(10));
+        this.behindProxy = behindProxy;
+    }
+
+    /**
+     * Адрес клиента для лимита. За прокси — последний адрес в X-Forwarded-For:
+     * его дописал наш Caddy, а всё, что левее, мог прислать сам клиент.
+     */
+    static String clientKey(WebSocketSession session, boolean behindProxy) {
+        if (behindProxy) {
+            String xff = session.getHandshakeHeaders().getFirst("X-Forwarded-For");
+            if (xff != null && !xff.isBlank()) {
+                String[] parts = xff.split(",");
+                return "ip:" + parts[parts.length - 1].strip();
+            }
+        }
+        var addr = session.getRemoteAddress();
+        return "ip:" + (addr != null && addr.getAddress() != null ? addr.getAddress().getHostAddress() : "unknown");
     }
 
     @Override
@@ -69,6 +103,19 @@ public class JarvisWebSocketHandler extends TextWebSocketHandler {
         // Not authenticated yet? The only message we accept is Auth.
         DeviceRole role = (DeviceRole) session.getAttributes().get(ATTR_ROLE);
         if (role == null) {
+            // С этого адреса уже много неудач подряд — похоже на перебор кодов
+            // или токенов. Даже не проверяем: каждая проверка токена — это
+            // ещё и bcrypt, то есть нагрузка на сервер.
+            if (badLogins.isBlocked(clientKey(session, behindProxy))) {
+                String why = "слишком много неудачных попыток — подождите 10 минут";
+                if (msg instanceof JarvisMessage.PairRequest pair) {
+                    send(session, new JarvisMessage.PairResult(pair.requestId(), false, null, null, null, why));
+                } else {
+                    send(session, new JarvisMessage.AuthResult(msg.requestId(), false, why, null));
+                }
+                session.close(CloseStatus.POLICY_VIOLATION);
+                return;
+            }
             // Первое сообщение — либо привязка телефона к ПК, либо обычный вход.
             if (msg instanceof JarvisMessage.PairRequest pair) {
                 handlePair(session, pair);
@@ -122,6 +169,7 @@ public class JarvisWebSocketHandler extends TextWebSocketHandler {
                 auth.deviceId(), auth.token(), auth.role());
 
         if (!result.ok()) {
+            badLogins.recordFailure(clientKey(session, behindProxy));
             // Секрет тут ни при чём — в reason только причина отказа, не сам токен.
             send(session, new JarvisMessage.AuthResult(auth.requestId(), false, result.reason(), null));
             session.close(CloseStatus.NOT_ACCEPTABLE);
@@ -166,6 +214,7 @@ public class JarvisWebSocketHandler extends TextWebSocketHandler {
             // Токен в лог не пишем — только факт привязки.
             log.info("Phone paired to agent {}", outcome.agentId());
         } else {
+            badLogins.recordFailure(clientKey(session, behindProxy));
             send(session, new JarvisMessage.PairResult(pair.requestId(), false,
                     null, null, null, outcome.reason()));
         }

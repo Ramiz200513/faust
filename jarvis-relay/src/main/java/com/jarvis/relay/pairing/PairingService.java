@@ -2,6 +2,7 @@ package com.jarvis.relay.pairing;
 
 import com.jarvis.relay.persistence.PairingCode;
 import com.jarvis.relay.persistence.PairingCodeRepository;
+import com.jarvis.relay.security.AttemptLimiter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,13 +22,25 @@ public class PairingService {
 
     private static final SecureRandom RANDOM = new SecureRandom();
 
+    /** Ключ общего лимита: перебор с тысячи адресов тратит один и тот же запас. */
+    private static final String ALL = "pairing";
+
     private final PairingCodeRepository repository;
+    /**
+     * Неверные коды — на все адреса вместе. Лимит по адресу (в обработчике
+     * сокета) обходится ботнетом или сменой IP, а этот — нет. Цена: пока идёт
+     * атака, честная привязка тоже ждёт до 10 минут, — на неё и так нужен код
+     * от владельца ПК, так что это лучше, чем отдать ПК чужому.
+     */
+    private final AttemptLimiter wrongCodes;
 
     @Value("${jarvis.pairing.ttl-minutes}")
     private long ttlMinutes;
 
-    public PairingService(PairingCodeRepository repository) {
+    public PairingService(PairingCodeRepository repository,
+                          @Value("${jarvis.pairing.max-wrong-codes:100}") int maxWrongCodes) {
         this.repository = repository;
+        this.wrongCodes = new AttemptLimiter(maxWrongCodes, Duration.ofMinutes(10));
     }
 
     /**
@@ -64,10 +77,14 @@ public class PairingService {
      * с тем же кодом уже вернёт пусто — в этом и есть "одноразовость".
      */
     private Optional<PairingCode> tryConsume(String code, boolean forPhone) {
+        // Похоже на перебор — даже верный код сейчас не принимаем: иначе
+        // атакующий просто продолжал бы, пока не попадёт.
+        if (wrongCodes.isBlocked(ALL)) return Optional.empty();
         Optional<PairingCode> found = repository.findByCode(code);
         Instant now = Instant.now();
         if (found.isEmpty() || !found.get().isValidNow(now)
                 || found.get().isForPhone() != forPhone) {
+            wrongCodes.recordFailure(ALL);
             return Optional.empty();
         }
         PairingCode pairingCode = found.get();

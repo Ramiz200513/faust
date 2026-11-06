@@ -6,9 +6,27 @@ jarvis:
   # Самим устройствам он больше не нужен — телефон/агент парятся по одноразовому коду.
   # В проде переопредели: JARVIS_ADMIN_TOKEN=...
   admin-token: ${JARVIS_ADMIN_TOKEN:dev-admin-change-me}
+  # true -> релей не стартует со слабым админ-токеном или паролем базы
+  # (security/StrongSecretsCheck). На сервере включено в docker-compose.prod.yml.
+  require-strong-secrets: ${JARVIS_REQUIRE_STRONG_SECRETS:false}
+  # true -> перед релеем свой прокси (Caddy): адрес клиента берётся из
+  # X-Forwarded-For. Без прокси НЕ включать — заголовок подделывается.
+  behind-proxy: ${JARVIS_BEHIND_PROXY:false}
+  login-limit:
+    # Неудачных входов/привязок с одного адреса за 10 минут, дальше — пауза.
+    max-failures: ${JARVIS_LOGIN_MAX_FAILURES:10}
+  legacy-phones:
+    # true -> пускать телефоны старой схемы (без конкретного ПК): такой телефон
+    # управляет «первым попавшимся» агентом и видит сообщения ВСЕХ ПК релея.
+    # false (по умолчанию) -> телефон работает только с ПК, к которому привязан
+    # (экран «Устройства»). Включать только для старой установки на один ПК.
+    enabled: ${JARVIS_LEGACY_PHONES:false}
   pairing:
     # Сколько минут одноразовый код паринга остаётся действительным.
     ttl-minutes: ${JARVIS_PAIRING_TTL_MINUTES:10}
+    # Неверных кодов на ВСЕ адреса вместе за 10 минут, дальше привязка на
+    # паузе: защита от перебора 6-значного кода с многих адресов.
+    max-wrong-codes: ${JARVIS_PAIRING_MAX_WRONG_CODES:100}
   open-registration:
     # true -> новый ПК регистрируется сам через POST /api/agent/register, без
     # админского кода (сценарий "скачал инсталлятор и всё работает").
