@@ -1,5 +1,6 @@
 package com.jarvis.agent;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jarvis.agent.vision.TrajectoryCache;
@@ -31,7 +32,43 @@ public final class SkillStore {
      */
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record Skill(String name, List<String> triggers, List<TrajectoryCache.Step> steps,
-                        List<String> descriptions, long createdAtMs, long recordedMs) {}
+                        List<String> descriptions, long createdAtMs, long recordedMs,
+                        /** Шаблон фразы с переменными: [«отправь», «{1}», «{2}»]; null — навык без переменных. */
+                        List<String> template,
+                        /** Переменные шаблона (см. SkillTemplate) — что было в показе и как сказано. */
+                        List<SkillTemplate.Slot> slots) {
+
+        @JsonCreator
+        public Skill {
+        }
+
+        /** Навык без переменных — как до «показа с переменными» (и в старом skills.json). */
+        public Skill(String name, List<String> triggers, List<TrajectoryCache.Step> steps,
+                     List<String> descriptions, long createdAtMs, long recordedMs) {
+            this(name, triggers, steps, descriptions, createdAtMs, recordedMs, null, null);
+        }
+
+        public boolean hasTemplate() {
+            return template != null && !template.isEmpty();
+        }
+
+        /** Шаблон фразы для человека: «отправь {1} {2}» -> «отправь … …». */
+        public String templateText() {
+            return hasTemplate() ? String.join(" ", template).replaceAll("\\{\\d+}", "…") : null;
+        }
+    }
+
+    /**
+     * Найденный навык и значения переменных для этого запуска. binding == null —
+     * навык без переменных (найден по названию или фразе-триггеру).
+     */
+    public record Found(Skill skill, SkillTemplate.Binding binding) {
+        /** Шаги словами — уже с подставленными значениями: «Ввести «Маше»». */
+        public List<String> shownDescriptions() {
+            if (binding == null) return skill.descriptions();
+            return skill.descriptions().stream().map(binding::shown).toList();
+        }
+    }
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -75,6 +112,31 @@ public final class SkillStore {
      * ПК без модели, и «похоже на» тут не годится.
      */
     public static synchronized Optional<Skill> match(String goal) {
+        return find(goal).map(Found::skill);
+    }
+
+    /**
+     * Какой навык просят и с какими данными. Сначала точное совпадение
+     * (название, «навык X», фраза-триггер), затем шаблоны с переменными:
+     * «отправь Маше расписание» под шаблон «отправь {1} {2}», выученный из
+     * показа «отправь Пете отчёт».
+     */
+    public static synchronized Optional<Found> find(String goal) {
+        Optional<Skill> exact = matchExact(goal);
+        if (exact.isPresent()) return Optional.of(new Found(exact.get(), null));
+        String phrase = goal.strip().replaceFirst("(?iu)^(фауст|faust)[,!\\s]+", "");
+        for (Skill s : all()) {
+            if (!s.hasTemplate()) continue;
+            Optional<java.util.Map<Integer, String>> values = SkillTemplate.match(s.template(), s.slots(), phrase);
+            if (values.isPresent()) {
+                return Optional.of(new Found(s, new SkillTemplate.Binding(
+                        s.slots() == null ? List.of() : s.slots(), values.get())));
+            }
+        }
+        return Optional.empty();
+    }
+
+    private static Optional<Skill> matchExact(String goal) {
         String g = norm(goal);
         // «Фауст, навык утро» — обращение к ассистенту не часть названия.
         if (g.startsWith("фауст ")) g = g.substring("фауст ".length());

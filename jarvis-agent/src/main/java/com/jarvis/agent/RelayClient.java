@@ -269,6 +269,8 @@ public class RelayClient {
         } else {
             System.out.println("Auth: ok (постоянный токен уже был сохранён).");
         }
+        // Релей помнит фразы навыков только в памяти — напоминаем после каждого входа.
+        SkillSync.push(relayUri.toString(), tokenStore);
         statusListener.onConnected();
     }
 }

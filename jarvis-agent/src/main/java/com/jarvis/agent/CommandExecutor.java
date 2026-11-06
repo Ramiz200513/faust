@@ -108,12 +108,12 @@ public class CommandExecutor {
      *
      * @param current номер шага, который сейчас идёт (с 0); равен числу шагов — всё готово
      */
-    private void publishSkillProgress(String requestId, SkillStore.Skill skill, int current) {
+    private void publishSkillProgress(String requestId, List<String> descriptions, int current) {
         List<JarvisMessage.PlanItem> items = new ArrayList<>();
-        for (int i = 0; i < skill.descriptions().size(); i++) {
+        for (int i = 0; i < descriptions.size(); i++) {
             JarvisMessage.PlanItemStatus st = i < current ? JarvisMessage.PlanItemStatus.DONE
                     : i == current ? JarvisMessage.PlanItemStatus.RUNNING : JarvisMessage.PlanItemStatus.PENDING;
-            items.add(new JarvisMessage.PlanItem(skill.descriptions().get(i), st, null));
+            items.add(new JarvisMessage.PlanItem(descriptions.get(i), st, null));
         }
         sender.accept(new JarvisMessage.AgentPlan(requestId, items, 1));
         FaustOverlayController.onPlan(items, 1);
@@ -787,17 +787,23 @@ public class CommandExecutor {
             // утро»): записанные шаги — без плана и без модели. Если дословно
             // повторить не выйдет (окно изменилось), показ станет инструкцией для
             // модели — см. ScreenAgent.runSkill.
-            java.util.Optional<SkillStore.Skill> skill = SkillStore.match(goal);
+            // С переменными («отправь Маше расписание» по показу «отправь Пете отчёт»)
+            // — те же шаги, но с новыми данными (см. SkillTemplate).
+            java.util.Optional<SkillStore.Found> skill = SkillStore.find(goal);
             if (skill.isPresent()) {
-                SkillStore.Skill s = skill.get();
+                SkillStore.Skill s = skill.get().skill();
+                SkillTemplate.Binding binding = skill.get().binding();
+                List<String> shown = skill.get().shownDescriptions();
                 journalExtra.put("mode", "skill");
                 journalExtra.put("skill", s.name());
+                if (binding != null) journalExtra.put("skillValues", binding.values().values());
                 FaustOverlayController.onMemory(true);
-                IntConsumer progress = i -> publishSkillProgress(requestId, s, i);
+                IntConsumer progress = i -> publishSkillProgress(requestId, shown, i);
                 progress.accept(0);
-                report = screenAgent.runSkill(s.name(), s.steps(), s.descriptions(), s.recordedMs(), maxSteps,
-                        Instant.now().plus(AGENT_TASK_TIMEOUT), onStep, stepReporter, cancelSignal, questions, progress);
-                if (report.completed()) progress.accept(s.descriptions().size());
+                report = screenAgent.runSkill(s.name(), s.steps(), shown, s.recordedMs(), maxSteps,
+                        Instant.now().plus(AGENT_TASK_TIMEOUT), onStep, stepReporter, cancelSignal, questions, progress,
+                        binding);
+                if (report.completed()) progress.accept(shown.size());
             }
 
             // «Запусти скрипт сервер диплома» — просьба прямо называет доверенный

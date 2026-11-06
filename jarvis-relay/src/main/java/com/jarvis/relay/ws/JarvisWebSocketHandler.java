@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jarvis.relay.audit.AuditService;
 import com.jarvis.relay.llm.IntentLessons;
 import com.jarvis.relay.llm.IntentParser;
+import com.jarvis.relay.llm.SkillPhrases;
 import com.jarvis.relay.pairing.DeviceAuthService;
 import com.jarvis.relay.protocol.*;
 import com.jarvis.relay.security.CommandWhitelist;
@@ -48,6 +49,8 @@ public class JarvisWebSocketHandler extends TextWebSocketHandler {
     private final DeviceAuthService deviceAuthService;
     private final AuditService auditService;
     private final IntentLessons lessons;
+    /** Фразы навыков каждого ПК — узнаются без модели. */
+    private final SkillPhrases skillPhrases;
     /**
      * Неудачные входы и привязки по адресу клиента. Плюс к общему лимиту кодов
      * (PairingService): один шумный адрес не съедает запас попыток у всех.
@@ -67,6 +70,7 @@ public class JarvisWebSocketHandler extends TextWebSocketHandler {
                                   DeviceAuthService deviceAuthService,
                                   AuditService auditService,
                                   IntentLessons lessons,
+                                  SkillPhrases skillPhrases,
                                   @Value("${jarvis.login-limit.max-failures:10}") int maxBadLogins,
                                   @Value("${jarvis.behind-proxy:false}") boolean behindProxy) {
         this.mapper = mapper;
@@ -76,6 +80,7 @@ public class JarvisWebSocketHandler extends TextWebSocketHandler {
         this.deviceAuthService = deviceAuthService;
         this.auditService = auditService;
         this.lessons = lessons;
+        this.skillPhrases = skillPhrases;
         this.badLogins = new AttemptLimiter(maxBadLogins, Duration.ofMinutes(10));
         this.behindProxy = behindProxy;
     }
@@ -232,7 +237,13 @@ public class JarvisWebSocketHandler extends TextWebSocketHandler {
 
         // Layer 1: a raw phrase -> ask the parser for a concrete command.
         if (command instanceof Command.NaturalLanguage nl) {
-            command = intentParser.parse(nl.text(), req.requestId());
+            // Фраза навыка этого ПК («отправь Маше расписание» по шаблону из
+            // показа) — агенту дословно, без модели (см. SkillPhrases).
+            String skill = skillPhrases.match((String) session.getAttributes().get(ATTR_TARGET_AGENT), nl.text());
+            command = skill != null
+                    ? new Command.AgentTask(nl.text().strip(), AgentScope.SCREEN, 20)
+                    : intentParser.parse(nl.text(), req.requestId());
+            if (skill != null) log.info("Skill phrase -> agent_task (навык «{}»)", skill);
             if (command == null) {
                 auditService.log(deviceId, "nl", "ERROR", "не понял команду: " + nl.text());
                 send(session, new JarvisMessage.CommandResult(

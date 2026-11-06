@@ -336,10 +336,12 @@ public final class DemoRecorder {
     private void onClick(Click c) {
         int lx = (int) Math.round(c.x() / scale);
         int ly = (int) Math.round(c.y() / scale);
+        // Сначала дочитать набранное: обычно последний шаг показа — ввод текста,
+        // а следом сразу «Готово». Раньше клик по панели отбрасывался ДО этого,
+        // и последний ввод терялся (06.11: «купить молоко» в Блокноте не записалось).
+        flushTyping(c.atMs(), false);
         Rectangle ignore = ignoreArea.get();
         if (ignore != null && ignore.contains(lx, ly)) return;   // кнопки панели записи
-
-        flushTyping(c.atMs(), false);
         Snap s = latestBefore(c.atMs() - 30);
         if (s == null || isShell(s)) {
             // Пуск, панель задач, рабочий стол: переход в другую программу
@@ -366,9 +368,13 @@ public final class DemoRecorder {
         Snap s = freshSnapshot
                 ? new Snap(System.currentTimeMillis(), uia.captureForegroundWindow(), WindowFocus.foregroundExe())
                 : latestBetween(lastTypingAt + 150, beforeMs);
+        // Свежий снимок при остановке может показать уже окно самого агента
+        // (панель записи забрала фокус) — в нём набранного текста нет. Тогда
+        // берём последний снимок программы, где печатали.
+        if (s != null && isOwnWindow(s.app())) s = latestBetween(lastTypingAt + 150, beforeMs);
         if (s == null) s = latestBefore(beforeMs);
         if (s == null || isShell(s)) return;
-        UiaElement field = focused(s.window());
+        UiaElement field = typedField(s.window());
         if (field == null) {
             listener.onStep(steps.size(), "ввод текста — не удалось прочитать поле, не записан");
             return;
@@ -421,11 +427,51 @@ public final class DemoRecorder {
         return w.elements().stream().filter(UiaElement::hasFocus).findFirst().orElse(null);
     }
 
+    /**
+     * Поле, в которое человек печатал.
+     *
+     * Обычно это элемент с фокусом. Но не всегда: в Блокноте Windows 11 фокус,
+     * по мнению UI Automation, стоит на безымянной панели, а текст лежит в
+     * «Редакторе текста» рядом с ней (замер 06.11: hasFocus=false у редактора,
+     * true у пустой панели). Тогда берём текстовое поле, которое совпадает с
+     * фокусом по месту на экране, а если такого нет — единственное текстовое
+     * поле окна с текстом. Двух кандидатов — не угадываем.
+     */
+    static UiaElement typedField(UiaSnapshot.Result w) {
+        UiaElement f = focused(w);
+        if (f != null && f.value() != null && !f.value().isBlank()) return f;
+        List<UiaElement> textFields = w.elements().stream()
+                .filter(e -> isTextField(e) && e.value() != null && !e.value().isBlank())
+                .toList();
+        if (f != null) {
+            List<UiaElement> overlapping = textFields.stream().filter(e -> overlaps(e, f)).toList();
+            if (overlapping.size() == 1) return overlapping.get(0);
+        }
+        if (textFields.size() == 1) return textFields.get(0);
+        return f;   // как раньше: пусто — ввод не запишется
+    }
+
+    private static boolean isTextField(UiaElement e) {
+        String t = e.controlType() == null ? "" : e.controlType().toLowerCase(Locale.ROOT);
+        return t.contains("edit") || t.contains("document") || t.contains("поле") || t.contains("изменение")
+               || t.contains("документ");
+    }
+
+    private static boolean overlaps(UiaElement a, UiaElement b) {
+        return a.x() < b.x() + b.width() && b.x() < a.x() + a.width()
+               && a.y() < b.y() + b.height() && b.y() < a.y() + a.height();
+    }
+
     private static UiaElement focusedTextField(UiaSnapshot.Result w) {
         UiaElement f = focused(w);
         if (f == null) return null;
         String t = f.controlType() == null ? "" : f.controlType().toLowerCase(Locale.ROOT);
         return t.contains("edit") || t.contains("document") || t.contains("поле") || t.contains("изменение") ? f : null;
+    }
+
+    /** Окно самого агента (панель записи, диалоги) — Java-процесс. */
+    static boolean isOwnWindow(String app) {
+        return "java".equals(app) || "javaw".equals(app);
     }
 
     private static boolean isShell(Snap s) {

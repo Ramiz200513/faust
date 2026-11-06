@@ -361,7 +361,7 @@ public class ScreenAgent {
     private Optional<ResultData.AgentReport> replayUia(TrajectoryCache.Match match, Clarifications questions,
                                                        StepReporter reporter, CancelSignal cancel, Instant deadline) {
         TrajectoryCache.Trajectory saved = match.trajectory();
-        return replaySteps(saved.steps(), match.slot(),
+        return replaySteps(saved.steps(), match.slot(), null,
                 "эту задачу в программе уже решали — повторяю выученный путь без модели",
                 saved.baselineMs(), saved.baselineLlmCalls(),
                 () -> TrajectoryCache.forget(saved), () -> TrajectoryCache.noteReplay(saved), i -> { },
@@ -378,13 +378,18 @@ public class ScreenAgent {
      * сценарий, и как туториал.
      *
      * @param onStepStart номер шага навыка (с 0), который сейчас начинается, — для чек-листа
+     * @param binding     значения переменных навыка («Маше», «расписание»); null — навык без переменных
+     * @param descriptions шаги словами — уже с подставленными значениями
      */
     public ResultData.AgentReport runSkill(String name, List<TrajectoryCache.Step> skillSteps, List<String> descriptions,
                                            long recordedMs, int maxSteps, Instant deadline, IntConsumer onStep,
                                            StepReporter reporter, CancelSignal cancel, Clarifications questions,
-                                           IntConsumer onStepStart) {
-        Optional<ResultData.AgentReport> replayed = replaySteps(skillSteps, null,
-                "навык «" + name + "», выученный показом, — повторяю записанные шаги без модели",
+                                           IntConsumer onStepStart, com.jarvis.agent.SkillTemplate.Binding binding) {
+        String header = binding == null
+                ? "навык «" + name + "», выученный показом, — повторяю записанные шаги без модели"
+                : "навык «" + name + "», выученный показом, — повторяю шаги с новыми данными "
+                  + binding.values().values() + " без модели";
+        Optional<ResultData.AgentReport> replayed = replaySteps(skillSteps, null, binding, header,
                 recordedMs, 0, () -> { }, () -> { }, onStepStart, questions, reporter, cancel, deadline);
         if (replayed.isPresent()) return replayed.get();
 
@@ -404,8 +409,10 @@ public class ScreenAgent {
      *
      * @param onStale   что сделать, если повтор не удался (память устарела)
      * @param onSuccess что сделать после успешного повтора
+     * @param binding   переменные навыка, выученного показом; null — подставлять нечего
      */
     private Optional<ResultData.AgentReport> replaySteps(List<TrajectoryCache.Step> stepsToReplay, String slot,
+                                                         com.jarvis.agent.SkillTemplate.Binding binding,
                                                          String header, long baselineMs, int baselineLlmCalls,
                                                          Runnable onStale, Runnable onSuccess, IntConsumer onStepStart,
                                                          Clarifications questions, StepReporter reporter,
@@ -429,13 +436,15 @@ public class ScreenAgent {
                         UiaSnapshot.Result w = null;
                         UiaElement e = null;
                         // Окно могло ещё не дорисоваться после прошлого шага — даём ему шанс.
+                        boolean variable = binding != null && com.jarvis.agent.SkillTemplate.Binding.hasSlot(s.label());
                         for (int attempt = 0; attempt < 3 && e == null; attempt++) {
                             if (attempt > 0) sleep(500);
                             w = uia.captureForegroundWindow();
-                            e = matchElement(w, s);
+                            e = variable ? matchByValue(w, s, binding) : matchElement(w, s);
                         }
                         if (e == null) {
-                            trace.add(line + "элемент «" + s.label() + "» не найден — память устарела");
+                            String what = variable ? binding.shown(s.label()) : s.label();
+                            trace.add(line + "элемент «" + what + "» не найден — память устарела");
                             onStale.run();
                             return Optional.empty();
                         }
@@ -449,7 +458,8 @@ public class ScreenAgent {
                         clickAt(e.centerX(), e.centerY());
                     }
                     case "type" -> {
-                        String text = s.textFromGoal() && slot != null ? slot : s.text();
+                        String text = s.textFromGoal() && slot != null ? slot
+                                : binding != null ? binding.typed(s.text()) : s.text();
                         if (SensitiveInputGuard.mentionsSensitive(text)) throw new SecurityException("похоже на пароль");
                         guardAgainstShell(com.jarvis.agent.WindowFocus.foregroundTitle(), text);
                         FaustOverlayController.onThought(ActionPhrases.describe("type", text, null), "повторяю выученный путь — без модели");
@@ -518,6 +528,21 @@ public class ScreenAgent {
                 .filter(e -> ActionPhrases.firstPart(e.name()).equalsIgnoreCase(head))
                 .toList();
         return byHead.size() == 1 ? byHead.get(0) : null;
+    }
+
+    /**
+     * Клик по переменной навыка: в показе нажимали «Петя Иванов», теперь нужен
+     * элемент того же типа, в подписи которого есть «Маша» (с точностью до
+     * окончания). Первый подходящий сверху: в списке результатов поиска это
+     * самый релевантный, как и у человека.
+     */
+    private static UiaElement matchByValue(UiaSnapshot.Result w, TrajectoryCache.Step s,
+                                           com.jarvis.agent.SkillTemplate.Binding binding) {
+        if (w == null) return null;
+        return w.elements().stream()
+                .filter(e -> e.controlType() != null && e.controlType().equals(s.tag()))
+                .filter(e -> binding.labelMatches(s.label(), e.name()))
+                .findFirst().orElse(null);
     }
 
     /** Чем кончился один шаг: продолжаем цикл, цель достигнута, или останавливаемся без успеха. */

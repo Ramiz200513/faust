@@ -27,13 +27,16 @@ public final class SkillTeacher {
 
     /** Занят ли агент ИИ-задачей: тогда учить нельзя — его клики попали бы в запись. */
     private final BooleanSupplier agentBusy;
+    /** Навыки изменились — сообщить релею новые фразы (SkillSync). */
+    private final Runnable onChanged;
     private DemoRecorder recorder;
     private FaustRecordingOverlay panel;
     private String name;
     private List<String> triggers;
 
-    public SkillTeacher(BooleanSupplier agentBusy) {
+    public SkillTeacher(BooleanSupplier agentBusy, Runnable onChanged) {
         this.agentBusy = agentBusy;
+        this.onChanged = onChanged;
     }
 
     /** Пункт трея «Научить навыку показом…». */
@@ -98,7 +101,13 @@ public final class SkillTeacher {
         panel = null;
     }
 
-    /** Показать записанные шаги и сохранить навык, если человек согласен. */
+    /**
+     * Показать записанные шаги и сохранить навык, если человек согласен.
+     *
+     * Здесь же — пример фразы с данными из показа («отправь Пете отчёт»). По
+     * нему агент находит в показе переменные (SkillTemplate) и дальше узнаёт
+     * просьбы с другими данными: «отправь Маше расписание».
+     */
     private void review(DemoRecorder.Recording rec) {
         if (rec.steps().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ничего не записано: ни одного нажатия по элементам окна.", TITLE,
@@ -109,14 +118,52 @@ public final class SkillTeacher {
         for (int i = 0; i < rec.descriptions().size(); i++) {
             list.append(i + 1).append(") ").append(rec.descriptions().get(i)).append('\n');
         }
-        int answer = JOptionPane.showConfirmDialog(null,
-                "Навык «" + name + "», шагов: " + rec.steps().size() + "\n\n" + list
-                + "\nСохранить? Запуск с телефона: «Фауст, навык " + name + "»"
-                + (triggers.isEmpty() ? "" : " или «" + triggers.get(0) + "»"),
-                TITLE, JOptionPane.YES_NO_OPTION);
-        if (answer != JOptionPane.YES_OPTION) return;
-        SkillStore.save(new SkillStore.Skill(name, triggers, rec.steps(), rec.descriptions(),
+        javax.swing.JTextArea steps = new javax.swing.JTextArea(list.toString().strip());
+        steps.setEditable(false);
+        steps.setRows(Math.min(12, rec.descriptions().size()));
+        JTextField example = new JTextField();
+        JPanel form = new JPanel(new java.awt.BorderLayout(0, 8));
+        form.add(new javax.swing.JLabel("Навык «" + name + "», шагов: " + rec.steps().size()), java.awt.BorderLayout.NORTH);
+        form.add(new javax.swing.JScrollPane(steps), java.awt.BorderLayout.CENTER);
+        JPanel bottom = new JPanel(new GridLayout(0, 1, 4, 4));
+        bottom.add(new javax.swing.JLabel("<html>Как вы будете просить это голосом — <b>с теми же данными</b>, что в показе?<br>"
+                + "Например: <i>отправь Пете отчёт</i>. Агент сам найдёт, что в показе можно менять.<br>"
+                + "Необязательно: без примера навык запускается по названию.</html>"));
+        bottom.add(example);
+        form.add(bottom, java.awt.BorderLayout.SOUTH);
+
+        int answer = JOptionPane.showConfirmDialog(null, form, "Сохранить навык?",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (answer != JOptionPane.OK_OPTION) return;
+
+        String phrase = example.getText().strip();
+        SkillTemplate.Generalized g = phrase.isEmpty() ? null
+                : SkillTemplate.generalize(phrase, rec.steps(), rec.descriptions());
+        if (g != null && g.hasSlots()) {
+            SkillStore.save(new SkillStore.Skill(name, triggers, g.steps(), g.descriptions(),
+                    System.currentTimeMillis(), rec.durationMs(), g.template(), g.slots()));
+            onChanged.run();
+            StringBuilder found = new StringBuilder();
+            for (SkillTemplate.Slot s : g.slots()) {
+                found.append("  • «").append(s.said()).append('»');
+                if (s.inflected()) found.append(" (в показе — «").append(s.shown()).append("»)");
+                found.append('\n');
+            }
+            JOptionPane.showMessageDialog(null, "Навык «" + name + "» сохранён.\n\nАгент нашёл в показе, что можно менять:\n"
+                    + found + "\nТеперь с телефона можно сказать «" + String.join(" ", g.template()).replaceAll("\\{\\d+}", "…")
+                    + "» с другими данными — шаги повторятся без обращений к ИИ.", TITLE, JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        // Слова фразы в показе не встретились — фраза становится обычным триггером.
+        List<String> all = new ArrayList<>(triggers);
+        if (!phrase.isEmpty()) all.add(phrase);
+        SkillStore.save(new SkillStore.Skill(name, all, rec.steps(), rec.descriptions(),
                 System.currentTimeMillis(), rec.durationMs()));
+        onChanged.run();
+        JOptionPane.showMessageDialog(null, "Навык «" + name + "» сохранён."
+                + (phrase.isEmpty() ? "" : "\nВ показе не нашлось слов из фразы — она будет запускать навык как есть.")
+                + "\nЗапуск с телефона: «Фауст, навык " + name + "»"
+                + (all.isEmpty() ? "" : " или «" + all.get(0) + "»"), TITLE, JOptionPane.INFORMATION_MESSAGE);
     }
 
     /** Пункт трея «Выученные навыки…»: посмотреть и удалить. */
@@ -131,6 +178,7 @@ public final class SkillTeacher {
             List<String> labels = new ArrayList<>();
             for (SkillStore.Skill s : all) {
                 labels.add(s.name() + " — шагов: " + s.steps().size()
+                           + (s.hasTemplate() ? ", фраза: «" + s.templateText() + "»" : "")
                            + (s.triggers().isEmpty() ? "" : ", фразы: " + String.join(", ", s.triggers())));
             }
             Object choice = JOptionPane.showInputDialog(null, "Выберите навык, чтобы удалить его:", TITLE,
@@ -139,7 +187,7 @@ public final class SkillTeacher {
             SkillStore.Skill chosen = all.get(labels.indexOf(choice.toString()));
             int sure = JOptionPane.showConfirmDialog(null, "Удалить навык «" + chosen.name() + "»?", TITLE,
                     JOptionPane.YES_NO_OPTION);
-            if (sure == JOptionPane.YES_OPTION) SkillStore.remove(chosen.name());
+            if (sure == JOptionPane.YES_OPTION && SkillStore.remove(chosen.name())) onChanged.run();
         });
     }
 }

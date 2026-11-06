@@ -58,7 +58,9 @@ public class AgentMain {
         CommandExecutor executor = new CommandExecutor(config, tokenStore, tray, sender);
 
         // Обучение показом: пункты трея. Пока агент занят ИИ-задачей, учить нельзя.
-        SkillTeacher teacher = new SkillTeacher(executor::isBusy);
+        // После каждого изменения навыков — новые фразы релею (см. SkillSync).
+        SkillTeacher teacher = new SkillTeacher(executor::isBusy,
+                () -> SkillSync.push(config.relayUrl(), tokenStore));
         tray.setSkillActions(teacher::startInteractive, teacher::manageInteractive);
         // Папка доверенных скриптов (с пояснением внутри) — чтобы было куда их класть.
         ScriptCatalog.ensureFolder();
