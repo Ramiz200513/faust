@@ -45,6 +45,13 @@ jarvis:
     api-key: ${JARVIS_LLM_API_KEY:}
     # Gemini model name. Override with JARVIS_LLM_MODEL if needed.
     model: ${JARVIS_LLM_MODEL:gemini-3.6-flash}
+    # Сколько ждать Gemini при разборе фразы (секунды). 8 с не хватило при
+    # медленной связи с Google — фразы кончались «не понял».
+    intent-timeout-seconds: ${JARVIS_LLM_INTENT_TIMEOUT:15}
+    # Сколько токенов Gemini разрешено «размышлять» перед ответом на шаг агента.
+    # 0 — без размышлений: быстро (по умолчанию модель думала ~480 токенов на
+    # любой запрос, шаг шёл 11–25 с). -1 — на усмотрение модели.
+    thinking-budget: ${JARVIS_LLM_THINKING_BUDGET:0}
   intent:
     # Кто разбирает фразу с телефона (HybridIntentParser):
     #   auto   — своя модель, а если она не справилась — Gemini (по умолчанию)

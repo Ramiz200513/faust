@@ -31,7 +31,7 @@ class AgentLlmControllerTest {
     @Test
     void rejectsWithoutValidAgentToken() {
         when(agentAuth.authenticateAgent("agent-1", "wrong-token")).thenReturn(Optional.empty());
-        AgentLlmController controller = new AgentLlmController(agentAuth, llmLog, mapper, "some-key", "gemini-2.5-flash");
+        AgentLlmController controller = new AgentLlmController(agentAuth, llmLog, mapper, "some-key", "gemini-2.5-flash", 0);
 
         ResponseEntity<?> resp = controller.generate("agent-1", "wrong-token", body("привет"));
 
@@ -42,7 +42,7 @@ class AgentLlmControllerTest {
     void rejectsWhenApiKeyMissing() {
         when(agentAuth.authenticateAgent("agent-1", "good-token"))
                 .thenReturn(Optional.of(mock(Device.class)));
-        AgentLlmController controller = new AgentLlmController(agentAuth, llmLog, mapper, "", "gemini-2.5-flash");
+        AgentLlmController controller = new AgentLlmController(agentAuth, llmLog, mapper, "", "gemini-2.5-flash", 0);
 
         ResponseEntity<?> resp = controller.generate("agent-1", "good-token", body("привет"));
 

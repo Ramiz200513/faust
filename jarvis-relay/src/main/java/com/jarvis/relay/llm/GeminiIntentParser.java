@@ -111,15 +111,24 @@ public class GeminiIntentParser implements IntentParser {
     private final String apiKey;
     private final String model;
     private final HttpClient http;
+    /**
+     * Сколько ждать ответа Gemini на разбор фразы. Было жёстко 8 с: 06.11 связь
+     * с Google после включения ПК была медленной (даже список моделей шёл 8 с),
+     * ответ приходил за 7–9 с — и каждая фраза кончалась «не понял». Лучше
+     * подождать дольше, чем ответить «не понял» на нормальную просьбу.
+     */
+    private final Duration timeout;
 
     public GeminiIntentParser(StubIntentParser fallback,
                               ObjectMapper mapper,
                               @Value("${jarvis.llm.api-key:}") String apiKey,
-                              @Value("${jarvis.llm.model:gemini-2.0-flash}") String model) {
+                              @Value("${jarvis.llm.model:gemini-2.0-flash}") String model,
+                              @Value("${jarvis.llm.intent-timeout-seconds:15}") int timeoutSeconds) {
         this.fallback = fallback;
         this.mapper = mapper;
         this.apiKey = apiKey == null ? "" : apiKey.trim();
         this.model = model;
+        this.timeout = Duration.ofSeconds(Math.max(3, timeoutSeconds));
         this.http = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(5))
                 .build();
@@ -184,7 +193,7 @@ public class GeminiIntentParser implements IntentParser {
         URI uri = URI.create(ENDPOINT.formatted(model));
 
         HttpRequest request = HttpRequest.newBuilder(uri)
-                .timeout(Duration.ofSeconds(8))
+                .timeout(timeout)
                 .header("Content-Type", "application/json")
                 .header("x-goog-api-key", apiKey)
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody))
@@ -230,6 +239,9 @@ public class GeminiIntentParser implements IntentParser {
         ObjectNode cfg = body.putObject("generationConfig");
         cfg.put("temperature", 0);                       // deterministic
         cfg.put("responseMimeType", "application/json"); // force pure JSON
+        // Разбор фразы в команду — по образцам, размышлять тут не над чем, а
+        // размышления Gemini стоят секунды (см. AgentLlmController).
+        cfg.putObject("thinkingConfig").put("thinkingBudget", 0);
 
         return body;
     }

@@ -472,6 +472,20 @@ function Stop-All {
 # Здесь только проверяем, что Ollama запущена и модель в ней есть. Ничего из
 # этого не обязательно: без своей модели релей разбирает фразы через Gemini,
 # как раньше, — поэтому функция только сообщает и никогда не останавливает запуск.
+# Отвечает ли модель на самом деле: короткий запрос (заодно загружает её в
+# видеокарту — первая фраза человека потом не ждёт загрузки). До 45 с — на
+# первую загрузку модели с диска хватает с запасом.
+function Test-ModelAnswers {
+    try {
+        $body = '{"model":"faust-intent","prompt":"открой ютуб","stream":false,"options":{"num_predict":8}}'
+        Invoke-RestMethod 'http://localhost:11434/api/generate' -Method Post -ContentType 'application/json' `
+            -Body ([Text.Encoding]::UTF8.GetBytes($body)) -TimeoutSec 45 | Out-Null
+        return $true
+    } catch {
+        return $false
+    }
+}
+
 function Start-LocalModel {
     Step 'Своя модель разбора фраз'
     if (-not (Get-Command ollama -ErrorAction SilentlyContinue)) {
@@ -489,6 +503,21 @@ function Start-LocalModel {
     }
     $models = cmd /c "ollama list 2>nul"
     if ($models -match 'faust-intent') {
+        # Порт открыт — ещё не значит, что модель отвечает: 06.11 Ollama отдавала
+        # список моделей, а на запрос генерации молчала минутами, и каждая фраза
+        # кончалась «не понял». Пробный короткий запрос; молчит — перезапуск.
+        if (-not (Test-ModelAnswers)) {
+            Warn 'Ollama зависла (модель не отвечает) — перезапускаю...'
+            Get-Process 'ollama app', 'ollama' -ErrorAction SilentlyContinue | Stop-Process -Force
+            Start-Sleep -Seconds 2
+            $tray = Join-Path $env:LOCALAPPDATA 'Programs\Ollama\ollama app.exe'
+            if (Test-Path $tray) { Start-Process $tray } else { Start-Process ollama -ArgumentList 'serve' -WindowStyle Hidden }
+            for ($i = 0; $i -lt 30 -and -not (Test-Port 'localhost' 11434); $i++) { Start-Sleep -Seconds 1 }
+            if (-not (Test-ModelAnswers)) {
+                Warn 'Модель не ответила и после перезапуска — фразы разбирает Gemini.'
+                return
+            }
+        }
         Ok 'Модель faust-intent готова: простые команды разбираются на этом ПК, без интернета.'
     } else {
         Info 'Ollama работает, но модели faust-intent в ней нет (обучение: jarvis-ml\README.md) — разбирает Gemini.'

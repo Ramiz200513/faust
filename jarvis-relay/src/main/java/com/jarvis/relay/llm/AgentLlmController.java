@@ -58,9 +58,14 @@ public class AgentLlmController {
     private final HttpClient http;
     private final Map<String, RateWindow> rateWindows = new ConcurrentHashMap<>();
 
+    /** Сколько токенов модели разрешено «думать» перед ответом; -1 — на её усмотрение. */
+    private final int thinkingBudget;
+
     public AgentLlmController(AgentAuthService agentAuth, AgentLlmLogRepository llmLog, ObjectMapper mapper,
                                @Value("${jarvis.llm.api-key:}") String apiKey,
-                               @Value("${jarvis.llm.model:gemini-2.5-flash}") String model) {
+                               @Value("${jarvis.llm.model:gemini-2.5-flash}") String model,
+                               @Value("${jarvis.llm.thinking-budget:0}") int thinkingBudget) {
+        this.thinkingBudget = thinkingBudget;
         this.agentAuth = agentAuth;
         this.llmLog = llmLog;
         this.mapper = mapper;
@@ -197,7 +202,14 @@ public class AgentLlmController {
             inlineData.put("data", request.imageBase64());
         }
 
-        body.putObject("generationConfig").put("temperature", 0);
+        ObjectNode cfg = body.putObject("generationConfig");
+        cfg.put("temperature", 0);
+        // Размышления модели перед ответом. По умолчанию Gemini «думает» ~480
+        // токенов даже над «ответь да» — замер 06.11: шаг агента шёл 11–25 с
+        // вместо 2–4. Агент и так просит модель объяснить выбор в поле reason,
+        // так что отдельное размышление ему почти ничего не даёт.
+        // -1 — оставить как решит модель (если качество на сложных шагах просядет).
+        if (thinkingBudget >= 0) cfg.putObject("thinkingConfig").put("thinkingBudget", thinkingBudget);
         return body;
     }
 

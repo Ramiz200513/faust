@@ -49,7 +49,7 @@ class GeminiIntentParserTest {
     void fallsBackToStubWhenNoApiKey() {
         StubIntentParser stub = new StubIntentParser();
         GeminiIntentParser parser =
-                new GeminiIntentParser(stub, mapper, "", "gemini-2.0-flash");
+                new GeminiIntentParser(stub, mapper, "", "gemini-2.0-flash", 15);
 
         assertInstanceOf(Command.SetVolume.class, parser.parse("сделай потише"));
         assertInstanceOf(Command.AgentTask.class, parser.parse("найди на ютубе видео про котов"));
@@ -62,7 +62,7 @@ class GeminiIntentParserTest {
     void skillAndScriptPhrases_goToTheAgent_asIs_evenWithAKey() {
         // Ключ «есть», но до сети дело не дойдёт: такие фразы разбираются кодом.
         GeminiIntentParser parser =
-                new GeminiIntentParser(new StubIntentParser(), mapper, "fake-key-no-network", "gemini-2.0-flash");
+                new GeminiIntentParser(new StubIntentParser(), mapper, "fake-key-no-network", "gemini-2.0-flash", 15);
 
         Command.AgentTask script = assertInstanceOf(Command.AgentTask.class,
                 parser.parse("Запусти скрипт сервер диплома"));

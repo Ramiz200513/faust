@@ -26,6 +26,8 @@ import java.util.UUID
 class JarvisClient {
 
     private val http = OkHttpClient()
+    /** Текущий сокет. Volatile: меняет главный поток, читают потоки OkHttp (isCurrent). */
+    @Volatile
     private var ws: WebSocket? = null
 
     private var url = ""
@@ -120,9 +122,21 @@ class JarvisClient {
         reconnectPending = false
     }
 
+    /**
+     * Обработчик один на все сокеты, поэтому каждое событие сверяем: от
+     * ТЕКУЩЕГО ли оно сокета. openSocket() гасит прежний сокет (cancel), и тот
+     * сообщает об этом через onFailure («Socket closed»). Раньше это принималось
+     * за обрыв текущей связи: планировалось переподключение, оно через секунду
+     * гасило уже новый рабочий сокет, тот снова «падал» — и так по кругу,
+     * раз в секунду (найдено 06.11: «то подключается, то отключается»,
+     * на релее — вход и тут же обрыв 1006 каждую секунду).
+     */
+    private fun isCurrent(webSocket: WebSocket) = webSocket === ws
+
     private val listener = object : WebSocketListener() {
 
         override fun onOpen(webSocket: WebSocket, response: Response) {
+            if (!isCurrent(webSocket)) return
             // Первое сообщение — авторизация (релей этого ждёт).
             val auth = Auth(
                 requestId = UUID.randomUUID().toString(),
@@ -136,6 +150,9 @@ class JarvisClient {
         }
 
         override fun onMessage(webSocket: WebSocket, text: String) {
+            // Запоздалое сообщение от заменённого сокета — не наше (например,
+            // его AuthResult сбросил бы статус уже нового соединения).
+            if (!isCurrent(webSocket)) return
             val msg = try {
                 JarvisJson.decodeFromString<JarvisMessage>(text)
             } catch (e: Exception) {
@@ -161,6 +178,8 @@ class JarvisClient {
         }
 
         override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
+            // Старый сокет погасили мы сами — это не обрыв, переподключать нечего.
+            if (!isCurrent(webSocket)) return
             Log.e("JarvisClient", "ошибка соединения", t)
             if (wantConnected) {
                 onStatus("нет связи: ${t.message ?: "ошибка"}")
@@ -171,6 +190,7 @@ class JarvisClient {
         }
 
         override fun onClosed(webSocket: WebSocket, code: Int, reason: String) {
+            if (!isCurrent(webSocket)) return
             if (wantConnected) scheduleReconnect()
             else if (!authRejected) onStatus("отключено")
             // При authRejected статус "вход отклонён" уже выставлен выше и его

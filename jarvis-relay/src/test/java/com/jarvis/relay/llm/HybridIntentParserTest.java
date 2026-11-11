@@ -50,7 +50,7 @@ class HybridIntentParserTest {
         int calls;
 
         FakeGemini(Command answer) {
-            super(new StubIntentParser(), mapper, "fake-key", "gemini-test");
+            super(new StubIntentParser(), mapper, "fake-key", "gemini-test", 15);
             this.answer = answer;
         }
 

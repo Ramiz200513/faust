@@ -50,7 +50,7 @@ class QuickAndCompositeTest {
         int calls;
 
         CountingGemini() {
-            super(new StubIntentParser(), mapper, "fake-key", "gemini-test");
+            super(new StubIntentParser(), mapper, "fake-key", "gemini-test", 15);
         }
 
         @Override
