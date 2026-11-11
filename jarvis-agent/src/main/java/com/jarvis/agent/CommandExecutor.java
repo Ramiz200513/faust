@@ -161,7 +161,7 @@ public class CommandExecutor {
         this.llmClient = relayLlm;
         this.brain = new GeminiVisionAgent(relayLlm);
         this.planner = new GeminiTaskPlanner(relayLlm, AppCatalog::installedAppNames, ScriptCatalog::names,
-                RepoCatalog::names).withLists(RecipientLists::all);
+                RepoCatalog::names).withLists(RecipientLists::all).withRepoCommands(RepoCommands::namesByRepo);
         this.verifier = new com.jarvis.agent.plan.ResultVerifier(
                 prompt -> relayLlm.generate(prompt, null),
                 () -> new com.jarvis.agent.vision.UiaSnapshot().captureForegroundWindow());

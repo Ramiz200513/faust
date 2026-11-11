@@ -46,9 +46,10 @@ public record PlanStep(Kind kind, String goal, String app, String check, String 
         RUN_SCRIPT,
         /**
          * Операция git в разрешённом репозитории (поле app — его название из
-         * repos.txt, goal — операция: status, pull, push или «commit: сообщение»).
-         * Выполняется кодом ({@code GitTool}); commit и push — только после «Да»
-         * человека, который видит дифф.
+         * repos.txt, goal — операция: status, pull, push, «commit: сообщение» или
+         * «run: тесты» — разрешённая команда проекта из repo-commands.txt).
+         * Выполняется кодом ({@code GitTool}, {@code RepoCommands}); commit и push —
+         * только после «Да» человека, который видит дифф.
          */
         GIT,
         /**
@@ -120,6 +121,7 @@ public record PlanStep(Kind kind, String goal, String app, String check, String 
         if (a.equals("log")) return "История коммитов " + repo;
         if (a.startsWith("branch:")) return "Ветка " + goal.substring(7).strip() + " в " + repo;
         if (a.equals("discard")) return "Откатить правки в " + repo;
+        if (a.startsWith("run:")) return "Прогнать «" + goal.strip().substring(4).strip() + "» в " + repo;
         return "git " + goal + " в " + repo;
     }
 

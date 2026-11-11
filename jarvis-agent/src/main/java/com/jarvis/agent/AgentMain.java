@@ -65,6 +65,7 @@ public class AgentMain {
         // Папка доверенных скриптов (с пояснением внутри) — чтобы было куда их класть.
         ScriptCatalog.ensureFolder();
         RepoCatalog.ensureFile();
+        RepoCommands.ensureFile();
         RecipientLists.ensureFile();
 
         // Прогреваем каталог установленных программ в фоне (Get-StartApps занимает

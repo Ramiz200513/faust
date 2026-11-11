@@ -102,5 +102,24 @@ class GeminiTaskPlannerTest {
         String p = GeminiTaskPlanner.buildPrompt("запушь", List.of(), null, List.of(), List.of(), List.of(),
                 List.of("демо"));
         assertTrue(p.contains("РЕПОЗИТОРИИ (для git и code): демо"), p);
+        assertTrue(p.contains("КОМАНДЫ ПРОЕКТОВ (для git run): нет"), p);
+    }
+
+    @Test
+    void runStep_parsed_andCommandNamesInPrompt_withoutCommandLines() throws Exception {
+        PlannerReply.Steps s = (PlannerReply.Steps) GeminiTaskPlanner.parse("""
+                {"steps":[{"scope":"code","repo":"демо","goal":"порт 8090"},
+                          {"scope":"git","repo":"демо","action":"run","command":"тесты"},
+                          {"scope":"git","repo":"демо","action":"run"},
+                          {"scope":"git","repo":"демо","action":"commit"}]}
+                """);
+        assertEquals(List.of(PlanStep.code("демо", "порт 8090"), PlanStep.git("демо", "run: тесты"),
+                PlanStep.git("демо", "commit")), s.steps(), "run без названия команды отбрасывается");
+        assertEquals("", PlanRunner.confirmFor(s), "прогон тестов — тоже без общего вопроса: команду задал человек");
+
+        String p = GeminiTaskPlanner.buildPrompt("поменяй порт и запушь", List.of(), null, List.of(), List.of(),
+                List.of(), List.of("демо", "диплом"), java.util.Map.of(),
+                new java.util.LinkedHashMap<>(java.util.Map.of("демо", List.of("тесты", "сборка"))));
+        assertTrue(p.contains("КОМАНДЫ ПРОЕКТОВ (для git run): демо: тесты, сборка"), p);
     }
 }

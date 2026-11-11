@@ -117,6 +117,17 @@ tasks.register<JavaExec>("runUiaDemo") {
     jvmArgs = listOf("-Dstdout.encoding=UTF-8", "-Dstderr.encoding=UTF-8")
 }
 
+// Живая проверка связки «правка → тесты → коммит → push» на репозитории из repos.txt:
+// правит настоящий Claude Code, тесты — команда из repo-commands.txt, время каждого шага.
+//   ./gradlew runCodeCheck --args="демо|поменяй внешний порт web на 8095"
+tasks.register<JavaExec>("runCodeCheck") {
+    group = "application"
+    description = "Живой прогон правки кода с тестами и коммитом (без релея и телефона)"
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass = "com.jarvis.agent.CodeLoopCheck"
+    jvmArgs = listOf("-Dstdout.encoding=UTF-8", "-Dstderr.encoding=UTF-8")
+}
+
 // Проверка промпта вопросов человеку: модели подаются выдуманные окна, мышь не
 // двигается. Печатает, спросила ли модель там, где должна.
 //   ./gradlew runAskCheck               каждый сценарий по разу

@@ -40,16 +40,20 @@ public class GeminiTaskPlanner implements TaskPlanner {
               {"scope":"run_script","script":"<название из списка ДОВЕРЕННЫХ СКРИПТОВ>"} — запустить скрипт,
                   который пользователь сам написал (поднять сервер, собрать проект). Выполняется кодом.
                   Только из списка и только если просьба про это; другие команды запрещены.
-              {"scope":"git","repo":"<название из списка РЕПОЗИТОРИИ>","action":"status|pull|commit|push|log|branch|discard",
-               "message":"<сообщение коммита, для commit; можно не писать после code>","name":"<имя ветки, для branch>"}
+              {"scope":"git","repo":"<название из списка РЕПОЗИТОРИИ>","action":"status|pull|commit|push|log|branch|discard|run",
+               "message":"<сообщение коммита, для commit; можно не писать после code>","name":"<имя ветки, для branch>",
+               "command":"<название из списка КОМАНДЫ ПРОЕКТОВ, для run>"}
                   — git в разрешённом репозитории. log — последние коммиты; branch — перейти на ветку,
-                  а если её нет — создать; discard — откатить несохранённые правки (спросит человека).
+                  а если её нет — создать; discard — откатить несохранённые правки (спросит человека);
+                  run — прогнать разрешённую команду проекта (тесты, сборка) и дождаться итога.
+                  Если после code будет commit, а у проекта есть команда тестов или проверки, —
+                  поставь run с ней между code и commit: упадёт — агент сам попробует исправить.
                   Выполняется кодом, без терминала. Коммит берёт ВСЕ изменения в папке проекта.
                   Сообщение коммита пиши коротко по-русски, по смыслу изменения («Порт web 8090»).
               {"scope":"code","repo":"<название из списка РЕПОЗИТОРИИ>","goal":"..."} — правка файлов
                   проекта агентом для кода: поменять порт, добавить переменную, исправить строку.
                   В goal — что именно изменить, со всеми значениями. Он только правит файлы: не
-                  собирает, не запускает, не коммитит — для этого есть git и run_script.
+                  собирает, не запускает, не коммитит — для этого есть git (commit, push, run).
                   Для commit и push НЕ пиши "confirm": код сам спросит человека и покажет изменения.
                   Работа с кодом — ТОЛЬКО через git и code, не через screen в редакторе или IDE.
               {"scope":"wait","goal":"<чего ждём, по-человечески>","process":"<имя процесса>",
@@ -158,6 +162,15 @@ public class GeminiTaskPlanner implements TaskPlanner {
     /** Списки получателей (RecipientLists) — название -> люди. */
     private java.util.function.Supplier<Map<String, List<String>>> lists = Map::of;
 
+    /** Команды проектов (RepoCommands) — репозиторий -> названия команд, без командных строк. */
+    private java.util.function.Supplier<Map<String, List<String>>> repoCommands = Map::of;
+
+    /** Подключить названия разрешённых команд проектов — для шагов git run. */
+    public GeminiTaskPlanner withRepoCommands(java.util.function.Supplier<Map<String, List<String>>> commands) {
+        if (commands != null) this.repoCommands = commands;
+        return this;
+    }
+
     /** Подключить списки получателей для шагов «для каждого». */
     public GeminiTaskPlanner withLists(java.util.function.Supplier<Map<String, List<String>>> lists) {
         if (lists != null) this.lists = lists;
@@ -191,8 +204,14 @@ public class GeminiTaskPlanner implements TaskPlanner {
             } catch (Exception e) {
                 recipientLists = Map.of();
             }
+            Map<String, List<String>> commands;
+            try {
+                commands = repoCommands.get();
+            } catch (Exception e) {
+                commands = Map.of();
+            }
             return parse(relayLlm.generate(buildPrompt(goal, done, failed, remaining, apps, scriptNames, repoNames,
-                    recipientLists), null), recipientLists);
+                    recipientLists, commands), null), recipientLists);
         } catch (Exception e) {
             // Сеть, квота, кривой ответ — не беда: вызывающий код выполнит
             // задачу прежним способом, одним циклом без плана.
@@ -223,6 +242,12 @@ public class GeminiTaskPlanner implements TaskPlanner {
     static String buildPrompt(String goal, List<StepResult> done, StepResult failed, List<PlanStep> remaining,
                               List<String> apps, List<String> scriptNames, List<String> repoNames,
                               Map<String, List<String>> recipientLists) {
+        return buildPrompt(goal, done, failed, remaining, apps, scriptNames, repoNames, recipientLists, Map.of());
+    }
+
+    static String buildPrompt(String goal, List<StepResult> done, StepResult failed, List<PlanStep> remaining,
+                              List<String> apps, List<String> scriptNames, List<String> repoNames,
+                              Map<String, List<String>> recipientLists, Map<String, List<String>> repoCommands) {
         StringBuilder sb = new StringBuilder();
         sb.append("Ты — планировщик для агента, который управляет компьютером пользователя (Windows).\n")
           .append("Разбей просьбу на подзадачи. Каждую выполнит отдельный исполнитель, который видит\n")
@@ -239,6 +264,17 @@ public class GeminiTaskPlanner implements TaskPlanner {
           .append(scriptNames.isEmpty() ? "нет" : String.join(", ", scriptNames)).append("\n");
         sb.append("РЕПОЗИТОРИИ (для git и code): ")
           .append(repoNames.isEmpty() ? "нет — git и code недоступны" : String.join(", ", repoNames)).append("\n");
+        if (!repoNames.isEmpty()) {
+            sb.append("КОМАНДЫ ПРОЕКТОВ (для git run): ");
+            if (repoCommands.isEmpty()) {
+                sb.append("нет — run недоступен");
+            } else {
+                List<String> parts = new ArrayList<>();
+                repoCommands.forEach((repo, names) -> parts.add(repo + ": " + String.join(", ", names)));
+                sb.append(String.join("; ", parts));
+            }
+            sb.append("\n");
+        }
         sb.append("СПИСКИ ПОЛУЧАТЕЛЕЙ (для for_each): ");
         if (recipientLists.isEmpty()) {
             sb.append("нет — рассылка недоступна");
@@ -428,7 +464,14 @@ public class GeminiTaskPlanner implements TaskPlanner {
             case "git" -> {
                 String repo = s.path("repo").asText("").strip();
                 String action = s.path("action").asText("").strip().toLowerCase(Locale.ROOT);
-                if (!List.of("status", "pull", "commit", "push", "log", "branch", "discard").contains(action)) yield null;
+                if (!List.of("status", "pull", "commit", "push", "log", "branch", "discard", "run").contains(action)) yield null;
+                if (action.equals("run")) {
+                    // Модель называет команду только по названию; есть ли такая у
+                    // проекта, проверит DevTools при выполнении (и назовёт доступные).
+                    String command = s.path("command").asText("").strip();
+                    if (command.isEmpty()) command = s.path("name").asText("").strip();
+                    yield command.isEmpty() ? null : PlanStep.git(repo, "run: " + command);
+                }
                 if (action.equals("branch")) {
                     String name = s.path("name").asText("").strip();
                     if (name.isEmpty()) yield null;

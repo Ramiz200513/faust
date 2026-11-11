@@ -71,8 +71,13 @@ public final class CodeAgent {
      */
     public static final String ENGINE = "code.engine";
 
-    /** До какого момента не пробовать Claude Code после отказа (не вошёл / нет программы). */
+    /** До какого момента не пробовать Claude Code после отказа (не вошёл / нет программы / лимит). */
     private static volatile long claudeDownUntil = 0;
+
+    /** Для тестов: забыть прошлые отказы Claude Code. */
+    static void resetPause() {
+        claudeDownUntil = 0;
+    }
 
     /**
      * Выполнить правку подходящим редактором.
@@ -85,29 +90,55 @@ public final class CodeAgent {
             throw new IllegalStateException("агент для кода выключен (code.enabled=false в agent.properties)");
         }
         String engine = AgentSettings.text(ENGINE, "auto").toLowerCase(java.util.Locale.ROOT);
-        String claudeProblem = null;
+        // Отпечаток ДО любой правки: если Claude Code успел что-то изменить и
+        // завис, а доделал встроенный редактор, «что изменено» должно включать
+        // правки обоих — человек увидит их в одном диффе при коммите.
+        Map<String, String> before = snapshot(repo);
+        ClaudeUnavailable claudeProblem = null;
         if (!engine.equals("gemini") && (engine.equals("claude") || System.currentTimeMillis() >= claudeDownUntil)) {
             try {
                 return withClaude(repo, task);
             } catch (ClaudeUnavailable e) {
                 if (engine.equals("claude")) throw new IllegalStateException(e.getMessage());
-                // Не вошёл или не установлен — это не поправится за секунды: десять
-                // минут не тратим время на заведомо неудачный запуск.
-                claudeDownUntil = System.currentTimeMillis() + 10 * 60_000L;
-                claudeProblem = e.getMessage();
+                // Не вошёл, нет программы, кончился лимит — это не поправится за
+                // секунды: какое-то время не тратим время на заведомо неудачный
+                // запуск. Зависание и сбой — случайность, следующую правку снова
+                // пробуем через Claude Code (pauseMs = 0).
+                if (e.pauseMs > 0) claudeDownUntil = System.currentTimeMillis() + e.pauseMs;
+                claudeProblem = e;
             }
         }
-        if (llm == null) throw new IllegalStateException(claudeProblem != null ? claudeProblem : "нет связи с моделью");
+        if (llm == null) {
+            throw new IllegalStateException(claudeProblem != null ? claudeProblem.getMessage() : "нет связи с моделью");
+        }
         GeminiCodeEditor.Edit e = new GeminiCodeEditor(llm).edit(repo, task);
-        return new Result(e.changed(), e.summary(), null, "встроенный редактор");
+        if (claudeProblem == null) return new Result(e.changed(), e.summary(), null, "встроенный редактор");
+        System.err.println("агент для кода: " + claudeProblem.getMessage() + " — правку сделал встроенный редактор");
+        return new Result(changedSince(repo, before), e.summary(), null,
+                "встроенный редактор, т.к. " + claudeProblem.shortReason);
     }
 
-    /** Claude Code не может работать вообще (не установлен, не вошёл) — повод взять другой редактор. */
+    /**
+     * Claude Code сейчас не может сделать правку — повод взять другой редактор.
+     * Сюда НЕ относится случай, когда Claude Code поработал и сам отказался
+     * («задача опасна», «не нашёл, что менять»): это осмысленный ответ, и
+     * отдавать ту же задачу другой модели в обход отказа нельзя.
+     */
     static final class ClaudeUnavailable extends Exception {
-        ClaudeUnavailable(String message) {
+        /** Сколько не пробовать Claude Code снова, мс; 0 — пробовать уже в следующий раз. */
+        final long pauseMs;
+        /** Причина в двух-трёх словах — для строки итога на телефоне. */
+        final String shortReason;
+
+        ClaudeUnavailable(String message, String shortReason, long pauseMs) {
             super(message);
+            this.shortReason = shortReason;
+            this.pauseMs = pauseMs;
         }
     }
+
+    private static final long NOT_LOGGED_PAUSE_MS = 10 * 60_000L;
+    private static final long LIMIT_PAUSE_MS = 30 * 60_000L;
 
     /**
      * Правка через Claude Code.
@@ -132,12 +163,16 @@ public final class CodeAgent {
         try {
             p = pb.start();
         } catch (IOException e) {
-            throw new ClaudeUnavailable("Claude Code не найден («" + command() + "»)");
+            throw new ClaudeUnavailable("Claude Code не найден («" + command() + "»)", "Claude Code не установлен",
+                    NOT_LOGGED_PAUSE_MS);
         }
         // Задачу — через стандартный ввод, а не аргументом: в командной строке
         // Windows кавычки и кириллица ломаются, а ввод передаётся как есть.
         try (OutputStream in = p.getOutputStream()) {
             in.write(prompt(repo, task).getBytes(StandardCharsets.UTF_8));
+        } catch (IOException closedEarly) {
+            // Программа закрылась, не дочитав задачу (сразу упала, нет входа).
+            // Это не ошибка шага сама по себе: что случилось — скажет её ответ ниже.
         }
         ByteArrayOutputStream buf = new ByteArrayOutputStream();
         Thread reader = new Thread(() -> {
@@ -151,18 +186,37 @@ public final class CodeAgent {
         reader.start();
         int timeout = AgentSettings.number(TIMEOUT_SEC, 300, 30, 1800);
         if (!p.waitFor(timeout, TimeUnit.SECONDS)) {
+            p.descendants().forEach(ProcessHandle::destroyForcibly);
             p.destroyForcibly();
-            throw new IllegalStateException("агент для кода не уложился в " + timeout + " с — правка прервана "
-                                            + "(что успел изменить, видно в git status)");
+            // Зависание — не отказ по существу: задачу можно отдать запасному
+            // редактору. Что Claude Code успел изменить, остаётся на диске и
+            // попадёт в общий дифф (см. edit).
+            throw new ClaudeUnavailable("Claude Code не ответил за " + timeout + " с",
+                    "Claude Code не ответил за " + timeout + " с", 0);
         }
         reader.join(2000);
 
         Reply r = parse(buf.toString(StandardCharsets.UTF_8));
         if (r.error) {
             String why = explain(r.said);
-            if (why.contains("не вошёл")) throw new ClaudeUnavailable(why);
-            throw new IllegalStateException(why);
+            switch (trouble(r)) {
+                case NOT_LOGGED_IN -> throw new ClaudeUnavailable(why, "Claude Code не вошёл в аккаунт", NOT_LOGGED_PAUSE_MS);
+                case NO_SUBSCRIPTION -> throw new ClaudeUnavailable(why, "Claude Code не может использовать подписку",
+                        LIMIT_PAUSE_MS);
+                case LIMIT -> throw new ClaudeUnavailable(why, "у Claude Code кончился лимит", LIMIT_PAUSE_MS);
+                case BROKEN -> throw new ClaudeUnavailable("Claude Code завершился без ответа: " + r.said,
+                        "Claude Code завершился без ответа", 0);
+                default -> throw new IllegalStateException(why);
+            }
         }
+        return new Result(changedSince(repo, before), r.said, r.cost, "Claude Code");
+    }
+
+    /**
+     * Какие файлы изменились с момента отпечатка {@code before} — по git, а не
+     * со слов модели.
+     */
+    static List<String> changedSince(RepoCatalog.Repo repo, Map<String, String> before) throws IOException {
         Map<String, String> after = snapshot(repo);
         List<String> changed = new ArrayList<>(after.entrySet().stream()
                 .filter(e -> !e.getValue().equals(before.get(e.getKey())))
@@ -171,8 +225,32 @@ public final class CodeAgent {
         // Файл, который был изменён до правки, а агент вернул его к последнему
         // коммиту, из списка git status пропадает — но это тоже правка агента.
         before.keySet().stream().filter(f -> !after.containsKey(f)).forEach(changed::add);
-        return new Result(List.copyOf(changed), r.said, r.cost, "Claude Code");
+        return List.copyOf(changed);
     }
+
+    /** Почему Claude Code вернул ошибку — от этого зависит, звать ли запасной редактор. */
+    enum Trouble { NOT_LOGGED_IN, NO_SUBSCRIPTION, LIMIT, BROKEN, REFUSED }
+
+    static Trouble trouble(Reply r) {
+        if (!r.json) return Trouble.BROKEN;          // упал раньше ответа — не по существу задачи
+        String s = r.said == null ? "" : r.said.toLowerCase(Locale.ROOT);
+        // Раньше «входа»: в этом сообщении тоже есть слова «API key» («…or use an
+        // Anthropic API key instead»), а причина другая — вход есть, а подписку
+        // использовать нельзя (замер 11.11: 403 oauth_not_allowed_for_organization,
+        // «usually because a payment is past due»). /login тут не поможет.
+        if (s.contains("subscription") || s.contains("billing") || s.contains("payment")) {
+            return Trouble.NO_SUBSCRIPTION;
+        }
+        if (s.contains("authenticate") || s.contains("oauth") || s.contains("login") || s.contains("api key")) {
+            return Trouble.NOT_LOGGED_IN;
+        }
+        if (LIMIT_WORDS.matcher(s).find()) return Trouble.LIMIT;
+        return Trouble.REFUSED;
+    }
+
+    /** Как Claude Code и сервер сообщают о лимите и перегрузке (сообщения со временем менялись). */
+    private static final java.util.regex.Pattern LIMIT_WORDS = java.util.regex.Pattern.compile(
+            "rate limit|usage limit|limit reached|hit your limit|quota|overloaded|\\b529\\b|\\b429\\b");
 
     /** Задача для агента для кода — с рамками, которые он должен соблюдать. */
     static String prompt(RepoCatalog.Repo repo, String task) {
@@ -186,33 +264,36 @@ public final class CodeAgent {
                + "В конце ответь одной-двумя короткими фразами по-русски: что изменено и где.";
     }
 
-    private record Reply(boolean error, String said, Double cost) {}
+    /** @param json ответ разобран как JSON (false — программа упала раньше ответа) */
+    record Reply(boolean error, String said, Double cost, boolean json) {}
 
     /** Разбор ответа claude --output-format json. Не JSON — значит, программа упала раньше ответа. */
     static Reply parse(String stdout) {
         String text = stdout == null ? "" : stdout.strip();
         int start = text.indexOf('{');
-        if (start < 0) return new Reply(true, text.isEmpty() ? "пустой ответ" : text, null);
+        if (start < 0) return new Reply(true, text.isEmpty() ? "пустой ответ" : text, null, false);
         try {
             JsonNode n = MAPPER.readTree(text.substring(start));
             boolean err = n.path("is_error").asBoolean(false);
             String said = n.path("result").asText("").strip();
             Double cost = n.hasNonNull("total_cost_usd") ? n.get("total_cost_usd").asDouble() : null;
-            return new Reply(err, said, cost);
+            return new Reply(err, said, cost, true);
         } catch (IOException e) {
-            return new Reply(true, "непонятный ответ: " + text.substring(0, Math.min(200, text.length())), null);
+            return new Reply(true, "непонятный ответ: " + text.substring(0, Math.min(200, text.length())), null, false);
         }
     }
 
     /** Ошибку агента для кода — понятными словами и с тем, что делать. */
     static String explain(String said) {
-        String s = said == null ? "" : said.toLowerCase(Locale.ROOT);
-        if (s.contains("authenticate") || s.contains("oauth") || s.contains("login") || s.contains("api key")) {
+        Trouble t = trouble(new Reply(true, said, null, true));
+        if (t == Trouble.NOT_LOGGED_IN) {
             return "агент для кода не вошёл в аккаунт: на ПК запустите claude и выполните /login";
         }
-        if (s.contains("rate limit") || s.contains("usage limit") || s.contains("quota")) {
-            return "у агента для кода исчерпан лимит запросов: " + said;
+        if (t == Trouble.NO_SUBSCRIPTION) {
+            return "Claude Code не может работать по подписке claude.ai (обычно — не прошла оплата): "
+                   + "проверьте claude.ai/settings/billing. Ответ: " + said;
         }
+        if (t == Trouble.LIMIT) return "у агента для кода исчерпан лимит запросов: " + said;
         return "агент для кода не справился: " + said;
     }
 
