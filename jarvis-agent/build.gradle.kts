@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.jarvis"
-version = "0.1.0"
+version = "0.1.1"
 
 java {
     toolchain {
@@ -52,6 +52,15 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    // «Как на сервере GitHub»: ./gradlew test -PciLike — английский язык системы (дробные
+    // числа через точку) и пустая домашняя папка (нет ~/.jarvis-agent/agent.properties
+    // разработчика). Так ловятся тесты, которые проходят только на этом ПК.
+    if (project.hasProperty("ciLike")) {
+        val home = layout.buildDirectory.dir("tmp/ci-home").get().asFile
+        doFirst { home.deleteRecursively(); home.mkdirs() }
+        systemProperty("user.home", home.absolutePath)
+        jvmArgs("-Duser.language=en", "-Duser.country=US")
+    }
     // Тесты не должны трогать настоящую память агента (~/.jarvis-agent/trajectories.json):
     // PlanRunner при опровергнутой проверке «забывает» траекторию.
     systemProperty("faust.trajectoriesFile",
@@ -71,6 +80,72 @@ application {
     // Иначе на русской Windows консоль (и наш дублирующий лог-файл) получают
     // не ту кодировку и кириллица превращается в кракозябры.
     applicationDefaultJvmArgs = listOf("-Dstdout.encoding=UTF-8", "-Dstderr.encoding=UTF-8")
+}
+
+// --- Программа для Windows -----------------------------------------------------
+// Агент как обычная программа: Faust.exe со встроенной Java 21 — на ПК не нужны
+// ни Java, ни Gradle, ни Docker (релей, база и модели живут на сервере).
+//   ./gradlew packageApp                                     папка build/package/Faust (переносная)
+//   ./gradlew packageApp -PrelayUrl=wss://сервер/ws          то же, сразу с адресом сервера
+//   ./gradlew packageApp -PinstallerType=exe                 установщик Faust-<версия>.exe (нужен WiX Toolset)
+// Адрес сервера уходит в программу как -Dfaust.defaultRelayUrl (см. AgentConfig.defaultRelayUrl):
+// человеку при первом запуске ничего не нужно вводить — только привязать телефон.
+tasks.register<Exec>("packageApp") {
+    group = "distribution"
+    description = "Собирает Faust.exe со встроенной Java (jpackage)"
+    dependsOn(tasks.named("installDist"))
+
+    val type = (findProperty("installerType") as String?) ?: "app-image"
+    val relayUrl = (findProperty("relayUrl") as String?)?.trim().orEmpty()
+    val jdk = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    val lib = layout.buildDirectory.dir("install/jarvis-agent/lib")
+    val dest = layout.buildDirectory.dir("package")
+    val jarName = "jarvis-agent-${project.version}.jar"
+
+    // WiX Toolset 3.x (нужен jpackage из JDK 21 для установщика) — из tools/wix314, без
+    // установки в систему: архив с github.com/wixtoolset/wix3 распакован туда (папка не в git).
+    // PATH подменяется только для этой задачи.
+    val wix = file("tools/wix314")
+    if (wix.resolve("candle.exe").exists()) {
+        environment("PATH", wix.absolutePath + File.pathSeparator + System.getenv("PATH"))
+    }
+
+    doFirst {
+        if (type != "app-image" && !wix.resolve("candle.exe").exists()) {
+            throw GradleException("для установщика нужен WiX Toolset 3.x в jarvis-agent/tools/wix314 " +
+                    "(wix314-binaries.zip с github.com/wixtoolset/wix3/releases)")
+        }
+        // jpackage не перезаписывает готовую папку — убираем прошлую сборку сами.
+        delete(dest.get().dir("Faust"))
+        val javaOptions = mutableListOf("-Dstdout.encoding=UTF-8", "-Dstderr.encoding=UTF-8")
+        if (relayUrl.isNotEmpty()) javaOptions += "-Dfaust.defaultRelayUrl=$relayUrl"
+        val args = mutableListOf(
+            jdk.get().metadata.installationPath.file("bin/jpackage.exe").asFile.absolutePath,
+            "--type", type,
+            "--name", "Faust",
+            "--app-version", project.version.toString(),
+            "--vendor", "Faust",
+            "--description", "Faust - PC agent",
+            "--input", lib.get().asFile.absolutePath,
+            "--main-jar", jarName,
+            "--main-class", "com.jarvis.agent.AgentMain",
+            "--icon", file("src/package/faust.ico").absolutePath,
+            "--dest", dest.get().asFile.absolutePath,
+            // Встроенная Java без отладочной информации, справки и заголовков C — заметно меньше.
+            // Состав модулей не урезаем: без jdk.crypto.ec не заработал бы wss:// к серверу.
+            "--jlink-options", "--strip-debug --no-man-pages --no-header-files --compress=zip-6",
+        )
+        javaOptions.forEach { args += listOf("--java-options", it) }
+        if (type != "app-image") {
+            // Установщик: на текущего пользователя (без прав администратора), ярлыки в
+            // «Пуске» и на рабочем столе, выбор папки. upgrade-uuid постоянный — новая
+            // версия ставится поверх старой, а не рядом.
+            args += listOf("--win-per-user-install", "--win-menu", "--win-menu-group", "Faust",
+                    "--win-shortcut", "--win-dir-chooser",
+                    "--win-upgrade-uuid", "6f3c1d2e-8a4b-4f7e-9c11-5b2a7d9e0f31")
+        }
+        commandLine(args)
+    }
 }
 
 // Все задачи запуска (run, runVisionDemo, runScreenDemo, runOverlayDemo) —

@@ -25,6 +25,8 @@ import java.util.function.Consumer;
 public class AgentMain {
 
     private static final String FLAG_PAIR_PHONE = "--pair-phone";
+    /** Запуск автозапуском Windows (см. Autostart): то же самое, только без лишних окон. */
+    static final String FLAG_AUTOSTART = "--autostart";
 
     public static void main(String[] args) throws Exception {
         AgentLog.install();
@@ -32,9 +34,21 @@ public class AgentMain {
         // иначе JOptionPane успеет взять стандартные цвета Windows.
         JarvisSwingTheme.applyGlobals();
 
-        // Флаг вынимаем до разбора позиционных аргументов, чтобы не сдвинуть url/код.
+        // Второй агент рядом с первым — два подключения под одним токеном, двойные
+        // команды и драка за мышь (см. SingleInstance). Говорим и выходим.
+        if (!SingleInstance.acquire()) {
+            if (!Arrays.asList(args).contains(FLAG_AUTOSTART)) {
+                javax.swing.JOptionPane.showMessageDialog(null,
+                        "«Фауст» уже запущен — его значок в трее, рядом с часами.",
+                        "Фауст", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }
+            System.exit(0);
+        }
+
+        // Флаги вынимаем до разбора позиционных аргументов, чтобы не сдвинуть url/код.
         List<String> positional = new ArrayList<>(Arrays.asList(args));
         boolean openPairWindow = positional.remove(FLAG_PAIR_PHONE);
+        positional.remove(FLAG_AUTOSTART);
         String[] rest = positional.toArray(new String[0]);
 
         AgentConfig config = AgentConfig.resolve(rest);
@@ -45,6 +59,9 @@ public class AgentMain {
                 () -> PairPhoneDialog.open(config, tokenStore),
                 () -> resetPairing(tokenStore));
         tray.install();
+        // Установленная программа при первом запуске сама встаёт в автозапуск
+        // (дальше — галочка в трее). При запуске из Gradle ничего не делает.
+        Autostart.initOnFirstRun();
 
         // Зависимость кольцевая: клиенту нужен исполнитель команд, а исполнителю —
         // send() клиента, чтобы слать кадры живого экрана самому. Разрываем её

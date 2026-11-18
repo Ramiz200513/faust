@@ -1,0 +1,53 @@
+{"id": "n-01", "source": "author-new", "phrase": "поставь видос на паузу", "type": "quick_action", "action": "play_pause"}
+{"id": "n-02", "source": "author-new", "phrase": "тормозни музыку", "type": "quick_action", "action": "play_pause"}
+{"id": "n-03", "source": "author-new", "phrase": "стопни трек на минутку", "type": "quick_action", "action": "play_pause"}
+{"id": "n-04", "source": "author-new", "phrase": "Фауст, пауза в плеере", "type": "quick_action", "action": "play_pause"}
+{"id": "n-05", "source": "author-new", "phrase": "останови воспроизведение, мне звонят", "type": "quick_action", "action": "play_pause"}
+{"id": "n-06", "source": "author-new", "phrase": "верни музыку, сними с паузы", "type": "quick_action", "action": "play_pause"}
+{"id": "n-07", "source": "author-new", "phrase": "pause it", "type": "quick_action", "action": "play_pause"}
+{"id": "n-08", "source": "author-new", "phrase": "нажми паузу", "type": "quick_action", "action": "play_pause"}
+{"id": "n-09", "source": "author-new", "phrase": "давай дальше смотреть, включи воспроизведение", "type": "quick_action", "action": "play_pause"}
+{"id": "n-10", "source": "author-new", "phrase": "следующую песню давай", "type": "quick_action", "action": "next_track"}
+{"id": "n-11", "source": "author-new", "phrase": "эта песня надоела, переключи", "type": "quick_action", "action": "next_track"}
+{"id": "n-12", "source": "author-new", "phrase": "скипни это", "type": "quick_action", "action": "next_track"}
+{"id": "n-13", "source": "author-new", "phrase": "дальше трек", "type": "quick_action", "action": "next_track"}
+{"id": "n-14", "source": "author-new", "phrase": "включи следующую композицию в плейлисте", "type": "quick_action", "action": "next_track"}
+{"id": "n-15", "source": "author-new", "phrase": "skip this song", "type": "quick_action", "action": "next_track"}
+{"id": "n-16", "source": "author-new", "phrase": "верни прошлую песню", "type": "quick_action", "action": "prev_track"}
+{"id": "n-17", "source": "author-new", "phrase": "назад на предыдущий трек", "type": "quick_action", "action": "prev_track"}
+{"id": "n-18", "source": "author-new", "phrase": "включи ещё раз ту песню, что была до этой", "type": "quick_action", "action": "prev_track"}
+{"id": "n-19", "source": "author-new", "phrase": "previous song please", "type": "quick_action", "action": "prev_track"}
+{"id": "n-20", "source": "author-new", "phrase": "сверни всё", "type": "quick_action", "action": "minimize_all"}
+{"id": "n-21", "source": "author-new", "phrase": "убери все окна с экрана", "type": "quick_action", "action": "minimize_all"}
+{"id": "n-22", "source": "author-new", "phrase": "покажи мне рабочий стол", "type": "quick_action", "action": "minimize_all"}
+{"id": "n-23", "source": "author-new", "phrase": "спрячь все программы, кто-то идёт", "type": "quick_action", "action": "minimize_all"}
+{"id": "n-24", "source": "author-new", "phrase": "минимизируй окна", "type": "quick_action", "action": "minimize_all"}
+{"id": "n-25", "source": "author-new", "phrase": "прибавь звук на 10", "type": "quick_action", "action": "volume_delta", "amount": [10, 10]}
+{"id": "n-26", "source": "author-new", "phrase": "сделай громче на пятнадцать процентов", "type": "quick_action", "action": "volume_delta", "amount": [15, 15]}
+{"id": "n-27", "source": "author-new", "phrase": "чуть громче, процентов на пять", "type": "quick_action", "action": "volume_delta", "amount": [5, 5]}
+{"id": "n-28", "source": "author-new", "phrase": "добавь громкости на 20", "type": "quick_action", "action": "volume_delta", "amount": [20, 20]}
+{"id": "n-29", "source": "author-new", "phrase": "подкрути звук вверх на 30", "type": "quick_action", "action": "volume_delta", "amount": [30, 30]}
+{"id": "n-30", "source": "author-new", "phrase": "убавь звук на 10", "type": "quick_action", "action": "volume_delta", "amount": [-10, -10]}
+{"id": "n-31", "source": "author-new", "phrase": "сделай тише на двадцать", "type": "quick_action", "action": "volume_delta", "amount": [-20, -20]}
+{"id": "n-32", "source": "author-new", "phrase": "приглуши на 15 процентов", "type": "quick_action", "action": "volume_delta", "amount": [-15, -15]}
+{"id": "n-33", "source": "author-new", "phrase": "понизь громкость на 5", "type": "quick_action", "action": "volume_delta", "amount": [-5, -5]}
+{"id": "n-34", "source": "author-new", "phrase": "минус десять к громкости", "type": "quick_action", "action": "volume_delta", "amount": [-10, -10]}
+{"id": "n-35", "source": "author-new", "phrase": "поставь громкость 40", "type": "set_volume", "level": [40, 40]}
+{"id": "n-36", "source": "author-new", "phrase": "сделай тише", "type": "set_volume", "level": [1, 50]}
+{"id": "n-37", "source": "author-new", "phrase": "выключи звук совсем", "type": "set_volume", "level": [0, 0]}
+{"id": "n-38", "source": "author-new", "phrase": "громкость на максимум", "type": "set_volume", "level": [80, 100]}
+{"id": "n-39", "source": "author-new", "phrase": "открой папку рабочий стол", "type": "open_app", "apps": ["рабочий стол", "desktop"]}
+{"id": "n-40", "source": "author-new", "phrase": "включи следующую серию сериала на кинопоиске", "type": "agent_task", "scope": "browser"}
+{"id": "n-41", "source": "author-new", "phrase": "найди на ютубе следующий выпуск подкаста", "type": "agent_task", "scope": "browser"}
+{"id": "n-42", "source": "author-new", "phrase": "поставь на паузу загрузку в стиме", "type": "agent_task", "scope": "screen"}
+{"id": "n-43", "source": "author-new", "phrase": "перемотай видео на минуту назад", "type": "agent_task", "scope": "screen"}
+{"id": "n-44", "source": "author-new", "phrase": "прогони тесты в проекте демо", "type": "agent_task", "scope": "screen"}
+{"id": "n-45", "source": "author-new", "phrase": "поменяй порт в docker-compose демо на 8091 и запушь", "type": "agent_task", "scope": "screen"}
+{"id": "n-46", "source": "author-new", "phrase": "исправь опечатку в README диплома и закоммить", "type": "agent_task", "scope": "screen"}
+{"id": "n-47", "source": "author-new", "phrase": "запусти сборку андроид проекта", "type": "agent_task", "scope": "screen"}
+{"id": "n-48", "source": "author-new", "phrase": "добавь переменную окружения APP_ENV в проект демо", "type": "agent_task", "scope": "screen"}
+{"id": "n-49", "source": "author-new", "phrase": "открой проект диплом в Android Studio и запусти тесты", "type": "agent_task", "scope": "screen"}
+{"id": "n-50", "source": "author-new", "phrase": "посмотри, какие файлы изменены в репозитории демо", "type": "agent_task", "scope": "screen"}
+{"id": "n-51", "source": "author-new", "phrase": "поставь телевизор в зале на паузу", "type": "unknown"}
+{"id": "n-52", "source": "author-new", "phrase": "переключи канал на телевизоре", "type": "unknown"}
+{"id": "n-53", "source": "author-new", "phrase": "сделай погромче радио в машине", "type": "unknown"}

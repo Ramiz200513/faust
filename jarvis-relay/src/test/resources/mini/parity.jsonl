@@ -1,0 +1,1218 @@
+{"phrase": "сделай потише", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.9980278493421224}
+{"phrase": "сделай погромче", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.9996560830554984}
+{"phrase": "убавь громкость", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.9997565805194988}
+{"phrase": "прибавь громкость", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.999734053549961}
+{"phrase": "выключи звук совсем", "raw": "{\"type\":\"set_volume\",\"level\":0}", "confidence": 0.9995006259490751}
+{"phrase": "поставь громкость на 30", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.9667675211788662}
+{"phrase": "сделай звук на максимум", "raw": "{\"type\":\"set_volume\",\"level\":100}", "confidence": 0.999993562704617}
+{"phrase": "сделай звук минимальным", "raw": "{\"type\":\"set_volume\",\"level\":5}", "confidence": 0.9962868915511258}
+{"phrase": "громкость 70 процентов", "raw": "{\"type\":\"set_volume\",\"level\":70}", "confidence": 0.9994179520683417}
+{"phrase": "потише пожалуйста, не слышно фильм", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.9998525390805924}
+{"phrase": "сделай звук погромче, ничего не слышно", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.9999855757257592}
+{"phrase": "убери звук вообще", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.8250635468369829}
+{"phrase": "накрути громкость до предела", "raw": "{\"type\":\"set_volume\",\"level\":100}", "confidence": 0.9836010855252901}
+{"phrase": "открой ютуб", "raw": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "confidence": 0.9993839615390243}
+{"phrase": "зайди на википедию", "raw": "{\"type\":\"open_url\",\"url\":\"https://ru.wikipedia.org\"}", "confidence": 0.9998554013455703}
+{"phrase": "открой гугл", "raw": "{\"type\":\"open_url\",\"url\":\"https://google.com\"}", "confidence": 0.9941420503950411}
+{"phrase": "зайди на почту gmail", "raw": "{\"type\":\"open_url\",\"url\":\"https://mail.google.com\"}", "confidence": 0.9992198996637711}
+{"phrase": "открой вконтакте", "raw": "{\"type\":\"open_url\",\"url\":\"https://vk.com\"}", "confidence": 0.9929723958447028}
+{"phrase": "зайди на хабр", "raw": "{\"type\":\"open_url\",\"url\":\"https://habr.com\"}", "confidence": 0.9974131528165984}
+{"phrase": "открой github.com", "raw": "{\"type\":\"open_url\",\"url\":\"https://github.com\"}", "confidence": 0.3040748143381524}
+{"phrase": "зайди на сайт enu.kz", "raw": "{\"type\":\"open_url\",\"url\":\"https://enu.kz\"}", "confidence": 0.9998666061476911}
+{"phrase": "открой яндекс", "raw": "{\"type\":\"open_url\",\"url\":\"https://yandex.ru\"}", "confidence": 0.9663451390430247}
+{"phrase": "зайди на авито", "raw": "{\"type\":\"open_url\",\"url\":\"https://avito.ru\"}", "confidence": 0.9985911891682591}
+{"phrase": "открой линкедин", "raw": "{\"type\":\"open_url\",\"url\":\"https://linkedin.com\"}", "confidence": 0.9974290884655943}
+{"phrase": "зайди на стековерфлоу", "raw": "{\"type\":\"open_url\",\"url\":\"https://stackoverflow.com\"}", "confidence": 0.9931681320588801}
+{"phrase": "открой новости mail.ru", "raw": "{\"type\":\"open_url\",\"url\":\"https://news.mail.ru\"}", "confidence": 0.9925511255016382}
+{"phrase": "зайди на реддит", "raw": "{\"type\":\"open_url\",\"url\":\"https://reddit.com\"}", "confidence": 0.9995749342672298}
+{"phrase": "открой телеграм веб", "raw": "{\"type\":\"open_url\",\"url\":\"https://web.telegram.org\"}", "confidence": 0.9818075881458057}
+{"phrase": "зайди на сайт погоды gismeteo", "raw": "{\"type\":\"open_url\",\"url\":\"https://gismeteo.kz\"}", "confidence": 0.9987906674471247}
+{"phrase": "запусти блокнот", "raw": "{\"type\":\"open_app\",\"appName\":\"notepad\"}", "confidence": 0.98714294982274}
+{"phrase": "открой калькулятор", "raw": "{\"type\":\"open_app\",\"appName\":\"calc\"}", "confidence": 0.9984941486133607}
+{"phrase": "запусти проводник", "raw": "{\"type\":\"open_app\",\"appName\":\"explorer\"}", "confidence": 0.9995400369708918}
+{"phrase": "открой paint", "raw": "{\"type\":\"open_app\",\"appName\":\"paint\"}", "confidence": 0.998911506301198}
+{"phrase": "запусти хром", "raw": "{\"type\":\"open_app\",\"appName\":\"chrome\"}", "confidence": 0.9967417179164286}
+{"phrase": "открой эдж", "raw": "{\"type\":\"open_app\",\"appName\":\"edge\"}", "confidence": 0.9900458072587526}
+{"phrase": "запусти диспетчер задач", "raw": "{\"type\":\"open_app\",\"appName\":\"taskmgr\"}", "confidence": 0.8224318171719744}
+{"phrase": "открой папку загрузки", "raw": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "confidence": 0.9999260902404785}
+{"phrase": "открой документы", "raw": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "confidence": 0.9970391207690028}
+{"phrase": "открой рабочий стол", "raw": "{\"type\":\"open_app\",\"appName\":\"рабочий стол\"}", "confidence": 0.8759230496714707}
+{"phrase": "открой изображения", "raw": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "confidence": 0.9988848946478868}
+{"phrase": "запусти notepad", "raw": "{\"type\":\"open_app\",\"appName\":\"notepad\"}", "confidence": 0.9998542099347105}
+{"phrase": "открой calc", "raw": "{\"type\":\"open_app\",\"appName\":\"calc\"}", "confidence": 0.9940122546263197}
+{"phrase": "запусти explorer", "raw": "{\"type\":\"open_app\",\"appName\":\"explorer\"}", "confidence": 0.9827858674995404}
+{"phrase": "открой мою папку с фотками", "raw": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "confidence": 0.9999859333103132}
+{"phrase": "включи блокнотик, хочу кое-что записать", "raw": "{\"type\":\"open_app\",\"appName\":\"notepad\"}", "confidence": 0.9987967047229773}
+{"phrase": "сделай скриншот", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9999707937240601}
+{"phrase": "покажи что на экране", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9998594522476196}
+{"phrase": "сфотографируй экран", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9713898301124573}
+{"phrase": "пришли скрин", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9996455907821655}
+{"phrase": "хочу посмотреть что у тебя на экране", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9989641904830933}
+{"phrase": "сними скриншот пожалуйста", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9997231364250183}
+{"phrase": "покажи рабочий стол картинкой", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9340987801551819}
+{"phrase": "скинь скрин экрана", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9995275735855103}
+{"phrase": "засними что сейчас происходит на компьютере", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9914175271987915}
+{"phrase": "заблокируй компьютер", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999997615814209}
+{"phrase": "заблокируй экран", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999995231628418}
+{"phrase": "закрой доступ к компьютеру", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9890025854110718}
+{"phrase": "включи блокировку", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9998984336853027}
+{"phrase": "заблокируй пк, я ухожу", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999940395355225}
+{"phrase": "поставь на блокировку", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999779462814331}
+{"phrase": "запри компьютер", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.931776225566864}
+{"phrase": "заблокируй ноутбук", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.999976396560669}
+{"phrase": "покажи запущенные процессы", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.999998927116394}
+{"phrase": "какие программы сейчас работают", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9994558691978455}
+{"phrase": "список процессов", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9998955726623535}
+{"phrase": "что сейчас запущено на компьютере", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9999997615814209}
+{"phrase": "покажи список программ", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9999821186065674}
+{"phrase": "какие приложения открыты", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9998594522476196}
+{"phrase": "дай список запущенных программ", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.999976396560669}
+{"phrase": "покажи, что грузит систему", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9997820258140564}
+{"phrase": "закрой хром", "raw": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "confidence": 0.9991272113652272}
+{"phrase": "убей процесс chrome.exe", "raw": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "confidence": 0.5944068117072518}
+{"phrase": "останови телеграм", "raw": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "confidence": 0.599063473983307}
+{"phrase": "закрой блокнот", "raw": "{\"type\":\"kill_process\",\"processName\":\"notepad.exe\"}", "confidence": 0.9925431955618151}
+{"phrase": "выключи спотифай", "raw": "{\"type\":\"kill_process\",\"processName\":\"spotify.exe\"}", "confidence": 0.9782235703357998}
+{"phrase": "заверши процесс notepad.exe", "raw": "{\"type\":\"kill_process\",\"processName\":\"notepad.exe\"}", "confidence": 0.9872318200533527}
+{"phrase": "закрой браузер эдж", "raw": "{\"type\":\"kill_process\",\"processName\":\"msedge.exe\"}", "confidence": 0.9914068804969105}
+{"phrase": "убей zoom", "raw": "{\"type\":\"kill_process\",\"processName\":\"zoom.exe\"}", "confidence": 0.986072636688121}
+{"phrase": "останови discord", "raw": "{\"type\":\"kill_process\",\"processName\":\"discord.exe\"}", "confidence": 0.9814358776306449}
+{"phrase": "закрой ворд", "raw": "{\"type\":\"kill_process\",\"processName\":\"winword.exe\"}", "confidence": 0.9863095584653152}
+{"phrase": "выключи скайп", "raw": "{\"type\":\"kill_process\",\"processName\":\"skype.exe\"}", "confidence": 0.7965214740246154}
+{"phrase": "найди на ютубе видео про котиков и открой первое", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9996311664581299}
+{"phrase": "зайди на википедию и найди статью про эйнштейна", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9985418319702148}
+{"phrase": "найди в гугле рецепт пиццы и открой первый результат", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.999464213848114}
+{"phrase": "поставь лайк на видео которое сейчас открыто", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9999490976333618}
+{"phrase": "найди дешёвые авиабилеты в алматы", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9861847758293152}
+{"phrase": "зайди на авито и найди объявления о продаже велосипеда", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9991773962974548}
+{"phrase": "найди новости про искусственный интеллект и открой одну статью", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9214728474617004}
+{"phrase": "зайди на ютуб и найди урок по питону для начинающих", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.999890923500061}
+{"phrase": "найди на википедии список президентов казахстана", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9996253252029419}
+{"phrase": "забронируй столик в ресторане через сайт", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9478486180305481}
+{"phrase": "найди на маркетплейсе телефон дешевле 100 тысяч тенге", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9770959615707397}
+{"phrase": "зайди в гугл карты и найди ближайшую кофейню", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9998408555984497}
+{"phrase": "найди перевод слова serendipity и покажи его", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.972889244556427}
+{"phrase": "открой ютуб, найди трейлер нового фильма марвел и включи его", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9992953538894653}
+{"phrase": "зайди на linkedin и найди вакансии java разработчика", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9993379712104797}
+{"phrase": "найди билеты на поезд из алматы в астану на завтра", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9966930150985718}
+{"phrase": "какая сегодня погода", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9993745684623718}
+{"phrase": "расскажи анекдот", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9977210164070129}
+{"phrase": "сколько будет дважды два", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9988462924957275}
+{"phrase": "как дела", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9994900226593018}
+{"phrase": "включи музыку", "raw": "{\"type\":\"quick_action\",\"action\":\"play_pause\"}", "confidence": 0.8056604862213135}
+{"phrase": "сделай мне кофе", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8390054702758789}
+{"phrase": "который час", "raw": "{\"type\":\"unknown\"}", "confidence": 0.4892894923686981}
+{"phrase": "спой песню", "raw": "{\"type\":\"unknown\"}", "confidence": 0.39220574498176575}
+{"phrase": "what is the weather today", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9966861605644226}
+{"phrase": "бла бла бла ничего не понятно", "raw": "{\"type\":\"unknown\"}", "confidence": 0.953837513923645}
+{"phrase": "переведи текст на английский", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8239388465881348}
+{"phrase": "напиши сочинение про осень", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9751120209693909}
+{"phrase": "хочу поговорить", "raw": "{\"type\":\"open_url\",\"url\":\"https://avito.ru\"}", "confidence": 0.23396946332830737}
+{"phrase": "сколько стоит биткоин", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9911963939666748}
+{"phrase": "расскажи про себя", "raw": "{\"type\":\"unknown\"}", "confidence": 0.861400306224823}
+{"phrase": "умеешь ли ты готовить", "raw": "{\"type\":\"unknown\"}", "confidence": 0.996599018573761}
+{"phrase": "привет, как настроение", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9986904263496399}
+{"phrase": "закажи пиццу", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9966371059417725}
+{"phrase": "громкость на пятьдесят", "raw": "{\"type\":\"set_volume\",\"level\":50}", "confidence": 0.876535605206719}
+{"phrase": "поставь звук на 15 процентов", "raw": "{\"type\":\"set_volume\",\"level\":15}", "confidence": 0.9834218588330508}
+{"phrase": "сделай звук наполовину", "raw": "{\"type\":\"set_volume\",\"level\":50}", "confidence": 0.9996971517659503}
+{"phrase": "чуть-чуть потише", "raw": "{\"type\":\"set_volume\",\"level\":40}", "confidence": 0.9874182405892817}
+{"phrase": "сделай по тише", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.9988958265757901}
+{"phrase": "звук на ноль", "raw": "{\"type\":\"set_volume\",\"level\":0}", "confidence": 0.9995694027223436}
+{"phrase": "верни звук на 40", "raw": "{\"type\":\"set_volume\",\"level\":40}", "confidence": 0.9590748696790925}
+{"phrase": "громкость двадцать пять", "raw": "{\"type\":\"set_volume\",\"level\":25}", "confidence": 0.998738633394737}
+{"phrase": "мьют", "raw": "{\"type\":\"set_volume\",\"level\":0}", "confidence": 0.997715325786956}
+{"phrase": "volume 20", "raw": "{\"type\":\"set_volume\",\"level\":20}", "confidence": 0.9913777565095927}
+{"phrase": "turn the volume up", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.9774450865436108}
+{"phrase": "сделай как можно тише, но не выключай совсем", "raw": "{\"type\":\"unknown\"}", "confidence": 0.6576216220855713}
+{"phrase": "открой кинопоиск", "raw": "{\"type\":\"open_url\",\"url\":\"https://kinopoisk.ru\"}", "confidence": 0.957929943334598}
+{"phrase": "зайди на озон", "raw": "{\"type\":\"open_url\",\"url\":\"https://ozon.ru\"}", "confidence": 0.9844077443425192}
+{"phrase": "открой каспи", "raw": "{\"type\":\"open_url\",\"url\":\"https://kaspi.kz\"}", "confidence": 0.9990293986581946}
+{"phrase": "зайди на hh", "raw": "{\"type\":\"open_url\",\"url\":\"https://hh.ru\"}", "confidence": 0.9997727321674574}
+{"phrase": "открой чатгпт", "raw": "{\"type\":\"open_url\",\"url\":\"https://chatgpt.com\"}", "confidence": 0.9851278111016768}
+{"phrase": "открой ютуб мьюзик", "raw": "{\"type\":\"open_url\",\"url\":\"https://music.youtube.com\"}", "confidence": 0.943551547774419}
+{"phrase": "открой гугл карты", "raw": "{\"type\":\"open_url\",\"url\":\"https://www.google.com/maps\"}", "confidence": 0.9994442011153453}
+{"phrase": "зайди на госуслуги", "raw": "{\"type\":\"open_url\",\"url\":\"https://gosuslugi.ru\"}", "confidence": 0.9828935561565189}
+{"phrase": "открой egov", "raw": "{\"type\":\"open_url\",\"url\":\"https://egov.kz\"}", "confidence": 0.9900844553459791}
+{"phrase": "открой сайт stackoverflow.com", "raw": "{\"type\":\"open_url\",\"url\":\"https://stackoverflow.com\"}", "confidence": 0.9995120887973314}
+{"phrase": "зайди на ютуб пожалуйста", "raw": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "confidence": 0.9997621905750975}
+{"phrase": "открой вк", "raw": "{\"type\":\"open_url\",\"url\":\"https://vk.com\"}", "confidence": 0.9294962562979059}
+{"phrase": "зайди в инсту", "raw": "{\"type\":\"open_url\",\"url\":\"https://instagram.com\"}", "confidence": 0.9992187800668972}
+{"phrase": "открой твиттер", "raw": "{\"type\":\"open_url\",\"url\":\"https://x.com\"}", "confidence": 0.9131945871966671}
+{"phrase": "open youtube", "raw": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "confidence": 0.9993648632986236}
+{"phrase": "открой гугл переводчик", "raw": "{\"type\":\"open_url\",\"url\":\"https://translate.google.com\"}", "confidence": 0.9995869656289074}
+{"phrase": "зайди на 2гис", "raw": "{\"type\":\"open_url\",\"url\":\"https://2gis.kz\"}", "confidence": 0.998494274620839}
+{"phrase": "открой яндекс почту", "raw": "{\"type\":\"open_url\",\"url\":\"https://mail.yandex.ru\"}", "confidence": 0.9998071807427849}
+{"phrase": "запусти телегу", "raw": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "confidence": 0.9144636000481086}
+{"phrase": "открой ватсап", "raw": "{\"type\":\"open_app\",\"appName\":\"whatsapp\"}", "confidence": 0.9917716482009524}
+{"phrase": "открой ворд", "raw": "{\"type\":\"open_app\",\"appName\":\"word\"}", "confidence": 0.9844465978627426}
+{"phrase": "запусти эксель", "raw": "{\"type\":\"open_app\",\"appName\":\"excel\"}", "confidence": 0.5006434313726089}
+{"phrase": "открой вскод", "raw": "{\"type\":\"open_app\",\"appName\":\"visual studio code\"}", "confidence": 0.9845798052358532}
+{"phrase": "запусти стим", "raw": "{\"type\":\"open_app\",\"appName\":\"steam\"}", "confidence": 0.899899719953897}
+{"phrase": "открой настройки", "raw": "{\"type\":\"open_app\",\"appName\":\"параметры\"}", "confidence": 0.9184518074753356}
+{"phrase": "открой папку документы", "raw": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "confidence": 0.9999433756340181}
+{"phrase": "открой загрузки", "raw": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "confidence": 0.9978108497231659}
+{"phrase": "запусти диспетчер задач пожалуйста", "raw": "{\"type\":\"open_app\",\"appName\":\"taskmgr\"}", "confidence": 0.9789234200452768}
+{"phrase": "открой калькулятор пожалуйста", "raw": "{\"type\":\"open_app\",\"appName\":\"calc\"}", "confidence": 0.9972814327998947}
+{"phrase": "запусти пэинт", "raw": "{\"type\":\"open_app\",\"appName\":\"paint\"}", "confidence": 0.9961215603607911}
+{"phrase": "открой блокнот", "raw": "{\"type\":\"open_app\",\"appName\":\"notepad\"}", "confidence": 0.9976791399492413}
+{"phrase": "запусти дискорд", "raw": "{\"type\":\"open_app\",\"appName\":\"discord\"}", "confidence": 0.9089716370820433}
+{"phrase": "открой зум", "raw": "{\"type\":\"open_app\",\"appName\":\"zoom\"}", "confidence": 0.8725961051609161}
+{"phrase": "start notepad", "raw": "{\"type\":\"open_app\",\"appName\":\"notepad\"}", "confidence": 0.9985365553859822}
+{"phrase": "открой обс", "raw": "{\"type\":\"open_app\",\"appName\":\"obs studio\"}", "confidence": 0.9989656769080284}
+{"phrase": "включи телеграм", "raw": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "confidence": 0.843738872559193}
+{"phrase": "закрой телегу", "raw": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "confidence": 0.9922002777010448}
+{"phrase": "вырубай хром", "raw": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "confidence": 0.9888477088243874}
+{"phrase": "закрой все окна хрома", "raw": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "confidence": 0.9889263932984704}
+{"phrase": "убей процесс java", "raw": "{\"type\":\"kill_process\",\"processName\":\"java.exe\"}", "confidence": 0.9998939062049885}
+{"phrase": "закрой вскод", "raw": "{\"type\":\"kill_process\",\"processName\":\"code.exe\"}", "confidence": 0.9985905489230049}
+{"phrase": "заверши дискорд", "raw": "{\"type\":\"kill_process\",\"processName\":\"discord.exe\"}", "confidence": 0.9876821921640158}
+{"phrase": "закрой эксель", "raw": "{\"type\":\"kill_process\",\"processName\":\"excel.exe\"}", "confidence": 0.9045903200399366}
+{"phrase": "закрой ватсап", "raw": "{\"type\":\"kill_process\",\"processName\":\"whatsapp.exe\"}", "confidence": 0.993155964283865}
+{"phrase": "останови стим", "raw": "{\"type\":\"kill_process\",\"processName\":\"steam.exe\"}", "confidence": 0.987204924527429}
+{"phrase": "kill chrome", "raw": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "confidence": 0.9975858642730557}
+{"phrase": "закрой зум", "raw": "{\"type\":\"kill_process\",\"processName\":\"zoom.exe\"}", "confidence": 0.9888391764478968}
+{"phrase": "закрой спотифай", "raw": "{\"type\":\"kill_process\",\"processName\":\"spotify.exe\"}", "confidence": 0.9975702765724108}
+{"phrase": "сдлай скриншот", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9999402761459351}
+{"phrase": "скриншот", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9998700618743896}
+{"phrase": "покажи экран компа", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9992507100105286}
+{"phrase": "take a screenshot", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9978724718093872}
+{"phrase": "щёлкни экран", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.992110550403595}
+{"phrase": "заблокируй комп", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.999998927116394}
+{"phrase": "блокировка экрана", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999991655349731}
+{"phrase": "lock the computer", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9995439648628235}
+{"phrase": "заблокируй пожалуйста ноут", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999932050704956}
+{"phrase": "я отошёл, заблокируй", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9957476258277893}
+{"phrase": "чо там запущено", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9997195601463318}
+{"phrase": "какие процессы висят", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9991456270217896}
+{"phrase": "list processes", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.7496125102043152}
+{"phrase": "что жрёт память", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9844441413879395}
+{"phrase": "покажи все программы, которые сейчас открыты", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9795544147491455}
+{"phrase": "найди в гугле погоду в астане и открой первый сайт", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9991538524627686}
+{"phrase": "посмотри на кинопоиске рейтинг фильма дюна", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9912511110305786}
+{"phrase": "найди на ютубе лекцию по машинному обучению и включи", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9999374151229858}
+{"phrase": "открой википедию и найди статью про казахстан", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9995904564857483}
+{"phrase": "найди на hh вакансии python в алматы", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9953091740608215}
+{"phrase": "подпишись на этот канал", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9711578488349915}
+{"phrase": "найди курс доллара на сайте нацбанка", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9936607480049133}
+{"phrase": "найди рецепт борща и открой первый сайт", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9462649822235107}
+{"phrase": "поищи в интернете, как установить докер", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9841760993003845}
+{"phrase": "найди на гитхабе репозиторий spring boot и открой его", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9955323934555054}
+{"phrase": "посмотри, что пишут в новостях про погоду на завтра", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8719437122344971}
+{"phrase": "зайди на озон и добавь в корзину наушники", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.940270185470581}
+{"phrase": "скачай файл с example.com и перешли его в телеграм Пете", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9997372031211853}
+{"phrase": "найди в загрузках последний pdf и отправь его маме в вотсап", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999866485595703}
+{"phrase": "открой блокнот и напиши список покупок", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9996707439422607}
+{"phrase": "создай в документах папку практика и перенеси туда все docx из загрузок", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998610019683838}
+{"phrase": "распакуй архив из загрузок в папку документы", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9987217783927917}
+{"phrase": "напиши в телеграме Пете, что я опоздаю", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9997171759605408}
+{"phrase": "найди курс евро, запиши его в блокнот и сохрани на рабочий стол", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.999923825263977}
+{"phrase": "открой ворд и напечатай заявление на отпуск", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9993181228637695}
+{"phrase": "переименуй файл отчёт в загрузках в отчёт финал", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.999922513961792}
+{"phrase": "сделай скриншот и отправь его в телеграм в избранное", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.999974250793457}
+{"phrase": "открой калькулятор и посчитай 15 процентов от 2000", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9985252022743225}
+{"phrase": "в проводнике открой загрузки и отсортируй файлы по дате", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9994595646858215}
+{"phrase": "зайди в телеграм и прочитай последнее сообщение от Пети", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9997958540916443}
+{"phrase": "скопируй файл диплом.docx с рабочего стола на флешку", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9988553524017334}
+{"phrase": "открой эксель и создай таблицу расходов", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.999525785446167}
+{"phrase": "запиши в блокнот номер 87001234567 и сохрани", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9879277348518372}
+{"phrase": "скачай презентацию с сайта колледжа и скинь её в группу в вотсапе", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999865293502808}
+{"phrase": "перешли последнюю фотку из загрузок Лере и Маше в телеграме", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999634027481079}
+{"phrase": "собери все скриншоты с рабочего стола в одну папку", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9995680451393127}
+{"phrase": "открой телеграм, найди чат с мамой и отправь ей привет", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9991764426231384}
+{"phrase": "навык утро", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9819735288619995}
+{"phrase": "выполни навык доброе утро", "raw": "{\"type\":\"unknown\"}", "confidence": 0.6891597509384155}
+{"phrase": "запусти навык отчёт", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.7827995419502258}
+{"phrase": "запусти скрипт сервер диплома", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9987552165985107}
+{"phrase": "выполни скрипт сборка проекта", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9561190605163574}
+{"phrase": "подними сервер в докере", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9985398054122925}
+{"phrase": "подготовь компьютер к работе", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9249919652938843}
+{"phrase": "доброе утро, пора работать", "raw": "{\"type\":\"unknown\"}", "confidence": 0.7631136775016785}
+{"phrase": "запусти мой рабочий набор программ", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9537643194198608}
+{"phrase": "разверни проект диплома", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9995231628417969}
+{"phrase": "выключи компьютер", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9579885005950928}
+{"phrase": "перезагрузи пк", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8814189434051514}
+{"phrase": "отформатируй диск c", "raw": "{\"type\":\"unknown\"}", "confidence": 0.998163640499115}
+{"phrase": "удали все файлы с рабочего стола", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.5320481061935425}
+{"phrase": "введи мой пароль от банка", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9995222091674805}
+{"phrase": "переведи маме пять тысяч", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9985477328300476}
+{"phrase": "купи мне билет на самолёт", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9998430013656616}
+{"phrase": "что ты умеешь", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8859357237815857}
+{"phrase": "спасибо", "raw": "{\"type\":\"unknown\"}", "confidence": 0.6664055585861206}
+{"phrase": "ты тут?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8197208642959595}
+{"phrase": "фауст", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9349148869514465}
+{"phrase": "ладно, отмена", "raw": "{\"type\":\"unknown\"}", "confidence": 0.757309079170227}
+{"phrase": "напомни мне завтра позвонить маме", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9993909597396851}
+{"phrase": "поставь будильник на 7 утра", "raw": "{\"type\":\"unknown\"}", "confidence": 0.992804229259491}
+{"phrase": "hello how are you", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9628246426582336}
+{"phrase": "ыаыв ыва", "raw": "{\"type\":\"unknown\"}", "confidence": 0.6261914372444153}
+{"phrase": "сколько будет 15 умножить на 7", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9931038022041321}
+{"phrase": "какая температура процессора", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9686375856399536}
+{"phrase": "Сверни все окна", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.6129499673843384}
+{"phrase": "Отправь отчёт преподу", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9882283806800842}
+{"phrase": "Найди решение третьей задачи", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9734092354774475}
+{"phrase": "Найди билеты к экзамену", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9581019282341003}
+{"phrase": "Закажи большую пиццу", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9984968900680542}
+{"phrase": "Выключи свет в комнате", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9969574213027954}
+{"phrase": "Оплати общагу", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9980069994926453}
+{"phrase": "Погода на завтра", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9342419505119324}
+{"phrase": "фауст найди в гугле методичку по физике за третий семестр и скачай ее в документы", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9753555655479431}
+{"phrase": "найди в письмах от старосты ссылку на гугл диск скачай оттуда архив и распакуй", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.6332007646560669}
+{"phrase": "скачай сборник задач по матану распакуй и открой первую главу", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9732531309127808}
+{"phrase": "оплати интернет а то завтра отключат", "raw": "{\"type\":\"unknown\"}", "confidence": 0.999880313873291}
+{"phrase": "Фауст, сделай, пожалуйста, громкость потише, а то у меня от этой видеолекции уже голова начинает болеть.", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.9999666216569381}
+{"phrase": "Поставь звук на максимум, пожалуйста, хочу включить фоном музыкальный альбом для учёбы и отойти в другой конец комнаты.", "raw": "{\"type\":\"set_volume\",\"level\":100}", "confidence": 0.998266945848016}
+{"phrase": "Фауст, зайди в личный кабинет студента, найди там текущую ведомость с оценками за семестр и сделай её скриншот.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8463824391365051}
+{"phrase": "Слушай, Фауст, а какая завтра будет погода с утра? Думаю, надевать мне тёплую куртку в университет или нет.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9993521571159363}
+{"phrase": "Напомни мне через полчаса сделать перерыв и встать размяться, а то от этого сидения у меня уже спина отваливается.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9992218017578125}
+{"phrase": "Расскажи какой-нибудь смешной анекдот про студентов и сессию, а то я над этой высшей математикой скоро заплачу.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9974470138549805}
+{"phrase": "Поставь таймер на 45 минут, хочу заниматься по специальной методике и ни на что больше не отвлекаться.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.98546302318573}
+{"phrase": "Открой гитхаб в браузере, гляну пулл-реквесты пока чай пью.", "raw": "{\"type\":\"open_url\",\"url\":\"https://github.com\"}", "confidence": 0.5674263859040352}
+{"phrase": "Сделай тише, а то орут из динамиков на всю квартиру.", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.8342222745257573}
+{"phrase": "Зайди в Постман, сгенери кёрл-запрос для нашего API и скопируй в буфер.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.8694633841514587}
+{"phrase": "Поставь будильник на 8 утра, а то завтра опять суппорт-смена ранняя.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9996140599250793}
+{"phrase": "Оплати квитанцию за инет через карточку, а то сейчас провайдер все обрубит.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9998021721839905}
+{"phrase": "Напомни в пять вечера созвониться с PM'ом по поводу ревью кода.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.999537467956543}
+{"phrase": "Будь добр, зайди в трекер задач, создай новую карточку с заголовком «Исправление бага с авторизацией» и назначь ее на меня.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.887807309627533}
+{"phrase": "Зайди в Figma, найди макет мобильного приложения для нашего клиента, экспортируй все PNG-иконки и выгрузи их в папку assets.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9783556461334229}
+{"phrase": "Поставь, пожалуйста, будильник на 7:30 утра, мне завтра нужно рано встать на созвон с американскими коллегами.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9948980212211609}
+{"phrase": "Сделай мне, пожалуйста, чашку крепкого кофе, а то после обеда меня очень сильно клонит в сон.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9985044002532959}
+{"phrase": "Как ты считаешь, сможем ли мы с командой уложиться в дедлайн по проекту, если продолжим работать в таком же темпе?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9994451403617859}
+{"phrase": "Закажи, пожалуйста, такси до нашего офиса через полчаса, мне нужно забрать кое-какие документы у менеджера.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9985789060592651}
+{"phrase": "открой телегу", "raw": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "confidence": 0.8796958018074008}
+{"phrase": "покажи че там по процессам в диспетчере", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9542563557624817}
+{"phrase": "оплати интернет а то ща отключит", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9998807907104492}
+{"phrase": "сколько будет 256 умножить на 18", "raw": "{\"type\":\"unknown\"}", "confidence": 0.928842306137085}
+{"phrase": "фауст а ты умеешь писать код за меня?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9994196891784668}
+{"phrase": "забронируй столик в баре на пятницу", "raw": "{\"type\":\"unknown\"}", "confidence": 0.957767128944397}
+{"phrase": "фауст сделай потише а то орет на всю квартиру", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.6986554459281535}
+{"phrase": "найди субтитры к этому фильму на русском и подгрузи в плеер", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.7545870542526245}
+{"phrase": "зайди на сайт погоды найди москву на завтра и сделай скриншот", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9094609618186951}
+{"phrase": "скачай с торрента новую серию сериала и открой ее в кмплеере", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9267240762710571}
+{"phrase": "переведи сто рублей пете на карту", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9921781420707703}
+{"phrase": "фауст сколько будет шестьдесят четыре умножить на двенадцать", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9996111989021301}
+{"phrase": "скрин экрана сдклой", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9989738464355469}
+{"phrase": "сделай громче на 20%", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":20}", "confidence": 0.9986887563228031}
+{"phrase": "открой почту найди письмо от сбера и скачай чек", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9970912933349609}
+{"phrase": "найди в гугле отель в сочи и открой карту", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9189862012863159}
+{"phrase": "какая погода за окном", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9977343082427979}
+{"phrase": "фауст кто ты по жизни", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9268509149551392}
+{"phrase": "Mute the sound right now.", "raw": "{\"type\":\"set_volume\",\"level\":0}", "confidence": 0.8201232551746998}
+{"phrase": "Сделай full screen.", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.99244624376297}
+{"phrase": "Lock the PC screen.", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999111890792847}
+{"phrase": "Open Chrome browser.", "raw": "{\"type\":\"open_app\",\"appName\":\"chrome\"}", "confidence": 0.9936404485807202}
+{"phrase": "Faust, show me running processes.", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.999987006187439}
+{"phrase": "Switch tab in browser.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9442564249038696}
+{"phrase": "Search for pizza delivery near me, add pepperoni to cart and go to checkout.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.4849914610385895}
+{"phrase": "Open Spotify, find playlist Chill Vibes and hit shuffle play.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.599520206451416}
+{"phrase": "Google recipe for carbonara and copy ingredients to my Notepad app.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.6707463264465332}
+{"phrase": "Hey Faust, what is the meaning of life?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.4985444247722626}
+{"phrase": "Remind me to buy milk tomorrow at 10.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9329750537872314}
+{"phrase": "Faust, tell me a good joke.", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.6131376703488733}
+{"phrase": "Pay my Netflix subscription.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9476675391197205}
+{"phrase": "Громкость на максимум", "raw": "{\"type\":\"set_volume\",\"level\":100}", "confidence": 0.9999980926517651}
+{"phrase": "Без звука", "raw": "{\"type\":\"set_volume\",\"level\":0}", "confidence": 0.9998925945327528}
+{"phrase": "Скрин в буфер", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.7295136451721191}
+{"phrase": "Скачай таблицу за квартал", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.990264892578125}
+{"phrase": "Выключи ПК", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8751580715179443}
+{"phrase": "Ты кто такой?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9894132018089294}
+{"phrase": "Устал, силы закончились", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8050307035446167}
+{"phrase": "Закрой, пожалуйста, Excel, я уже закончил сводить квартальную таблицу и хочу освободить оперативную память.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.8995302319526672}
+{"phrase": "Фауст, зайди в CRM-систему, найди карточку компании 'Вектор', скачай их реквизиты и закинь их в папку 'Новые контрагенты'.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9606003761291504}
+{"phrase": "Будь добр, открой шаблон коммерческого предложения, подставь туда сегодняшнее число и имя клиента 'Технопром', а затем сохрани.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.7761108875274658}
+{"phrase": "Фауст, поставь мне, пожалуйста, будильник на 7 утра на завтра, а то у меня очень важная встреча и я боюсь проспать.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.999825656414032}
+{"phrase": "Будь любезен, выключи мой рабочий компьютер полностью, я уже уехал домой и забыл завершить работу.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.7741994261741638}
+{"phrase": "Пожалуйста, купи два билета в кино на вечерний сеанс на завтра, хочется отвлечься от этой рутины.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9999189376831055}
+{"phrase": "Помоги мне, пожалуйста, сварить кофе, если бы ты умел управлять кофемашиной, я был бы самым счастливым сотрудником.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9996894598007202}
+{"phrase": "Open Excel and my Downloads folder side by side.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9600155353546143}
+{"phrase": "Open Spotify app and turn up the volume slightly.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9952841401100159}
+{"phrase": "Сделай скриншот активного окна.", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9998800754547119}
+{"phrase": "Open Jira board in Google Chrome.", "raw": "{\"type\":\"open_app\",\"appName\":\"chrome\"}", "confidence": 0.9946707867772488}
+{"phrase": "Faust, find today's invoices in my inbox, aggregate total sum, and paste it into a new Notion page.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.8678710460662842}
+{"phrase": "Скачай с веб-диска архив с макетами, распакуй в папку Project_Assets и залочь экран.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9996247291564941}
+{"phrase": "Pay my electricity bill using my saved bank card.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.455851674079895}
+{"phrase": "Сделай мне чашку кофе, пока я переписываю отчет.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9869921207427979}
+{"phrase": "Найди гайд на Линка", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.985772430896759}
+{"phrase": "Загрузи клип в дискорд", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9979141354560852}
+{"phrase": "Найди скидки Стима", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8211265206336975}
+{"phrase": "Отправь лог ошибок", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.47150591015815735}
+{"phrase": "Выключи комп", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9970085024833679}
+{"phrase": "Заблокируй комп, я отбегу до туалета на пару минут.", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9991766810417175}
+{"phrase": "Выруби Стимовый оверлей или просто сам Стим закрой нафиг.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9696400165557861}
+{"phrase": "Ну-ка открой папку с играми на диске D.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9649335145950317}
+{"phrase": "Короче, зайди на HLTV, найди расписание матчей NaVi на сегодня и сбрось скрин мне в телегу.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.8963930010795593}
+{"phrase": "Фауст, забей в поиске видео с разбором раскидок на Мираже, открой первое и поставь на паузу.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9283908009529114}
+{"phrase": "Фауст, завари мне энергетик и принеси, а то ночная сессия накрывается.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9867517948150635}
+{"phrase": "фауст сделай скин экрана фастом", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9963338375091553}
+{"phrase": "гшромкость на сотку пж", "raw": "{\"type\":\"set_volume\",\"level\":100}", "confidence": 0.9834961419919352}
+{"phrase": "выруби звук вообще", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.9631077057081825}
+{"phrase": "фауст открой дс", "raw": "{\"type\":\"open_app\",\"appName\":\"discord\"}", "confidence": 0.6918989211056896}
+{"phrase": "открой маркет ксго найди цену на мой калаш и выстави за минималку", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9985904097557068}
+{"phrase": "оплати интернет а то шас отклюбчат", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9998750686645508}
+{"phrase": "фауст каков шанс проиграть со счета 14-1", "raw": "{\"type\":\"unknown\"}", "confidence": 0.5294749140739441}
+{"phrase": "выключи комп через два часа я спать буду", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9995275735855103}
+{"phrase": "Фауст, покажи чо там сейчас запущенно вообще.", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9998723268508911}
+{"phrase": "Фауст, найди в инете свежие новости про IT, скачай первую PDF-ку и открой её.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.8958817720413208}
+{"phrase": "Найди мне саундтрек из Киберпанка, скачай в mp3 и сразу закинь в плеер.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9611662030220032}
+{"phrase": "открой блокнот напиши план на день и сохрани", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999290704727173}
+{"phrase": "найди свежий подкаст про технологии скачай и включи", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9839605689048767}
+{"phrase": "напомни мне через полчаса выпить лекарство", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9997766613960266}
+{"phrase": "закажи такси до офиса на девять утра", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9960177540779114}
+{"phrase": "Фауст, сделай screenshot экрана.", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9999401569366455}
+{"phrase": "Фауст, покажи запущенные процессы.", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9999994039535522}
+{"phrase": "Go to GitHub notifications, clear all read ones and open the first issue.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9963037967681885}
+{"phrase": "Order breakfast from Uber Eats.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9434220790863037}
+{"phrase": "Фауст, включи чайник на кухне.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8825827240943909}
+{"phrase": "Сверни Стим", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.7782960534095764}
+{"phrase": "Музыку на паузу", "raw": "{\"type\":\"quick_action\",\"action\":\"play_pause\"}", "confidence": 0.9629349708557129}
+{"phrase": "Сними скрин", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9991083741188049}
+{"phrase": "Скачай трек из ВК", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8448047041893005}
+{"phrase": "Погаси свет в комнате", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9965117573738098}
+{"phrase": "Фауст, ты тут?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8589644432067871}
+{"phrase": "Переведи деньги маме", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9998515844345093}
+{"phrase": "выключи звук совсем на компе", "raw": "{\"type\":\"set_volume\",\"level\":0}", "confidence": 0.9996297683220909}
+{"phrase": "закрой браузер хром", "raw": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "confidence": 0.9981359247836679}
+{"phrase": "открой хром найди расписание автобусов сделай скриншот и скинь мне в телегу", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9987094402313232}
+{"phrase": "зайди на гисметео посмотри погоду на завтра скачай график и закрой вкладку", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.5490707755088806}
+{"phrase": "открой эксель найди последнюю строку напиши итого и сохрани файл", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9995273351669312}
+{"phrase": "завари мне кофе пока я спускаюсь", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9962267875671387}
+{"phrase": "фауст ты тут не скучай я скоро вернусь", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9992716908454895}
+{"phrase": "напомни купить молоко когда я буду в магазине", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9997168183326721}
+{"phrase": "фауст какая погода на улице куртку брать", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9979402422904968}
+{"phrase": "переведи маме три тысячи с карты", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9996539354324341}
+{"phrase": "сколько времени сейчас я уже опаздываю", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9998867511749268}
+{"phrase": "Фауст, покажи мне список всех запущенных сейчас процессов, хочу убедиться перед выходом, что ничего лишнего не нагружает видеокарту.", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9999990463256836}
+{"phrase": "Открой сайт Яндекс Погоды, хочу быстро глянуть перед выходом на улицу, брать ли мне с собой зонтик или обойдется.", "raw": "{\"type\":\"open_url\",\"url\":\"https://mail.yandex.ru\"}", "confidence": 0.8115747437881886}
+{"phrase": "Фауст, сделай звук на максимум, а то я ухожу на кухню готовить обед и хочу оттуда слышать уведомления о важных письмах.", "raw": "{\"type\":\"set_volume\",\"level\":100}", "confidence": 0.9981417173340112}
+{"phrase": "Заблокируй, пожалуйста, систему, я побежал на работу, вернусь только поздно вечером.", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999792575836182}
+{"phrase": "Фауст, найди в браузере последнюю серию моего сериала на любом бесплатном сайте, открой на весь экран и поставь в самое начало на паузу, я приду и сразу буду смотреть.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8681755065917969}
+{"phrase": "Фауст, зайди на сайт книжного магазина, найди книгу 'Мастер и Маргарита', добавь её в корзину и оставь страницу открытой, я приду и оформлю заказ.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9962375164031982}
+{"phrase": "Оплати, пожалуйста, с моей карты счет за коммунальные услуги, а то я уже вышел из дома и забыл это сделать, а сегодня последний день без пени.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9999712705612183}
+{"phrase": "Пожалуйста, переведи три тысячи рублей моему другу Васе по номеру телефона, пока я иду до остановки.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.994086742401123}
+{"phrase": "Закажи мне такси до аэропорта на пять часов вечера, а то у меня чемоданы тяжелые и я не хочу ехать на общественном транспорте.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9871168732643127}
+{"phrase": "Замуть звук на секунду, а то вода шумит, не слышно ни черта.", "raw": "{\"type\":\"set_volume\",\"level\":50}", "confidence": 0.4894176065431708}
+{"phrase": "Фауст, зайди на Яндекс Музыку, найди плейлист для готовки и нажми перемешать.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9936668276786804}
+{"phrase": "Фауст, слушай, а че у нас по погоде на завтра, дождевик брать?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9984850287437439}
+{"phrase": "Фауст, разбуди меня завтра в 7 утра, только громко, ок?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.7250402569770813}
+{"phrase": "Фауст, оплати квитанцию за свет, я тебе на почту скидывал PDF-ку.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9998974800109863}
+{"phrase": "Слушай, а че ты такой умный, а суп за меня сварить не можешь?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9668649435043335}
+{"phrase": "Фауст, закрой, пожалуйста, плеер VLC, потому что фильм уже закончился, а лишние звуки меня сейчас отвлекают от готовки.", "raw": "{\"type\":\"kill_process\",\"processName\":\"vlc.exe\"}", "confidence": 0.7065645275864725}
+{"phrase": "Открой, пожалуйста, калькулятор на рабочем столе, мне надо пересчитать пропорции специй для маринада.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.7154378890991211}
+{"phrase": "Фауст, открой, пожалуйста, сайт YouTube, хочу включить какой-нибудь фоновый подкаст про историю.", "raw": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "confidence": 0.9995411952539541}
+{"phrase": "Заблокируй, пожалуйста, систему, а то я отойду надолго делать заготовки и не хочу оставлять ПК открытым.", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.999052107334137}
+{"phrase": "Фауст, найди, пожалуйста, на Youtube видеорецепт классической лазаньи, скачай его в папку Видео и запусти мне аудиодорожку.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8384197354316711}
+{"phrase": "Будь добр, зайди на сайт с кулинарными конвертерами, переведи 150 грамм муки в столовые ложки и зачитай мне результат.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8663578629493713}
+{"phrase": "Скачай, пожалуйста, с первого попавшегося сайта таблицу перевода градусов духовки из Фаренгейтов в Цельсии и открой её.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9594375491142273}
+{"phrase": "фауст сфоткай экран и скинь мне", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9997804760932922}
+{"phrase": "какие проги сейчас работают", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9988321661949158}
+{"phrase": "открой стим", "raw": "{\"type\":\"open_app\",\"appName\":\"steam\"}", "confidence": 0.7715044612126505}
+{"phrase": "скачай с торрента последнюю серию джентльменов", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9033151268959045}
+{"phrase": "скачай презентацию из почты и скинь в папку работа", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999395608901978}
+{"phrase": "закрой эту хновину на экране как ее там браузер", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.7986356616020203}
+{"phrase": "выключи это окно с рекламой крестик не вижу", "raw": "{\"type\":\"unknown\"}", "confidence": 0.808538019657135}
+{"phrase": "найди фильм девчата скачай в хорошем качестве и открой", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9651204943656921}
+{"phrase": "зайди на сайт поликлиники и запиши меня к терапевту на утро", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9391483068466187}
+{"phrase": "найди текст песни катюша скопируй и распечатай на принтере", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9078322649002075}
+{"phrase": "пожарь мне картошки а то я устала сегодня", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9723456501960754}
+{"phrase": "заскринь картинку", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.8295435309410095}
+{"phrase": "заблокируи монитор", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999347925186157}
+{"phrase": "погромче сделай кино", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.6164029966230231}
+{"phrase": "найди в интернете песню зыкиной и скачай на рабочий стол", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9956544637680054}
+{"phrase": "фауст найди сайт пенсеоного фонда заполни заявление на перерасчет и отправь", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.8741846680641174}
+{"phrase": "найди в яндексе инструкцию к тонометру и сохрани в файлы", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8944932818412781}
+{"phrase": "открои сбербанк найди шаблон за свет и переведи 1000р", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9541643857955933}
+{"phrase": "фауст ты меня слышишь или опять завис", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9977166652679443}
+{"phrase": "сколько сейчас времени в красноярске", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9996341466903687}
+{"phrase": "Close this program window right now, I don't need it.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9065220952033997}
+{"phrase": "Фауст, open Google, search classical music, play first video on Youtube.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.902439296245575}
+{"phrase": "Faust, open browser, find government site, log in with my saved password and check my status.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.7254306674003601}
+{"phrase": "Фауст, shutdown computer completely after 30 minutes.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9922160506248474}
+{"phrase": "Фауст, call my grandson on his mobile phone right now.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8605379462242126}
+{"phrase": "Включи фоновую музыку", "raw": "{\"type\":\"quick_action\",\"action\":\"play_pause\"}", "confidence": 0.8125637173652649}
+{"phrase": "Найди билеты в кино", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.992141842842102}
+{"phrase": "Скачай этот файл", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9109405279159546}
+{"phrase": "Загрузи свежий выпуск", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.48087677359580994}
+{"phrase": "Закажи нам пиццу", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9881657361984253}
+{"phrase": "Сколько стоит ноут?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9965288043022156}
+{"phrase": "Кто играет главного?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9858934879302979}
+{"phrase": "Будь любезен, закрой окно графического редактора, оно сейчас только занимает место на экране и отвлекает гостей от презентации.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9587916135787964}
+{"phrase": "Открой папку «Отпуск 2023» на рабочем столе, чтобы я мог показать друзьям наши фотографии с моря.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9716237783432007}
+{"phrase": "Фауст, увеличивай громкость системных звуков и плеера процентов до восьмидесяти, а то видеоклип записан очень тихо и с дивана ничего не разобрать.", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.7261454912925736}
+{"phrase": "Закрой все вкладки в браузере, кроме активной, чтобы очистить экран от лишней информации перед тем, как я покажу слайды.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9913426637649536}
+{"phrase": "Срочно заблокируй систему, пожалуйста, мне нужно ввести пароль от личного кабинета так, чтобы никто из присутствующих его не увидел.", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.996904194355011}
+{"phrase": "Faust, make it louder, guys can't hear anything.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.4924021363258362}
+{"phrase": "Mute the audio right now.", "raw": "{\"type\":\"set_volume\",\"level\":0}", "confidence": 0.9809273836455645}
+{"phrase": "Сделай скриншот and save it to Pictures.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.7668540477752686}
+{"phrase": "Show active windows.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8807744979858398}
+{"phrase": "Unmute the sound.", "raw": "{\"type\":\"set_volume\",\"level\":0}", "confidence": 0.9922539605350664}
+{"phrase": "Faust, fill out the email field with my Gmail on this form and click submit.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.7786335945129395}
+{"phrase": "Faust, turn off the computer completely.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.7987346649169922}
+{"phrase": "Remind me to call mom in one hour.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9923606514930725}
+{"phrase": "Order some beer on Drizly.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9858331680297852}
+{"phrase": "поставь видос на паузу", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.5290178656578064}
+{"phrase": "тормозни музыку", "raw": "{\"type\":\"quick_action\",\"action\":\"play_pause\"}", "confidence": 0.8263146281242371}
+{"phrase": "стопни трек на минутку", "raw": "{\"type\":\"unknown\"}", "confidence": 0.41597235202789307}
+{"phrase": "Фауст, пауза в плеере", "raw": "{\"type\":\"quick_action\",\"action\":\"play_pause\"}", "confidence": 0.4984903037548065}
+{"phrase": "останови воспроизведение, мне звонят", "raw": "{\"type\":\"quick_action\",\"action\":\"play_pause\"}", "confidence": 0.746241569519043}
+{"phrase": "верни музыку, сними с паузы", "raw": "{\"type\":\"quick_action\",\"action\":\"play_pause\"}", "confidence": 0.9963988065719604}
+{"phrase": "pause it", "raw": "{\"type\":\"unknown\"}", "confidence": 0.5373206734657288}
+{"phrase": "нажми паузу", "raw": "{\"type\":\"quick_action\",\"action\":\"play_pause\"}", "confidence": 0.5182912349700928}
+{"phrase": "давай дальше смотреть, включи воспроизведение", "raw": "{\"type\":\"quick_action\",\"action\":\"play_pause\"}", "confidence": 0.9064534902572632}
+{"phrase": "следующую песню давай", "raw": "{\"type\":\"quick_action\",\"action\":\"next_track\"}", "confidence": 0.9999464750289917}
+{"phrase": "эта песня надоела, переключи", "raw": "{\"type\":\"quick_action\",\"action\":\"next_track\"}", "confidence": 0.9998025298118591}
+{"phrase": "скипни это", "raw": "{\"type\":\"quick_action\",\"action\":\"next_track\"}", "confidence": 0.9986169338226318}
+{"phrase": "дальше трек", "raw": "{\"type\":\"quick_action\",\"action\":\"prev_track\"}", "confidence": 0.4819616973400116}
+{"phrase": "включи следующую композицию в плейлисте", "raw": "{\"type\":\"quick_action\",\"action\":\"next_track\"}", "confidence": 0.7840548753738403}
+{"phrase": "skip this song", "raw": "{\"type\":\"quick_action\",\"action\":\"next_track\"}", "confidence": 0.9995562434196472}
+{"phrase": "верни прошлую песню", "raw": "{\"type\":\"quick_action\",\"action\":\"prev_track\"}", "confidence": 0.9988256096839905}
+{"phrase": "назад на предыдущий трек", "raw": "{\"type\":\"quick_action\",\"action\":\"prev_track\"}", "confidence": 0.9996449947357178}
+{"phrase": "включи ещё раз ту песню, что была до этой", "raw": "{\"type\":\"quick_action\",\"action\":\"prev_track\"}", "confidence": 0.9975733160972595}
+{"phrase": "previous song please", "raw": "{\"type\":\"quick_action\",\"action\":\"prev_track\"}", "confidence": 0.42365962266921997}
+{"phrase": "сверни всё", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.5815877914428711}
+{"phrase": "убери все окна с экрана", "raw": "{\"type\":\"quick_action\",\"action\":\"minimize_all\"}", "confidence": 0.978335440158844}
+{"phrase": "покажи мне рабочий стол", "raw": "{\"type\":\"quick_action\",\"action\":\"minimize_all\"}", "confidence": 0.8639853000640869}
+{"phrase": "спрячь все программы, кто-то идёт", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.49953046441078186}
+{"phrase": "минимизируй окна", "raw": "{\"type\":\"quick_action\",\"action\":\"minimize_all\"}", "confidence": 0.9928523898124695}
+{"phrase": "прибавь звук на 10", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":10}", "confidence": 0.9992197911294625}
+{"phrase": "сделай громче на пятнадцать процентов", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":15}", "confidence": 0.9975681341147116}
+{"phrase": "чуть громче, процентов на пять", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":5}", "confidence": 0.49844558629104974}
+{"phrase": "добавь громкости на 20", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":20}", "confidence": 0.994531158939381}
+{"phrase": "подкрути звук вверх на 30", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":30}", "confidence": 0.9645671352332812}
+{"phrase": "убавь звук на 10", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-10}", "confidence": 0.9982701719999199}
+{"phrase": "сделай тише на двадцать", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-20}", "confidence": 0.9763016101499318}
+{"phrase": "приглуши на 15 процентов", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-15}", "confidence": 0.9998276235307912}
+{"phrase": "понизь громкость на 5", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-5}", "confidence": 0.9994554005423915}
+{"phrase": "минус десять к громкости", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-10}", "confidence": 0.7060307602258717}
+{"phrase": "поставь громкость 40", "raw": "{\"type\":\"set_volume\",\"level\":40}", "confidence": 0.9984783767383689}
+{"phrase": "сделай тише", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.998923736563242}
+{"phrase": "выключи звук совсем", "raw": "{\"type\":\"set_volume\",\"level\":0}", "confidence": 0.9995006259490751}
+{"phrase": "громкость на максимум", "raw": "{\"type\":\"set_volume\",\"level\":100}", "confidence": 0.9999980926517651}
+{"phrase": "открой папку рабочий стол", "raw": "{\"type\":\"open_app\",\"appName\":\"рабочий стол\"}", "confidence": 0.9846611315479095}
+{"phrase": "включи следующую серию сериала на кинопоиске", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9864685535430908}
+{"phrase": "найди на ютубе следующий выпуск подкаста", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9999655485153198}
+{"phrase": "поставь на паузу загрузку в стиме", "raw": "{\"type\":\"set_volume\",\"level\":0}", "confidence": 0.4040810338492644}
+{"phrase": "перемотай видео на минуту назад", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9816296100616455}
+{"phrase": "прогони тесты в проекте демо", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9947137236595154}
+{"phrase": "поменяй порт в docker-compose демо на 8091 и запушь", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9991962313652039}
+{"phrase": "исправь опечатку в README диплома и закоммить", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9979429841041565}
+{"phrase": "запусти сборку андроид проекта", "raw": "{\"type\":\"open_app\",\"appName\":\"android studio\"}", "confidence": 0.6236466047859643}
+{"phrase": "добавь переменную окружения APP_ENV в проект демо", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9977325201034546}
+{"phrase": "открой проект диплом в Android Studio и запусти тесты", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9987714886665344}
+{"phrase": "посмотри, какие файлы изменены в репозитории демо", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9992745518684387}
+{"phrase": "поставь телевизор в зале на паузу", "raw": "{\"type\":\"unknown\"}", "confidence": 0.7858297824859619}
+{"phrase": "переключи канал на телевизоре", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9839269518852234}
+{"phrase": "сделай погромче радио в машине", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.5894769869811469}
+{"phrase": "Мне нужно открыть аутлук", "raw": "{\"type\":\"open_app\",\"appName\":\"outlook\"}", "confidence": 0.9859004306386367}
+{"phrase": "Гаси телегу принудительно.", "raw": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "confidence": 0.45674950915584134}
+{"phrase": "Ассистент, грохни кску", "raw": "{\"type\":\"kill_process\",\"processName\":\"cs2.exe\"}", "confidence": 0.9818458588566372}
+{"phrase": "сделай скриншот окна браузера открой его в гимпе обесцветь и сохрани в папку мои рисунки", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9978316426277161}
+{"phrase": "Запсти hh точка ру и больше ничего не делай", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9045714735984802}
+{"phrase": "будь добр, открой в браузере ленту ру", "raw": "{\"type\":\"open_url\",\"url\":\"https://lenta.ru\"}", "confidence": 0.9995997070140703}
+{"phrase": "какое следующее напоминание по списку", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9626084566116333}
+{"phrase": "Найди на карте аэропорт Шереметьево терминал С, открывай схемы и жми на слой с терминалами", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9904051423072815}
+{"phrase": "распакуй архив Materials.zip на рабочий стол удали сам архив и открой распакованную папку", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9975019097328186}
+{"phrase": "заглуши динамики", "raw": "{\"type\":\"set_volume\",\"level\":0}", "confidence": 0.7195443625789011}
+{"phrase": "ха-ха, ну ты и выдал конечно", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9970434308052063}
+{"phrase": "Телграм открой!", "raw": "{\"type\":\"open_url\",\"url\":\"https://web.telegram.org\"}", "confidence": 0.4499404997095553}
+{"phrase": "сделай скриншот и скинь в чат", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.7950850129127502}
+{"phrase": "Найди на маркетплейсе рюкзак для ноутбука 15.6 дюймов водонепроницаемый, кликни на карточку с лучшим рейтингом и закинь в отложенные", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9346621632575989}
+{"phrase": "фауст Что сейчас работает на ПК?", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9941731095314026}
+{"phrase": "вот тебе мой мастер-пароль вставь его в поле авторизации", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9687341451644897}
+{"phrase": "будь добр, открой в браузере ноушн", "raw": "{\"type\":\"open_url\",\"url\":\"https://notion.so\"}", "confidence": 0.9944455345083725}
+{"phrase": "включи отображение расширений файлов и скрытых папок в параметрах проводника", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9996106028556824}
+{"phrase": "открой вайбер найди чат с домами скопируй номер телефона из сообщения и сохрани в текстовый документ", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9928070306777954}
+{"phrase": "Зайди на swagger petstore demo, найди эндпоинт GET pet findByStatus, разверни его и нажми Try it out", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9928244352340698}
+{"phrase": "Убей процесс диспетчера задач!", "raw": "{\"type\":\"kill_process\",\"processName\":\"taskmgr.exe\"}", "confidence": 0.9977579020866969}
+{"phrase": "открой мне линкединчик", "raw": "{\"type\":\"open_url\",\"url\":\"https://linkedin.com\"}", "confidence": 0.9994819819873833}
+{"phrase": "Запусти пайчарм", "raw": "{\"type\":\"open_app\",\"appName\":\"pycharm\"}", "confidence": 0.9408497919429379}
+{"phrase": "открой сайт иви", "raw": "{\"type\":\"open_url\",\"url\":\"https://ivi.ru\"}", "confidence": 0.9999616147758843}
+{"phrase": "автозаполни логин и пароль от вк в открытом окне", "raw": "{\"type\":\"unknown\"}", "confidence": 0.5406736135482788}
+{"phrase": "оплати подписку на сервис через этот неофициальный обменник", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9988325238227844}
+{"phrase": "зайди на roadmap.sh, найди роадмап по backend, открой его и кликни на блок postgresql чтобы вылезла всплывашка", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9713348746299744}
+{"phrase": "Переведи компьютер в режим блокировки", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9973499774932861}
+{"phrase": "открой папку загрузки, найди там последний скачанный pdf и скинь его паше в телегу", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9997909665107727}
+{"phrase": "экстренно закрой акобат", "raw": "{\"type\":\"kill_process\",\"processName\":\"acrobat.exe\"}", "confidence": 0.9139773339857165}
+{"phrase": "притиши", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.9971761943452826}
+{"phrase": "Ого, вот это да", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8580459356307983}
+{"phrase": "опусти звук", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.9848123030592042}
+{"phrase": "ассистент вруби-ка вайбер", "raw": "{\"type\":\"open_app\",\"appName\":\"viber\"}", "confidence": 0.9679038375224991}
+{"phrase": "Перейди в папку загрузки", "raw": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "confidence": 0.9994367958457389}
+{"phrase": "оперу стартуй", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.5339643955230713}
+{"phrase": "Задйи на сайт RP5, найди погоду в Мурманске, перейди в архив погоды и нажми Выгрузить за неделю.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9974119067192078}
+{"phrase": "Полностью вылючи звук!", "raw": "{\"type\":\"set_volume\",\"level\":0}", "confidence": 0.9996418556991884}
+{"phrase": "выключи персональный компьютер", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9614098072052002}
+{"phrase": "Локни систему.", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9222383499145508}
+{"phrase": "Можешь принудительно вырубить слак", "raw": "{\"type\":\"kill_process\",\"processName\":\"slack.exe\"}", "confidence": 0.9984042496829488}
+{"phrase": "закрой пожалуйста блокнот принудительно", "raw": "{\"type\":\"kill_process\",\"processName\":\"notepad.exe\"}", "confidence": 0.966028349370589}
+{"phrase": "переведи бабки по номеру телефона, лимит не проверяй", "raw": "{\"type\":\"unknown\"}", "confidence": 0.6192724108695984}
+{"phrase": "вытащи файл из телеги переименуй в ред1 и отправь партнеру в оутлук", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9991461038589478}
+{"phrase": "открой сайт hh.ru, введи системный администратор, отсортируй по дате, открой самую верхнюю и нажми откликнуться", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8981257081031799}
+{"phrase": "скопируй из поверпоинта все заголовки слайдов вставь в ворд и сделай из них оглавление", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999550580978394}
+{"phrase": "открой настройки звука, найди дискорд и сделай его громкость на 50 процентов а плеер на 100", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9994237422943115}
+{"phrase": "вруби проводник на компе", "raw": "{\"type\":\"open_app\",\"appName\":\"explorer\"}", "confidence": 0.9989637200313268}
+{"phrase": "Сделай панель задач понизу, если она переехала, и включи автоскрытие", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.4670167565345764}
+{"phrase": "найди на wb протеиновые батончики без сахара ассорти, открывай коробку на 20 штук и закидывай в корзину", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9710806012153625}
+{"phrase": "погода просто ужасная за окном", "raw": "{\"type\":\"unknown\"}", "confidence": 0.7668099999427795}
+{"phrase": "закрой аутлук через силу", "raw": "{\"type\":\"kill_process\",\"processName\":\"outlook.exe\"}", "confidence": 0.9767059977525747}
+{"phrase": "слушай закрой аварийно пайчарм", "raw": "{\"type\":\"kill_process\",\"processName\":\"pycharm64.exe\"}", "confidence": 0.9470731117942464}
+{"phrase": "открой папку изображения", "raw": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "confidence": 0.9997580700620361}
+{"phrase": "замуть всё", "raw": "{\"type\":\"unknown\"}", "confidence": 0.6599871516227722}
+{"phrase": "какая самая высокая гора на земле, если не эверест?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9998887777328491}
+{"phrase": "Просто запусти vlc", "raw": "{\"type\":\"open_app\",\"appName\":\"vlc\"}", "confidence": 0.9967008409764233}
+{"phrase": "жестко закрой обс", "raw": "{\"type\":\"kill_process\",\"processName\":\"obs64.exe\"}", "confidence": 0.9922297217621576}
+{"phrase": "перейди на днс в браузере", "raw": "{\"type\":\"open_url\",\"url\":\"https://dns-shop.ru\"}", "confidence": 0.9894564691693617}
+{"phrase": "найди у меня на компе файл с расширением rar распакуй его в отдельную папку и открой первый рисунок", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9968208074569702}
+{"phrase": "забери видео из заргузок мюторрента и перешли его всей группе в телеграме", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.999763548374176}
+{"phrase": "Убей эксель прямо сейчас", "raw": "{\"type\":\"kill_process\",\"processName\":\"excel.exe\"}", "confidence": 0.9888113750444063}
+{"phrase": "сруби идею намертво", "raw": "{\"type\":\"kill_process\",\"processName\":\"idea64.exe\"}", "confidence": 0.9218937846881659}
+{"phrase": "Найди на твиче стрим по Minecraft, открой стрим с наибольшим рейтингом и подпишись", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9988631010055542}
+{"phrase": "фауст, заверши принудительно работу яндекс браузера", "raw": "{\"type\":\"kill_process\",\"processName\":\"browser.exe\"}", "confidence": 0.9992730083138781}
+{"phrase": "фауст открой сайт реддит точка ком", "raw": "{\"type\":\"open_url\",\"url\":\"https://reddit.com\"}", "confidence": 0.9880199613089502}
+{"phrase": "зайди в keepass, найди пароль от локальной бд, открой dbeaver, создай новое подключение к mysql и проверь коннект.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.7557231187820435}
+{"phrase": "убей процесс телеграма", "raw": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "confidence": 0.9062966480047407}
+{"phrase": "Зайди в телегу открой Избранное скопируй оттуда последний текст и отправь в дискорд в чат общие.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9997987151145935}
+{"phrase": "открой пожалуйста программу аудасити на компе", "raw": "{\"type\":\"open_app\",\"appName\":\"audacity\"}", "confidence": 0.9985166323556882}
+{"phrase": "покажи папку с документами", "raw": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "confidence": 0.9986854212815715}
+{"phrase": "сделай полное форматирование всех накопителей", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9985404014587402}
+{"phrase": "зайди на ютуб, вбей в поиск обзор на айфон 15, зйди на самое популярное видео и поставь дизлайк", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9891931414604187}
+{"phrase": "запусти мне букинг и всё", "raw": "{\"type\":\"open_url\",\"url\":\"https://booking.com\"}", "confidence": 0.8123593396723656}
+{"phrase": "Энидеск зпаустить надо", "raw": "{\"type\":\"open_app\",\"appName\":\"anydesk\"}", "confidence": 0.9940306113502473}
+{"phrase": "Можно открыть папку рабочий стол", "raw": "{\"type\":\"open_app\",\"appName\":\"рабочий стол\"}", "confidence": 0.968535941773105}
+{"phrase": "открой мне страницу курсеры", "raw": "{\"type\":\"open_url\",\"url\":\"https://coursera.org\"}", "confidence": 0.9793084621776913}
+{"phrase": "браузер открой", "raw": "{\"type\":\"open_app\",\"appName\":\"браузер\"}", "confidence": 0.665149851533009}
+{"phrase": "зайди в вайбер выдели три последних сообщения от ирины и скопируй их в файл заметки txt", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9989951252937317}
+{"phrase": "Вруби ватсап веб", "raw": "{\"type\":\"open_url\",\"url\":\"https://web.whatsapp.com\"}", "confidence": 0.9991993385378493}
+{"phrase": "поищи на сайтах новостей информацию про магнитные бури сегодня, открывай первый сайт и кликай на график активности.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9999362230300903}
+{"phrase": "Зайди в спец возможности и включи экранную лупу на 200 процентов", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8813195824623108}
+{"phrase": "найди на ютубе клип imagine dragons believer, открой его и включи повтор одного видео", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9963182210922241}
+{"phrase": "запускай ватсап", "raw": "{\"type\":\"open_app\",\"appName\":\"whatsapp\"}", "confidence": 0.9900735015904729}
+{"phrase": "перейди на сайт дуолинго", "raw": "{\"type\":\"open_url\",\"url\":\"https://duolingo.com\"}", "confidence": 0.9995339415673499}
+{"phrase": "Открой КиберЛенинку, введи там органическая химия синтез полимеров, перейди в статью и нажми Показать полный текст.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8805052638053894}
+{"phrase": "срочно выруби телегу", "raw": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "confidence": 0.9940151225716534}
+{"phrase": "открой раздел рабочий стол", "raw": "{\"type\":\"open_app\",\"appName\":\"рабочий стол\"}", "confidence": 0.9157051163195007}
+{"phrase": "Выдели три последние фотки в галерее объедини их в архив и добавь к письму в почтовом клиенте", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9912740588188171}
+{"phrase": "мне нужна папка загрузки, открой", "raw": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "confidence": 0.9998076558799696}
+{"phrase": "посчитай среднее значение в столбце д в экселе и запиши это число в блокнот на рабочем столе", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999896287918091}
+{"phrase": "заходи на сайт степик", "raw": "{\"type\":\"open_url\",\"url\":\"https://stepik.org\"}", "confidence": 0.9990006467779438}
+{"phrase": "слушай, открой мне каспи точка кз", "raw": "{\"type\":\"open_url\",\"url\":\"https://kaspi.kz\"}", "confidence": 0.9963218773822433}
+{"phrase": "открой хабр, найди через поиск статьи про python для новичков, открой первую и добавь в закладки", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9994520545005798}
+{"phrase": "загугли на википедии историю древнего рима, перейди в раздел пунические войны и разверни там всю галерею картинок.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9972963929176331}
+{"phrase": "Запусти постман!", "raw": "{\"type\":\"open_app\",\"appName\":\"postman\"}", "confidence": 0.9966188838240271}
+{"phrase": "Найди в яндекс музыке плейлист Гранж 90-х, открой его и нажми кнопку перемешать", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.999363124370575}
+{"phrase": "найди в телеге документ с договором, сбереги его в загрузки, оттуда вытащи третью страницу через акробат и скинь шефу в слэк", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9916512370109558}
+{"phrase": "тимс принудительно закрой", "raw": "{\"type\":\"kill_process\",\"processName\":\"ms-teams.exe\"}", "confidence": 0.9946023841132856}
+{"phrase": "хэй, ты вообще кто такой?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9938713312149048}
+{"phrase": "сколько времени осталось до ближайшего будильника", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9999386072158813}
+{"phrase": "Сруби процесс пауэрпоинта", "raw": "{\"type\":\"kill_process\",\"processName\":\"powerpnt.exe\"}", "confidence": 0.9988527321182659}
+{"phrase": "фауст, открой лог ошибок в блокноте скопируй оттуда строки со словом эррор и вставь их в табличку эксель в первый столбец", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998176693916321}
+{"phrase": "браузер открой и сразу на hh заходи", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9528887867927551}
+{"phrase": "зайди на яндекс афишу, найди спектакли в мхат на эти выходные, открой первый спектакль и нажми смотреть трейлер", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9969111084938049}
+{"phrase": "Открой дискорд найди пользователя с ником Алекс скопируй его аватарку и сохрани в загрузки", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.999168872833252}
+{"phrase": "Стим завис, выруби его жестко.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8012251853942871}
+{"phrase": "убей процесс блокнота прямо сейчас", "raw": "{\"type\":\"kill_process\",\"processName\":\"notepad.exe\"}", "confidence": 0.9951934011340313}
+{"phrase": "заблокируй ПК", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999954700469971}
+{"phrase": "браузер открой и сразу на технодом", "raw": "{\"type\":\"open_url\",\"url\":\"https://technodom.kz\"}", "confidence": 0.9991463156322595}
+{"phrase": "найди на рабочем столе презентацию по экономике вставь на четвертый слайд картинку из загрузок с названием графика", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9941868782043457}
+{"phrase": "Фауст, запусти винрар", "raw": "{\"type\":\"open_app\",\"appName\":\"winrar\"}", "confidence": 0.9687997528487458}
+{"phrase": "вруби бинг в браузере", "raw": "{\"type\":\"open_url\",\"url\":\"https://bing.com\"}", "confidence": 0.9993064769816016}
+{"phrase": "Выключи весь звук на ПК", "raw": "{\"type\":\"set_volume\",\"level\":0}", "confidence": 0.4097815134521312}
+{"phrase": "Открой сайт стековерфлоу.", "raw": "{\"type\":\"open_url\",\"url\":\"https://stackoverflow.com\"}", "confidence": 0.9994780380498014}
+{"phrase": "открой insomnia, создай новое окружение staging, скопируй url из файла конфига в vs code и вставь туда базовый адрес.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9508964419364929}
+{"phrase": "будь добр, открой браузер", "raw": "{\"type\":\"open_app\",\"appName\":\"браузер\"}", "confidence": 0.9796213887048175}
+{"phrase": "пожалуйста, открой сайт линкедин", "raw": "{\"type\":\"open_url\",\"url\":\"https://linkedin.com\"}", "confidence": 0.9996924009298667}
+{"phrase": "Обнови оглавление в ворде сделай узкие поля и сохрани документ как pdf", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999635219573975}
+{"phrase": "привет включи пожалуйста докер", "raw": "{\"type\":\"open_app\",\"appName\":\"docker desktop\"}", "confidence": 0.5618379196085073}
+{"phrase": "давай выключай его уже", "raw": "{\"type\":\"unknown\"}", "confidence": 0.4536516070365906}
+{"phrase": "Открой ламоду", "raw": "{\"type\":\"open_url\",\"url\":\"https://lamoda.kz\"}", "confidence": 0.8577002887143408}
+{"phrase": "В какой стране больше всего действующих вулканов?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9912763833999634}
+{"phrase": "Зайди на caniuse, вбей в поиск flex gap, открой таблицу и нажми показать детали для Safari", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9982701539993286}
+{"phrase": "мне нужна папка рабочий стол открой её", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.5108973979949951}
+{"phrase": "Зайди на портал N+1, вбей в поиск археология, открой находку недели и кликни на интерактивную модель.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9798138737678528}
+{"phrase": "Открой юнити пожалуйста", "raw": "{\"type\":\"open_app\",\"appName\":\"unity\"}", "confidence": 0.973164702042304}
+{"phrase": "Можешь просто открыть сайт майкрософт?", "raw": "{\"type\":\"open_url\",\"url\":\"https://microsoft.com\"}", "confidence": 0.9731428043409736}
+{"phrase": "Найди на Озоне электрочайник из стекла с подсветкой, открой модель Polaris и покажи видеообзоры в карточке", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9976143836975098}
+{"phrase": "открой сайт технодом", "raw": "{\"type\":\"open_url\",\"url\":\"https://technodom.kz\"}", "confidence": 0.9999369389408059}
+{"phrase": "убей диспетчер задач прямо сейчас", "raw": "{\"type\":\"kill_process\",\"processName\":\"taskmgr.exe\"}", "confidence": 0.9911416542407707}
+{"phrase": "Фауст, стартуй тимс", "raw": "{\"type\":\"open_app\",\"appName\":\"teams\"}", "confidence": 0.96020636302827}
+{"phrase": "скачай аудиофайл из телеги сожми и отправь в дискорд на канал музыка", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9996343851089478}
+{"phrase": "грохни идею прямо сейчас", "raw": "{\"type\":\"kill_process\",\"processName\":\"idea64.exe\"}", "confidence": 0.9984471893816362}
+{"phrase": "Включи-ка файрфокс.", "raw": "{\"type\":\"open_app\",\"appName\":\"firefox\"}", "confidence": 0.9928430393719907}
+{"phrase": "посмотри итоговую сумму в файле эксель на рабочем столе и напиши её в конце открытого документа в ворде", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999399185180664}
+{"phrase": "комп лагает снеси винду полностью", "raw": "{\"type\":\"set_volume\",\"level\":0}", "confidence": 0.3638271566893252}
+{"phrase": "перетяни файл отчета из папки документы прямо в чат телеграма с бухгалтером", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999741315841675}
+{"phrase": "стартуй докер", "raw": "{\"type\":\"open_app\",\"appName\":\"docker desktop\"}", "confidence": 0.9946521616209623}
+{"phrase": "заскринь экран вебинара в зуме вставь в paint нарисуй красную стрелку на формулу и сохрани на рабочий стол", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9995974898338318}
+{"phrase": "фауст, запускай скайп", "raw": "{\"type\":\"open_app\",\"appName\":\"skype\"}", "confidence": 0.9242108283302031}
+{"phrase": "Найди на vimeo ролик про исландию в 4к, открой его и поставь скорость воспроизведения на полтора", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9981663823127747}
+{"phrase": "найди на рабочем столе фото с названием отпуск, открой его в пейнте, замажь лицо и отправь в ватсап группе семья", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9996522665023804}
+{"phrase": "фауст найди на киноходе фильм дюна в кинотеатрах рядом, кликни на вечерний сеанс в imax и выбери пару мест по центру", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9548366069793701}
+{"phrase": "Звук на 100%", "raw": "{\"type\":\"set_volume\",\"level\":100}", "confidence": 0.9998075993086815}
+{"phrase": "прогнои форматирование на диске c", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8673298358917236}
+{"phrase": "открой телеграм скопируй последнее сообщение от паши и вставь его в блокнот на рабочем столе", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999926090240479}
+{"phrase": "принудительно сними задачу энидеск", "raw": "{\"type\":\"kill_process\",\"processName\":\"anydesk.exe\"}", "confidence": 0.9940368898092231}
+{"phrase": "андроид студио надо экстренно завершить", "raw": "{\"type\":\"open_app\",\"appName\":\"android studio\"}", "confidence": 0.7562219457919497}
+{"phrase": "слишком орет, сбавь", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.9982743606816662}
+{"phrase": "Открой эксель отфильтруй список по активным клиентам скопируй их мейлы и вставь в ворд через запятую", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9997338652610779}
+{"phrase": "будь добр, включи ворд", "raw": "{\"type\":\"open_app\",\"appName\":\"word\"}", "confidence": 0.9919261470949436}
+{"phrase": "А сколько людей сейчас живет на Земле?!", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9996163845062256}
+{"phrase": "вруби пк мгновенно", "raw": "{\"type\":\"unknown\"}", "confidence": 0.7103737592697144}
+{"phrase": "Слушай, заверши принудительно диспетчер задач", "raw": "{\"type\":\"kill_process\",\"processName\":\"taskmgr.exe\"}", "confidence": 0.9917741855842408}
+{"phrase": "Достань документ из thunderbird перешли его в телеграме юристам!", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9983417987823486}
+{"phrase": "Пожалуйста, открой проект в Идее, сделай maven clean install, закоммить изменившиеся классы и задеплой на локальный томакат.!", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9983627200126648}
+{"phrase": "можешь запустить ворд?", "raw": "{\"type\":\"open_app\",\"appName\":\"word\"}", "confidence": 0.9262609001216191}
+{"phrase": "Браузер, открывай ленту ру", "raw": "{\"type\":\"open_url\",\"url\":\"https://lenta.ru\"}", "confidence": 0.9971243026794241}
+{"phrase": "Проводник открой!", "raw": "{\"type\":\"open_app\",\"appName\":\"explorer\"}", "confidence": 0.9710138653158538}
+{"phrase": "фауст найди на quizlet словарик по немецкому a1, перейди в него и включи режим подбор.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8755238652229309}
+{"phrase": "в чем прикол биткоина, поясни в двух словах?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9795836806297302}
+{"phrase": "Запусти калькулятор", "raw": "{\"type\":\"open_app\",\"appName\":\"calc\"}", "confidence": 0.9914093634105683}
+{"phrase": "слушай, а почему коты иногда панически боятся огурцов?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9987142086029053}
+{"phrase": "откроешь амазон в браузере", "raw": "{\"type\":\"open_url\",\"url\":\"https://amazon.com\"}", "confidence": 0.9958900165870546}
+{"phrase": "запусти браузер и сразу открой днс", "raw": "{\"type\":\"open_url\",\"url\":\"https://dns-shop.ru\"}", "confidence": 0.8626030310865964}
+{"phrase": "ассистент, откроешь дуолинго?", "raw": "{\"type\":\"open_url\",\"url\":\"https://duolingo.com\"}", "confidence": 0.9220432321047944}
+{"phrase": "вбей на хх ру вакансию контент менеджер, открой предложение от яндекса и жми откликнуться", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9966486096382141}
+{"phrase": "открой андроид студио", "raw": "{\"type\":\"open_app\",\"appName\":\"android studio\"}", "confidence": 0.9927871892088547}
+{"phrase": "Будь добр, открой веб-сайт дуолинго.", "raw": "{\"type\":\"open_url\",\"url\":\"https://duolingo.com\"}", "confidence": 0.9995761888596277}
+{"phrase": "включи скайпик", "raw": "{\"type\":\"open_app\",\"appName\":\"skype\"}", "confidence": 0.5344483622499006}
+{"phrase": "Запусти-ка мне обсик!", "raw": "{\"type\":\"open_app\",\"appName\":\"obs studio\"}", "confidence": 0.9995804494446361}
+{"phrase": "слушай, найди на wb термокружку для кофе 0.5л, открой стальную и поставь лайк карточке", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9929145574569702}
+{"phrase": "Мне бы оперу запустить", "raw": "{\"type\":\"open_app\",\"appName\":\"opera\"}", "confidence": 0.9321259091423748}
+{"phrase": "открой проводник, перейди в изображения, выдели все фотки за сегодня и отправь в избранное в телеграмме", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998279809951782}
+{"phrase": "пожалуйста пришли скриншот экрана", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9985936284065247}
+{"phrase": "Слваа роботам, получается?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.992911159992218}
+{"phrase": "Можешь запустить энидеск?", "raw": "{\"type\":\"open_app\",\"appName\":\"anydesk\"}", "confidence": 0.9491983362841694}
+{"phrase": "скопируй выделенный абзац из pdf переведи в десктопном переводчике и вставь перевод в конспект в ворде", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998655319213867}
+{"phrase": "Браузер открой и сразу зайди на реддит!", "raw": "{\"type\":\"open_url\",\"url\":\"https://reddit.com\"}", "confidence": 0.9889131746599986}
+{"phrase": "Зайди на твич.", "raw": "{\"type\":\"open_url\",\"url\":\"https://twitch.tv\"}", "confidence": 0.9998709001123984}
+{"phrase": "ассистент, открой веб-сайт гугл мит", "raw": "{\"type\":\"open_url\",\"url\":\"https://meet.google.com\"}", "confidence": 0.9970002093520804}
+{"phrase": "срочно принудительно закрой вайбер", "raw": "{\"type\":\"kill_process\",\"processName\":\"viber.exe\"}", "confidence": 0.9949141913518034}
+{"phrase": "прибей процесс node", "raw": "{\"type\":\"kill_process\",\"processName\":\"node.exe\"}", "confidence": 0.999583384098969}
+{"phrase": "Посмотри в вотсапе последнее сообщение от татьяны скопируй его и переведи диалог в архив.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999347925186157}
+{"phrase": "Заверши работу vlc принудительно пожалуйста", "raw": "{\"type\":\"kill_process\",\"processName\":\"vlc.exe\"}", "confidence": 0.9999397994199626}
+{"phrase": "Качни пресеты из телеги распакуй в папку и скинь лучший файл алексею в дискорде!", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998915195465088}
+{"phrase": "слей воду из макарон", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9952373504638672}
+{"phrase": "фауст, слушай вытащи из телеграма документ с актом сверки, сохрани в документы, открой в ворде, проверь реквизиты и перешли в слак финансовому", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999498128890991}
+{"phrase": "ты спишь когда-нибудь?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9940459728240967}
+{"phrase": "пожалуйста перейди на сайт степик", "raw": "{\"type\":\"open_url\",\"url\":\"https://stepik.org\"}", "confidence": 0.9995588545638903}
+{"phrase": "Сделай чуть-чуть погромче", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.8323196055540443}
+{"phrase": "Сделай скриншот моего экрана и отправь его диме в вотсап с подписью смотри какая ошибка!", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999768733978271}
+{"phrase": "фауст, открой ютуб, найди разбор фильма интерстеллар, запусти ролик и поставь качество 1080p", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9971068501472473}
+{"phrase": "убей вскод", "raw": "{\"type\":\"kill_process\",\"processName\":\"code.exe\"}", "confidence": 0.9995648323635393}
+{"phrase": "запусти браузер и открой сайт курсеру", "raw": "{\"type\":\"open_url\",\"url\":\"https://coursera.org\"}", "confidence": 0.9102553591787199}
+{"phrase": "вруби яндекс музыку, найди песню комета jony, открой текст песни", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9584057331085205}
+{"phrase": "браузер открой и вкладочку с твиттером сделай", "raw": "{\"type\":\"open_url\",\"url\":\"https://x.com\"}", "confidence": 0.9405295685985493}
+{"phrase": "Найди на Авито игровой ПК на RTX 3060, открой предложение от частного лица и отложи в избранное", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9896356463432312}
+{"phrase": "включи идею", "raw": "{\"type\":\"open_app\",\"appName\":\"intellij idea\"}", "confidence": 0.9831300920727344}
+{"phrase": "Отправь данные моей карты в этот чат поддержки!", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.7200458645820618}
+{"phrase": "Затяни архив из thunderbird распакуй на рабочий стол и отправь скан в ватсап", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999452829360962}
+{"phrase": "Зайди на аито работа, найди администратора отеля, открой любое объявление и откликнись.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9990313053131104}
+{"phrase": "в экселе посчитай среднее значение столбца с вставь формулу скопируй результат и перенеси в вордовскую записку", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9993976354598999}
+{"phrase": "Сделай скринок и скинь сюда", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9763888716697693}
+{"phrase": "Будильники сбрасываются после перезагрузки компа", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9535669088363647}
+{"phrase": "настрой проекцию на второй экран в режиме расширить а не дублировать", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.8559837937355042}
+{"phrase": "спокойной ночи, я спать", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.5503925123281448}
+{"phrase": "слушай, открой мне ппку с фотками", "raw": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "confidence": 0.9999421835487965}
+{"phrase": "экстренно закрошеь пайчарм", "raw": "{\"type\":\"kill_process\",\"processName\":\"pycharm64.exe\"}", "confidence": 0.979021842654106}
+{"phrase": "Зайди в папку скачанного", "raw": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "confidence": 0.7591614719806401}
+{"phrase": "сгрузи из торрент клиента новый альбом и перешли маме в ватсап", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9996292591094971}
+{"phrase": "качни с торрента патч для игры и скинь пацанам в дискорд сервер", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9971362352371216}
+{"phrase": "Выгрузи данные из ворда в эксель разбей их по столбцам через разделитель запятая", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9993652701377869}
+{"phrase": "Слушай, закинь 50 тысяч на криптокошелек по этой ссылке", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9355453848838806}
+{"phrase": "будь добр, открой мне сайт оверлифа", "raw": "{\"type\":\"open_url\",\"url\":\"https://overleaf.com\"}", "confidence": 0.9999458790881164}
+{"phrase": "фауст, можешь просто открыть страницу кинопоиска?", "raw": "{\"type\":\"open_url\",\"url\":\"https://kinopoisk.ru\"}", "confidence": 0.850418834638873}
+{"phrase": "Найди на карте ВДНХ, кликни на схему территории и выбери фильтр с детскими площадками", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9981993436813354}
+{"phrase": "запусти приложение ванноут", "raw": "{\"type\":\"open_app\",\"appName\":\"onenote\"}", "confidence": 0.9987987951342348}
+{"phrase": "сними принудительно задачу аутлук", "raw": "{\"type\":\"kill_process\",\"processName\":\"outlook.exe\"}", "confidence": 0.9996330812583238}
+{"phrase": "купи аккаунт бравл старс на маркетплейсе и спиши деньги с карты", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9989842772483826}
+{"phrase": "Зайди на сайт майкрософт", "raw": "{\"type\":\"open_url\",\"url\":\"https://microsoft.com\"}", "confidence": 0.998259101391838}
+{"phrase": "сгрузи презентацию из письмеца в аутлуке и отгрузи ее в слак маркетологам", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9891548752784729}
+{"phrase": "создай в экселе таблицу из трех столбцов товар цена количество и заполни её данными из текстового файла в блокноте", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999700784683228}
+{"phrase": "запусти браузер и открой бинг", "raw": "{\"type\":\"open_url\",\"url\":\"https://bing.com\"}", "confidence": 0.9851858796099897}
+{"phrase": "стартуй пайчарм", "raw": "{\"type\":\"open_app\",\"appName\":\"pycharm\"}", "confidence": 0.9852266173396771}
+{"phrase": "Диспетчер задач закрой жестко", "raw": "{\"type\":\"kill_process\",\"processName\":\"taskmgr.exe\"}", "confidence": 0.5067286422801232}
+{"phrase": "Ассистент, откроешь ютуб?.", "raw": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "confidence": 0.9985202070636774}
+{"phrase": "сделай скриншот таблицы из экселя, открой телеграм и отправь его начальнику обычным файлом без сжатия", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9994370341300964}
+{"phrase": "будильник на завтра всё ещё активен", "raw": "{\"type\":\"unknown\"}", "confidence": 0.974651038646698}
+{"phrase": "поищи на твиче стрим по dota 2 с наибольшим количеством зрителей, открой и включи театр режим", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9916736483573914}
+{"phrase": "выдели в проводнике файлы отчет1 и отчет2, скопиуй их и вставь в папку архив на диске c", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9978821873664856}
+{"phrase": "в браузере открой главную страницу амазона", "raw": "{\"type\":\"open_url\",\"url\":\"https://amazon.com\"}", "confidence": 0.996668918321042}
+{"phrase": "Найди все картинки формата png в папке Загрузки скопируй их и вставь в папку Иконки в Моих рисунках", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9964572787284851}
+{"phrase": "Грохни блокнот!", "raw": "{\"type\":\"kill_process\",\"processName\":\"notepad.exe\"}", "confidence": 0.9975118675620109}
+{"phrase": "фауст, накинь громкости", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.9856961259519892}
+{"phrase": "скопируй из экселя сводную таблицу вставь её в ворд сохраняя исходное форматирование", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999102354049683}
+{"phrase": "Содзай новый архив с паролем 1234 и закинь туда всю папку с картинками с вчерашнего дня", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9954900145530701}
+{"phrase": "Включи монозвук в параметрах специальных возможностей", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.6768875122070312}
+{"phrase": "Зайди на Евроньюс, открой раздел Экология, найди сюжет про океаны и тыкни кнопку Переключить на русский язык.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9992983341217041}
+{"phrase": "аварийно заверши блокнот", "raw": "{\"type\":\"kill_process\",\"processName\":\"notepad.exe\"}", "confidence": 0.9911451666815623}
+{"phrase": "выключи ноут мгновенно", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9789378046989441}
+{"phrase": "поставь слайд-шоу на рабочий стол и включи смену картинок каждые 10 минут", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.5205041766166687}
+{"phrase": "пополни баланс этого неизвестного номера на 5 тысяч", "raw": "{\"type\":\"unknown\"}", "confidence": 0.960330069065094}
+{"phrase": "перейди на твиттер", "raw": "{\"type\":\"open_url\",\"url\":\"https://x.com\"}", "confidence": 0.9969800364835812}
+{"phrase": "Ассистент, гаси процесс java", "raw": "{\"type\":\"kill_process\",\"processName\":\"java.exe\"}", "confidence": 0.9995599564978264}
+{"phrase": "открой gitkraken, слей ветку feature/ui в staging, закоммить конфликты если есть и сделай пуш.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9091794490814209}
+{"phrase": "покорми кота, он орёт с самого утра", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9994245767593384}
+{"phrase": "сделай скрин всего рабочего стола замажь иконки красным цветом в пейнте и сохрани на рабочий стол", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9997945427894592}
+{"phrase": "Вкылючи комп прямо сейчас.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9898900985717773}
+{"phrase": "Будь добр открой вкладку саундклауд!", "raw": "{\"type\":\"open_url\",\"url\":\"https://soundcloud.com\"}", "confidence": 0.9961576002104842}
+{"phrase": "Перешли мне все новые фотки из чата семьи в вотсапе в папочку с фото за сегодня", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999464750289917}
+{"phrase": "открой твич в браузере", "raw": "{\"type\":\"open_url\",\"url\":\"https://twitch.tv\"}", "confidence": 0.9998835345007251}
+{"phrase": "фауст открой иви", "raw": "{\"type\":\"open_url\",\"url\":\"https://ivi.ru\"}", "confidence": 0.9999132172455205}
+{"phrase": "быстро оплати по кьюар коду с этого экрана", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9796658158302307}
+{"phrase": "просто открой сайт букинга", "raw": "{\"type\":\"open_url\",\"url\":\"https://booking.com\"}", "confidence": 0.9997499663477072}
+{"phrase": "открой главную страницу степика", "raw": "{\"type\":\"open_url\",\"url\":\"https://stepik.org\"}", "confidence": 0.9961815176112054}
+{"phrase": "Выведи список открытых софтин!", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9999456405639648}
+{"phrase": "Мне нужен сайт стековерфлоу просто открой его", "raw": "{\"type\":\"open_url\",\"url\":\"https://stackoverflow.com\"}", "confidence": 0.9956407813537709}
+{"phrase": "Открой директорию рабочий стол", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.562821626663208}
+{"phrase": "открой ворд выдели всю таблицу скопируй её в эксель и примени там стиль таблицы с чередованием строк", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998468160629272}
+{"phrase": "прейди пожалуйста на сайт реддита в браузере", "raw": "{\"type\":\"open_url\",\"url\":\"https://reddit.com\"}", "confidence": 0.999759688240772}
+{"phrase": "Найди на linkedin вакансию Data Scientist в стартапе, открой вакансию и нажми Save job", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9833278059959412}
+{"phrase": "у меня стоял будильник на восемь ноль ноль", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9960516095161438}
+{"phrase": "помой посуду в раковине", "raw": "{\"type\":\"kill_process\",\"processName\":\"explorer.exe\"}", "confidence": 0.5313680464345296}
+{"phrase": "мне нужен скриншот экрана скинь плз", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9998888969421387}
+{"phrase": "Зайди на дтф, найди новость про новую часть GTA, открой ее и оставь коммент ждем", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9694681167602539}
+{"phrase": "запусти эпик геймс", "raw": "{\"type\":\"open_app\",\"appName\":\"epic games\"}", "confidence": 0.928244161131687}
+{"phrase": "Открой окно с загрузками", "raw": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "confidence": 0.9886773226224932}
+{"phrase": "убей процесс экселя", "raw": "{\"type\":\"kill_process\",\"processName\":\"excel.exe\"}", "confidence": 0.9807232917043507}
+{"phrase": "включи аутлук", "raw": "{\"type\":\"open_app\",\"appName\":\"outlook\"}", "confidence": 0.9921077941123713}
+{"phrase": "Открой мне дискорд пожалуйста", "raw": "{\"type\":\"open_app\",\"appName\":\"discord\"}", "confidence": 0.9848042641167609}
+{"phrase": "Зайди на ютубчик, найди канал Техноблогер, открой их крайний видос и напиши в комментариях классный обзор", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9984244108200073}
+{"phrase": "Запусти скрипт в VS Code скопируй весь вывод из терминала и вставь его в самый конец файла с лабой!", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9989715814590454}
+{"phrase": "Мне нужно увидеть запущенные процессы!", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9999611377716064}
+{"phrase": "давай откроем папку документы", "raw": "{\"type\":\"open_app\",\"appName\":\"документы\"}", "confidence": 0.9999489784481739}
+{"phrase": "Отключи защитник виндоус быстро!", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9899682402610779}
+{"phrase": "зайди на packagist, найди там laravel/framework, открой и скопируй строчку для composer require", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.7457877993583679}
+{"phrase": "Слушай найди на авито работу грузчиком с ежедневной оплатой, открой первое объявление и нажми Показать номер", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9201661348342896}
+{"phrase": "вытащи pdf из аутлука сожми через архиватор и закинь ребятам в дс", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9982670545578003}
+{"phrase": "принудительно закрой мне пауэрпоинт", "raw": "{\"type\":\"kill_process\",\"processName\":\"powerpnt.exe\"}", "confidence": 0.9984179757794323}
+{"phrase": "будь другом открой реддит", "raw": "{\"type\":\"open_url\",\"url\":\"https://reddit.com\"}", "confidence": 0.998169550790351}
+{"phrase": "Сохрани все фотки из тееги архивом и закинь дизайнеру в слак!", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9997765421867371}
+{"phrase": "зайди на интерфакс, найди новости медицины, открой последнюю заметку и нажми увеличить шрифт.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9965464472770691}
+{"phrase": "чуть-чуть прибавь звук", "raw": "{\"type\":\"set_volume\",\"level\":70}", "confidence": 0.9989654919857571}
+{"phrase": "Как жизнь молодая?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9959971904754639}
+{"phrase": "открой страницу ватсап веб", "raw": "{\"type\":\"open_url\",\"url\":\"https://web.whatsapp.com\"}", "confidence": 0.9998441987984279}
+{"phrase": "открой яндекс почту без поиска", "raw": "{\"type\":\"open_url\",\"url\":\"https://mail.yandex.ru\"}", "confidence": 0.990955802779645}
+{"phrase": "Сделай принтскрин и скинь сюда.", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.88843834400177}
+{"phrase": "фауст, набери на спортсе новости про зенит, найди последний матч, открой его и нажми на подробную статистику игроков.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9851256608963013}
+{"phrase": "сделай принудительное закрытие ватсапа", "raw": "{\"type\":\"kill_process\",\"processName\":\"whatsapp.exe\"}", "confidence": 0.9935241864310456}
+{"phrase": "Твиттер открой, поищи Илона Маска, зайди на его профиль и зафолловь", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.989361584186554}
+{"phrase": "сохрани из телеграма документ переименуй в итоговый и закинь шефу в почтовый клиент", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998646974563599}
+{"phrase": "Будь добр, покажи все открытые приложения", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9858551621437073}
+{"phrase": "Запусти сайт ноушн!", "raw": "{\"type\":\"open_url\",\"url\":\"https://notion.so\"}", "confidence": 0.9253483886484446}
+{"phrase": "стартани хром на компе", "raw": "{\"type\":\"open_app\",\"appName\":\"chrome\"}", "confidence": 0.9998446704246362}
+{"phrase": "найди в логах веб-сервера строчку с nullpointerexception, скопируй стектрейс, открой нужный класс в pycharm и перейди на эту строчку.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9534059166908264}
+{"phrase": "сбавь уровень звука", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.9997115888946766}
+{"phrase": "распакуй zip файл из папки документы найди там все скриншоты и перенеси их в папку скрины", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.999750554561615}
+{"phrase": "Скопируй содержимое открытого файла Word, открой ТГ, найди канал Мои заметки и опубликуй туда", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9996191263198853}
+{"phrase": "фауст, ассистент, открой каггл", "raw": "{\"type\":\"open_url\",\"url\":\"https://kaggle.com\"}", "confidence": 0.9998933105071899}
+{"phrase": "открой-ка ванноут", "raw": "{\"type\":\"open_app\",\"appName\":\"onenote\"}", "confidence": 0.9956568136848389}
+{"phrase": "фауст зайди на сайт bbc weather, введи лондон, переключи градусы с цельсия на фаренгейт и разверни прогноз на 14 дней.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8612712621688843}
+{"phrase": "Залочь экран", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999881982803345}
+{"phrase": "открой раздел загрузки", "raw": "{\"type\":\"open_app\",\"appName\":\"загрузки\"}", "confidence": 0.9865369936331945}
+{"phrase": "на гугл академии введи методы обработки естественного языка, открой статью за 2024 год и кликни сохранить в библиотеку.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9706915020942688}
+{"phrase": "почему кулеры так сильно гудят", "raw": "{\"type\":\"unknown\"}", "confidence": 0.99078768491745}
+{"phrase": "Быстренько открой калькулятор", "raw": "{\"type\":\"open_app\",\"appName\":\"calc\"}", "confidence": 0.9485067786566148}
+{"phrase": "слушай найди билет на самолет в екатеринбург на выходные, открой вариант с багажом и нажми кнопку отслеживать цену", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9858198165893555}
+{"phrase": "а ну-ка открой следующую страницу результатов поиска быстро", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8886849284172058}
+{"phrase": "ответь сестре в телеграм, что я опоздаю", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9995310306549072}
+{"phrase": "открой-ка tiktok, быстро", "raw": "{\"type\":\"open_url\",\"url\":\"https://tiktok.com\"}", "confidence": 0.9997560390768356}
+{"phrase": "Форматни флешку", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9994387030601501}
+{"phrase": "зайди в google translate", "raw": "{\"type\":\"open_url\",\"url\":\"https://translate.google.com\"}", "confidence": 0.9993925385717191}
+{"phrase": "фауст, будь так любезен, покажи все процессы, хочу убедиться, что всё в порядке.", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9982547163963318}
+{"phrase": "Фауст, закрой дискорд.", "raw": "{\"type\":\"kill_process\",\"processName\":\"discord.exe\"}", "confidence": 0.9656699610131696}
+{"phrase": "скачай pdf из загрузок с сайта и отправь преподавателю по телеграму", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999468326568604}
+{"phrase": "будь добр, композицию дальше сейчас", "raw": "{\"type\":\"quick_action\",\"action\":\"next_track\"}", "confidence": 0.9970369338989258}
+{"phrase": "найди в дискорде картинку со схемой, сохрани в папку рисунки, открой в paint, дорисуй стрелку и перешли в телеграм разработчику", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998076558113098}
+{"phrase": "Фауст, пожалуйста, покажи рабочий стол картинкой, мне пора бежать на автобус", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9676688313484192}
+{"phrase": "set volume to 30", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.9899159915613183}
+{"phrase": "зайди на кинопоиск и скачай прогноз погоды на завтра", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9992584586143494}
+{"phrase": "Давай хром", "raw": "{\"type\":\"open_app\",\"appName\":\"chrome\"}", "confidence": 0.998224080667093}
+{"phrase": "Вруби obs studio, хочу кое-что записать", "raw": "{\"type\":\"open_app\",\"appName\":\"obs studio\"}", "confidence": 0.9999362230973645}
+{"phrase": "поищи на алиэкспрессе кроссовки найк", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9997419714927673}
+{"phrase": "скинь диме в телеграме диплом", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9994339346885681}
+{"phrase": "если не сложно, заблокируй, пожалуйста, компьютер, мне надо быстро кое-что записать.", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999934434890747}
+{"phrase": "пожалуйста, оформи заказ на игровую мышку в яндекс еде", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9957213401794434}
+{"phrase": "скачай отчёт из почты и скинь пете в вайбере", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999245405197144}
+{"phrase": "погугли видео про котиков и открой первый сайт", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.999870777130127}
+{"phrase": "скачай чек по ссылке и отправь тимуру и диме в дискорде", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999727010726929}
+{"phrase": "запусти-ка excel", "raw": "{\"type\":\"open_app\",\"appName\":\"excel\"}", "confidence": 0.9674409151808874}
+{"phrase": "уменьши громкость на 10 пунктов", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-10}", "confidence": 0.9997872189907469}
+{"phrase": "савь звук на пятьдесят%", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-50}", "confidence": 0.910375356450615}
+{"phrase": "включи cs2", "raw": "{\"type\":\"open_app\",\"appName\":\"counter-strike 2\"}", "confidence": 0.9564664442440218}
+{"phrase": "Найди где дешевле чехол для телефона и закажи с доставкой", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9989367127418518}
+{"phrase": "Найди песню группы кино в интернете и запиши в блокнот!", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9997062087059021}
+{"phrase": "слушай, найди на хх вакансию питониста в яндексе, открой самую свежую и откликнись моим основным резюме", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9984278678894043}
+{"phrase": "Фауст, будь так любезен, show me google translate пожалуйста, он мне сегодня больше не понадобится!", "raw": "{\"type\":\"open_url\",\"url\":\"https://translate.google.com\"}", "confidence": 0.9995060749808857}
+{"phrase": "Открой блокнот и открой последний документ", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999451637268066}
+{"phrase": "ответь диме в дискорде, что я заболел", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9977496266365051}
+{"phrase": "включи режим учёбы", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.8943648934364319}
+{"phrase": "плюс 10 к громкости", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":10}", "confidence": 0.9964406500932732}
+{"phrase": "сделай звук громче ещё на 50", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":50}", "confidence": 0.9942107111571694}
+{"phrase": "покажи мне экран компьютера сейчас", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9988777041435242}
+{"phrase": "Фауст, запиши пары сегодня не будет в блокнот и отправь файл брату в ватсапе", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.999731719493866}
+{"phrase": "Зайди на олх и скачай оттуда клип любимой группы!", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9911041259765625}
+{"phrase": "закрой программу файрфокс", "raw": "{\"type\":\"kill_process\",\"processName\":\"firefox.exe\"}", "confidence": 0.9882525454447233}
+{"phrase": "го на yandex music, быстро", "raw": "{\"type\":\"open_url\",\"url\":\"https://music.yandex.ru\"}", "confidence": 0.9996687886515474}
+{"phrase": "Фауст, пожалуйста, громкость, пожалуйста, сто процентов пожалуйста, ко мне пришли гости", "raw": "{\"type\":\"set_volume\",\"level\":100}", "confidence": 0.9992138503765702}
+{"phrase": "Композицию дальше сейчас", "raw": "{\"type\":\"quick_action\",\"action\":\"next_track\"}", "confidence": 0.981599748134613}
+{"phrase": "открой дискорд, найди чат с мамой и отправь фото паспорта кота", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999030828475952}
+{"phrase": "эй, фауст, разбуди меня в 11", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9906009435653687}
+{"phrase": "Если не сложно, перекрой воду на кухне, это срочно для работы", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9933255910873413}
+{"phrase": "Будь добр, поменяй порт в репозиторий сайт на 3000 и запушь плиз", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9950856566429138}
+{"phrase": "открой программу skype, хочу кое-что записать", "raw": "{\"type\":\"open_app\",\"appName\":\"skype\"}", "confidence": 0.9999475482088087}
+{"phrase": "Введи пин код", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9200953841209412}
+{"phrase": "Открой гитхаб и найди стажировку для студентов.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9995182752609253}
+{"phrase": "Фауст, напомни мне завтра в пять вечера, чтобы я пинг провайдеру пошел обнулять..", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9905388355255127}
+{"phrase": "запусти visual studio code на компьютере", "raw": "{\"type\":\"open_app\",\"appName\":\"visual studio code\"}", "confidence": 0.9992790820791342}
+{"phrase": "go to twitch", "raw": "{\"type\":\"open_url\",\"url\":\"https://twitch.tv\"}", "confidence": 0.9989679150460162}
+{"phrase": "найди в гугл картах реферат по экономике и включи", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.999951958656311}
+{"phrase": "можешь залей правки телеграм-бот на гитхаб, если не сложно", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9384013414382935}
+{"phrase": "открой проводник и найди файл диплом", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9965223073959351}
+{"phrase": "Найди отзывы о ноутбуке на каспи!", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9960373044013977}
+{"phrase": "заверши все процессы файрфокса", "raw": "{\"type\":\"kill_process\",\"processName\":\"firefox.exe\"}", "confidence": 0.9991696545530004}
+{"phrase": "фауст, пропусти эту песню пожалуйста", "raw": "{\"type\":\"quick_action\",\"action\":\"next_track\"}", "confidence": 0.998769223690033}
+{"phrase": "найди велосипед в интернете и скачай", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9967132806777954}
+{"phrase": "can you order us an uber to the city center?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9987967014312744}
+{"phrase": "открой изображения и удали файл старый.txt", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.995996356010437}
+{"phrase": "Фауст, будь так любезен, зайди в онлайн-банк и оплати интернет", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9995611310005188}
+{"phrase": "будь добр, что запущено в фоне плиз", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9999988079071045}
+{"phrase": "Фауст Фауст, открой сайт workschool.info, хочу посмотреть, что там..", "raw": "{\"type\":\"open_url\",\"url\":\"https://workschool.info\"}", "confidence": 0.9998327524356228}
+{"phrase": "Будь любезен, забронируй столик в ресторане на вечер", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9937036633491516}
+{"phrase": "прибей энидеск срочно", "raw": "{\"type\":\"kill_process\",\"processName\":\"anydesk.exe\"}", "confidence": 0.9905623489974857}
+{"phrase": "Фауст, выключи сетевой фильтр из розетки, я поехал на дачу на все выходные и опасаюсь перепадов напряжения..", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9820313453674316}
+{"phrase": "Open bing please!", "raw": "{\"type\":\"open_url\",\"url\":\"https://bing.com\"}", "confidence": 0.9998335873294053}
+{"phrase": "Грохни пайчарм прямо сейчас", "raw": "{\"type\":\"kill_process\",\"processName\":\"pycharm64.exe\"}", "confidence": 0.9963282951525372}
+{"phrase": "эй, запусти утренний набор программ", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.969372034072876}
+{"phrase": "мне нужен ютубчик, быстро", "raw": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "confidence": 0.9998978395190932}
+{"phrase": "мне нужен 7zip", "raw": "{\"type\":\"open_app\",\"appName\":\"7-zip\"}", "confidence": 0.854557082640774}
+{"phrase": "быстро open google docs and create a new document, если не сложно", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9570527076721191}
+{"phrase": "Удали файл таблица.xlsx из загрузок", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998034834861755}
+{"phrase": "фауст, стартуй нотпад плюс плюс", "raw": "{\"type\":\"open_app\",\"appName\":\"notepad++\"}", "confidence": 0.9881029611066765}
+{"phrase": "а ну-ка переведи деньги на счёт, если не сложно", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9987753033638}
+{"phrase": "Трек назад, если не сложно!", "raw": "{\"type\":\"quick_action\",\"action\":\"prev_track\"}", "confidence": 0.9974794983863831}
+{"phrase": "почему во сне иногда кажется, что падаешь вниз?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9958667755126953}
+{"phrase": "фауст, слушай, закрой компьютер на замок сейчас", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9960202574729919}
+{"phrase": "зайди на сайт метеоблю, введи шерегеш, открывай веб-камеры и запусти онлайн трансляцию с горы.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9663615822792053}
+{"phrase": "найди диван недорого в гугл картах и открой первый результат", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9999251365661621}
+{"phrase": "Эй, Фауст, убей проводник срочно, а то мешает сосредоточиться.!", "raw": "{\"type\":\"kill_process\",\"processName\":\"explorer.exe\"}", "confidence": 0.9508906911359247}
+{"phrase": "Фауст, пожалуйста, пожалуйста заблокируй ноут, я забыл это сделать перед уходом.!", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999762773513794}
+{"phrase": "Будь добр, открой сайт Stack Overflow, мне срочно нужно найти решение одной неприятной проблемы с асинхронностью.", "raw": "{\"type\":\"open_url\",\"url\":\"https://stackoverflow.com\"}", "confidence": 0.9979378415673921}
+{"phrase": "kill intellij idea", "raw": "{\"type\":\"kill_process\",\"processName\":\"idea64.exe\"}", "confidence": 0.9882569509005066}
+{"phrase": "будь добр, стоп быстро", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9021662473678589}
+{"phrase": "Открой сайт Большого театра, найди балет Щелкунчик на декабрь, кликни на дату и посмотри схему зала", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9988641738891602}
+{"phrase": "Слушай, а ну-ка что работает на компе, у меня руки заняты.", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9995212554931641}
+{"phrase": "скачай резюме с сайта и отправь папе в телеграме", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999722242355347}
+{"phrase": "Найди музыку для катки скачай плейлист в мп3!", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9750567078590393}
+{"phrase": "Громче где-то на 47!", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":47}", "confidence": 0.992612622333823}
+{"phrase": "Пожалуйста, сделай скриншот срочно, это срочно для работы.", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9998107552528381}
+{"phrase": "вруби программу спотифай", "raw": "{\"type\":\"open_app\",\"appName\":\"spotify\"}", "confidence": 0.9997033665142965}
+{"phrase": "Слушай, открой, пожалуйста, в браузере hh, а то мешает сосредоточиться..", "raw": "{\"type\":\"open_url\",\"url\":\"https://hh.ru\"}", "confidence": 0.9958338921050398}
+{"phrase": "Найди на кинопоиске наушники до 20 тысяч и скачай!", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9998879432678223}
+{"phrase": "поищи на реддите характеристики rtx 3050", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.999769389629364}
+{"phrase": "найди мне на хабре видео про котиков", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9999556541442871}
+{"phrase": "быстро включи следующий урок на курсере пожалуйста", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8880993127822876}
+{"phrase": "фауст, пока меня не будет дома, найди в google картинку с высокой детализацией карты метро москвы, скачай её и установи как фоновый рисунок рабочего стола.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.749582052230835}
+{"phrase": "эй, удали всё с диска c срочно", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9970445036888123}
+{"phrase": "Фауст Зайди на Авито, вбей кофеварка, отсортируй по цене и скинь мне первую ссылку в телеграм.!", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.99754399061203}
+{"phrase": "открой телеграм, найди чат группы и отправь договор", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.999660849571228}
+{"phrase": "фауст, пожалуйста, скинь диме сто долларов на карту, пока я бегаю в магазин", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9956569671630859}
+{"phrase": "open web telegram", "raw": "{\"type\":\"open_url\",\"url\":\"https://web.telegram.org\"}", "confidence": 0.9921209901019878}
+{"phrase": "Фауст, открой блокнот, напиши сервер поднят и сохрани на рабочий стол", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9996752738952637}
+{"phrase": "turn it down", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.9970371239618814}
+{"phrase": "заархивируй папку диплом", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9992799162864685}
+{"phrase": "Давай фотошоп, срочно.", "raw": "{\"type\":\"open_app\",\"appName\":\"photoshop\"}", "confidence": 0.9964799778114042}
+{"phrase": "Останови процесс sync_x64.exe", "raw": "{\"type\":\"kill_process\",\"processName\":\"sync_x64.exe\"}", "confidence": 0.9980964400902224}
+{"phrase": "сделай резервную копию проекта", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9948583841323853}
+{"phrase": "установи громкость 99", "raw": "{\"type\":\"set_volume\",\"level\":99}", "confidence": 0.9970158753711544}
+{"phrase": "Открой в браузере onlinenews.ru", "raw": "{\"type\":\"open_url\",\"url\":\"https://onlinenews.ru\"}", "confidence": 0.9980957643778083}
+{"phrase": "Отправь последний скачанный файл Даше в ватсапе.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.999971866607666}
+{"phrase": "Слушай, блокировка экрана, мы тут с друзьями сидим.", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999938011169434}
+{"phrase": "фауст, милый, open tech70.io, он мне сегодня больше не понадобится", "raw": "{\"type\":\"open_url\",\"url\":\"https://tech70.io\"}", "confidence": 0.9998235747043509}
+{"phrase": "напомни мне в 5 сдать отчёт, я хочу кое-что посмотреть перед выходом", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9925703406333923}
+{"phrase": "Выгрузи гугл хром срочно.", "raw": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "confidence": 0.9981576844213862}
+{"phrase": "сколько времени сейчас?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9998370409011841}
+{"phrase": "фауст, открой excel, создай пустую таблицу, вбей в первый столбец числа 100, 200 и 300, и построй простую гистограмму, чтобы наглядно объяснить идею друзьям.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9840781688690186}
+{"phrase": "закрой player32.exe", "raw": "{\"type\":\"kill_process\",\"processName\":\"player32.exe\"}", "confidence": 0.9992678260436527}
+{"phrase": "заполни форму на сайте", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9994996786117554}
+{"phrase": "найди шаблон презентации на крыше и открой первый результат", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.999915361404419}
+{"phrase": "Найди расписание поездов алматы астана в интернете и скачай!", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9985859394073486}
+{"phrase": "Фауст, Фауст, милый, экран блокировки включи пожалуйста, я туда вчера сохранял документ", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999754428863525}
+{"phrase": "сделай громче на 20 процентов", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":20}", "confidence": 0.9958837251790627}
+{"phrase": "Слушай, купи билеты в кино на вечерний сеанс!", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9999455213546753}
+{"phrase": "Фауст, ты спишь?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9939544796943665}
+{"phrase": "открой мне егов", "raw": "{\"type\":\"open_url\",\"url\":\"https://egov.kz\"}", "confidence": 0.965501933520386}
+{"phrase": "запусти программу яндекс браузер", "raw": "{\"type\":\"open_app\",\"appName\":\"яндекс браузер\"}", "confidence": 0.9825196692467308}
+{"phrase": "открой приложение паинт на компьютере", "raw": "{\"type\":\"open_app\",\"appName\":\"paint\"}", "confidence": 0.9999159586679411}
+{"phrase": "открой последний скриншот и отправь его начальнику в ватсап", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999760389328003}
+{"phrase": "фауст открой в браузере ю туб", "raw": "{\"type\":\"open_url\",\"url\":\"https://youtube.com\"}", "confidence": 0.9999066611801766}
+{"phrase": "быстро замуть микрофон плиз", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9892207980155945}
+{"phrase": "Го на stack overflow пожалуйста!", "raw": "{\"type\":\"open_url\",\"url\":\"https://stackoverflow.com\"}", "confidence": 0.9999864101869349}
+{"phrase": "Найди на википедии кафе рядом и закинь в избранное", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9993315935134888}
+{"phrase": "включи сайт майкрософт, быстро", "raw": "{\"type\":\"open_url\",\"url\":\"https://microsoft.com\"}", "confidence": 0.9895671333534892}
+{"phrase": "фауст, два гис", "raw": "{\"type\":\"open_url\",\"url\":\"https://2gis.kz\"}", "confidence": 0.9912414466550956}
+{"phrase": "поищи на википедии кроссовки найк и открой что-нибудь", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9999263286590576}
+{"phrase": "Закрой пожалуйста вайбер принудительно", "raw": "{\"type\":\"kill_process\",\"processName\":\"viber.exe\"}", "confidence": 0.948847576950854}
+{"phrase": "open папку изображения", "raw": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "confidence": 0.9998971235784211}
+{"phrase": "найди на рабочем столе фотку и перешли его кате в дискорде", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999830722808838}
+{"phrase": "найди лекцию по матанализу на кинопоиске", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9990000128746033}
+{"phrase": "перейди на букинг", "raw": "{\"type\":\"open_url\",\"url\":\"https://booking.com\"}", "confidence": 0.9999264488501751}
+{"phrase": "Заверши процесс render6.exe", "raw": "{\"type\":\"kill_process\",\"processName\":\"render6.exe\"}", "confidence": 0.9997282761412833}
+{"phrase": "слушай, прошлую песню", "raw": "{\"type\":\"quick_action\",\"action\":\"prev_track\"}", "confidence": 0.9912251830101013}
+{"phrase": "Фауст, открой программу Excel, найди файл Бюджет, заполни там в последней строчке расход на продукты 3000 рублей и сохрани.!", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.990760862827301}
+{"phrase": "посмотри на алиэкспрессе трейлер нового фильма", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.997347354888916}
+{"phrase": "Вытри все флешки и жесткие диски.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9979350566864014}
+{"phrase": "если не сложно, перейди на store81.net, мы тут с друзьями сидим.", "raw": "{\"type\":\"open_url\",\"url\":\"https://store81.net\"}", "confidence": 0.9980922238116108}
+{"phrase": "Открой википедию, найди урок по питону и скопируй ссылку", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9993695616722107}
+{"phrase": "найди на 2гис кроссовки найк и включи", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9993189573287964}
+{"phrase": "фауст покажи самый большой файл в изображениях", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9612302184104919}
+{"phrase": "открой в проводнике фотки пожалуйста", "raw": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "confidence": 0.9840788852400237}
+{"phrase": "сделай громкость 10", "raw": "{\"type\":\"set_volume\",\"level\":10}", "confidence": 0.9985220367147924}
+{"phrase": "иедгжр гбя ышел", "raw": "{\"type\":\"unknown\"}", "confidence": 0.964099645614624}
+{"phrase": "Запусти приложение calculator!", "raw": "{\"type\":\"open_app\",\"appName\":\"calc\"}", "confidence": 0.9976984874969475}
+{"phrase": "фауст, запусти программу android studio пожалуйста", "raw": "{\"type\":\"open_app\",\"appName\":\"android studio\"}", "confidence": 0.9084130534462105}
+{"phrase": "youtube music", "raw": "{\"type\":\"open_url\",\"url\":\"https://music.youtube.com\"}", "confidence": 0.9909047460636948}
+{"phrase": "Сделай звук тише ещё на 74", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-74}", "confidence": 0.956289493188585}
+{"phrase": "исправь опечатку в readme демо", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9985222220420837}
+{"phrase": "грохни postman", "raw": "{\"type\":\"kill_process\",\"processName\":\"postman.exe\"}", "confidence": 0.9998615981945989}
+{"phrase": "подними эдж", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.5903170108795166}
+{"phrase": "сними процесс updater.exe", "raw": "{\"type\":\"kill_process\",\"processName\":\"updater.exe\"}", "confidence": 0.9980969497276533}
+{"phrase": "найди трейлер нового сезона на ютубе и включи 1080p", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9998376369476318}
+{"phrase": "принудительно закрой вотсап срочно", "raw": "{\"type\":\"kill_process\",\"processName\":\"whatsapp.exe\"}", "confidence": 0.9316442522617763}
+{"phrase": "открой поверпоинт и word", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9286708831787109}
+{"phrase": "Открой озон и войди в аккаунт!", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9986552000045776}
+{"phrase": "поставь 29 процентов громкости", "raw": "{\"type\":\"set_volume\",\"level\":29}", "confidence": 0.9994468526718165}
+{"phrase": "stop steam", "raw": "{\"type\":\"kill_process\",\"processName\":\"steam.exe\"}", "confidence": 0.9956110724860423}
+{"phrase": "Скачай из Телеграма последний Excel файл, открой его, пересохрани как csv и отправь обратно в тот же чат", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9961698651313782}
+{"phrase": "открой ворд и напиши текст и сохрани как реферат", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999727010726929}
+{"phrase": "найди в доках питона функцию array, открой ее описание и смени язык страницы на русский", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8423303365707397}
+{"phrase": "отыщи на 2гис диван недорого", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9990429282188416}
+{"phrase": "громкость сто процентов на ноуте", "raw": "{\"type\":\"set_volume\",\"level\":100}", "confidence": 0.9978389859135319}
+{"phrase": "открой в проводнике папку с фотками", "raw": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "confidence": 0.9999144079284861}
+{"phrase": "Close browser with all tabs right now, please.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.4101976752281189}
+{"phrase": "закажи пиццу на дом", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9990411400794983}
+{"phrase": "найди в гугле курс доллара и скачай", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9772371053695679}
+{"phrase": "Посоветуй хороший ресторан неподалеку от нашего дома, куда мы могли бы переместиться с друзьями для продолжения вечера.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9986485838890076}
+{"phrase": "открой проводник и создай папку проект на рабочем столе", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999717473983765}
+{"phrase": "Будь любезен, напомни в 9 вечера забрать посылку", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9995311498641968}
+{"phrase": "Go to ivi, бсытро", "raw": "{\"type\":\"open_url\",\"url\":\"https://ivi.ru\"}", "confidence": 0.9985856472678805}
+{"phrase": "скачай лабораторную по ссылке и отправь пете и тимуру в телеграм", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998180270195007}
+{"phrase": "распакуй фото.jpg.zip и открой папку", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9993340373039246}
+{"phrase": "открой сайт amazon пожалуйста", "raw": "{\"type\":\"open_url\",\"url\":\"https://amazon.com\"}", "confidence": 0.9991829781019987}
+{"phrase": "Мне нужен тенгри!", "raw": "{\"type\":\"open_url\",\"url\":\"https://tengrinews.kz\"}", "confidence": 0.996528747664172}
+{"phrase": "будь добр, скрин сделай", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9989927411079407}
+{"phrase": "фауст, найди и скачай велосипед", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9977896213531494}
+{"phrase": "вбей в поиск на википедии отзывы о ноутбуке", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9998018145561218}
+{"phrase": "фауст закрои телеграм", "raw": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "confidence": 0.8047565971091117}
+{"phrase": "фауст, открой edu24.io, я на кухне и не могу подойти к компьютеру.", "raw": "{\"type\":\"open_url\",\"url\":\"https://edu24.io\"}", "confidence": 0.9989045521579598}
+{"phrase": "фауст сделай громче ещё на 25", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":25}", "confidence": 0.999616994899668}
+{"phrase": "найди документацию по kotlin на кольсах и открой первый результат", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9770525693893433}
+{"phrase": "Давай powerpoint на компе", "raw": "{\"type\":\"open_app\",\"appName\":\"powerpoint\"}", "confidence": 0.9996910840323068}
+{"phrase": "Open cyberleninka пожалуйста.", "raw": "{\"type\":\"open_url\",\"url\":\"https://cyberleninka.ru\"}", "confidence": 0.9998509892407128}
+{"phrase": "убей джаву", "raw": "{\"type\":\"kill_process\",\"processName\":\"java.exe\"}", "confidence": 0.9925294687625623}
+{"phrase": "найди рецепт плова в интернете и запиши в блокнот", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998891353607178}
+{"phrase": "поставь сорок процентов громкости", "raw": "{\"type\":\"set_volume\",\"level\":40}", "confidence": 0.9917321689502501}
+{"phrase": "запусти аудасити, надо поработать", "raw": "{\"type\":\"open_app\",\"appName\":\"audacity\"}", "confidence": 0.9999053483130638}
+{"phrase": "сделай видео потише в плеере", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9968497157096863}
+{"phrase": "если не сложно, оплати интернет", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9998219609260559}
+{"phrase": "открой сайт travel14.ru", "raw": "{\"type\":\"open_url\",\"url\":\"https://travel14.ru\"}", "confidence": 0.9982686197379103}
+{"phrase": "Эй, Фауст, переведи папе 10000 тенге по номеру телефона", "raw": "{\"type\":\"unknown\"}", "confidence": 0.997920572757721}
+{"phrase": "ассистент, пожалуйста, аварийно заверши файрфокс", "raw": "{\"type\":\"kill_process\",\"processName\":\"firefox.exe\"}", "confidence": 0.9975868396660843}
+{"phrase": "заверши процесс google chrome", "raw": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "confidence": 0.9997223031333249}
+{"phrase": "слушай, сними задачу с ватсапа, пожалуйста", "raw": "{\"type\":\"kill_process\",\"processName\":\"whatsapp.exe\"}", "confidence": 0.9972731214775479}
+{"phrase": "открой в браузере новости мейл ру", "raw": "{\"type\":\"open_url\",\"url\":\"https://news.mail.ru\"}", "confidence": 0.9193535419219074}
+{"phrase": "фауст скачай файл с расписанием по ссылке и распакуй в документы", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999356269836426}
+{"phrase": "найди в документах файл заявление и открой его", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9974319338798523}
+{"phrase": "открой tech25.by", "raw": "{\"type\":\"open_url\",\"url\":\"https://tech25.by\"}", "confidence": 0.9920734741109989}
+{"phrase": "хочу на overelaf", "raw": "{\"type\":\"open_url\",\"url\":\"https://overleaf.com\"}", "confidence": 0.9995288868359324}
+{"phrase": "сбавь звук на 10%", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-10}", "confidence": 0.9985808960878018}
+{"phrase": "экстренно закрой идею", "raw": "{\"type\":\"kill_process\",\"processName\":\"idea64.exe\"}", "confidence": 0.996363905069984}
+{"phrase": "Закрой наконец кс", "raw": "{\"type\":\"kill_process\",\"processName\":\"cs2.exe\"}", "confidence": 0.9992694262171256}
+{"phrase": "фауст, будь так любезен, закажи мне книгу с доставкой на дом", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9986807703971863}
+{"phrase": "пожалуйста нужно заблокировать экран срочно, мы тут с друзьями сидим.", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999915361404419}
+{"phrase": "фауст, пожалуйста, поставь будильник на 10 утра", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9954819679260254}
+{"phrase": "Фауст найди в гугле биографию абая и скачай.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9980676770210266}
+{"phrase": "Погугли клип любимой группы и открой первый сайт", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9994626641273499}
+{"phrase": "Заблокируй экран от кота а то прыгает", "raw": "{\"type\":\"lock_screen\"}", "confidence": 0.9999673366546631}
+{"phrase": "правка в демо: поменяй порт на 8090", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9995610117912292}
+{"phrase": "Открой ворд с резюме кандидата, сохрани в pdf, отправь файл через слак HR-менеджеру", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999327659606934}
+{"phrase": "Открой мне figma пожалуйста!", "raw": "{\"type\":\"open_url\",\"url\":\"https://figma.com\"}", "confidence": 0.9829638789927486}
+{"phrase": "перейди на сайт mysite-study.net", "raw": "{\"type\":\"open_url\",\"url\":\"https://mysite-study.net\"}", "confidence": 0.9925054941172533}
+{"phrase": "зайди на хэдхантер", "raw": "{\"type\":\"open_url\",\"url\":\"https://hh.ru\"}", "confidence": 0.9990286175439564}
+{"phrase": "найди на озоне документацию по kotlin", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9996094107627869}
+{"phrase": "Открой docs21.com.", "raw": "{\"type\":\"open_url\",\"url\":\"https://docs21.com\"}", "confidence": 0.5509193599937241}
+{"phrase": "Открой ворд, вставь таблицу три на три!", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.8168630003929138}
+{"phrase": "Скачай диплом из почты и скинь Лере в ватсапе.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999802112579346}
+{"phrase": "Зайди на кинопоиск покажи актеров этого фильма", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.8861926794052124}
+{"phrase": "фауст, будь добр запусти эпик геймс", "raw": "{\"type\":\"open_app\",\"appName\":\"epic games\"}", "confidence": 0.9669725871600221}
+{"phrase": "го на карты гугл", "raw": "{\"type\":\"open_url\",\"url\":\"https://www.google.com/maps\"}", "confidence": 0.9986009613437048}
+{"phrase": "Фауст заверши zoom", "raw": "{\"type\":\"kill_process\",\"processName\":\"zoom.exe\"}", "confidence": 0.9972223605513761}
+{"phrase": "поищи билеты в кино на вечер на кольсах и покажи", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9999581575393677}
+{"phrase": "перейди на сайт google scholar", "raw": "{\"type\":\"open_url\",\"url\":\"https://scholar.google.com\"}", "confidence": 0.99987542827364}
+{"phrase": "Найди ближайшую аптеку в гугл картах.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9998406171798706}
+{"phrase": "поищи в вк видео смешных котов, открой первое видео и отложи в смотреть позже", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9987615346908569}
+{"phrase": "Открой-ка яндекс музыка пожалуйста", "raw": "{\"type\":\"open_url\",\"url\":\"https://music.yandex.ru\"}", "confidence": 0.9977903526241647}
+{"phrase": "переведи 500 рублей алие", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9943913817405701}
+{"phrase": "фауст, будь так любезен, перейди на сайт book-portal.net, хочу показать друзьям", "raw": "{\"type\":\"open_url\",\"url\":\"https://book-portal.net\"}", "confidence": 0.989678127899289}
+{"phrase": "найди гайд по майнкрафту в интернете и запиши в блокнот", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.999685525894165}
+{"phrase": "поставь звук на девяносто пять процентов", "raw": "{\"type\":\"set_volume\",\"level\":95}", "confidence": 0.9990844721946814}
+{"phrase": "open obs", "raw": "{\"type\":\"open_app\",\"appName\":\"obs studio\"}", "confidence": 0.9878186043177948}
+{"phrase": "Remind me to take my pressure pills at 5 o'clock today.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8247904777526855}
+{"phrase": "Эй, поменяй порт в docker-compose проект демо на 8090 плиз", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9980338215827942}
+{"phrase": "скачай презентацию из почты и скинь начальнику в телеграме", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999133348464966}
+{"phrase": "найди прогноз погоды на завтра на гитхабе и открой первый результат", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9995054006576538}
+{"phrase": "открой тикток", "raw": "{\"type\":\"open_url\",\"url\":\"https://tiktok.com\"}", "confidence": 0.9975356393545383}
+{"phrase": "правка в сайт: поменяй порт на 5000 плиз", "raw": "{\"type\":\"unknown\"}", "confidence": 0.7133088707923889}
+{"phrase": "тише пожалуйста, а то фильм не слышно", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.99998223785704}
+{"phrase": "stop skpye", "raw": "{\"type\":\"kill_process\",\"processName\":\"skype.exe\"}", "confidence": 0.9929873034404153}
+{"phrase": "открой браузер и зади на сайт новости", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9603227972984314}
+{"phrase": "фауст, стартани notepad", "raw": "{\"type\":\"open_app\",\"appName\":\"notepad\"}", "confidence": 0.999903084421021}
+{"phrase": "фауст, будь добр, запусти программу microsoft edge на компе, у меня руки заняты.", "raw": "{\"type\":\"open_app\",\"appName\":\"edge\"}", "confidence": 0.9996370083163413}
+{"phrase": "верни звук на 23", "raw": "{\"type\":\"set_volume\",\"level\":23}", "confidence": 0.9991033874869437}
+{"phrase": "громксоть на треть", "raw": "{\"type\":\"set_volume\",\"level\":33}", "confidence": 0.9999045141142915}
+{"phrase": "пожалуйста покажи, что ест оперативку сейчас", "raw": "{\"type\":\"list_processes\"}", "confidence": 0.9983604550361633}
+{"phrase": "Запусти контейнеры", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9744018316268921}
+{"phrase": "фауст, открой в браузере forummarket.net, мне пора бежать на автобус", "raw": "{\"type\":\"open_url\",\"url\":\"https://forummarket.net\"}", "confidence": 0.998878529563747}
+{"phrase": "Поставь таймер на 15 минут, надо пельмени с плиты снять.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9987958669662476}
+{"phrase": "останови процесс daemon.exe", "raw": "{\"type\":\"kill_process\",\"processName\":\"daemon.exe\"}", "confidence": 0.9981062174144526}
+{"phrase": "Давай контру, мне нужно", "raw": "{\"type\":\"open_app\",\"appName\":\"counter-strike 2\"}", "confidence": 0.9941174854521933}
+{"phrase": "ассистент вырубай комп", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9722602367401123}
+{"phrase": "На всю громкость.", "raw": "{\"type\":\"set_volume\",\"level\":100}", "confidence": 0.9998006279961302}
+{"phrase": "фауст, найди в загрузках qbittorrent свежий файл и перешли юристу в телеграм", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9997804760932922}
+{"phrase": "Launch lenta.ru!", "raw": "{\"type\":\"open_url\",\"url\":\"https://lenta.ru\"}", "confidence": 0.9971606878604291}
+{"phrase": "Скачай чек из почты и скинь Кате по телеграму.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9994692206382751}
+{"phrase": "Фауст, будь так любезен, открой сайт kino67.org, а то голова уже болит", "raw": "{\"type\":\"open_url\",\"url\":\"https://kino67.org\"}", "confidence": 0.9978302262554521}
+{"phrase": "хочу посмотреть мои фотки", "raw": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "confidence": 0.9991395639837037}
+{"phrase": "Открой веб телеграм, найди чат с другом, открой его и отправь туда стикер с котиком.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.925442099571228}
+{"phrase": "отправь таблицу с оценками преподавателю и сестре в ватсап", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9995198249816895}
+{"phrase": "закрой launcher.exe", "raw": "{\"type\":\"kill_process\",\"processName\":\"launcher.exe\"}", "confidence": 0.9976322686606345}
+{"phrase": "Пожалуйста, зайди на сайт Docker Hub, найди образ PostgreSQL последней версии и скачай его, чтобы я мог развернуть базу данных.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9577658176422119}
+{"phrase": "убей процесс backup.exe", "raw": "{\"type\":\"kill_process\",\"processName\":\"backup.exe\"}", "confidence": 0.9891529272066322}
+{"phrase": "найди мне на стековерфлоу шаблон презентации", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9999556541442871}
+{"phrase": "запусти программу paint на компьютере, мне пора бежать на автобус", "raw": "{\"type\":\"open_app\",\"appName\":\"paint\"}", "confidence": 0.9998604073045101}
+{"phrase": "найди клип любимой группы на кинопоиске и открой первый результат", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9998953342437744}
+{"phrase": "будь любезен, запусти-ка телега, у меня руки заняты", "raw": "{\"type\":\"open_app\",\"appName\":\"telegram\"}", "confidence": 0.9982228875160217}
+{"phrase": "фауст, зайди на сайт school.ru", "raw": "{\"type\":\"open_url\",\"url\":\"https://school.ru\"}", "confidence": 0.9770911961668389}
+{"phrase": "Хочу громкость 85!", "raw": "{\"type\":\"set_volume\",\"level\":85}", "confidence": 0.9985774717645235}
+{"phrase": "скачай чек по ссылке и отправь маме и сестре в дискорде", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999630451202393}
+{"phrase": "Вбей в поиск в гугл картах обзор айфона", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9999628067016602}
+{"phrase": "зайди в телеграм и напиши преподавателю, что спасибо за помощь", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9988946318626404}
+{"phrase": "фауст поставь предыдущее видео плиз", "raw": "{\"type\":\"quick_action\",\"action\":\"prev_track\"}", "confidence": 0.9983572363853455}
+{"phrase": "Remind me to call my accountant at 5 PM.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9725095629692078}
+{"phrase": "прочитай последнее сообщение через ватсап", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9934439659118652}
+{"phrase": "скопируй из ворда выделенный фрагмент, создай новый текстовый документ на рабочем столе, вставь туда и этот файл скинь в тг", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999698400497437}
+{"phrase": "включи obs studio, мне нужно", "raw": "{\"type\":\"open_app\",\"appName\":\"obs studio\"}", "confidence": 0.9998614788877518}
+{"phrase": "фауст, эй, стопни видео сейчас", "raw": "{\"type\":\"quick_action\",\"action\":\"play_pause\"}", "confidence": 0.8610414266586304}
+{"phrase": "открой гугл и войди в аккаунт", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9989086389541626}
+{"phrase": "отправь реферат одногруппникам в телеграм", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999465942382812}
+{"phrase": "фауст запусти-ка audacity на компе", "raw": "{\"type\":\"open_app\",\"appName\":\"audacity\"}", "confidence": 0.9998032462488311}
+{"phrase": "Отправь архив с проектом брату и Айгерим в вайбере", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999052286148071}
+{"phrase": "эй, открой гугл таблицы и создай таблицу расходов плиз", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9984338879585266}
+{"phrase": "открой-ка wildberries", "raw": "{\"type\":\"open_url\",\"url\":\"https://wildberries.ru\"}", "confidence": 0.9987491927798828}
+{"phrase": "paint, срочно", "raw": "{\"type\":\"open_app\",\"appName\":\"paint\"}", "confidence": 0.8973676841223082}
+{"phrase": "покажи rbc", "raw": "{\"type\":\"open_url\",\"url\":\"https://rbc.ru\"}", "confidence": 0.9988030919233779}
+{"phrase": "Найди на рабочем столе файл презентация и открой его", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9991917014122009}
+{"phrase": "заверши все процессы ватсапа", "raw": "{\"type\":\"kill_process\",\"processName\":\"whatsapp.exe\"}", "confidence": 0.9977879343880787}
+{"phrase": "можешь отправь Маше деньги плиз", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9948979020118713}
+{"phrase": "Выключи полностью комп я спать", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9946814179420471}
+{"phrase": "приостанови скчивание в торренте срочно", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9779671430587769}
+{"phrase": "Найди в папке диплом файл отчёт.docx и перешли его Маше в телеграме.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.999909520149231}
+{"phrase": "найди перевод слова hello в интернете и скачай", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9938306212425232}
+{"phrase": "зайди в дискорд и напиши научному руководителю, что я заболел", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998021721839905}
+{"phrase": "переключи песню в машине", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9643464684486389}
+{"phrase": "запусти калькулятор на компьютере", "raw": "{\"type\":\"open_app\",\"appName\":\"calc\"}", "confidence": 0.9981026653998128}
+{"phrase": "Ну это", "raw": "{\"type\":\"unknown\"}", "confidence": 0.7823347449302673}
+{"phrase": "перешли последнее сообщение жене в ватсап", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9997949004173279}
+{"phrase": "открой gmail и найди ноутбук подешевле", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9476105570793152}
+{"phrase": "Найди игровую мышь в гугле и перешли ссылку другу в тг", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9986323714256287}
+{"phrase": "открой хабр и найди бесплатные иконки", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9999041557312012}
+{"phrase": "Отыщи на валдберриз ноутбук для учёбы.", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9998236298561096}
+{"phrase": "Запусти тик ток.", "raw": "{\"type\":\"open_url\",\"url\":\"https://tiktok.com\"}", "confidence": 0.9839473554871958}
+{"phrase": "сделай 100 процентов громкости", "raw": "{\"type\":\"set_volume\",\"level\":100}", "confidence": 0.9999722244273812}
+{"phrase": "увеличь звук, мешает", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.9990502347808956}
+{"phrase": "эй, открой бот в идее", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.8330420851707458}
+{"phrase": "Сделай скриншот и отправь его научному руководителю в вайбере.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9996106028556824}
+{"phrase": "Открой excel документ, сохранение сделай, а потом файл скинь директору в телегу", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9997894167900085}
+{"phrase": "покажи дабл ю три скулс пожалуйста", "raw": "{\"type\":\"open_url\",\"url\":\"https://w3schools.com\"}", "confidence": 0.9974335309861502}
+{"phrase": "покажи фигма", "raw": "{\"type\":\"open_url\",\"url\":\"https://figma.com\"}", "confidence": 0.9976354457575738}
+{"phrase": "звук 78", "raw": "{\"type\":\"set_volume\",\"level\":78}", "confidence": 0.9922769539351464}
+{"phrase": "отправь pdf из загрузок в группу и другу в вайбере", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999854564666748}
+{"phrase": "найди обзор айфона на озоне и открой первый результат", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9994964599609375}
+{"phrase": "звук на максимум", "raw": "{\"type\":\"set_volume\",\"level\":100}", "confidence": 0.99999582767623}
+{"phrase": "открой в браузере duckduckgo пожалуйста", "raw": "{\"type\":\"open_url\",\"url\":\"https://duckduckgo.com\"}", "confidence": 0.9989624146916043}
+{"phrase": "сходи в магаз за энергетосом пж", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9982580542564392}
+{"phrase": "Фауст, хочу посмотреть папку с картинками пожалуйста, я хочу выбрать фильм на вечер.", "raw": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "confidence": 0.9993337005166438}
+{"phrase": "Кто выиграл вчера в футбол сейчас!", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9997789263725281}
+{"phrase": "Выгрузи python", "raw": "{\"type\":\"kill_process\",\"processName\":\"python.exe\"}", "confidence": 0.9977606860227084}
+{"phrase": "фауст, верни, пожалуйста, звук на 10, это срочно для работы", "raw": "{\"type\":\"set_volume\",\"level\":10}", "confidence": 0.9952755208759356}
+{"phrase": "посмотри непрочитанные сообщения в телеге от начальника скопируй текст и создай с ним заметку в стикерах", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9987670183181763}
+{"phrase": "открой food.io", "raw": "{\"type\":\"open_url\",\"url\":\"https://food.io\"}", "confidence": 0.8607557666747851}
+{"phrase": "Будь добр, поменяй раскладку на английскую быстро", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9909145832061768}
+{"phrase": "Звук на 62, мне нужно кое-что проверить.", "raw": "{\"type\":\"set_volume\",\"level\":62}", "confidence": 0.999803552380385}
+{"phrase": "Открой мне yandex browser", "raw": "{\"type\":\"open_app\",\"appName\":\"яндекс браузер\"}", "confidence": 0.9406078592583071}
+{"phrase": "открой фигму", "raw": "{\"type\":\"open_url\",\"url\":\"https://figma.com\"}", "confidence": 0.9961659353371815}
+{"phrase": "покажи gismeteo пожалуйста", "raw": "{\"type\":\"open_url\",\"url\":\"https://gismeteo.kz\"}", "confidence": 0.9996091253254633}
+{"phrase": "Включи программу нотпад плюс плюс!", "raw": "{\"type\":\"open_app\",\"appName\":\"notepad++\"}", "confidence": 0.9987909841260745}
+{"phrase": "открой вторую ссылку в результатах поиска", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9979299306869507}
+{"phrase": "Закрой окно питона", "raw": "{\"type\":\"kill_process\",\"processName\":\"python.exe\"}", "confidence": 0.9957357614630951}
+{"phrase": "заркои браузер", "raw": "{\"type\":\"kill_process\",\"processName\":\"chrome.exe\"}", "confidence": 0.9968559665773924}
+{"phrase": "перемести файл фото.jpg из загрузок на рабочий стол", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999287128448486}
+{"phrase": "Открой yandex browser и блокнотик рядом", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9863889813423157}
+{"phrase": "уменьши звук на 40 пунктов", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-40}", "confidence": 0.9994388284322469}
+{"phrase": "запусти вайбер", "raw": "{\"type\":\"open_app\",\"appName\":\"viber\"}", "confidence": 0.975413022291491}
+{"phrase": "найди в загрузках файл курсовая и открой его", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9967284202575684}
+{"phrase": "найди биогарфию абая на степике", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9986506104469299}
+{"phrase": "Фауст, расскажи свежий анекдот про системных администраторов.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9998605251312256}
+{"phrase": "фауст, переведи мой компьютер в спящий ржеим через 20 минут, чтобы он не горел всю ночь, пока я ухожу.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9992511868476868}
+{"phrase": "Открой ватсап, найди чат с мамой и отправь чек", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999415874481201}
+{"phrase": "Открой дискорд, найди чат с преподавателем и отправь файл отчёт.docx!", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9997052550315857}
+{"phrase": "го на vk", "raw": "{\"type\":\"open_url\",\"url\":\"https://vk.com\"}", "confidence": 0.9987249126437518}
+{"phrase": "выруби свет в комнате, а то отсвечивает в мониторе жесть.", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9980353713035583}
+{"phrase": "слушай, открой-ка сайт майкрософта в браузере", "raw": "{\"type\":\"open_url\",\"url\":\"https://microsoft.com\"}", "confidence": 0.9989764779519135}
+{"phrase": "грохни блендер", "raw": "{\"type\":\"kill_process\",\"processName\":\"blender.exe\"}", "confidence": 0.9977160981438544}
+{"phrase": "вруби докер на компе", "raw": "{\"type\":\"open_app\",\"appName\":\"docker desktop\"}", "confidence": 0.9958919325896431}
+{"phrase": "Мне нужен гит хаб пожалуйста.", "raw": "{\"type\":\"open_url\",\"url\":\"https://github.com\"}", "confidence": 0.9993188698913258}
+{"phrase": "разбуди меня в 6", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9943683743476868}
+{"phrase": "Заверши процесс updater64.exe.", "raw": "{\"type\":\"kill_process\",\"processName\":\"updater64.exe\"}", "confidence": 0.9992754307426779}
+{"phrase": "open wildberries please пожалуйтса", "raw": "{\"type\":\"open_url\",\"url\":\"https://wildberries.ru\"}", "confidence": 0.9983078835659569}
+{"phrase": "потише ещё на 30", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-30}", "confidence": 0.9909826088643499}
+{"phrase": "открой паку с фотографиями", "raw": "{\"type\":\"open_app\",\"appName\":\"изображения\"}", "confidence": 0.9999372959433686}
+{"phrase": "зайди на реддит и найди урок по питону", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9999090433120728}
+{"phrase": "открой мне тикетон пожалуйста", "raw": "{\"type\":\"open_url\",\"url\":\"https://ticketon.kz\"}", "confidence": 0.9996761344969229}
+{"phrase": "выруби блокнот и excel", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9935780763626099}
+{"phrase": "убавь звук на пару делений", "raw": "{\"type\":\"set_volume\",\"level\":30}", "confidence": 0.7590313516834044}
+{"phrase": "скачай чек с сайта и отрпавь другу через ватсап", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999710321426392}
+{"phrase": "фауст открой википедию и найди гайд по майнкрафту", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9956315755844116}
+{"phrase": "сделай тише на десять", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-10}", "confidence": 0.9976863604858579}
+{"phrase": "скачай лабораторную из почты и скинь в группу в ватсап", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999785423278809}
+{"phrase": "скопируй реквизиты карты из заметок и вставь на сайт", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.4202980101108551}
+{"phrase": "Почему пингвины не замерзают в Антарктиде?", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9566425085067749}
+{"phrase": "открой ватсап, найди чат с петей и отправь диплом", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9999853372573853}
+{"phrase": "фауст, эй, нужен скриншот", "raw": "{\"type\":\"screenshot\"}", "confidence": 0.9999085664749146}
+{"phrase": "Будь любезен, посмотри, не убежало ли молоко", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9736614227294922}
+{"phrase": "открой программу вайбер", "raw": "{\"type\":\"open_app\",\"appName\":\"viber\"}", "confidence": 0.994088867334824}
+{"phrase": "delete all files, если не сложно", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9741557240486145}
+{"phrase": "Сколько будет 450 разделить на 6", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9996610879898071}
+{"phrase": "вбей в поиск на википедии новости спорта", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9993492960929871}
+{"phrase": "кто выиграл вчера в футбол", "raw": "{\"type\":\"unknown\"}", "confidence": 0.9993090629577637}
+{"phrase": "в калькулятор сложи 250 и 375", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9995416402816772}
+{"phrase": "скачай с портала форму knd 1151085, заполни инн компании из профиля и сохрани на рабочий стол.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.8683302998542786}
+{"phrase": "покажи фейсбук", "raw": "{\"type\":\"open_url\",\"url\":\"https://facebook.com\"}", "confidence": 0.9968118643394064}
+{"phrase": "volume up, голова болит", "raw": "{\"type\":\"set_volume\",\"level\":80}", "confidence": 0.999946118105342}
+{"phrase": "Закрой, пожалуйста, Telegram, он непрерывно присылает уведомления и очень сильно отвлекает меня от написания кода.", "raw": "{\"type\":\"kill_process\",\"processName\":\"telegram.exe\"}", "confidence": 0.9985569882717016}
+{"phrase": "Открой каспи, найди ближайшую аптеку и открой первую ссылку!", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9962705373764038}
+{"phrase": "покажи гугл документы, быстро", "raw": "{\"type\":\"open_url\",\"url\":\"https://docs.google.com\"}", "confidence": 0.9890818433389299}
+{"phrase": "скачай архив с проектом с сайта и отправь лере в телеграм", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998452663421631}
+{"phrase": "Найди текст стихотворения «Ворон» Эдгара По, скопируй его в Блокнот, сделай шрифт покрупнее и выведи окно на середину экрана для чтения.", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998681545257568}
+{"phrase": "Быстро открой проект бот в андроид студио и запусти тесты!", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9989047050476074}
+{"phrase": "Найди на hh курс доллара и включи!", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9999431371688843}
+{"phrase": "Пожалуйста поменяй заголовок страницы в бэкенд и отправь на гитхаб", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9975437521934509}
+{"phrase": "уменьши громкость где-то на 5", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-5}", "confidence": 0.999722375257619}
+{"phrase": "зайди в спотифай и включи мой плейлист для готовки", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9891068339347839}
+{"phrase": "на w3schools найди учебник по sql, открой раздел select distinct и нажми на зеленый баннер try it yourself", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9987741112709045}
+{"phrase": "поставь скорость видео полтора, если не сложно", "raw": "{\"type\":\"agent_task\",\"scope\":\"browser\"}", "confidence": 0.9861397743225098}
+{"phrase": "Громкость минус 10", "raw": "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-10}", "confidence": 0.9955757942724404}
+{"phrase": "скачай диплом из почты и скинь маше в тг", "raw": "{\"type\":\"agent_task\",\"scope\":\"screen\"}", "confidence": 0.9998886585235596}
+{"phrase": "запусти-ка быстро аутлук", "raw": "{\"type\":\"open_app\",\"appName\":\"outlook\"}", "confidence": 0.9969797963870874}
+{"phrase": "", "raw": "{\"type\":\"quick_action\",\"action\":\"next_track\"}", "confidence": 0.4557013213634491}
+{"phrase": "   ", "raw": "{\"type\":\"quick_action\",\"action\":\"next_track\"}", "confidence": 0.4557013213634491}
+{"phrase": "ё", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8559789061546326}
+{"phrase": "Фауст!!!", "raw": "{\"type\":\"unknown\"}", "confidence": 0.8102474212646484}
+{"phrase": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "raw": "{\"type\":\"kill_process\",\"processName\":\"player_x64.exe\"}", "confidence": 0.23291155656536944}

@@ -172,6 +172,35 @@ function Build-Agent {
 #  Шаги
 # ---------------------------------------------------------------------------
 
+# Зависшие файлы-сокеты Docker Desktop.
+#
+# Если ПК выключили или он уснул, пока Docker работал, в его служебных папках
+# остаются файлы-сокеты (особые записи файловой системы). При следующем старте
+# Docker пытается их переименовать, Windows отвечает «The file cannot be accessed
+# by the system», и Docker показывает окно ошибки с кнопкой «Reset to factory
+# defaults» — а она стёрла бы все тома, включая базу релея. Так было 21.10 и 16.11.
+# Удалить такие файлы Windows не даёт, но папку, где они лежат, переименовать
+# можно: Docker создаст новую, пустую. В этих папках только сокеты (проверено
+# 16.11), данных там нет; образы и тома лежат в другом месте.
+# Делаем это ТОЛЬКО когда Docker Desktop не запущен — у работающего сокеты живые.
+function Clear-StaleDockerSockets {
+    if (Get-Process 'Docker Desktop', 'com.docker.backend' -ErrorAction SilentlyContinue) { return }
+    $dirs = @((Join-Path $env:LOCALAPPDATA 'Docker\run'), (Join-Path $env:LOCALAPPDATA 'docker-secrets-engine'))
+    $stamp = Get-Date -Format 'yyyyMMdd-HHmm'
+    foreach ($d in $dirs) {
+        if (-not (Test-Path $d)) { continue }
+        $sockets = @(Get-ChildItem $d -Force -ErrorAction SilentlyContinue |
+                     Where-Object { $_.Attributes -band [IO.FileAttributes]::ReparsePoint })
+        if ($sockets.Count -eq 0) { continue }
+        try {
+            Rename-Item -LiteralPath $d -NewName ((Split-Path $d -Leaf) + ".broken-$stamp") -ErrorAction Stop
+            Info "Убрал старые сокеты Docker с прошлого запуска: $(Split-Path $d -Leaf) -> .broken-$stamp"
+        } catch {
+            Info "Не смог убрать старые сокеты в $d ($($_.Exception.Message)) — Docker может не запуститься."
+        }
+    }
+}
+
 function Ensure-Docker {
     Step 'Docker'
     if (-not (Get-Command docker -ErrorAction SilentlyContinue)) {
@@ -184,6 +213,7 @@ function Ensure-Docker {
         Bad "Docker Desktop не найден по пути $DockerExe — запусти его вручную и повтори."
         return $false
     }
+    Clear-StaleDockerSockets
     Info 'Запускаю Docker Desktop — это самый долгий шаг (обычно 30–90 с).'
     Info 'Совет: в настройках Docker Desktop включи «Start Docker Desktop when you sign in» —'
     Info 'тогда он будет готов к моменту, когда ты откроешь это меню.'

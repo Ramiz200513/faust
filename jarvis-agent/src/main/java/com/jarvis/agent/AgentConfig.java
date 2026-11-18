@@ -43,6 +43,17 @@ public class AgentConfig {
         return phoneRelayUrl;
     }
 
+    /**
+     * Адрес релея, если ни аргумент, ни agent.properties его не задают. Установленная
+     * программа получает адрес сервера при сборке (jpackage передаёт
+     * {@code -Dfaust.defaultRelayUrl=wss://сервер/ws}, см. задачу packageApp): человеку
+     * ничего не нужно вводить. При запуске из Gradle — релей на этом же ПК, как раньше.
+     */
+    static String defaultRelayUrl() {
+        String packaged = System.getProperty("faust.defaultRelayUrl", "").trim();
+        return packaged.isEmpty() ? DEFAULT_RELAY_URL : packaged;
+    }
+
     public static AgentConfig resolve(String[] args) {
         return resolve(args, Paths.get(System.getProperty("user.home"), ".jarvis-agent", "agent.properties"));
     }
@@ -50,11 +61,12 @@ public class AgentConfig {
     static AgentConfig resolve(String[] args, Path file) {
         Properties props = read(file);
         String argRelayUrl = args.length > 0 ? args[0].trim() : "";
+        String fallback = defaultRelayUrl();
         String relayUrl = !argRelayUrl.isEmpty()
                 ? argRelayUrl
-                : props.getProperty(KEY_RELAY_URL, DEFAULT_RELAY_URL).trim();
+                : props.getProperty(KEY_RELAY_URL, fallback).trim();
         if (relayUrl.isEmpty()) {
-            relayUrl = DEFAULT_RELAY_URL;
+            relayUrl = fallback;
         }
 
         String phoneRelayUrl = props.getProperty(KEY_PHONE_RELAY_URL);

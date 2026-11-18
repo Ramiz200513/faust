@@ -46,15 +46,17 @@ def ask(conn, model, phrase):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default="faust-intent")
-    ap.add_argument("--set", default="test", choices=["test", "dev", "b"],
-                    help="test — экзамен; b — экзамен Б (живые фразы с разметкой Gemini, см. distill.py); dev — отложенные")
+    ap.add_argument("--set", default="test", choices=["test", "dev", "b", "new"],
+                    help="test — экзамен; b — экзамен Б (живые фразы с разметкой Gemini, см. distill.py); "
+                         "new — «Новое» (команды v4: пауза, треки, «громче на N», проекты); dev — отложенные")
     args = ap.parse_args()
 
     if args.set == "dev":
         cases = [{"id": f"dev-{i}", "phrase": r["phrase"], "gold": to_command(r["phrase"], r["target"]), "source": "dev"}
                  for i, r in enumerate(read_jsonl(os.path.join(DATA, "dev.jsonl")))]
     else:
-        cases = read_jsonl(os.path.join(RELAY_EVAL, "intent_test_b.jsonl" if args.set == "b" else "intent_test.jsonl"))
+        cases = read_jsonl(os.path.join(RELAY_EVAL, {"b": "intent_test_b.jsonl", "new": "intent_test_new.jsonl"}
+                                        .get(args.set, "intent_test.jsonl")))
 
     # 127.0.0.1, а не localhost (IPv6 на Windows стоит 2 секунды на соединение); одно
     # соединение на весь прогон — как у релея, который держит его открытым.

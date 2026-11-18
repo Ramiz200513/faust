@@ -110,12 +110,32 @@ def params_ok(case, cmd):
             if part.lower().replace("ё", "е") not in goal:
                 return False, f"в цели нет «{part}»"
         return True, ""
+    if t == "quick_action":
+        # Действие из закрытого списка; у volume_delta — ещё величина со знаком
+        # (+громче / −тише): «тише на 10» с ответом +10 сделало бы громче — это ошибка.
+        action = cmd.get("action")
+        if action != case.get("action"):
+            return False, f"action={action}, ждали {case.get('action')}"
+        if action == "volume_delta":
+            lo, hi = case.get("amount", [-100, 100])
+            amount = cmd.get("amount")
+            return (isinstance(amount, int) and lo <= amount <= hi), f"amount={amount}, ждали {lo}..{hi}"
+        return True, ""
     return True, ""  # screenshot, lock_screen, list_processes — параметров нет
 
 
 def grade(case, cmd):
     got = (cmd or {}).get("type") or "unknown"
-    allowed = [case["type"]] + case.get("accept", [])
+    # «alt» — другой ПОЛНОСТЬЮ правильный ответ со своими параметрами (в отличие от
+    # «accept», где другой тип засчитывается без проверки параметров). Нужен, когда
+    # протокол вырос после написания экзамена: b-45 «сделай громче на 20%» писали, когда
+    # был только уровень громкости; с 19.10 то же самое — сдвиг quick_action +20.
+    for alt in case.get("alt", []):
+        if got == alt["type"]:
+            ok, why = params_ok(alt, cmd or {})
+            if ok:
+                return got, True, True, ""
+    allowed = [case["type"]] + case.get("accept", []) + [a["type"] for a in case.get("alt", [])]
     type_ok = got in allowed
     if not type_ok:
         return got, False, False, f"тип {got}, ждали {case['type']}"
@@ -128,7 +148,9 @@ def grade(case, cmd):
 # ---------------------------------------------------------------------------
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--engine", default="system", choices=["stub", "gemini", "local", "system"])
+    ap.add_argument("--engine", default="system", choices=["stub", "gemini", "local", "mini", "own", "system"],
+                    help="mini — только «Фауст-мини»; own — мини → Qwen без Gemini (бесплатно); "
+                         "system — вся цепочка как у телефона (тратит запросы Gemini)")
     ap.add_argument("--set", default="intent_test.jsonl", help="файл с тестовым набором рядом со скриптом")
     ap.add_argument("--label", default="", help="пометка в имени отчёта, например v2prompt")
     ap.add_argument("--relay", default=os.environ.get("JARVIS_RELAY_HTTP", "http://localhost:8080"))

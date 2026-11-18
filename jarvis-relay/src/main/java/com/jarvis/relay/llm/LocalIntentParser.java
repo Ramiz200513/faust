@@ -190,6 +190,18 @@ public class LocalIntentParser {
             case "screenshot" -> new Command.Screenshot();
             case "lock_screen" -> new Command.LockScreen();
             case "list_processes" -> new Command.ListProcesses();
+            case "quick_action" -> {
+                // С модели v4 (13.11): пауза, треки, «сверни всё», «громче на N».
+                // Правила QuickPhrases ловят только узкие формулировки, модель — остальные
+                // («тормозни музыку», «скипни это»). Действие — только из закрытого списка,
+                // у volume_delta величина со знаком (+громче / −тише), не ноль и не больше 100.
+                String action = n.path("action").asText("");
+                if (!Command.QuickAction.ACTIONS.contains(action)) yield null;
+                if (!"volume_delta".equals(action)) yield new Command.QuickAction(action, 0);
+                JsonNode amount = n.path("amount");
+                yield amount.isInt() && amount.asInt() != 0 && Math.abs(amount.asInt()) <= 100
+                        ? new Command.QuickAction(action, amount.asInt()) : null;
+            }
             case "agent_task" -> {
                 // Цель — сама фраза целиком: модель её не переписывает (см. javadoc класса).
                 String scope = n.path("scope").asText("");

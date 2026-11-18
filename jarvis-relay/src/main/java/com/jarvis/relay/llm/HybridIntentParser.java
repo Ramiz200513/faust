@@ -16,7 +16,8 @@ import org.springframework.stereotype.Component;
  *     │ 1б. быстрые команды (пауза, трек, «громче на 20%», свернуть окна) ── правила
  *     │ 1в. составная фраза «потише и открой ютуб» ── по частям, только своей моделью
  *     │ 2. уже выученный урок (та же фраза)  ── память, без моделей
- *     │ 3. НАША модель (локально, ~0.1–0.3 с)
+ *     │ 2б. «Фауст-мини» — своя сеть с нуля, прямо в релее (~5 мс) ── только если уверена ≥ 0,993
+ *     │ 3. НАША модель (Qwen + LoRA в Ollama, ~0.2 с)
  *     │       уверена и ответ годный ──────────► команда
  *     │       не уверена / «не понял» / мусор
  *     ▼
@@ -47,7 +48,7 @@ public class HybridIntentParser implements IntentParser {
     /**
      * Кто и как разобрал фразу — для журнала, замеров и графиков диплома.
      *
-     * @param source     shortcut | memory | local | gemini | local-offline | stub | none
+     * @param source     shortcut | quick | composite | memory | mini | local | gemini | local-offline | stub | none
      * @param confidence уверенность нашей модели (null — её не спрашивали)
      * @param localRaw   дословный ответ нашей модели (null — не спрашивали или недоступна)
      */
@@ -63,6 +64,18 @@ public class HybridIntentParser implements IntentParser {
     private final double trustUnknownAbove;
     /** Делить ли составные фразы на простые команды (jarvis.intent.composite, по умолчанию да). */
     private final boolean composite;
+    /**
+     * «Фауст-мини» — своя сеть с нуля, звено перед Qwen (см. {@link MiniIntentParser}).
+     * null — звена нет (тесты, собранные до неё, и релей без весов работают как раньше).
+     */
+    private MiniIntentParser mini;
+
+    /** Подключить «Фауст-мини». Через setter, а не конструктор — чтобы не трогать прежние тесты. */
+    @org.springframework.beans.factory.annotation.Autowired(required = false)
+    public void setMini(MiniIntentParser mini) {
+        this.mini = mini;
+    }
+
     /** До какого момента Gemini не спрашиваем после его отказа; 0 — можно спрашивать. */
     private volatile long geminiDownUntil;
     /** Сколько не трогать Gemini после отказа. Не final — тесты ставят 0. */
@@ -130,6 +143,13 @@ public class HybridIntentParser implements IntentParser {
         if (useLocal) {
             Command remembered = lessons.recall(phrase).orElse(null);
             if (remembered != null) return done(phrase, new Decision(remembered, "memory", null, null, 0, 0));
+        }
+
+        // 2б. «Фауст-мини» — своя сеть с нуля, считается прямо здесь за миллисекунды.
+        //     Отвечает, только если уверена не меньше своего порога; иначе — Qwen, как раньше.
+        if (useLocal && mini != null && mini.available()) {
+            LocalIntentParser.Result m = mini.sure(phrase);
+            if (m != null) return done(phrase, new Decision(m.command(), "mini", m.confidence(), m.raw(), m.ms(), 0));
         }
 
         // 3. Наша модель.
@@ -222,9 +242,13 @@ public class HybridIntentParser implements IntentParser {
             if (text.length() < 3) return null;
             Command cmd = QuickPhrases.parse(text);
             if (cmd == null) {
-                LocalIntentParser.Result r = local.parse(text);
+                // Сначала «Фауст-мини» (миллисекунды); не уверена — Qwen со своим порогом.
+                LocalIntentParser.Result r = mini != null && mini.available() ? mini.sure(text) : null;
+                if (r == null) {
+                    r = local.parse(text);
+                    if (r.kind() != LocalIntentParser.Kind.COMMAND || r.confidence() < minConfidence) return null;
+                }
                 localMs += r.ms();
-                if (r.kind() != LocalIntentParser.Kind.COMMAND || r.confidence() < minConfidence) return null;
                 cmd = r.command();
                 minConf = Math.min(minConf, r.confidence());
                 raws.append(raws.isEmpty() ? "" : " | ").append(r.raw());

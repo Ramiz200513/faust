@@ -35,11 +35,20 @@ jarvis-ml/runs/*/
 *.gguf
 *.safetensors
 *.bin
+# Кроме весов «Фауст-мини» (1,85 МБ): без них релей, собранный из репозитория (пайплайн,
+# сервер), работал бы без звена «мини», а тест сверки с PyTorch падал бы.
+!jarvis-relay/src/main/resources/mini/faust-mini.bin
 *.pt
 # Логи и отчёты обучения (runs/*.log, *.md, current.json) — оставляем: это цифры для диплома.
 
 # Конвертер llama.cpp — отдельный чужой git-клон, ставится заново по README jarvis-ml.
 jarvis-ml/llama.cpp/
+# Архив для Kaggle — пересобирается командой python kaggle/make_package.py из файлов, которые и так в git.
+# WiX Toolset для сборки установщика (gradlew packageApp -PinstallerType=exe) — скачивается, не хранится.
+jarvis-agent/tools/
+jarvis-ml/kaggle/*.zip
+jarvis-ml/kaggle/upload/
+jarvis-ml/kaggle/output/
 
 # --- помощник UI Automation (C#) ---
 bin/

@@ -35,6 +35,9 @@ import java.util.Map;
  *   <li>{@code stub} — только регулярные выражения;</li>
  *   <li>{@code gemini} — только Gemini, без коротких путей и запасного разбора;</li>
  *   <li>{@code local} — только НАША модель (ответ любой уверенности);</li>
+ *   <li>{@code mini} — только «Фауст-мини» (своя сеть с нуля, ответ любой уверенности);</li>
+ *   <li>{@code own} — наша цепочка без Gemini: «мини», если уверена не меньше порога,
+ *       иначе Qwen (ответ любой уверенности). Бесплатный замер того, что даёт звено «мини»;</li>
  *   <li>{@code system} (по умолчанию) — вся связка, как её видит телефон,
  *       ВКЛЮЧАЯ белый список и запрет опасных целей: запрещённая команда
  *       возвращается как «не понял» с пометкой denied.</li>
@@ -53,6 +56,13 @@ public class IntentEvalController {
     private final IntentLessons lessons;
     private final CommandWhitelist whitelist;
     private final ObjectMapper mapper;
+    /** «Фауст-мини» — для режимов mini и own; null — нет (тогда эти режимы отвечают ошибкой). */
+    private MiniIntentParser mini;
+
+    @org.springframework.beans.factory.annotation.Autowired(required = false)
+    public void setMini(MiniIntentParser mini) {
+        this.mini = mini;
+    }
 
     @Value("${jarvis.admin-token}")
     private String adminToken;
@@ -100,6 +110,26 @@ public class IntentEvalController {
                     out.put("localRaw", r.raw());
                     out.put("localKind", r.kind().name());
                     if (r.kind() == LocalIntentParser.Kind.UNAVAILABLE) out.put("error", "своя модель недоступна");
+                }
+                case "mini", "own" -> {
+                    if (mini == null || !mini.available()) {
+                        out.put("error", "«Фауст-мини» недоступна");
+                        break;
+                    }
+                    LocalIntentParser.Result r = mini.parse(phrase);
+                    String source = "mini";
+                    if (engine.equals("own") && !(r.kind() == LocalIntentParser.Kind.COMMAND
+                                                  && r.confidence() >= mini.minConfidence())) {
+                        r = local.parse(phrase);                 // мини не уверена — решает Qwen
+                        source = "local";
+                    }
+                    cmd = r.command();
+                    out.put("source", source);
+                    out.put("confidence", r.confidence());
+                    out.put("localRaw", r.raw());
+                    out.put("localMs", r.ms());
+                    out.put("localKind", r.kind().name());
+                    if (r.kind() == LocalIntentParser.Kind.UNAVAILABLE) out.put("error", "модель недоступна");
                 }
                 case "system" -> {
                     // requestId = null: замер не должен плодить уроки.

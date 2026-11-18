@@ -151,6 +151,19 @@ public class AgentTray implements RelayStatusListener {
                 "память повторов без ИИ", null, this::forgetLearnedTasks));
 
         menu.add(FaustMenu.divider());
+        // Автозапуск — только у установленной программы (Faust.exe): при запуске из
+        // Gradle в автозапуск попал бы путь к временной сборке (см. Autostart).
+        if (Autostart.available()) {
+            boolean on = Autostart.isEnabled();
+            menu.add(FaustMenu.row(FaustMenu.Glyph.POWER, on ? PRIMARY : ON_SURFACE_VARIANT,
+                    "Запускать вместе с Windows", on ? "включено — нажмите, чтобы выключить" : "выключено — нажмите, чтобы включить",
+                    on ? "вкл" : null, () -> {
+                        if (!Autostart.set(!on)) {
+                            javax.swing.JOptionPane.showMessageDialog(null, "Не удалось изменить автозапуск — см. журнал.",
+                                    "Фауст", javax.swing.JOptionPane.WARNING_MESSAGE);
+                        }
+                    }));
+        }
         menu.add(FaustMenu.row(FaustMenu.Glyph.LOG, ON_SURFACE_VARIANT, "Открыть журнал", null, null, this::openLog));
         menu.add(FaustMenu.row(FaustMenu.Glyph.GEAR, ON_SURFACE_VARIANT, "Настроить заново", null, null, onResetPairing));
         menu.add(FaustMenu.row(FaustMenu.Glyph.POWER, ERROR, "Выход", null, null, () -> System.exit(0)));

@@ -31,7 +31,10 @@ class UiaSnapshotScaleTest {
                    "isPassword":false,"isEnabled":true,"isOffscreen":false,"value":"","hasFocus":false}]}
                 """;
 
-        UiaSnapshot.Result r = new UiaSnapshot().parse(json, 0, 1.25);
+        // Экран задаём явно — 1920×1080 при 125% = 1536×864 логических точек. Раньше брался
+        // монитор машины, и на сервере GitHub (экран ~1024×768) кнопка «уезжала за край».
+        UiaSnapshot.Result r = new UiaSnapshot().withScreen(new java.awt.Rectangle(0, 0, 1536, 864))
+                .parse(json, 0, 1.25);
 
         List<UiaElement> els = r.elements();
         assertEquals(1, els.size(), "кнопка у правого края не должна пропадать");

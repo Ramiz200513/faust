@@ -94,12 +94,26 @@ def answer_loss(model, ids, mask, labels):
     return torch.nn.functional.cross_entropy(logits.float(), y[keep])
 
 
+# В каком формате считать на видеокарте (см. --precision). bfloat16 — на RTX 30xx и
+# новее; на картах Kaggle (T4, P100) его нет, там float16 с масштабированием ошибки.
+AMP_DTYPE = torch.bfloat16
+
+
+def resolve_precision(choice, device):
+    """auto -> bf16, если карта умеет его аппаратно (Ampere, 8.x и новее), иначе fp16."""
+    if device != "cuda":
+        return "fp32"
+    if choice != "auto":
+        return choice
+    return "bf16" if torch.cuda.get_device_capability(0)[0] >= 8 else "fp16"
+
+
 @torch.no_grad()
 def generate(model, tok, phrase, max_new_tokens=64):
     """Ответ модели на фразу и её уверенность (произведение вероятностей слов ответа)."""
     enc = tok(chat_prompt(tok, phrase), return_tensors="pt", add_special_tokens=False).to(model.device)
     on_gpu = model.device.type == "cuda"
-    with torch.autocast(device_type=model.device.type, dtype=torch.bfloat16, enabled=on_gpu):
+    with torch.autocast(device_type=model.device.type, dtype=AMP_DTYPE, enabled=on_gpu):
         out = model.generate(**enc, max_new_tokens=max_new_tokens, do_sample=False, output_scores=True,
                              return_dict_in_generate=True, pad_token_id=tok.pad_token_id,
                              eos_token_id=tok.convert_tokens_to_ids("<|im_end|>"))
@@ -153,19 +167,39 @@ def main():
                     help="каждые N шагов сохранять контрольную точку (0 — не сохранять)")
     ap.add_argument("--resume", action="store_true",
                     help="продолжить с контрольной точки runs/<name>/checkpoint, если она есть")
+    ap.add_argument("--val-limit", type=int, default=0,
+                    help="сколько примеров проверочного набора брать для ошибки проверки (0 — все; для пробного запуска)")
+    ap.add_argument("--precision", default="auto", choices=["auto", "bf16", "fp16", "fp32"],
+                    help="формат вычислений на видеокарте: auto — bf16 на RTX 30xx и новее, "
+                         "fp16 на старых (Kaggle T4/P100)")
     args = ap.parse_args()
 
     rng = random.Random(7)
     torch.manual_seed(7)
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    # device_count() > 0 — на случай скрытой карты (CUDA_VISIBLE_DEVICES): is_available()
+    # тогда бывает True, а обращение к карте 0 падает.
+    device = "cuda" if torch.cuda.is_available() and torch.cuda.device_count() > 0 else "cpu"
     out_dir = os.path.join(HERE, "runs", args.name)
     os.makedirs(out_dir, exist_ok=True)
+
+    global AMP_DTYPE
+    precision = resolve_precision(args.precision, device)
+    AMP_DTYPE = torch.float16 if precision == "fp16" else torch.bfloat16
+    use_amp = device == "cuda" and precision in ("bf16", "fp16")
+    # float16 узкий: маленькие градиенты в нём становятся нулём. Масштабирование
+    # (GradScaler) умножает ошибку перед обратным проходом и делит градиенты обратно
+    # перед шагом — так они не теряются. У bfloat16 диапазон как у float32, ему не нужно.
+    scaler = torch.amp.GradScaler("cuda", enabled=device == "cuda" and precision == "fp16")
+    print(f"устройство {device}, точность {precision}"
+          + (f" ({torch.cuda.get_device_name(0)})" if device == "cuda" else ""), flush=True)
 
     tok = AutoTokenizer.from_pretrained(args.base)
     if tok.pad_token_id is None:
         tok.pad_token = tok.eos_token
-    # bfloat16 — половинная точность: модель занимает вдвое меньше видеопамяти.
-    model = AutoModelForCausalLM.from_pretrained(args.base, dtype=torch.bfloat16 if device == "cuda" else torch.float32)
+    # Половинная точность: модель занимает вдвое меньше видеопамяти. Сама модель не
+    # учится (учатся только заплатки, они ниже переводятся в float32).
+    weights = {"bf16": torch.bfloat16, "fp16": torch.float16}.get(precision, torch.float32)
+    model = AutoModelForCausalLM.from_pretrained(args.base, dtype=weights)
     model.to(device)
     model.config.use_cache = False
 
@@ -189,6 +223,8 @@ def main():
 
     train_rows = read_jsonl(args.train_file)
     val_rows = read_jsonl(os.path.join(DATA, "val.jsonl"))
+    if args.val_limit:
+        val_rows = val_rows[:args.val_limit]
     train = [encode(tok, r, args.max_len) for r in train_rows]
     val = [encode(tok, r, args.max_len) for r in val_rows]
     val_check = rng.sample(val_rows, min(args.val_sample, len(val_rows)))
@@ -228,13 +264,15 @@ def main():
             if p.requires_grad:
                 p.data = p.data.float()
         opt.load_state_dict(resume["opt"])
+        if "scaler" in resume:                  # множитель масштаба fp16 — чтобы не подбирать его заново
+            scaler.load_state_dict(resume["scaler"])
         step, epoch, log = resume["step"], resume["epoch"] - 1, resume["log"]
         t0 = time.time() - resume["seconds"]
         print(f"продолжаю с шага {step} (проход {resume['epoch']}, порция {resume['micro']})", flush=True)
 
     def checkpoint(epoch_rng_state, micro, running, seen):
         model.save_pretrained(ckpt_dir)
-        torch.save({"opt": opt.state_dict(), "step": step, "epoch": epoch, "micro": micro,
+        torch.save({"opt": opt.state_dict(), "scaler": scaler.state_dict(), "step": step, "epoch": epoch, "micro": micro,
                     "rng": epoch_rng_state, "running": running, "seen": seen,
                     "log": log, "seconds": time.time() - t0}, os.path.join(ckpt_dir, "state.pt.tmp"))
         # Сначала во временный файл, потом подмена: оборвись запись посередине —
@@ -255,16 +293,18 @@ def main():
             if i < skip:
                 continue                       # эти порции уже пройдены до обрыва
             ids, mask, labels = ids.to(device), mask.to(device), labels.to(device)
-            with torch.autocast(device_type=device, dtype=torch.bfloat16, enabled=device == "cuda"):
+            with torch.autocast(device_type=device, dtype=AMP_DTYPE, enabled=use_amp):
                 loss = answer_loss(model, ids, mask, labels)
-            (loss / args.accum).backward()
+            scaler.scale(loss / args.accum).backward()
             running += loss.item()
             seen += 1
             if (i + 1) % args.accum == 0:
                 for g in opt.param_groups:
                     g["lr"] = lr_at(step)
+                scaler.unscale_(opt)               # обрезать градиенты надо в их настоящем масштабе
                 torch.nn.utils.clip_grad_norm_([p for p in model.parameters() if p.requires_grad], 1.0)
-                opt.step()
+                scaler.step(opt)                   # шаг пропускается, если в градиентах inf/nan (fp16)
+                scaler.update()
                 opt.zero_grad(set_to_none=True)
                 step += 1
                 if args.cool_ms:
@@ -282,7 +322,7 @@ def main():
         with torch.no_grad():
             for ids, mask, labels in batches(val, args.batch, tok.pad_token_id, False, rng):
                 ids, mask, labels = ids.to(device), mask.to(device), labels.to(device)
-                with torch.autocast(device_type=device, dtype=torch.bfloat16, enabled=device == "cuda"):
+                with torch.autocast(device_type=device, dtype=AMP_DTYPE, enabled=use_amp):
                     vloss += answer_loss(model, ids, mask, labels).item()
                 vn += 1
         model.config.use_cache = True

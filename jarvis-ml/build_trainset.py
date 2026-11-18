@@ -673,10 +673,13 @@ def gen_many():
 MEDIA_BROWSER = ["включи музыку", "включи какую-нибудь музыку", "включи фоновую музыку", "поставь плейлист для работы",
                  "включи расслабляющую музыку", "включи весёлый плейлист", "поставь что-нибудь послушать",
                  "поставь песню", "включи радио", "включи музыку для концентрации", "play some music"]
-MEDIA_SCREEN = ["поставь на паузу", "пауза", "паузу поставь", "музыку на паузу", "сними с паузы", "следующий трек",
-                "переключи трек", "предыдущая песня", "перемотай на минуту вперёд", "сделай на весь экран",
-                "на весь экран", "выйди из полноэкранного режима", "продолжи воспроизведение", "останови музыку",
-                "поставь фильм на паузу", "pause the movie", "next track", "замуть микрофон", "замуть дискорд"]
+# С v4 (13.11) пауза и переключение трека — быстрые команды (gen_quick), а не задача
+# агенту: их выполняет медиаклавиша за доли секунды. Здесь остаётся то, что
+# медиаклавишей не сделать: перемотка, полный экран, микрофон, конкретная программа.
+MEDIA_SCREEN = ["перемотай на минуту вперёд", "сделай на весь экран", "на весь экран", "выйди из полноэкранного режима",
+                "замуть микрофон", "замуть дискорд", "перемотай видео назад на 10 секунд", "поставь скорость 1.5",
+                "поставь на паузу загрузку в стиме", "приостанови скачивание в торренте", "сверни телеграм",
+                "сверни окно браузера", "пропусти рекламу в видео", "включи субтитры", "сделай видео потише в плеере"]
 
 
 def gen_media():
@@ -686,6 +689,124 @@ def gen_media():
             for _ in range(3):
                 add(R.choice(POLITE_PRE) + p + R.choice(POLITE_POST), target("agent_task", scope=scope),
                     "agent_" + scope, "gap")
+
+
+# =============================================================================
+#  v4 (13.11): быстрые команды — пауза, треки, «сверни всё», «громче на N»
+# =============================================================================
+# Правила релея (QuickPhrases) ловят только узкие формулировки. Модель должна
+# понимать остальные: «тормозни музыку», «скипни это», «приглуши на 15».
+# Главная тонкость — громкость: «убавь звук» — это УРОВЕНЬ (set_volume 30, как
+# раньше), а «убавь звук на 10» — СДВИГ (quick_action volume_delta −10). Отличает их
+# только «на N» после глагола направления; «звук на 50» без такого глагола — уровень.
+MEDIA_OBJ = ["музыку", "видео", "видос", "трек", "песню", "фильм", "сериал", "ролик", "подкаст", "плеер",
+             "воспроизведение", "киношку", "аудиокнигу"]
+PLAY_PAUSE_T = ["поставь {o} на паузу", "{o} на паузу", "поставь на паузу", "пауза", "поставь паузу", "нажми паузу",
+                "тормозни {o}", "стопни {o}", "останови {o}", "приостанови {o}", "сними {o} с паузы", "сними с паузы",
+                "продолжи {o}", "возобнови {o}", "включи {o} обратно", "запусти {o} дальше", "верни {o}, сними паузу",
+                "паузу", "давай паузу", "поставь на стоп", "play", "pause", "pause the music", "resume", "unpause",
+                "resume playback", "pause the video", "стоп музыка", "останови на секунду"]
+NEXT_T = ["следующий трек", "следующую песню", "следующее видео", "следующую композицию", "переключи трек",
+          "переключи песню", "переключи на следующую", "скипни", "скипни {t}", "пропусти {t}", "{t} дальше",
+          "давай следующую", "включи следующую", "некст", "next", "next song", "skip", "skip this track",
+          "эта надоела, переключи", "не нравится, давай следующую", "мотай на следующую песню"]
+PREV_T = ["предыдущий трек", "предыдущую песню", "прошлую песню", "верни прошлый трек", "включи предыдущую композицию",
+          "трек назад", "верни песню назад", "назад на прошлую", "включи ту, что была до этой", "previous track",
+          "previous song", "go back a song", "поставь предыдущее видео", "давай прошлую ещё раз"]
+TRACK = ["трек", "песню", "композицию", "это", "эту песню"]
+MINIMIZE_T = ["сверни все окна", "сверни всё", "сверни окна", "скрой все окна", "спрячь все окна", "покажи рабочий стол",
+              "покажи мне рабочий стол", "убери все окна", "минимизируй все окна", "убери всё с экрана",
+              "спрячь все программы", "освободи экран", "minimize all windows", "show desktop", "hide all windows"]
+UP = ["прибавь", "прибавь звук", "сделай громче", "громче", "погромче", "увеличь громкость", "добавь громкости",
+      "подними громкость", "подкрути звук вверх", "сделай звук громче", "увеличь звук", "подними звук",
+      "накинь громкости", "выкрути погромче"]
+DOWN = ["убавь", "убавь звук", "сделай тише", "тише", "потише", "уменьши громкость", "приглуши", "приглуши звук",
+        "понизь громкость", "сбавь звук", "опусти громкость", "уменьши звук", "скрути звук", "сделай звук тише"]
+DELTA_T = ["{v} на {n}", "{v} на {n} процентов", "{v} на {n}%", "{v}, процентов на {n}", "{v} где-то на {n}",
+           "{v} ещё на {n}", "{v} на {n} пунктов"]
+DELTA_SIGN_T = {1: ["плюс {n} к громкости", "громкость плюс {n}", "звук плюс {n}"],
+                -1: ["минус {n} к громкости", "громкость минус {n}", "звук минус {n}"]}
+DELTA_EN = {1: ["volume up by {n}", "turn it up by {n} percent", "increase volume by {n}"],
+            -1: ["volume down by {n}", "turn it down by {n} percent", "decrease volume by {n}"]}
+# Что НЕ быстрая команда, хотя похоже: другое устройство, конкретная программа, сайт.
+QUICK_LOOKALIKE_UNKNOWN = ["поставь телевизор на паузу", "выключи музыку на колонке", "переключи песню в машине",
+                           "поставь на паузу кино на телевизоре", "сделай тише телевизор", "переключи канал",
+                           "сделай погромче магнитолу", "сверни ковёр", "сверни палатку"]
+QUICK_LOOKALIKE_BROWSER = ["включи следующую серию на кинопоиске", "найди следующий выпуск подкаста на ютубе",
+                           "открой следующую страницу результатов поиска", "включи следующий урок на курсере",
+                           "найди песню, которая играла в прошлом видео"]
+
+
+def gen_quick():
+    q = lambda a, n=None: target("quick_action", action=a) if n is None else target("quick_action", action=a, amount=n)
+    for tpl in PLAY_PAUSE_T:
+        for o in (pick(MEDIA_OBJ, 7) if "{o}" in tpl else [""]):
+            p = tpl.format(o=o)
+            for _ in range(3):
+                add(R.choice(POLITE_PRE) + p + R.choice(POLITE_POST), q("play_pause"), "quick_action")
+    for tpls, action in ((NEXT_T, "next_track"), (PREV_T, "prev_track")):
+        for tpl in tpls:
+            for t in (pick(TRACK, 4) if "{t}" in tpl else [""]):
+                for _ in range(6):
+                    add(R.choice(POLITE_PRE) + tpl.format(t=t) + R.choice(POLITE_POST), q(action), "quick_action")
+    for p in MINIMIZE_T:
+        for _ in range(8):
+            add(R.choice(POLITE_PRE) + p + R.choice(POLITE_POST), q("minimize_all"), "quick_action")
+    # Сдвиг громкости. Величины — чаще «круглые», как говорят на самом деле.
+    common = [5, 10, 15, 20, 25, 30, 40, 50]
+    for sign, verbs in ((1, UP), (-1, DOWN)):
+        for v in verbs:
+            for tpl in pick(DELTA_T, 5):
+                for n in pick(common, 4) + [R.randint(1, 60), R.randint(1, 100)]:
+                    words = NUM_WORDS.get(n)
+                    say = R.choice(words) if words and R.random() < 0.4 else str(n)
+                    add(tpl.format(v=v, n=say), q("volume_delta", sign * n), "quick_action")
+        for tpl in DELTA_SIGN_T[sign]:
+            for n in pick(common, 4):
+                add(tpl.format(n=n), q("volume_delta", sign * n), "quick_action")
+        for tpl in DELTA_EN[sign]:
+            for n in pick(common, 3):
+                add(tpl.format(n=n), q("volume_delta", sign * n), "quick_action")
+    # Контраст: тот же глагол без «на N» — уровень громкости (как раньше).
+    for v, lvl in ((v, 80) for v in UP[:8]):
+        add(v, target("set_volume", level=lvl), "set_volume", "contrast")
+    for v in DOWN[:8]:
+        add(v, target("set_volume", level=30), "set_volume", "contrast")
+    for p in QUICK_LOOKALIKE_UNKNOWN:
+        for _ in range(3):
+            add(R.choice(POLITE_PRE) + p + R.choice(POLITE_POST), target("unknown"), "unknown", "contrast")
+    for p in QUICK_LOOKALIKE_BROWSER:
+        for _ in range(3):
+            add(R.choice(POLITE_PRE) + p + R.choice(POLITE_POST), target("agent_task", scope="browser"),
+                "agent_browser", "contrast")
+
+
+# =============================================================================
+#  v4 (13.11): проекты и код — это задача агенту на ПК (scope screen)
+# =============================================================================
+# Агент сам узнаёт в цели git, правку кода и тесты (DevTools.preset, планировщик).
+# Модели нужно только не спутать такие просьбы с «открой программу» или «не понял».
+REPOS = ["демо", "диплом", "сайт", "бот", "проект диплом", "проект демо", "андроид проект", "репозиторий сайт",
+         "бэкенд", "курсовую", "телеграм-бот"]
+IDES = ["Android Studio", "PyCharm", "IntelliJ IDEA", "VS Code", "вскоде", "идее", "андроид студио"]
+DEV_T = ["прогони тесты в {r}", "запусти тесты {r}", "прогони тесты в проекте {r}", "собери проект {r}",
+         "запусти сборку {r}", "поменяй порт в {r} на {port} и запушь", "поменяй порт в docker-compose {r} на {port}",
+         "исправь опечатку в README {r}", "исправь опечатку в ридми {r} и закоммить",
+         "добавь переменную окружения {env} в {r}", "обнови версию в {r} и закоммить", "открой {r} в {ide}",
+         "открой проект {r} в {ide} и запусти тесты", "посмотри, какие файлы изменены в {r}",
+         "что изменилось в репозитории {r}", "правка в {r}: поменяй порт на {port}",
+         "переименуй переменную count в total в {r}", "добавь эндпоинт /health в {r}", "почини упавшие тесты в {r}",
+         "запусти линтер в {r}", "проверь, проходят ли тесты в {r}", "сделай ветку fix-port в {r} и поменяй порт",
+         "поменяй заголовок страницы в {r} и отправь на гитхаб", "выкати {r} на сервер", "залей правки {r} на гитхаб"]
+
+
+def gen_dev():
+    t = target("agent_task", scope="screen")
+    for tpl in DEV_T:
+        for r in REPOS:
+            p = tpl.format(r=r, ide=R.choice(IDES), port=R.choice([8080, 8090, 3000, 5000, 8443, 8095]),
+                           env=R.choice(["DEBUG", "APP_ENV", "PORT", "LOG_LEVEL"]))
+            add(R.choice(POLITE_PRE) + p + R.choice(POLITE_POST), t, "agent_screen", "dev")
 
 
 # =============================================================================
@@ -862,6 +983,48 @@ def core(phrase):
 
 
 # =============================================================================
+# Экзамены, которые никогда не попадают в обучение: А (автор), Б (Gemini), «Новое» (v4, 13.11).
+EXAMS = ("intent_test.jsonl", "intent_test_b.jsonl", "intent_test_new.jsonl")
+NEAR_DUP = 0.8
+
+
+def trigrams(s):
+    s = f" {s} "
+    return {s[i:i + 3] for i in range(len(s) - 2)}
+
+
+def drop_near_duplicates(rows, exam_cores, threshold):
+    """
+    Выбросить фразы, похожие на экзаменационные: Жаккар по тройкам букв ≥ threshold.
+    Возвращает (список выброшенных: (фраза, экзаменационная, сходство), оставшиеся строки).
+    Сравниваются «ядра» (без вежливых слов) — как и при точной проверке.
+    """
+    exam = [(c, trigrams(c)) for c in exam_cores if c]
+    by_len = {}
+    for c, g in exam:
+        by_len.setdefault(len(g), []).append((c, g))
+    dropped, kept, memo = [], [], {}
+    for r in rows:
+        c = core(r["phrase"])
+        if c not in memo:
+            g = trigrams(c)
+            best = (0.0, None)
+            # Жаккар ≥ t возможен, только если размеры множеств отличаются не больше чем в t раз.
+            lo, hi = int(len(g) * threshold), int(len(g) / threshold) + 1
+            for n in range(lo, hi + 1):
+                for ec, eg in by_len.get(n, ()):
+                    sim = len(g & eg) / len(g | eg)
+                    if sim > best[0]:
+                        best = (sim, ec)
+            memo[c] = best
+        sim, ec = memo[c]
+        if sim >= threshold:
+            dropped.append((r["phrase"], ec, sim))
+        else:
+            kept.append(r)
+    return dropped, kept
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--no-teacher", action="store_true", help="без перефразировок Gemini")
@@ -870,6 +1033,14 @@ def main():
     gen_volume(); gen_sites(); gen_apps(); gen_kill(); gen_simple()
     gen_browser(); gen_screen(); gen_contrast(); gen_unknown()
     gen_wrapped(); gen_policy(); gen_web_files(); gen_many(); gen_media()
+    gen_quick(); gen_dev()     # v4
+    # v4: «покажи (мне) рабочий стол» — это «сверни всё» (так её понимает и правило
+    # релея QuickPhrases), а не «открой папку Рабочий стол». В v1–v3 шаблон папок
+    # «покажи {папка}» учил обратному. «Открой (папку) рабочий стол» — по-прежнему папка.
+    desktop = target("open_app", appName="рабочий стол")
+    for row in ROWS:
+        if row["target"] == desktop and re.match(r"^(покажи|show)\b", core(row["phrase"])):
+            row.update(target=target("quick_action", action="minimize_all"), cat="quick_action", src="contrast")
     if not args.no_teacher:
         gen_teacher()
     gen_distill()
@@ -886,13 +1057,18 @@ def main():
     # Сравниваем «ядра» фраз: без вежливых слов и обращения. Иначе в обучении
     # осталась бы экзаменационная «сделай скриншот» в виде «сделай скриншот пожалуйста».
     test = set()
-    for name in ("intent_test.jsonl", "intent_test_b.jsonl"):
+    for name in EXAMS:
         path = os.path.join(RELAY_EVAL, name)
         if os.path.exists(path):
             test |= {core(c["phrase"]) for c in read_jsonl(path)}
     before = len(ROWS)
     rows = [r for r in ROWS if core(r["phrase"]) not in test]
     leaked = before - len(rows)
+    # v4: и ПОЧТИ совпадения. «прибавь звук на 10» в экзамене и «прибавь звук на 10 процентов»
+    # в обучении — разные строки, но экзамен по ним уже не честный: модель видела ответ.
+    # Сходство — по тройкам букв (Жаккар); порог 0.8 подобран так, чтобы ловить
+    # перестановку хвоста и вежливые слова, но не «открой ютуб» против «открой гугл».
+    near, rows = drop_near_duplicates(rows, test, NEAR_DUP)
 
     # --- одна фраза — один ответ ---
     # Учитель иногда придумывает фразу с другим смыслом, чем просили («звук на
@@ -939,7 +1115,10 @@ def main():
     write_jsonl(os.path.join(DATA, "val.jsonl"), val)
     write_jsonl(os.path.join(DATA, "dev.jsonl"), dev)
 
-    print(f"собрано {before}; совпало с экзаменом и выброшено: {leaked}; противоречивых фраз: {len(conflicts)}")
+    print(f"собрано {before}; совпало с экзаменом и выброшено: {leaked}; почти совпало (сходство ≥ {NEAR_DUP}): "
+          f"{len(near)}; противоречивых фраз: {len(conflicts)}")
+    for phrase, exam, sim in near[:20]:
+        print(f"   почти как экзамен: «{phrase}» ~ «{exam}» ({sim:.2f})")
     print(f"train: {len(train)}, val: {len(val)}, dev (отложенные фразы учителя): {len(dev)}")
     stat = {}
     for r in rows:

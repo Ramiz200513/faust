@@ -31,6 +31,9 @@ RELAY = os.environ.get("JARVIS_RELAY_HTTP", "http://127.0.0.1:8080")
 ADMIN_TOKEN = os.environ.get("JARVIS_ADMIN_TOKEN", "dev-admin-change-me")
 
 
+QUICK_ACTIONS = ("play_pause", "next_track", "prev_track", "volume_delta", "minimize_all")
+
+
 def dumps(obj):
     """Компактный JSON без пробелов — так короче ответ модели."""
     return json.dumps(obj, ensure_ascii=False, separators=(",", ":"))
@@ -71,6 +74,18 @@ def to_command(phrase, raw):
         return {"type": t, "processName": proc} if proc and " " not in proc else None
     if t in ("screenshot", "lock_screen", "list_processes"):
         return {"type": t}
+    if t == "quick_action":
+        # С v4 (13.11): пауза, треки, «сверни всё», «громче на N». Закрытый список
+        # действий — тот же, что Command.QuickAction.ACTIONS в релее.
+        action = n.get("action")
+        if action not in QUICK_ACTIONS:
+            return None
+        if action == "volume_delta":
+            amount = n.get("amount")
+            if not isinstance(amount, int) or amount == 0 or not -100 <= amount <= 100:
+                return None
+            return {"type": t, "action": action, "amount": amount}
+        return {"type": t, "action": action, "amount": 0}
     if t == "agent_task":
         scope = n.get("scope")
         if scope not in ("browser", "screen"):

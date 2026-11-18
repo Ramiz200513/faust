@@ -1,4 +1,4 @@
-{"id": "b-1", "source": "gemini", "phrase": "Сверни все окна", "type": "agent_task", "scope": "screen"}
+{"id": "b-1", "source": "gemini", "phrase": "Сверни все окна", "type": "agent_task", "scope": "screen", "alt": [{"type": "quick_action", "action": "minimize_all"}], "note": "13.11: с 19.10 это быстрая команда (quick_action, правило релея QuickPhrases); принимаются оба ответа"}
 {"id": "b-2", "source": "gemini", "phrase": "Отправь отчёт преподу", "type": "agent_task", "scope": "screen"}
 {"id": "b-3", "source": "gemini", "phrase": "Найди решение третьей задачи", "type": "agent_task", "scope": "browser"}
 {"id": "b-4", "source": "gemini", "phrase": "Найди билеты к экзамену", "type": "agent_task", "scope": "browser"}
@@ -42,7 +42,7 @@
 {"id": "b-42", "source": "gemini", "phrase": "переведи сто рублей пете на карту", "type": "unknown"}
 {"id": "b-43", "source": "gemini", "phrase": "фауст сколько будет шестьдесят четыре умножить на двенадцать", "type": "unknown"}
 {"id": "b-44", "source": "gemini", "phrase": "скрин экрана сдклой", "type": "screenshot"}
-{"id": "b-45", "source": "gemini", "phrase": "сделай громче на 20%", "type": "set_volume", "level": [70, 90]}
+{"id": "b-45", "source": "gemini", "phrase": "сделай громче на 20%", "type": "set_volume", "level": [70, 90], "alt": [{"type": "quick_action", "action": "volume_delta", "amount": [20, 20]}], "note": "13.11: с 19.10 протокол понимает «громче на N» как сдвиг (quick_action); принимаются оба ответа"}
 {"id": "b-46", "source": "gemini", "phrase": "открой почту найди письмо от сбера и скачай чек", "type": "agent_task", "scope": "browser"}
 {"id": "b-47", "source": "gemini", "phrase": "найди в гугле отель в сочи и открой карту", "type": "agent_task", "scope": "browser"}
 {"id": "b-48", "source": "gemini", "phrase": "какая погода за окном", "type": "unknown"}
@@ -114,7 +114,7 @@
 {"id": "b-114", "source": "gemini", "phrase": "Order breakfast from Uber Eats.", "type": "unknown"}
 {"id": "b-115", "source": "gemini", "phrase": "Фауст, включи чайник на кухне.", "type": "unknown"}
 {"id": "b-116", "source": "gemini", "phrase": "Сверни Стим", "type": "agent_task", "scope": "screen"}
-{"id": "b-117", "source": "gemini", "phrase": "Музыку на паузу", "type": "agent_task", "scope": "screen"}
+{"id": "b-117", "source": "gemini", "phrase": "Музыку на паузу", "type": "agent_task", "scope": "screen", "alt": [{"type": "quick_action", "action": "play_pause"}], "note": "13.11: с 19.10 это быстрая команда (quick_action, правило релея QuickPhrases); принимаются оба ответа"}
 {"id": "b-118", "source": "gemini", "phrase": "Сними скрин", "type": "screenshot"}
 {"id": "b-119", "source": "gemini", "phrase": "Скачай трек из ВК", "type": "agent_task", "scope": "browser"}
 {"id": "b-120", "source": "gemini", "phrase": "Погаси свет в комнате", "type": "unknown"}

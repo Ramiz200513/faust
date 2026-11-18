@@ -22,6 +22,7 @@ import torch
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+import train
 from common import DATA, HERE, RELAY_EVAL, read_jsonl, to_command
 from train import generate
 
@@ -33,7 +34,12 @@ def load(name, device):
     run = os.path.join(HERE, "runs", name)
     base = json.load(open(os.path.join(run, "train_log.json"), encoding="utf-8"))["base"]
     tok = AutoTokenizer.from_pretrained(os.path.join(run, "adapter"))
-    model = AutoModelForCausalLM.from_pretrained(base, dtype=torch.bfloat16 if device == "cuda" else torch.float32)
+    # Та же точность, что выберет обучение на этой карте: bf16 на RTX 30xx и новее,
+    # fp16 на Kaggle (T4/P100), fp32 на процессоре. generate() берёт её из train.AMP_DTYPE.
+    precision = train.resolve_precision("auto", device)
+    train.AMP_DTYPE = torch.float16 if precision == "fp16" else torch.bfloat16
+    dtype = {"bf16": torch.bfloat16, "fp16": torch.float16}.get(precision, torch.float32)
+    model = AutoModelForCausalLM.from_pretrained(base, dtype=dtype)
     # Заплатки LoRA сразу вливаем в модель: так считается быстрее, и проверяется ровно
     # то, что потом уйдёт в Ollama.
     model = PeftModel.from_pretrained(model, os.path.join(run, "adapter")).merge_and_unload()
@@ -44,10 +50,11 @@ def load(name, device):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--name", required=True)
-    ap.add_argument("--set", default="test", choices=["test", "test_b", "dev"])
+    ap.add_argument("--set", default="test", choices=["test", "test_b", "new", "dev"],
+                    help="test — экзамен А, test_b — Б, new — «Новое» (команды v4), dev — отложенные фразы учителя")
     args = ap.parse_args()
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cuda" if torch.cuda.is_available() and torch.cuda.device_count() > 0 else "cpu"
     model, tok = load(args.name, device)
 
     if args.set == "dev":
@@ -57,7 +64,7 @@ def main():
             cases.append({"id": f"dev-{i}", "phrase": r["phrase"], "gold": to_command(r["phrase"], r["target"]),
                           "source": "dev", "cat": r["cat"]})
     else:
-        fname = "intent_test.jsonl" if args.set == "test" else "intent_test_b.jsonl"
+        fname = {"test": "intent_test.jsonl", "test_b": "intent_test_b.jsonl", "new": "intent_test_new.jsonl"}[args.set]
         cases = read_jsonl(os.path.join(RELAY_EVAL, fname))
 
     generate(model, tok, "прогрев")   # первый вызов всегда медленный — не в счёт

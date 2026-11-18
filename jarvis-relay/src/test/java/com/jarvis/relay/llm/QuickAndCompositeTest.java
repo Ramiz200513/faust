@@ -206,4 +206,23 @@ class QuickAndCompositeTest {
                 mapper.readValue("{\"type\":\"sequence\",\"commands\":[{\"type\":\"quick_action\",\"action\":\"play_pause\"}]}",
                         Command.class), "amount можно не писать — как в Kotlin по умолчанию 0");
     }
+
+    @Test
+    void modelV4_quickAction_acceptedOnlyFromClosedList_withSignedAmount() {
+        DictLocal local = new DictLocal()
+                .with("тормозни музыку", "{\"type\":\"quick_action\",\"action\":\"play_pause\"}")
+                .with("приглуши на 15", "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":-15}")
+                .with("выруби всё", "{\"type\":\"quick_action\",\"action\":\"shutdown\"}")
+                .with("громче на ноль", "{\"type\":\"quick_action\",\"action\":\"volume_delta\",\"amount\":0}");
+        CountingGemini gemini = new CountingGemini();
+        HybridIntentParser h = hybrid(local, gemini);
+
+        assertEquals(new Command.QuickAction("play_pause", 0), h.parse("тормозни музыку", null),
+                "этой формулировки правила не знают — поняла модель");
+        assertEquals(new Command.QuickAction("volume_delta", -15), h.parse("приглуши на 15", null));
+        assertEquals(0, gemini.calls);
+        assertEquals(LocalIntentParser.Kind.INVALID, local.parse("выруби всё").kind(),
+                "действия не из списка не бывает — ответ модели отбрасывается");
+        assertEquals(LocalIntentParser.Kind.INVALID, local.parse("громче на ноль").kind());
+    }
 }
