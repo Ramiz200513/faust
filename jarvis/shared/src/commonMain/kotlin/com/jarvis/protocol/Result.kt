@@ -105,3 +105,11 @@ data class RepoInfo(
     val hasRemote: Boolean = false,
     val error: String? = null,
 )
+
+/**
+ * Результат [Speak]: фраза голосом «Фауста» — WAV (PCM 16 бит, моно) в base64.
+ * Не реплика чата: телефон её только проигрывает.
+ */
+@Serializable
+@SerialName("voice_clip")
+data class VoiceClip(val format: String, val sampleRate: Int, val base64: String) : ResultData

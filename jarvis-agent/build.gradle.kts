@@ -231,6 +231,16 @@ tasks.register<JavaExec>("runPlanCheck") {
 // сценарий задачи (старт -> шаги -> клики -> конец) прямо на этом экране.
 //   ./gradlew runOverlayDemo
 //   ./gradlew runOverlayDemo --args="record"   <- видно в OBS/Zoom (см. FaustOverlayDemo)
+// Режим наставника без релея и модели: стрелка, «не сюда», подсказка, «Готово», голос ПК.
+//   ./gradlew runMentorDemo
+tasks.register<JavaExec>("runMentorDemo") {
+    group = "application"
+    description = "Показывает подсказки режима наставника по сценарию, без релея и модели"
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass = "com.jarvis.agent.FaustMentorDemo"
+    jvmArgs = listOf("-Dstdout.encoding=UTF-8", "-Dstderr.encoding=UTF-8")
+}
+
 tasks.register<JavaExec>("runOverlayDemo") {
     group = "application"
     description = "Показывает все анимации Фауста по сценарию, без релея и модели"

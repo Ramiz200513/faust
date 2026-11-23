@@ -14,11 +14,15 @@ import java.util.List;
         @JsonSubTypes.Type(value = ResultData.FileList.class, name = "file_list"),
         @JsonSubTypes.Type(value = ResultData.FileTransfer.class, name = "file_transfer"),
         @JsonSubTypes.Type(value = ResultData.RepoList.class, name = "repo_list"),
-        @JsonSubTypes.Type(value = ResultData.TaskReport.class, name = "task_report")
+        @JsonSubTypes.Type(value = ResultData.TaskReport.class, name = "task_report"),
+        @JsonSubTypes.Type(value = ResultData.VoiceClip.class, name = "voice_clip")
 })
 public sealed interface ResultData permits ResultData.ProcessList, ResultData.AgentReport,
         ResultData.ClipboardText, ResultData.FileList, ResultData.FileTransfer, ResultData.RepoList,
-        ResultData.TaskReport {
+        ResultData.TaskReport, ResultData.VoiceClip {
+
+    /** Результат speak: фраза голосом «Фауста», WAV (PCM 16 бит, моно) в base64. Телефон только проигрывает. */
+    record VoiceClip(String format, int sampleRate, String base64) implements ResultData {}
 
     record ProcessList(List<ProcessInfo> processes) implements ResultData {}
 

@@ -66,10 +66,30 @@ public sealed interface JarvisMessage permits
                        Integer screenWidth, Integer screenHeight,
                        Integer seq) implements JarvisMessage {}
 
+    /**
+     * Шаг agent_task. Релей его только пересылает телефонам, но собирает заново
+     * из этого record — поэтому здесь обязаны быть ВСЕ поля Kotlin-версии,
+     * иначе незнакомое поле молча потеряется по дороге.
+     *
+     * replies — быстрые ответы-чипы для телефона (режим наставника: «Повтори»,
+     * «Сделай сам», «Стоп»); silent — телефон не озвучивает шаг (говорит ПК).
+     * Оба необязательные: null = как раньше.
+     */
     record AgentStep(String requestId, int step, String description,
                      String screenshotBase64, ImageFormat screenshotFormat,
                      Integer screenshotWidth, Integer screenshotHeight,
-                     Integer targetX, Integer targetY) implements JarvisMessage {}
+                     Integer targetX, Integer targetY,
+                     java.util.List<String> replies, Boolean silent) implements JarvisMessage {
+
+        /** Старая форма без полей наставника — чтобы прежние вызовы продолжали работать. */
+        public AgentStep(String requestId, int step, String description,
+                         String screenshotBase64, ImageFormat screenshotFormat,
+                         Integer screenshotWidth, Integer screenshotHeight,
+                         Integer targetX, Integer targetY) {
+            this(requestId, step, description, screenshotBase64, screenshotFormat,
+                    screenshotWidth, screenshotHeight, targetX, targetY, null, null);
+        }
+    }
 
     /**
      * Вопрос ИИ-агента человеку посреди agent_task (requestId — тот же, что у

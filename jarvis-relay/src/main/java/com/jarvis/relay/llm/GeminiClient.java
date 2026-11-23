@@ -70,8 +70,8 @@ public class GeminiClient {
                 .build();
         HttpResponse<String> resp = http.send(request, HttpResponse.BodyHandlers.ofString());
         if (resp.statusCode() != 200) {
-            // Тело может повторять запрос — наружу только код.
-            throw new IllegalStateException("Gemini HTTP " + resp.statusCode());
+            // Тело может повторять запрос — наружу только служебные поля Google (см. GeminiErrors).
+            throw new IllegalStateException(GeminiErrors.describe(resp.statusCode(), resp.body()));
         }
         JsonNode text = mapper.readTree(resp.body()).path("candidates").path(0)
                 .path("content").path("parts").path(0).path("text");

@@ -342,3 +342,15 @@ data class Sequence(val commands: List<Command>) : Command {
 data object DevRepos : Command {
     override val name: String get() = "dev_repos"
 }
+
+/**
+ * Озвучить фразу голосом «Фауста» (Silero на ПК) и вернуть звук телефону — [VoiceClip].
+ * Нужна, чтобы телефон говорил тем же голосом, что и ПК в режиме наставника (с 23.11).
+ * На ПК ничего не делает и вслух не говорит: только синтез в файл. Нет голоса Silero —
+ * ответ ERROR, и телефон говорит своим голосом Android.
+ */
+@Serializable
+@SerialName("speak")
+data class Speak(val text: String) : Command {
+    override val name: String get() = "speak"
+}

@@ -3,11 +3,6 @@ package com.jarvis.agent;
 import com.jarvis.agent.vision.TrajectoryCache;
 import com.jarvis.agent.vision.UiaElement;
 import com.jarvis.agent.vision.UiaSnapshot;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.Kernel32;
-import com.sun.jna.platform.win32.User32;
-import com.sun.jna.platform.win32.WinDef;
-import com.sun.jna.platform.win32.WinUser;
 
 import java.awt.Rectangle;
 import java.util.ArrayDeque;
@@ -15,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -73,21 +67,6 @@ public final class DemoRecorder {
 
     private static final long SNAPSHOT_EVERY_MS = 500;
     private static final int KEEP_SNAPSHOTS = 16;
-    private static final int WM_LBUTTONDOWN = 0x0201;
-    private static final int WM_KEYDOWN = 0x0100;
-    private static final int WM_SYSKEYDOWN = 0x0104;
-    private static final int WM_QUIT = 0x0012;
-    private static final int LLMHF_INJECTED = 0x01;
-    private static final int LLKHF_INJECTED = 0x10;
-    private static final int VK_CONTROL = 0x11;
-    private static final int VK_MENU = 0x12;
-
-    /** Клавиши, которые записываются как есть (не как «ввод текста»). */
-    private static final Map<Integer, String> NAMED_KEYS = Map.ofEntries(
-            Map.entry(0x0D, "enter"), Map.entry(0x1B, "esc"), Map.entry(0x09, "tab"),
-            Map.entry(0x2E, "delete"), Map.entry(0x71, "f2"), Map.entry(0x74, "f5"),
-            Map.entry(0x26, "up"), Map.entry(0x28, "down"), Map.entry(0x25, "left"), Map.entry(0x27, "right"),
-            Map.entry(0x24, "home"), Map.entry(0x23, "end"), Map.entry(0x21, "pageup"), Map.entry(0x22, "pagedown"));
 
     /** Окна оболочки Windows (Пуск, поиск): ввод в них — это «открыть программу», а не шаг внутри неё. */
     private static final Set<String> SHELL_APPS = Set.of(
@@ -121,16 +100,10 @@ public final class DemoRecorder {
     private final boolean allowInjected = Boolean.getBoolean("faust.demo.allowInjected");
 
     private volatile boolean running;
-    private volatile int hookThreadId;
-    private Thread hookThread;
     private Thread snapThread;
     private Thread worker;
-    // Ссылки на колбэки ОБЯЗАНЫ жить всё время записи: иначе сборщик мусора
-    // удалит их, а Windows продолжит вызывать — и процесс упадёт.
-    private WinUser.LowLevelMouseProc mouseProc;
-    private WinUser.LowLevelKeyboardProc keyProc;
-    private WinUser.HHOOK mouseHook;
-    private WinUser.HHOOK keyHook;
+    /** Ловушки ввода человека (общие с режимом наставника, см. HumanInput). */
+    private HumanInput input;
 
     private String lastApp = "";
     private boolean typingPending;
@@ -160,9 +133,25 @@ public final class DemoRecorder {
         worker.setDaemon(true);
         worker.start();
 
-        hookThread = new Thread(this::hookLoop, "demo-hooks");
-        hookThread.setDaemon(true);
-        hookThread.start();
+        input = new HumanInput(this::onHuman, allowInjected);
+        input.start();
+    }
+
+    /**
+     * Событие человека -> событие записи. Вызывается из потока ловушек, поэтому только
+     * кладёт в очередь: вся работа — в demo-worker. Колесо мыши запись не использует.
+     */
+    private void onHuman(HumanInput.Event e) {
+        switch (e) {
+            case HumanInput.Click c -> events.offer(new Click(c.x(), c.y(), c.atMs()));
+            case HumanInput.Key k -> {
+                // Запись видит сочетания как до 23.11 (без Win/Alt/Shift) — навыки пишутся по-прежнему.
+                String legacy = HumanInput.legacyCombo(k.combo());
+                if (legacy != null) events.offer(new Key(legacy, k.atMs()));
+            }
+            case HumanInput.Typing t -> events.offer(new Typing(t.atMs()));
+            case HumanInput.Wheel w -> { }
+        }
     }
 
     /** Закончить запись и вернуть, что записано. */
@@ -189,68 +178,7 @@ public final class DemoRecorder {
     private void shutdown() {
         running = false;
         recordingNow = false;
-        if (hookThreadId != 0) {
-            // Разбудить цикл сообщений ловушек, чтобы он снял их и завершился.
-            User32.INSTANCE.PostThreadMessage(hookThreadId, WM_QUIT, new WinDef.WPARAM(0), new WinDef.LPARAM(0));
-        }
-    }
-
-    // =========================================================================
-    //  Ловушки Windows — только кладут события в очередь
-    // =========================================================================
-
-    private void hookLoop() {
-        hookThreadId = Kernel32.INSTANCE.GetCurrentThreadId();
-        WinDef.HMODULE module = Kernel32.INSTANCE.GetModuleHandle(null);
-
-        mouseProc = (nCode, wParam, info) -> {
-            if (nCode >= 0 && wParam.intValue() == WM_LBUTTONDOWN
-                    && (allowInjected || (info.flags & LLMHF_INJECTED) == 0)) {
-                events.offer(new Click(info.pt.x, info.pt.y, System.currentTimeMillis()));
-            }
-            return User32.INSTANCE.CallNextHookEx(mouseHook, nCode, wParam,
-                    new WinDef.LPARAM(Pointer.nativeValue(info.getPointer())));
-        };
-        keyProc = (nCode, wParam, info) -> {
-            int msg = wParam.intValue();
-            if (nCode >= 0 && (msg == WM_KEYDOWN || msg == WM_SYSKEYDOWN)
-                    && (allowInjected || (info.flags & LLKHF_INJECTED) == 0)) {
-                Event e = classifyKey(info.vkCode);
-                if (e != null) events.offer(e);
-            }
-            return User32.INSTANCE.CallNextHookEx(keyHook, nCode, wParam,
-                    new WinDef.LPARAM(Pointer.nativeValue(info.getPointer())));
-        };
-        mouseHook = User32.INSTANCE.SetWindowsHookEx(WinUser.WH_MOUSE_LL, mouseProc, module, 0);
-        keyHook = User32.INSTANCE.SetWindowsHookEx(WinUser.WH_KEYBOARD_LL, keyProc, module, 0);
-
-        // Ловушки вызываются Windows изнутри GetMessage этого потока.
-        WinUser.MSG msg = new WinUser.MSG();
-        while (running && User32.INSTANCE.GetMessage(msg, null, 0, 0) > 0) {
-            // сообщений для нас нет — просто крутим цикл
-        }
-        if (mouseHook != null) User32.INSTANCE.UnhookWindowsHookEx(mouseHook);
-        if (keyHook != null) User32.INSTANCE.UnhookWindowsHookEx(keyHook);
-    }
-
-    /**
-     * Клавиша -> событие. Символы НЕ передаются: только «человек что-то печатает».
-     * Сочетания с Alt и клавиша Win не записываются вовсе — агенту они запрещены.
-     */
-    private static Event classifyKey(int vk) {
-        long now = System.currentTimeMillis();
-        if (vk == 0x5B || vk == 0x5C) return null;                            // Win
-        if (vk == 0x10 || vk == 0x11 || vk == 0x12 || (vk >= 0xA0 && vk <= 0xA5)) return null; // сами модификаторы
-        boolean ctrl = (User32.INSTANCE.GetAsyncKeyState(VK_CONTROL) & 0x8000) != 0;
-        boolean alt = (User32.INSTANCE.GetAsyncKeyState(VK_MENU) & 0x8000) != 0;
-        if (alt) return null;
-        if (ctrl && vk >= 0x41 && vk <= 0x5A) {
-            return new Key("ctrl+" + (char) Character.toLowerCase(vk), now);
-        }
-        if (ctrl) return null;
-        String named = NAMED_KEYS.get(vk);
-        if (named != null) return new Key(named, now);
-        return new Typing(now);   // буква, цифра, пробел, Backspace — просто «печатает»
+        if (input != null) input.stop();
     }
 
     // =========================================================================

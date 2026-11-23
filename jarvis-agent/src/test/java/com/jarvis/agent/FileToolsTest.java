@@ -42,6 +42,32 @@ class FileToolsTest {
     }
 
     @Test
+    void newestFile_requests_areRecognized() {
+        // Живая задача 23.11: «найди в загрузках последний файл и отправь его в Избранное».
+        assertEquals("загрузки", FileTools.newestFolderAsked(""), "пустое имя — самый новый в Загрузках");
+        assertEquals("загрузки", FileTools.newestFolderAsked("последний"));
+        assertEquals("загрузки", FileTools.newestFolderAsked("последний файл в загрузках"));
+        assertEquals("документы", FileTools.newestFolderAsked("свежий в Документах"));
+        assertEquals("рабочий стол", FileTools.newestFolderAsked("последний файл на рабочем столе"));
+        assertEquals("загрузки", FileTools.newestFolderAsked("latest"));
+        // Есть слово-имя — это обычный поиск по имени, а не «самый новый».
+        assertNull(FileTools.newestFolderAsked("отчёт июнь"));
+        assertNull(FileTools.newestFolderAsked("последний отчёт"), "«последний отчёт» — ищем отчёт по имени");
+        assertNull(FileTools.newestFolderAsked("загрузки"), "одна папка без «последний» — не просьба о новом файле");
+    }
+
+    @Test
+    void newest_topLevelOnly_skipsPartialAndHidden() throws Exception {
+        Path a = file(downloads, "архив.zip", 30);
+        Path b = file(downloads, "фото.jpg", 2);
+        file(downloads, "кино.mp4.crdownload", 0);               // ещё качается
+        file(downloads, "desktop.ini", 0);                       // служебный
+        file(downloads, "папка/внутри.txt", 0);                  // в подпапке — не «последний в Загрузках»
+
+        assertEquals(List.of(b, a), FileTools.newest(List.of(downloads)));
+    }
+
+    @Test
     void find_worksAcrossAlphabets() throws Exception {
         Path latin = file(downloads, "otchet-final.pdf", 1);
         assertEquals(List.of(latin), FileTools.find("отчет", List.of(downloads)));

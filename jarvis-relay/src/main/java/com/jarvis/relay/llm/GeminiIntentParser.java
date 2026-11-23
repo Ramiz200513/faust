@@ -69,6 +69,9 @@ public class GeminiIntentParser implements IntentParser {
               // «подготовь всё к работе», «доброе утро, начинаем работу») — тоже
               // agent_task со всей фразой, scope="screen", maxSteps=20: на ПК есть
               // выученные навыки и доверенные скрипты, агент выберет нужный сам.
+              // Просьба НАУЧИТЬ («покажи, как …», «научи меня …», «подскажи, как …») —
+              // agent_task со всей фразой, scope="screen", maxSteps=20: агент покажет
+              // стрелкой, куда нажать, а нажимать будет человек. Не превращай её в open_app.
 
             Если фразу нельзя однозначно отнести ни к одной команде — верни {"type":"unknown"}.
             Верни {"type":"unknown"} (а НЕ agent_task) и тогда, когда просят то, чего система
@@ -103,6 +106,7 @@ public class GeminiIntentParser implements IntentParser {
             "найди файл отчёт в загрузках и перешли его в телеграм Пете" -> {"type":"agent_task","goal":"найди файл отчёт в загрузках и перешли его в телеграм Пете","scope":"screen","maxSteps":20}
             "подними сервер диплома в докере" -> {"type":"agent_task","goal":"подними сервер диплома в докере","scope":"screen","maxSteps":20}
             "доброе утро, начинаем работу" -> {"type":"agent_task","goal":"доброе утро, начинаем работу","scope":"screen","maxSteps":20}
+            "научи меня включать экранную лупу" -> {"type":"agent_task","goal":"научи меня включать экранную лупу","scope":"screen","maxSteps":20}
             "сколько будет 2 плюс 2" -> {"type":"unknown"}
             """;
 
@@ -201,8 +205,8 @@ public class GeminiIntentParser implements IntentParser {
 
         HttpResponse<String> resp = http.send(request, HttpResponse.BodyHandlers.ofString());
         if (resp.statusCode() != 200) {
-            // Body may echo request data — log the status only, never the body.
-            throw new IllegalStateException("Gemini HTTP " + resp.statusCode());
+            // Тело может повторять запрос — наружу только служебные поля Google (см. GeminiErrors).
+            throw new IllegalStateException(GeminiErrors.describe(resp.statusCode(), resp.body()));
         }
 
         // Answer lives at candidates[0].content.parts[0].text

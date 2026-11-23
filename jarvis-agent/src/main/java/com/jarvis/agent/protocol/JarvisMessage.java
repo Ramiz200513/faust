@@ -66,10 +66,27 @@ public sealed interface JarvisMessage permits
                        Integer screenWidth, Integer screenHeight,
                        Integer seq) implements JarvisMessage {}
 
+    /**
+     * Шаг ИИ-агента для телефона.
+     *
+     * @param replies быстрые ответы, которые телефон показывает кнопками (режим наставника:
+     *                «Повтори», «Сделай сам», «Стоп»); null — кнопок нет (как раньше)
+     * @param silent  true — телефон не озвучивает шаг (его уже говорит голос ПК); null — как раньше
+     */
     record AgentStep(String requestId, int step, String description,
                      String screenshotBase64, ImageFormat screenshotFormat,
                      Integer screenshotWidth, Integer screenshotHeight,
-                     Integer targetX, Integer targetY) implements JarvisMessage {}
+                     Integer targetX, Integer targetY,
+                     java.util.List<String> replies, Boolean silent) implements JarvisMessage {
+        /** Прежний вид — без кнопок и без «тихо»: так шлют все шаги, кроме наставника. */
+        public AgentStep(String requestId, int step, String description,
+                         String screenshotBase64, ImageFormat screenshotFormat,
+                         Integer screenshotWidth, Integer screenshotHeight,
+                         Integer targetX, Integer targetY) {
+            this(requestId, step, description, screenshotBase64, screenshotFormat, screenshotWidth,
+                    screenshotHeight, targetX, targetY, null, null);
+        }
+    }
 
     /**
      * Вопрос ИИ-агента человеку посреди agent_task; requestId — тот же, что у задачи.

@@ -37,6 +37,7 @@ class CommandWhitelist(
                 "correct_task",
                 "photo_task",
                 "get_task_report",
+                "speak",
                 // "shutdown" and "reboot" left OUT on purpose — opt in explicitly.
             )
         )

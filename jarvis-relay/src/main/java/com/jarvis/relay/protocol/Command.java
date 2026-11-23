@@ -39,7 +39,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = Command.DevRepos.class, name = "dev_repos"),
         @JsonSubTypes.Type(value = Command.CorrectTask.class, name = "correct_task"),
         @JsonSubTypes.Type(value = Command.PhotoTask.class, name = "photo_task"),
-        @JsonSubTypes.Type(value = Command.GetTaskReport.class, name = "get_task_report")
+        @JsonSubTypes.Type(value = Command.GetTaskReport.class, name = "get_task_report"),
+        @JsonSubTypes.Type(value = Command.Speak.class, name = "speak")
 })
 public sealed interface Command permits
         Command.NaturalLanguage, Command.SetVolume, Command.Shutdown, Command.Reboot,
@@ -50,7 +51,7 @@ public sealed interface Command permits
         Command.ListFiles, Command.SendFileToPhone, Command.SendFileToPc,
         Command.CancelTask, Command.AnswerQuestion, Command.SetDisplayOption,
         Command.QuickAction, Command.Sequence, Command.DevRepos,
-        Command.CorrectTask, Command.PhotoTask, Command.GetTaskReport {
+        Command.CorrectTask, Command.PhotoTask, Command.GetTaskReport, Command.Speak {
 
     /** Stable name used by the whitelist and audit log. */
     String name();
@@ -169,6 +170,15 @@ public sealed interface Command permits
     /** Список разрешённых репозиториев и их состояние — для экрана «Проекты» на телефоне. Только чтение. */
     record DevRepos() implements Command {
         public String name() { return "dev_repos"; }
+    }
+
+    /**
+     * Озвучить фразу голосом «Фауста» (Silero на ПК) и вернуть звук телефону (ResultData.VoiceClip),
+     * чтобы телефон говорил тем же голосом, что и ПК. На ПК вслух ничего не говорится — только
+     * синтез в файл. Длину текста ограничивает белый список релея.
+     */
+    record Speak(String text) implements Command {
+        public String name() { return "speak"; }
     }
 
     // Layer 10: поправка на ходу, фото с телефона, видео-отчёт

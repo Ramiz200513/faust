@@ -127,6 +127,15 @@ public class AgentLlmController {
             return ResponseEntity.ok(new GenerateResponse(text));
         } catch (Exception e) {
             log.warn("LLM proxy call failed for {} ({}: {})", deviceId, e.getClass().getSimpleName(), e.getMessage());
+            // Лимит Gemini (429) — НЕ 502: агент (RelayLlmClient) повторяет запрос при 502/503, и во
+            // время лимита каждый шаг превращался в три запроса подряд (23.11: десятки 429 за минуты).
+            // Причину (код Google и название квоты, без данных запроса) отдаём агенту — она попадёт
+            // в его трейс и на телефон.
+            String m = e.getMessage() == null ? "" : e.getMessage();
+            if (m.startsWith("Gemini HTTP 429")) {
+                return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
+                        .body(Map.of("error", "лимит Gemini: " + m.substring("Gemini HTTP 429".length()).strip()));
+            }
             return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(Map.of("error", "gemini call failed"));
         } finally {
             long latencyMs = System.currentTimeMillis() - start;
@@ -150,8 +159,8 @@ public class AgentLlmController {
 
         HttpResponse<String> resp = sendWithRetry(httpRequest);
         if (resp.statusCode() != 200) {
-            // Тело ответа может содержать эхо запроса — в исключение и в лог идёт только статус.
-            throw new IllegalStateException("Gemini HTTP " + resp.statusCode());
+            // Тело может повторять запрос — наружу только служебные поля Google (см. GeminiErrors).
+            throw new IllegalStateException(GeminiErrors.describe(resp.statusCode(), resp.body()));
         }
 
         JsonNode root = mapper.readTree(resp.body());

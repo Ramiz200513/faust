@@ -121,6 +121,45 @@ class ProtocolTest {
     }
 
     @Test
+    fun agentStep_withMentorRepliesAndSilent_roundTrips() {
+        // Шаг режима наставника: стрелка на ПК, телефон молчит и показывает чипы.
+        val msg: JarvisMessage = AgentStep(
+            requestId = "t1",
+            step = 2,
+            description = "Нажмите «Пуск» — я показал стрелкой",
+            targetX = 20,
+            targetY = 1060,
+            replies = listOf("Повтори", "Сделай сам", "Стоп"),
+            silent = true,
+        )
+        val json = roundTrip(msg)
+        assertTrue(json.contains("\"type\":\"agent_step\""), json)
+        // Имена полей — контракт с релеем и агентом (Jackson), менять нельзя.
+        assertTrue(json.contains("\"replies\":[\"Повтори\",\"Сделай сам\",\"Стоп\"]"), json)
+        assertTrue(json.contains("\"silent\":true"), json)
+    }
+
+    @Test
+    fun agentStep_fromOldAgent_withoutNewFields_defaultsToNull() {
+        // Старый агент не знает про replies/silent — телефон должен вести себя как раньше.
+        val json = """{"type":"agent_step","requestId":"t1","step":1,"description":"click(512, 300)"}"""
+        val msg = JarvisJson.decodeFromString<JarvisMessage>(json) as AgentStep
+        assertEquals(null, msg.replies)
+        assertEquals(null, msg.silent)
+    }
+
+    @Test
+    fun agentStep_fromJava_withExplicitNulls_decodes() {
+        // Jackson на релее пишет отсутствующие поля как null явно — это тоже «как раньше».
+        val json = """{"type":"agent_step","requestId":"t1","step":1,"description":"d",
+            "screenshotBase64":null,"screenshotFormat":null,"screenshotWidth":null,"screenshotHeight":null,
+            "targetX":null,"targetY":null,"replies":null,"silent":null}"""
+        val msg = JarvisJson.decodeFromString<JarvisMessage>(json) as AgentStep
+        assertEquals(null, msg.replies)
+        assertEquals(null, msg.silent)
+    }
+
+    @Test
     fun answerQuestion_roundTrips() {
         val msg: JarvisMessage = CommandRequest("a2", AnswerQuestion(questionId = "q1", answer = "Да"))
         val json = roundTrip(msg)
@@ -217,5 +256,15 @@ class ProtocolTest {
         assertTrue(wl.isAllowed(SetVolume(10)))
         assertFalse(wl.isAllowed(Shutdown(0)))
         assertEquals(null, wl.check(Shutdown(0)))
+    }
+
+    // Голос «Фауста» на телефоне (23.11): тот же JSON, что у релея и агента (SpeakProtocolTest там).
+    @Test
+    fun speak_andVoiceClip_roundTrip() {
+        val req = roundTrip<JarvisMessage>(CommandRequest("voice-1", Speak("Нажмите «Пуск».")))
+        assertTrue(req.contains("\"type\":\"speak\""), req)
+        val res = roundTrip<JarvisMessage>(CommandResult("voice-1", CommandStatus.OK, null, VoiceClip("wav", 24000, "UklGRg==")))
+        assertTrue(res.contains("\"type\":\"voice_clip\"") && res.contains("\"sampleRate\":24000"), res)
+        assertTrue(CommandWhitelist.DEFAULT.isAllowed(Speak("привет")))
     }
 }

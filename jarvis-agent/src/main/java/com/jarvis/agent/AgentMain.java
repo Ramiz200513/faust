@@ -97,6 +97,10 @@ public class AgentMain {
         // это значило "напечатать в консоль просьбу передать код и остановиться"
         // (см. RelayClient.Listener.onOpen). Теперь вместо этого показываем окно
         // приветствия — оно само создаст RelayClient с введённым там кодом.
+        // Голос наставника (Silero) грузится и «прогревается» ~10 с — делаем это сразу, в фоне,
+        // чтобы первая подсказка первого урока прозвучала без задержки.
+        PcVoice.preloadInBackground();
+
         if (tokenStore.load() == null && pairingCode == null) {
             FirstRunWizard.show(config, tokenStore, executor, tray, clientRef);
         } else {

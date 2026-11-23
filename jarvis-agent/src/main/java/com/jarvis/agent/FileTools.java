@@ -130,6 +130,83 @@ public final class FileTools {
         return found.size() > MAX_RESULTS ? List.copyOf(found.subList(0, MAX_RESULTS)) : List.copyOf(found);
     }
 
+    // --- «последний файл» -------------------------------------------------------
+
+    /** Слова, которыми просят самый новый файл: «последний файл в загрузках», «свежий». */
+    private static final Set<String> NEWEST_WORDS = Set.of(
+            "последний", "последние", "последнее", "последнюю", "последней", "новый", "новые", "новое",
+            "новейший", "свежий", "свежие", "свежее", "свежую", "недавний", "недавние",
+            "latest", "newest", "last", "recent");
+    /** Слова-связки, которые в запросе «последний файл в загрузках» ничего не ищут. */
+    private static final Set<String> FILLER_WORDS = Set.of("файл", "файлы", "файла", "в", "из", "во", "на", "папке",
+            "папка", "папки", "самый", "самые", "file", "in");
+
+    /**
+     * Запрос просит самые новые файлы, а не файл по имени? Тогда — список папки по времени
+     * изменения, иначе null (обычный поиск по имени).
+     *
+     * <p>Живая задача 23.11 «найди в загрузках последний файл и отправь в Избранное»: модель
+     * дважды звала find_file с пустым именем, потом выделяла первый файл в Проводнике
+     * стрелкой и копировала Ctrl+C — без гарантии, что он самый свежий. Найти последний файл
+     * по дате — работа для кода, а не для угадывания по экрану.
+     *
+     * @return самые новые файлы (новые первыми, не больше {@link #MAX_RESULTS}) или null
+     */
+    public static List<Path> newestIfAsked(String query) {
+        String folder = newestFolderAsked(query);
+        if (folder == null) return null;
+        return FileCatalog.resolveFolder(folder).filter(Files::isDirectory)
+                .map(dir -> newest(List.of(dir))).orElse(List.of());
+    }
+
+    /**
+     * Какая папка в запросе «самого нового файла»: «загрузки» (по умолчанию), «документы»,
+     * «рабочий стол», «изображения»; null — запрос не про самый новый файл.
+     * Пустой запрос — тоже «самый новый в Загрузках»: так модель и пыталась его спросить.
+     */
+    static String newestFolderAsked(String query) {
+        List<String> ws = words(query == null ? "" : query);
+        if (ws.isEmpty()) return "загрузки";
+        boolean asksNewest = false;
+        String folder = null;
+        for (String w : ws) {
+            String f = folderOf(w);
+            if (f != null) { folder = f; continue; }
+            if (NEWEST_WORDS.contains(w)) { asksNewest = true; continue; }
+            if (FILLER_WORDS.contains(w) || w.equals("рабочем") || w.equals("рабочий")) continue;
+            return null;                                       // есть слово-имя — это обычный поиск
+        }
+        return asksNewest ? (folder == null ? "загрузки" : folder) : null;
+    }
+
+    private static String folderOf(String w) {
+        if (w.startsWith("загруз") || w.equals("downloads")) return "загрузки";
+        if (w.startsWith("документ") || w.equals("documents")) return "документы";
+        if (w.startsWith("стол") || w.equals("desktop")) return "рабочий стол";
+        if (w.startsWith("изображ") || w.startsWith("картин") || w.equals("pictures")) return "изображения";
+        return null;
+    }
+
+    /** Файлы прямо в папках (без подпапок), новые первыми; недокачанные и скрытые — мимо. */
+    static List<Path> newest(List<Path> roots) {
+        List<Path> files = new ArrayList<>();
+        for (Path root : roots) {
+            try (var s = Files.list(root)) {
+                s.filter(Files::isRegularFile)
+                 .filter(f -> !isPartialDownload(f))
+                 .filter(f -> {
+                     String n = f.getFileName().toString().toLowerCase(Locale.ROOT);
+                     return !n.startsWith(".") && !n.equals("desktop.ini") && !n.startsWith("~$");
+                 })
+                 .forEach(files::add);
+            } catch (IOException ignored) {
+                // папки нет или нет прав — просто без неё
+            }
+        }
+        files.sort(Comparator.comparingLong(FileTools::modified).reversed());
+        return files.size() > MAX_RESULTS ? List.copyOf(files.subList(0, MAX_RESULTS)) : List.copyOf(files);
+    }
+
     /** Результат поиска строкой для трейса — модель прочтёт её на следующем шаге. */
     public static String describeFound(String query, List<Path> files) {
         if (files.isEmpty()) {

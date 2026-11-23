@@ -11,6 +11,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.expandHorizontally
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkHorizontally
@@ -222,6 +224,8 @@ fun ChatScreen(
     val planPanelEnabled by vm.planPanelEnabled.collectAsState()
     // Идёт ИИ-задача: сказанное — поправка к ней («нет, не Пете, а Васе»).
     val activeTaskId by vm.activeTaskId.collectAsState()
+    // Быстрые ответы последнего шага задачи (режим наставника): «Повтори», «Сделай сам», «Стоп».
+    val taskReplies by vm.taskReplies.collectAsState()
     // Фото, прикреплённое к следующей просьбе.
     val pendingPhoto by vm.pendingPhoto.collectAsState()
     // Открытый видео-отчёт задачи.
@@ -244,7 +248,9 @@ fun ChatScreen(
 
     // Голосовой модуль: распознавание речи + озвучка ответов.
     // Создаётся один раз на время показа экрана, освобождается в onDispose.
-    val voice = remember { VoiceController(context) }
+    // Голос — тот же, что у ПК (Silero «eugene»): фразу озвучивает ПК, телефон проигрывает.
+    // Нет связи или голоса на ПК — говорит голос Android, как раньше.
+    val voice = remember { VoiceController(context).also { v -> v.pcVoice = { text -> vm.pcVoice(text) } } }
     DisposableEffect(Unit) { onDispose { voice.shutdown() } }
 
     // Флаги из VoiceController — это Compose State, поэтому кнопки сами
@@ -379,6 +385,8 @@ fun ChatScreen(
     LaunchedEffect(messages.size) {
         val last = messages.lastOrNull() ?: return@LaunchedEffect
         if (last.author != Author.PC || last.imageBase64 != null) return@LaunchedEffect
+        // Шаг наставника с silent=true: подсказку вслух говорит ПК, телефон молчит.
+        if (last.silent) return@LaunchedEffect
         val card = last.question
         // С другого ПК — сначала его имя: на слух иначе не понять, кто ответил.
         val spoken = last.pcName?.let { "$it: ${last.text}" } ?: last.text
@@ -789,6 +797,34 @@ fun ChatScreen(
             }
             }
 
+            // --- Быстрые ответы идущей задаче (режим наставника) ---
+            // Агент показал стрелку на ПК и ждёт шага человека. Пока в последнем
+            // шаге есть replies — над полем ввода ряд кнопок: «Стоп» отменяет
+            // задачу, остальные («Повтори», «Сделай сам») уходят поправкой.
+            // Отдельно от общего ряда быстрых команд: это ответы именно этой
+            // задаче, и прятать их за прокруткой среди «Скриншота» нельзя.
+            AnimatedVisibility(
+                visible = taskReplies.isNotEmpty() && activeTaskId != null,
+                enter = fadeIn() + expandVertically(),
+                exit = fadeOut() + shrinkVertically(),
+            ) {
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .horizontalScroll(rememberScrollState())
+                        .padding(horizontal = 12.dp, vertical = 4.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    taskReplies.forEach { label ->
+                        val isStop = label.trim().equals("стоп", ignoreCase = true)
+                        PillChip(
+                            text = label,
+                            accent = if (isStop) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
+                        ) { vm.sendTaskReply(label) }
+                    }
+                }
+            }
+
             // --- Прикреплённое фото: ждёт просьбы, что с ним сделать ---
             pendingPhoto?.let { b64 ->
                 val thumb = rememberDecodedFrame(b64)
@@ -880,6 +916,8 @@ fun ChatScreen(
                             isListening -> "слушаю…"
                             openQuestion != null -> "ответ для Фауста…"
                             pendingPhoto != null -> "что сделать с фото?"
+                            // Наставник ждёт шага человека — подсказываем, что можно сказать.
+                            activeTaskId != null && taskReplies.isNotEmpty() -> "скажите: повтори, сделай сам или стоп"
                             // Задача идёт: напечатанное поправит её, «стоп» — остановит.
                             activeTaskId != null -> "поправка к задаче… («стоп» — отменить)"
                             else -> "Скажите или напишите команду"

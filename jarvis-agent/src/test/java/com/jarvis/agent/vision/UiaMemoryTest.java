@@ -60,6 +60,21 @@ class UiaMemoryTest {
     }
 
     @Test
+    void typedWholeGoal_doesNotBecomeCatchAllSlot() {
+        // Цель «лупа», в поиск ввели «лупа»: шаблон «{slot}» подошёл бы к ЛЮБОЙ цели.
+        String goal = "лупа" + System.nanoTime();
+        TrajectoryCache.recordUia(goal, List.of(
+                new TrajectoryCache.Step("type", null, null, null, -1, goal, null, null, true)), 100, 1);
+        try {
+            assertTrue(TrajectoryCache.findUia(goal).isPresent(), "сама цель находится");
+            assertTrue(TrajectoryCache.findUia("совсем другая цель " + System.nanoTime()).isEmpty(),
+                    "чужая цель не должна подхватывать этот путь");
+        } finally {
+            TrajectoryCache.forgetGoal(goal);
+        }
+    }
+
+    @Test
     void phrases_areHuman() {
         assertEquals("Нажимаю «Избранное»",
                 ActionPhrases.describe("click", null, "Избранное, Ramiz, В сети, Закреплено, вчера в 10:40"));

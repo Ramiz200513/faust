@@ -169,6 +169,9 @@ public final class TrajectoryCache {
             if (isUia(t) != uia) continue;
             int at = t.template().indexOf(SLOT);
             if (at < 0) continue;
+            // Шаблон из одного слота (записан до защиты в buildTemplate) подошёл бы к любой цели —
+            // такой «пустой» шаблон пропускаем, а не воспроизводим чужой путь.
+            if (t.template().equals(SLOT)) continue;
             String prefix = t.template().substring(0, at);
             String suffix = t.template().substring(at + SLOT.length());
             Matcher m = Pattern.compile("^" + Pattern.quote(prefix) + "(.+?)" + Pattern.quote(suffix) + "$")
@@ -257,6 +260,10 @@ public final class TrajectoryCache {
             String typed = norm(s.text());
             int at = normalized.indexOf(typed);
             if (typed.isBlank() || at < 0) continue;
+            // Если введённое совпадает со ВСЕЙ целью («лупа» → ввели «лупа»), слот съел бы цель целиком:
+            // шаблон «{slot}» подходит к любой фразе, и агент стал бы «вспоминать» этот путь для
+            // чего угодно. Без неизменной части шаблона нет и обобщения — храним цель как есть.
+            if (at == 0 && typed.length() == normalized.length()) continue;
             return normalized.substring(0, at) + SLOT + normalized.substring(at + typed.length());
         }
         return normalized;

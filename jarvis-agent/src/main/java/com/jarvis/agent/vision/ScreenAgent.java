@@ -311,7 +311,7 @@ public class ScreenAgent {
     }
 
     /** Выполненное в режиме UIA действие -> шаг траектории; null — повторять нечего. */
-    private static TrajectoryCache.Step stepFrom(AgentAction a, UiaElement target, String goal, Clarifications q) {
+    static TrajectoryCache.Step stepFrom(AgentAction a, UiaElement target, String goal, Clarifications q) {
         String kind = a.action() == null ? "" : a.action().toLowerCase(Locale.ROOT);
         return switch (kind) {
             case "click" -> target == null ? null
@@ -515,7 +515,7 @@ public class ScreenAgent {
     }
 
     /** Элемент для повтора: тот же тип и та же подпись (целиком или её первая часть), и только один такой. */
-    private static UiaElement matchElement(UiaSnapshot.Result w, TrajectoryCache.Step s) {
+    static UiaElement matchElement(UiaSnapshot.Result w, TrajectoryCache.Step s) {
         if (w == null || s.label() == null) return null;
         List<UiaElement> sameType = w.elements().stream()
                 .filter(e -> e.controlType() != null && e.controlType().equals(s.tag()))
@@ -536,7 +536,7 @@ public class ScreenAgent {
      * окончания). Первый подходящий сверху: в списке результатов поиска это
      * самый релевантный, как и у человека.
      */
-    private static UiaElement matchByValue(UiaSnapshot.Result w, TrajectoryCache.Step s,
+    static UiaElement matchByValue(UiaSnapshot.Result w, TrajectoryCache.Step s,
                                            com.jarvis.agent.SkillTemplate.Binding binding) {
         if (w == null) return null;
         return w.elements().stream()
@@ -626,7 +626,40 @@ public class ScreenAgent {
 
     /** Элемент с таким номером в текущем снимке, или null, если модель назвала несуществующий. */
     private UiaElement findElement(UiaSnapshot.Result window, Integer index) {
-        if (index == null) return null;
+        return findElementByIndex(window, index);
+    }
+
+    /**
+     * Сессия режима наставника на этом ПК: «экран» — UI Automation и окно впереди, «сделай
+     * сам» — тот же {@link #applyInWindow}, что у обычной задачи (с теми же защитами: поле
+     * пароля не трогает, пароли и карты не вводит).
+     *
+     * @param brain модель для уроков без навыка и памяти; null — только навык/память
+     */
+    public MentorSession mentor(VisionAgent brain, MentorSession.View view, MentorSession.Phone phone) {
+        MentorSession.Screen screen = new MentorSession.Screen() {
+            @Override
+            public UiaSnapshot.Result snapshot() {
+                return uia.captureForegroundWindow();
+            }
+
+            @Override
+            public String foregroundApp() {
+                return com.jarvis.agent.WindowFocus.foregroundExe();
+            }
+
+            @Override
+            public String foregroundTitle() {
+                return com.jarvis.agent.WindowFocus.foregroundTitle();
+            }
+        };
+        MentorSession.Brain b = brain == null ? null : brain::decideNextInWindow;
+        return new MentorSession(screen, b, view, phone, this::applyInWindow, UiaSnapshot.uiScale());
+    }
+
+    /** Элемент снимка по номеру из списка модели; null — такого номера нет (нужен и наставнику). */
+    static UiaElement findElementByIndex(UiaSnapshot.Result window, Integer index) {
+        if (window == null || index == null) return null;
         return window.elements().stream().filter(e -> e.index() == index).findFirst().orElse(null);
     }
 
@@ -675,7 +708,7 @@ public class ScreenAgent {
      * Выполнить действие, выбранное моделью в режиме UIA.
      * @return пометка для трейса или null
      */
-    private String applyInWindow(AgentAction a, UiaElement target, UiaSnapshot.Result window) throws Exception {
+    String applyInWindow(AgentAction a, UiaElement target, UiaSnapshot.Result window) throws Exception {
         switch (a.action() == null ? "" : a.action().toLowerCase(Locale.ROOT)) {
             case "open_app" -> {
                 if (appOpener == null) throw new IllegalStateException("открывать программы здесь нельзя");
@@ -739,7 +772,12 @@ public class ScreenAgent {
     /** Найти файл по части имени в разрешённых папках — результат модель прочтёт в трейсе. */
     private String findFile(String query) {
         requireFileTools();
-        if (query == null || query.isBlank()) throw new IllegalArgumentException("не сказано, какой файл искать");
+        // «последний», «свежий в загрузках» или пустое имя — самые новые файлы папки по дате
+        // (живая задача 23.11: без этого модель копировала первый попавшийся файл в Проводнике).
+        java.util.List<java.nio.file.Path> newest = com.jarvis.agent.FileTools.newestIfAsked(query);
+        if (newest != null) {
+            return com.jarvis.agent.FileTools.describeFound(query == null || query.isBlank() ? "последний" : query, newest);
+        }
         return com.jarvis.agent.FileTools.describeFound(query, com.jarvis.agent.FileTools.find(query));
     }
 

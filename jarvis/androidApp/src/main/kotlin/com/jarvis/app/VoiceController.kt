@@ -11,6 +11,7 @@ import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 /**
@@ -205,18 +206,87 @@ class VoiceController(private val context: Context) {
      *               микрофон человеку, который выбрал тишину, было бы странно.
      */
     fun speak(text: String, onDone: (() -> Unit)? = null) {
-        if (!_ttsEnabled.value || !ttsReady || text.isBlank()) return
+        if (!_ttsEnabled.value || text.isBlank()) return
         val spoken = if (text.length > MAX_SPOKEN_CHARS) text.take(MAX_SPOKEN_CHARS) + "…" else text
+        // Номер фразы: пока ПК синтезировал эту, могла прийти следующая — тогда эта уже не нужна
+        // (то же «прервать предыдущую», что QUEUE_FLUSH у голоса Android).
+        val gen = ++speechGeneration
+        stopPlayback()
+        val remote = pcVoice
+        if (remote == null) {
+            speakAndroid(spoken, onDone)
+            return
+        }
+        scope.launch {
+            val wav = runCatching { remote(spoken) }.getOrNull()
+            if (gen != speechGeneration || !_ttsEnabled.value) return@launch
+            if (wav == null || !playWav(wav, onDone)) speakAndroid(spoken, onDone)
+        }
+    }
+
+    /** Голос самого телефона (Android TextToSpeech) — как было до 23.11 и как запасной путь. */
+    private fun speakAndroid(spoken: String, onDone: (() -> Unit)?) {
+        if (!ttsReady) return
         val id = "jarvis-" + System.nanoTime()
         if (onDone != null) afterSpeech[id] = onDone
         // QUEUE_FLUSH — прервать предыдущую фразу и сказать новую.
         tts?.speak(spoken, TextToSpeech.QUEUE_FLUSH, null, id)
     }
 
+    // ---------------------------------------------------------------------
+    //  Голос «Фауста» с ПК (23.11)
+    // ---------------------------------------------------------------------
+
+    /**
+     * Озвучка фразы на ПК тем же голосом, что звучит из колонок ПК (Silero «eugene»): вернуть
+     * WAV или null. Задаёт экран (MainActivity) через ChatViewModel.pcVoice. Null — только
+     * голос Android.
+     */
+    var pcVoice: (suspend (String) -> ByteArray?)? = null
+
+    private val scope = kotlinx.coroutines.CoroutineScope(
+        kotlinx.coroutines.SupervisorJob() + kotlinx.coroutines.Dispatchers.Main)
+    @Volatile private var speechGeneration = 0L
+    private var player: android.media.MediaPlayer? = null
+
+    /**
+     * Проиграть WAV из ответа ПК. Файл в кэше приложения: MediaPlayer надёжно читает файл, а
+     * не массив в памяти (на старых Android — только так). true — началось проигрывание.
+     */
+    private fun playWav(wav: ByteArray, onDone: (() -> Unit)?): Boolean = try {
+        tts?.stop()                                   // вдруг ещё договаривает голос Android
+        val file = java.io.File(context.cacheDir, "faust-voice.wav")
+        file.writeBytes(wav)
+        val p = android.media.MediaPlayer()
+        p.setDataSource(file.absolutePath)
+        p.setOnCompletionListener {
+            it.release()
+            if (player === it) player = null
+            onDone?.invoke()                          // MediaPlayer зовёт его на главном потоке
+        }
+        p.prepare()
+        p.start()
+        player = p
+        true
+    } catch (e: Exception) {
+        Log.w(TAG, "голос ПК не проигрался: ${e.message}")
+        stopPlayback()
+        false
+    }
+
+    private fun stopPlayback() {
+        player?.let { runCatching { it.stop() }; it.release() }
+        player = null
+    }
+
     /** Переключить озвучку вкл/выкл. Возвращает новое состояние. */
     fun toggleTts(): Boolean {
         _ttsEnabled.value = !_ttsEnabled.value
-        if (!_ttsEnabled.value) tts?.stop() // сразу замолчать
+        if (!_ttsEnabled.value) {                     // сразу замолчать — и телефону, и голосу с ПК
+            tts?.stop()
+            speechGeneration++
+            stopPlayback()
+        }
         return _ttsEnabled.value
     }
 
@@ -226,6 +296,9 @@ class VoiceController(private val context: Context) {
     fun shutdown() {
         recognizer?.destroy()
         recognizer = null
+        speechGeneration++
+        stopPlayback()
+        scope.coroutineContext[kotlinx.coroutines.Job]?.cancel()
         tts?.stop()
         tts?.shutdown()
         tts = null

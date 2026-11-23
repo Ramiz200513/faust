@@ -60,3 +60,6 @@ jarvis-agent/uia-helper/publish/
 # Сервер: резервные копии базы и файл модели — не в git (deploy/README.md)
 deploy/backups/
 deploy/model/
+
+# Образцы голосов для выбора на слух (23.11) — не в git
+voice-samples/

@@ -46,7 +46,7 @@ import static com.jarvis.agent.AgentSettings.OVERLAY_WIDGET;
 public final class FaustOverlayController {
 
     /** Что сейчас происходит — от этого зависит, какие анимации показывать. */
-    private enum Session { NONE, TASK, REMOTE }
+    private enum Session { NONE, TASK, REMOTE, MENTOR }
 
     /** Читают и поток агента (moveMouse, ghostMove), и Swing — поэтому volatile. */
     private static volatile Session session = Session.NONE;
@@ -104,6 +104,20 @@ public final class FaustOverlayController {
      *
      * @param text понятная человеку фраза: «Открываю Telegram», «Громкость 30%»
      */
+    /**
+     * Начался урок в режиме наставника. Свои окна у него собственные (FaustMentorView), а здесь
+     * только отметка «идёт урок»: в это время НЕ показываются рамка «Фауст управляет
+     * компьютером», курсор-призрак и карточки команд — управляет человек, а не агент.
+     */
+    public static void onMentorStart() {
+        session = Session.MENTOR;
+    }
+
+    /** Урок закончился. */
+    public static void onMentorEnd() {
+        if (session == Session.MENTOR) session = Session.NONE;
+    }
+
     public static void onCommand(String text) {
         if (session != Session.NONE || text == null) return;
         SwingUtilities.invokeLater(() -> {

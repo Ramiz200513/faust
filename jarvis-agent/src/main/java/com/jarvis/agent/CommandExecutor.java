@@ -210,6 +210,7 @@ public class CommandExecutor {
                 case Command.SetDisplayOption c -> setDisplayOption(requestId, c);
                 case Command.StartScreenStream c -> startScreenStream(requestId, c);
                 case Command.StopScreenStream c  -> stopScreenStream(requestId);
+                case Command.Speak c              -> speakForPhone(requestId, c.text());
                 case Command.GetClipboard c       -> getClipboard(requestId);
                 case Command.SetClipboard c       -> ok(requestId, setClipboard(c.text()));
                 case Command.ListFiles c          -> listFiles(requestId, c.folder());
@@ -648,6 +649,101 @@ public class CommandExecutor {
     }
 
     /**
+     * Режим наставника: человек делает шаги сам, агент показывает — стрелка на экране ПК,
+     * голос ПК, шаг с кнопками на телефоне (см. {@link com.jarvis.agent.vision.MentorSession}).
+     *
+     * <p>Шаги — из навыка, выученного показом, или из памяти (тогда без ИИ); иначе их подсказывает
+     * модель, и удачный урок запоминается. Поправки с телефона («повтори», «сделай сам», уточнения)
+     * приходят тем же каналом, что у обычной задачи (activeQuestions).
+     */
+    private List<JarvisMessage> runMentor(String requestId, String goal) {
+        String task = MentorRequest.task(goal);
+        CancelSignal cancel = cancelRequested::get;
+        Clarifications questions = new Clarifications(askerFor(requestId, goal));
+        activeQuestions = questions;
+        long start = System.currentTimeMillis();
+        int llmBefore = llmClient.calls();
+        PcVoice voice = PcVoice.openIfEnabled();
+        // Говорит ПК — телефон шаг не озвучивает (иначе эхо из двух устройств).
+        Boolean silent = voice != null ? Boolean.TRUE : null;
+        com.jarvis.agent.vision.MentorSession[] session = new com.jarvis.agent.vision.MentorSession[1];
+        FaustMentorView view = new FaustMentorView(word -> {
+            if (session[0] != null) session[0].onControl(word);
+        }, voice);
+        com.jarvis.agent.vision.MentorSession.Phone phone = new com.jarvis.agent.vision.MentorSession.Phone() {
+            @Override
+            public void step(int step, String text, List<String> replies) {
+                sender.accept(new JarvisMessage.AgentStep(requestId, step, text, null, null, null, null,
+                        null, null, replies, silent));
+                if (tray != null) tray.setTaskStatus("подсказываю: " + task + " (шаг " + step + ")");
+            }
+
+            @Override
+            public void plan(List<JarvisMessage.PlanItem> items) {
+                sender.accept(new JarvisMessage.AgentPlan(requestId, items, 1));
+            }
+        };
+        session[0] = screenAgent.mentor(brain.isConfigured() ? brain : null, view, phone);
+        HumanInput input = new HumanInput(session[0]::onHuman, false);
+
+        // Откуда шаги: навык показом -> память удачного урока/задачи -> модель.
+        List<TrajectoryCache.Step> planned = null;
+        List<String> shown = null;
+        SkillTemplate.Binding binding = null;
+        String slot = null;
+        String source = "модель";
+        java.util.Optional<SkillStore.Found> skill = SkillStore.find(task);
+        java.util.Optional<TrajectoryCache.Match> memory = TrajectoryCache.findUia(task);
+        if (skill.isPresent()) {
+            planned = skill.get().skill().steps();
+            shown = skill.get().shownDescriptions();
+            binding = skill.get().binding();
+            source = "навык «" + skill.get().skill().name() + "»";
+        } else if (memory.isPresent()) {
+            planned = memory.get().trajectory().steps();
+            slot = memory.get().slot();
+            source = "память";
+        }
+        long deadline = start + Duration.ofMinutes(AgentSettings.number("mentor.maxMinutes", 15, 1, 60)).toMillis();
+        FaustOverlayController.onMentorStart();
+        input.start();
+        com.jarvis.agent.vision.MentorSession.Result r;
+        try {
+            r = session[0].run(task, planned, shown, binding, slot, cancel, questions, deadline);
+        } finally {
+            input.stop();
+            FaustOverlayController.onMentorEnd();
+            activeQuestions = null;
+        }
+        int llmCalls = llmClient.calls() - llmBefore;
+        long seconds = (System.currentTimeMillis() - start) / 1000;
+        String msg = (r.success() ? "Урок «" + task + "» пройден" : "Урок «" + task + "» не закончен: " + r.summary())
+                     + ". Шагов: " + r.steps() + ", сами — " + r.byHuman() + ", за вас — " + r.byAgent()
+                     + ", " + seconds + " с, шаги — " + source + ", "
+                     + (llmCalls == 0 ? "без обращений к ИИ" : "обращений к ИИ: " + llmCalls);
+        List<String> trace = new ArrayList<>(r.trace());
+        trace.add(0, "режим наставника: " + task + " (шаги — " + source + ")");
+        ResultData.AgentReport report = new ResultData.AgentReport(r.success(), r.steps(), trace);
+
+        // Урок — в тот же журнал runs/*.jsonl, что и обычные задачи: до 19.11 его итог уходил только
+        // на телефон, и для таблицы замеров («урок из памяти — 0 обращений к ИИ», «сколько шагов
+        // человек сделал сам») данных не было. Свои цифры — отдельными полями; llmCalls и fromMemory
+        // задаём явно: по трейсу журнал их считает только для обычных задач.
+        java.util.Map<String, Object> extra = new java.util.LinkedHashMap<>();
+        extra.put("mode", "mentor");
+        extra.put("stepsSource", source);
+        extra.put("byHuman", r.byHuman());
+        extra.put("byAgent", r.byAgent());
+        extra.put("llmCalls", llmCalls);
+        extra.put("fromMemory", !"модель".equals(source) && llmCalls == 0);
+        RunJournal.write(task, AgentScope.SCREEN, 0, report, System.currentTimeMillis() - start,
+                questions.asked(), questions.answeredCount(), questions.waitedMs(), extra);
+
+        return List.of(new JarvisMessage.CommandResult(requestId, r.success() ? CommandStatus.OK : CommandStatus.ERROR,
+                msg, report));
+    }
+
+    /**
      * Computer-use агент. Крутит цикл «снимок -> LLM -> действие» и
      * возвращает CommandResult с ResultData.AgentReport (трейс шагов), плюс
      * финальный ScreenFrame — снимок результата, который телефон покажет
@@ -659,6 +755,8 @@ public class CommandExecutor {
      * продолжает читаться всё время задачи — и cancel_task доходит, пока она идёт.
      */
     private List<JarvisMessage> runAgentTask(String requestId, Command.AgentTask task) {
+        // «Покажи, как …» / «научи меня …» — режим наставника: показать, а не сделать.
+        if (MentorRequest.applies(task.goal())) return runMentor(requestId, task.goal());
         if (!brain.isConfigured()) {
             return error(requestId, "агент не привязан к релею — vision-агент недоступен");
         }
@@ -1240,6 +1338,21 @@ if ($Mode -eq 'delta') { [JarvisVolume]::Change($Level) } else { [JarvisVolume]:
      * или похоже на пароль/карту (SensitiveInputGuard, как у vision-агента) —
      * отказываем, а не пересылаем вслепую.
      */
+    /** Сколько ждать синтез для телефона. Телефон сам ждёт ~1,5 с и потом говорит своим голосом. */
+    private static final long PHONE_VOICE_TIMEOUT_MS = 3_000;
+
+    /**
+     * Голос «Фауста» для телефона: та же фраза голосом Silero, звуком в ответе (VoiceClip).
+     * Вслух на ПК ничего не звучит. Нет Silero или не успели — ERROR, и телефон говорит сам:
+     * поэтому ошибка здесь — обычное дело, а не повод для карточки на экране.
+     */
+    private List<JarvisMessage> speakForPhone(String requestId, String text) {
+        byte[] wav = PcVoice.wavForPhone(text, PHONE_VOICE_TIMEOUT_MS);
+        if (wav == null) return error(requestId, "голоса Фауста на ПК нет — телефон скажет сам");
+        return List.of(new JarvisMessage.CommandResult(requestId, CommandStatus.OK, null,
+                new ResultData.VoiceClip("wav", 24_000, Base64.getEncoder().encodeToString(wav))));
+    }
+
     private List<JarvisMessage> getClipboard(String requestId) {
         String text;
         try {

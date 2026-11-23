@@ -45,8 +45,14 @@ public class CommandWhitelist {
             // Задача агенту с фото с телефона — та же agent_task с вложением.
             "photo_task",
             // Видео-отчёт о законченной задаче — только чтение.
-            "get_task_report"
+            "get_task_report",
+            // Озвучить фразу голосом «Фауста» на ПК и вернуть звук телефону. На ПК ничего не
+            // нажимает и вслух не говорит; длина текста ограничена (см. denyReason).
+            "speak"
     );
+
+    /** Самая длинная фраза для озвучки: телефон говорит короткие ответы (у него обрезка — 200). */
+    static final int MAX_SPEAK_CHARS = 300;
 
     /** Что может стоять внутри sequence: только простые мгновенные команды. */
     private static final Set<String> IN_SEQUENCE = Set.of(
@@ -72,6 +78,10 @@ public class CommandWhitelist {
      */
     public String denyReason(Command command) {
         if (!ALLOWED.contains(command.name())) return "команды нет в белом списке";
+        if (command instanceof Command.Speak sp
+            && (sp.text() == null || sp.text().isBlank() || sp.text().length() > MAX_SPEAK_CHARS)) {
+            return "фраза для озвучки пустая или длиннее " + MAX_SPEAK_CHARS + " символов";
+        }
         if (command instanceof Command.QuickAction q && !Command.QuickAction.ACTIONS.contains(q.action())) {
             return "неизвестное быстрое действие " + q.action();
         }

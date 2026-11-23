@@ -73,8 +73,18 @@ public class RelayClient {
         if (command instanceof Command.KillProcess
                 || command instanceof Command.SendFileToPhone
                 || command instanceof Command.SendFileToPc) return confirmPool;
+        // Голос для телефона: синтез до ~1 с (пока Silero не прогрет — дольше). В потоке чтения
+        // сокета он задержал бы cancel_task и ответы на вопросы, а в agentPool встал бы в очередь
+        // за идущей задачей — и телефон заговорил бы своим голосом. Поэтому — свой поток.
+        if (command instanceof Command.Speak) return voicePool;
         return null;
     }
+
+    private final ExecutorService voicePool = Executors.newSingleThreadExecutor(r -> {
+        Thread t = new Thread(r, "jarvis-phone-voice");
+        t.setDaemon(true);
+        return t;
+    });
 
     /** Постоянный токен. Изначально — то, что удалось прочитать с диска; после успешной
      *  привязки заменяется на выданный сервером и используется при всех реконнектах. */

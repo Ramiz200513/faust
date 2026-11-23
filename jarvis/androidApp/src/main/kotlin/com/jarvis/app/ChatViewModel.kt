@@ -94,6 +94,12 @@ data class ChatMessage(
      * всех ПК …»): рисуется меткой над пузырём. null — от выбранного ПК.
      */
     val pcName: String? = null,
+    /**
+     * true — не озвучивать это сообщение (AgentStep.silent): в режиме наставника
+     * подсказку вслух говорит сам ПК, а два голоса одновременно только мешают.
+     * В ленте сообщение видно как обычно.
+     */
+    val silent: Boolean = false,
 )
 
 /** Что сейчас с видео-отчётом, открытым на весь экран. */
@@ -213,6 +219,21 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
     private val _activeTaskId = MutableStateFlow<String?>(null)
     val activeTaskId: StateFlow<String?> = _activeTaskId.asStateFlow()
 
+    /**
+     * Быстрые ответы из последнего шага идущей задачи (AgentStep.replies) —
+     * ряд чипов над полем ввода, например «Повтори», «Сделай сам», «Стоп».
+     *
+     * Зачем: в режиме наставника агент не нажимает сам, а показывает стрелку
+     * на ПК и ждёт, пока человек сделает шаг. Руки у человека на мышке, и
+     * ткнуть кнопку на телефоне проще, чем печатать «повтори».
+     *
+     * Берём replies именно ПОСЛЕДНЕГО шага: шаг без них (null/пусто) кнопки
+     * убирает — агент сам решает, когда они уместны. Сбрасываем, когда задача
+     * кончилась (CommandResult): ответы к ней больше никто не ждёт.
+     */
+    private val _taskReplies = MutableStateFlow<List<String>>(emptyList())
+    val taskReplies: StateFlow<List<String>> = _taskReplies.asStateFlow()
+
     /** Фото, прикреплённое к следующей просьбе (JPEG в base64), или null. */
     private val _pendingPhoto = MutableStateFlow<String?>(null)
     val pendingPhoto: StateFlow<String?> = _pendingPhoto.asStateFlow()
@@ -254,6 +275,9 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
     private val streamHolders = mutableSetOf<String>()
 
     companion object {
+        /** Начало requestId запросов озвучки голосом «Фауста» — их ответы в чат не попадают. */
+        const val VOICE_PREFIX = "voice-"
+
         /** Что во время задачи значит «остановись», а не поправку. */
         private val STOP_PHRASES = setOf(
             "стоп", "отмена", "отмени", "отменить", "хватит", "остановись", "прекрати", "стой",
@@ -386,6 +410,32 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
      * бы в переписку «рентген включён на ПК».
      */
     private val silentRequests = ConcurrentHashMap.newKeySet<String>()
+
+    // --- Голос «Фауста» с ПК (23.11) ---------------------------------------------
+
+    /** Запросы озвучки, ждущие звука: requestId -> ожидание WAV (null — ПК не смог). */
+    private val voiceRequests = ConcurrentHashMap<String, kotlinx.coroutines.CompletableDeferred<ByteArray?>>()
+
+    /**
+     * Фраза голосом «Фауста» (Silero на ПК) — чтобы телефон говорил тем же голосом, что и ПК.
+     * Ждём не дольше [timeoutMs]: человек не должен ждать ответа дольше, чем от своего голоса
+     * телефона. Null — нет связи с ПК, на ПК нет голоса Silero или не успели: тогда
+     * VoiceController говорит голосом Android, как раньше.
+     */
+    suspend fun pcVoice(text: String, timeoutMs: Long = 1_500): ByteArray? {
+        if (!_status.value.startsWith("подключено") || activeAgentOffline) return null
+        // Префикс «voice-»: ответ с ним — служебный для ЛЮБОГО телефона этого ПК (релей рассылает
+        // результаты всем телефонам ПК), его нельзя показывать пузырём в чате.
+        val id = VOICE_PREFIX + UUID.randomUUID()
+        val wait = kotlinx.coroutines.CompletableDeferred<ByteArray?>()
+        voiceRequests[id] = wait
+        return try {
+            client.send(CommandRequest(requestId = id, command = Speak(text)))
+            kotlinx.coroutines.withTimeoutOrNull(timeoutMs) { wait.await() }
+        } finally {
+            voiceRequests.remove(id)
+        }
+    }
 
     // --- Проекты (git) ---------------------------------------------------------
 
@@ -820,6 +870,16 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
         sendTracked("✏️ $text", CorrectTask(text))
     }
 
+    /**
+     * Нажали чип быстрого ответа ([taskReplies]). «Стоп» (и его синонимы) —
+     * отмена задачи, как если бы его сказали голосом; всё остальное («Повтори»,
+     * «Сделай сам») уходит агенту поправкой — тем же каналом, что и
+     * напечатанная фраза во время задачи: агент её разберёт сам.
+     */
+    fun sendTaskReply(label: String) {
+        if (isStopPhrase(label)) cancelTask() else sendCorrection(label.trim())
+    }
+
     /** «стоп», «отмена», «хватит» — во время задачи это не поправка, а отмена. */
     private fun isStopPhrase(text: String): Boolean =
         text.lowercase().replace(Regex("[^\\p{L} ]"), "").trim() in STOP_PHRASES
@@ -983,6 +1043,14 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
         val pc = from?.name
         when (msg) {
             is CommandResult -> {
+                // Голос «Фауста» для фразы — звук, а не реплика: отдаём ждущему и в чат не пишем.
+                // Чужой запрос (другой телефон этого ПК) узнаём по префиксу и тоже молчим.
+                if (msg.requestId.startsWith(VOICE_PREFIX)) {
+                    val clip = msg.data as? VoiceClip
+                    voiceRequests.remove(msg.requestId)?.complete(
+                        clip?.let { runCatching { Base64.decode(it.base64, Base64.DEFAULT) }.getOrNull() })
+                    return
+                }
                 // Служебная синхронизация настроек — в чат не пишем.
                 if (silentRequests.remove(msg.requestId)) return
                 // Список проектов — не реплика, а данные для экрана «Проекты».
@@ -1017,6 +1085,8 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
                 if (msg.status == CommandStatus.ERROR && msg.message?.startsWith("сейчас нечего поправлять") == true) {
                     _activeTaskId.value = null
                 }
+                // Задачи больше нет — и её быстрых ответов тоже («Повтори» было бы не к чему).
+                if (_activeTaskId.value == null) _taskReplies.value = emptyList()
                 // Задача с экрана «Проекты» закончилась — карточки проектов устарели.
                 if (devTasks.remove(msg.requestId)) refreshRepos()
                 // Результат нашего же ответа на вопрос — отдельного пузыря не
@@ -1090,7 +1160,12 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
                 }
             }
             is AgentStep -> {
-                if (from == null) markTaskActive(msg.requestId)
+                if (from == null) {
+                    markTaskActive(msg.requestId)
+                    // Кнопки — только у задачи выбранного ПК, которая ещё идёт: шаг,
+                    // опоздавший после итога, не должен вернуть погасшие чипы.
+                    if (_activeTaskId.value == msg.requestId) _taskReplies.value = msg.replies.orEmpty()
+                }
                 // Промежуточный шаг agent_task — просто новая карточка в чате, без
                 // обновления progress (за это отвечает финальный CommandResult с тем
                 // же requestId, он придёт позже).
@@ -1103,6 +1178,8 @@ class ChatViewModel(app: Application) : AndroidViewModel(app) {
                     targetX = msg.targetX,
                     targetY = msg.targetY,
                     agentStep = msg.step,
+                    // Наставник: подсказку говорит ПК, телефон не перебивает его вторым голосом.
+                    silent = msg.silent == true,
                 ))
             }
             is AgentPlan -> {
